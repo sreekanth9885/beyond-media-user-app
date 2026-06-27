@@ -7,10 +7,6 @@ import {
   FaUsers, 
   FaTrophy,
   FaArrowRight,
-  FaGoogle,
-  FaMicrosoft,
-  FaAmazon,
-  FaApple
 } from 'react-icons/fa';
 import Button from '../ui/Button';
 import Container from '../ui/Container';
@@ -36,17 +32,6 @@ const Hero: React.FC = () => {
       transition: { duration: 0.6, ease: "easeOut" }
     }
   }satisfies Variants;
-
-  const floatingVariants = {
-    animate: {
-      y: [0, -20, 0],
-      transition: {
-        duration: 6,
-        repeat: Infinity,
-        ease: "easeInOut"
-      }
-    }
-  };
 
   return (
     <section 

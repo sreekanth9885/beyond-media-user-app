@@ -191,7 +191,7 @@ const Footer: React.FC = () => {
               </a>
               <div className="flex items-center gap-2 text-gray-400 text-sm">
                 <FaMapMarkerAlt className="text-accent text-xs" />
-                DigitalPro Tower, Cyber City, Gurugram
+                DigitalPro Tower, Cyber City, Hyderabad
               </div>
             </div>
 

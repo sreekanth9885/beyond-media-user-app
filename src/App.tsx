@@ -1,6 +1,6 @@
 // src/App.tsx
 import React, { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { AnimatePresence } from 'framer-motion';
 import PageLoader from './components/extras/PageLoader';
 import ScrollProgress from './components/extras/ScrollProgress';
 import Navbar from './components/layout/Navbar';

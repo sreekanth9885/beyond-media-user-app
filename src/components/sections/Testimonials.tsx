@@ -3,35 +3,18 @@ import React, { useState } from 'react';
 import { motion, AnimatePresence, type Variants } from 'framer-motion';
 import { 
   FaStar, 
-  FaStarHalf, 
   FaQuoteLeft, 
   FaQuoteRight,
   FaArrowLeft, 
   FaArrowRight, 
-  FaUsers,
-  FaBuilding,
-  FaBriefcase,
-  FaGraduationCap,
-  FaHeartbeat,
-  FaBullhorn,
-  FaChartLine,
-  FaCode,
-  FaMobileAlt,
-  FaPaintBrush,
-  FaVideo,
   FaCheckCircle,
   FaTwitter,
   FaLinkedin,
   FaFacebook,
   FaGoogle,
-  FaYelp,
-  FaAmazon,
-  FaApple,
-  FaMicrosoft
 } from 'react-icons/fa';
 import Container from '../ui/Container';
 import SectionHeading from '../ui/SectionHeading';
-import Button from '../ui/Button';
 
 interface Testimonial {
   id: string;

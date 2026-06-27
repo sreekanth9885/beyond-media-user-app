@@ -4,27 +4,17 @@ import { motion, type Variants } from 'framer-motion';
 import { 
   FaRocket, 
   FaShieldAlt, 
-  FaClock, 
   FaUsers, 
   FaChartLine, 
-  FaMobileAlt,
   FaCloud, 
   FaLock, 
   FaSync, 
   FaHeadset, 
-  FaTrophy, 
   FaBrain,
-  FaHeartbeat,
   FaCode,
-  FaPaintBrush,
-  FaBullhorn,
-  FaDatabase,
-  FaLaptop,
-  FaServer,
   FaGlobe,
   FaPlug,
   FaCogs,
-  FaLightbulb,
   FaCheckCircle,
   FaArrowRight,
   FaStar,
@@ -275,15 +265,6 @@ const Features: React.FC = () => {
         staggerChildren: 0.1,
         delayChildren: 0.2
       }
-    }
-  };
-
-  const itemVariants = {
-    hidden: { opacity: 0, y: 30 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: { duration: 0.5, ease: "easeOut" }
     }
   };
 

@@ -12,8 +12,6 @@ import {
   FaUsers,
   FaChartLine,
   FaCode,
-  FaMobileAlt,
-  FaCloud,
   FaShieldAlt,
   FaHeadset,
   FaDollarSign,

@@ -15,17 +15,12 @@ import {
   FaFilm,
   FaEnvelope,
   FaChartLine,
-  FaShoppingCart,
-  FaAd,
-  FaSearch,
   FaArrowRight,
-  FaCalendarCheck,
   FaHandshake,
   FaHeartbeat,
   FaUniversity,
   FaGlobe,
   FaTv,
-  FaRocket,
   FaStar,
   FaTag
 } from 'react-icons/fa';

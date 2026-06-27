@@ -1,35 +1,17 @@
 // src/components/sections/Pricing.tsx
 import React, { useState } from 'react';
-import { motion, AnimatePresence, type Variants } from 'framer-motion';
+import { motion, type Variants } from 'framer-motion';
 import { 
   FaCheckCircle, 
   FaTimesCircle, 
   FaArrowRight,
   FaStar,
   FaCrown,
-  FaGem,
   FaRocket,
-  FaUsers,
   FaChartLine,
-  FaCode,
-  FaMobileAlt,
-  FaCloud,
   FaShieldAlt,
   FaHeadset,
-  FaDatabase,
-  FaServer,
-  FaPaintBrush,
-  FaBullhorn,
-  FaVideo,
-  FaEnvelope,
-  FaCalendarAlt,
-  FaClock,
-  FaTrophy,
-  FaAward,
-  FaMedal,
   FaCogs,
-  FaTools,
-  FaLightbulb
 } from 'react-icons/fa';
 import Container from '../ui/Container';
 import SectionHeading from '../ui/SectionHeading';

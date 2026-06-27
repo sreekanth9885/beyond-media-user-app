@@ -76,7 +76,7 @@ const Contact: React.FC = () => {
     {
       id: 'address',
       label: 'Office Address',
-      value: 'DigitalPro Tower, Cyber City, Gurugram, India',
+      value: 'DigitalPro Tower, Cyber City, Hyderabad, India',
       icon: <FaMapMarkerAlt />,
       link: 'https://maps.google.com',
       color: 'from-red-500 to-red-600'
@@ -528,7 +528,7 @@ const Contact: React.FC = () => {
             <div className="absolute inset-0 bg-gradient-to-t from-primary/60 to-transparent flex items-end justify-center">
               <div className="bg-primary/90 backdrop-blur-sm px-6 py-4 rounded-t-2xl border border-gold-500/20 text-center">
                 <p className="text-gray-400 text-sm">
-                  📍 DigitalPro Tower, Cyber City, Gurugram, India
+                  📍 DigitalPro Tower, Cyber City, Hyderabad, India
                 </p>
                 <a 
                   href="https://maps.google.com" 
