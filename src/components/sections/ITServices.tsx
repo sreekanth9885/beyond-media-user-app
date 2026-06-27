@@ -41,12 +41,6 @@ interface ITServices {
   category: 'development' | 'mobile' | 'design' | 'backend' | 'cloud';
 }
 
-interface Industry {
-  id: string;
-  name: string;
-  icon: React.ReactNode;
-  color: string;
-}
 
 const ITServices: React.FC = () => {
   const [activeCategory, setActiveCategory] = useState<string>('development');
