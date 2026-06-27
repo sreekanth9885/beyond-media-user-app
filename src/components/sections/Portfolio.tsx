@@ -1,0 +1,569 @@
+// src/components/sections/Portfolio.tsx
+import React, { useState } from 'react';
+import { motion, AnimatePresence, type Variants } from 'framer-motion';
+import { 
+  FaSearch, 
+  FaTimes, 
+  FaArrowRight, 
+  FaFilter,
+  FaCode,
+  FaPaintBrush,
+  FaBullhorn,
+  FaChartLine,
+  FaMobileAlt,
+  FaVideo,
+  FaGlobe,
+  FaUsers,
+  FaBuilding,
+  FaShoppingCart,
+  FaHeartbeat,
+  FaGraduationCap,
+  FaTv,
+  FaTag,
+  FaLink,
+  FaEye,
+  FaStar,
+  FaComments
+} from 'react-icons/fa';
+import Container from '../ui/Container';
+import SectionHeading from '../ui/SectionHeading';
+import Button from '../ui/Button';
+
+interface PortfolioItem {
+  id: string;
+  title: string;
+  category: string;
+  image: string;
+  description: string;
+  tags: string[];
+  date: string;
+  client: string;
+  result: string;
+}
+
+interface Category {
+  id: string;
+  label: string;
+  icon: React.ReactNode;
+  count: number;
+}
+
+const Portfolio: React.FC = () => {
+  const [activeCategory, setActiveCategory] = useState<string>('all');
+  const [selectedItem, setSelectedItem] = useState<PortfolioItem | null>(null);
+  const [searchTerm, setSearchTerm] = useState<string>('');
+
+  const portfolioItems: PortfolioItem[] = [
+    // Political Campaigns
+    {
+      id: '1',
+      title: 'National Election Campaign 2024',
+      category: 'political',
+      image: 'https://images.unsplash.com/photo-1541872703-74c5e44368f9?w=600&h=400&fit=crop',
+      description: 'Comprehensive digital campaign strategy for national elections including social media, branding, and ground operations.',
+      tags: ['Election Strategy', 'Social Media', 'Branding', 'Analytics'],
+      date: '2024',
+      client: 'National Political Party',
+      result: '15% increase in voter engagement, 20% social media growth'
+    },
+    {
+      id: '2',
+      title: 'State Assembly Campaign',
+      category: 'political',
+      image: 'https://images.unsplash.com/photo-1540910419892-4a36d2c3266c?w=600&h=400&fit=crop',
+      description: 'Successful state-level campaign with targeted messaging and community outreach programs.',
+      tags: ['Campaign Management', 'Community Outreach', 'Media Relations'],
+      date: '2023',
+      client: 'State Political Leader',
+      result: 'Won by 25,000 votes, 40% social media engagement'
+    },
+    {
+      id: '3',
+      title: 'Local Government Election',
+      category: 'political',
+      image: 'https://images.unsplash.com/photo-1589829540156-4478f750fcf4?w=600&h=400&fit=crop',
+      description: 'Hyper-local campaign strategy focusing on grassroots engagement and digital presence.',
+      tags: ['Grassroots Campaign', 'Digital Marketing', 'Booth Management'],
+      date: '2023',
+      client: 'Municipal Corporation Candidate',
+      result: '85% recognition in target wards'
+    },
+
+    // Digital Marketing
+    {
+      id: '4',
+      title: 'E-commerce Brand Launch',
+      category: 'marketing',
+      image: 'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=600&h=400&fit=crop',
+      description: 'Full-scale digital marketing campaign for e-commerce brand launch including Google Ads and social media.',
+      tags: ['Google Ads', 'Social Media', 'Content Marketing', 'SEO'],
+      date: '2024',
+      client: 'Fashion Retail Brand',
+      result: '500% ROAS, 50K+ new customers'
+    },
+    {
+      id: '5',
+      title: 'Real Estate Digital Campaign',
+      category: 'marketing',
+      image: 'https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=600&h=400&fit=crop',
+      description: 'Integrated marketing campaign for luxury real estate project targeting high-net-worth individuals.',
+      tags: ['Meta Ads', 'Content Marketing', 'Lead Generation'],
+      date: '2023',
+      client: 'Luxury Real Estate Developer',
+      result: '150+ qualified leads, 80% conversion rate'
+    },
+    {
+      id: '6',
+      title: 'Healthcare Brand Awareness',
+      category: 'marketing',
+      image: 'https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=600&h=400&fit=crop',
+      description: 'Comprehensive healthcare marketing campaign across multiple digital channels.',
+      tags: ['Healthcare SEO', 'Content Marketing', 'Patient Acquisition'],
+      date: '2024',
+      client: 'Multi-specialty Hospital',
+      result: '200% increase in patient inquiries'
+    },
+
+    // Web Development
+    {
+      id: '7',
+      title: 'Corporate Banking Portal',
+      category: 'development',
+      image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&h=400&fit=crop',
+      description: 'Enterprise banking portal with advanced security features and seamless user experience.',
+      tags: ['React', 'Node.js', 'Security', 'Banking'],
+      date: '2024',
+      client: 'Leading National Bank',
+      result: '10K+ daily active users, 99.9% uptime'
+    },
+    {
+      id: '8',
+      title: 'School Management Platform',
+      category: 'development',
+      image: 'https://images.unsplash.com/photo-1509062522246-3755977927d7?w=600&h=400&fit=crop',
+      description: 'Complete school management system with parent portal and mobile app integration.',
+      tags: ['React', 'Node.js', 'Mobile App', 'Education'],
+      date: '2023',
+      client: 'International School Network',
+      result: 'Streamlined operations for 50+ schools'
+    },
+    {
+      id: '9',
+      title: 'E-commerce Marketplace',
+      category: 'development',
+      image: 'https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=600&h=400&fit=crop',
+      description: 'Full-featured e-commerce marketplace with multi-vendor support and payment integration.',
+      tags: ['Shopify', 'React', 'Stripe', 'Marketplace'],
+      date: '2024',
+      client: 'Online Retail Platform',
+      result: '1M+ products listed, 100K+ monthly visitors'
+    },
+
+    // Mobile Apps
+    {
+      id: '10',
+      title: 'Healthcare Mobile App',
+      category: 'mobile',
+      image: 'https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=600&h=400&fit=crop',
+      description: 'Comprehensive healthcare app with telemedicine, appointment booking, and patient records.',
+      tags: ['React Native', 'Healthcare', 'Telemedicine'],
+      date: '2024',
+      client: 'Healthcare Network',
+      result: '50K+ downloads, 4.8 star rating'
+    },
+    {
+      id: '11',
+      title: 'Restaurant Ordering App',
+      category: 'mobile',
+      image: 'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=600&h=400&fit=crop',
+      description: 'Mobile app for restaurant ordering, loyalty program, and real-time order tracking.',
+      tags: ['Flutter', 'Firebase', 'Payment Integration'],
+      date: '2023',
+      client: 'Restaurant Chain',
+      result: '300% increase in online orders'
+    },
+
+    // Media & Production
+    {
+      id: '12',
+      title: 'Political Documentary Series',
+      category: 'media',
+      image: 'https://images.unsplash.com/photo-1536240478700-b869070f9279?w=600&h=400&fit=crop',
+      description: 'High-quality documentary series covering political campaigns and social issues.',
+      tags: ['Video Production', 'Documentary', 'Political Content'],
+      date: '2024',
+      client: 'Political Organization',
+      result: '5M+ views across platforms'
+    },
+    {
+      id: '13',
+      title: 'Corporate Event Coverage',
+      category: 'media',
+      image: 'https://images.unsplash.com/photo-1478737270239-2f02b77fc618?w=600&h=400&fit=crop',
+      description: 'Professional live coverage of major corporate event with multi-camera setup.',
+      tags: ['Live Streaming', 'Multi-camera', 'Event Production'],
+      date: '2023',
+      client: 'Fortune 500 Company',
+      result: '10K+ live viewers'
+    },
+
+    // Branding & Design
+    {
+      id: '14',
+      title: 'Political Brand Identity',
+      category: 'design',
+      image: 'https://images.unsplash.com/photo-1557804506-669a67965ba0?w=600&h=400&fit=crop',
+      description: 'Complete brand identity design for political candidate and campaign materials.',
+      tags: ['Branding', 'Logo Design', 'Campaign Materials'],
+      date: '2024',
+      client: 'Political Leader',
+      result: 'Strong brand recognition across constituencies'
+    },
+    {
+      id: '15',
+      title: 'Corporate Rebranding',
+      category: 'design',
+      image: 'https://images.unsplash.com/photo-1561070791-2526d30994b5?w=600&h=400&fit=crop',
+      description: 'Comprehensive corporate rebranding including logo, guidelines, and marketing collateral.',
+      tags: ['Rebranding', 'Visual Identity', 'Brand Guidelines'],
+      date: '2023',
+      client: 'Technology Company',
+      result: 'Modern brand image, 40% increase in brand recall'
+    },
+  ];
+
+  // Get unique categories
+  const categories: Category[] = [
+    { id: 'all', label: 'All Projects', icon: <FaGlobe />, count: portfolioItems.length },
+    { id: 'political', label: 'Political', icon: <FaBullhorn />, count: portfolioItems.filter(item => item.category === 'political').length },
+    { id: 'marketing', label: 'Marketing', icon: <FaChartLine />, count: portfolioItems.filter(item => item.category === 'marketing').length },
+    { id: 'development', label: 'Development', icon: <FaCode />, count: portfolioItems.filter(item => item.category === 'development').length },
+    { id: 'mobile', label: 'Mobile Apps', icon: <FaMobileAlt />, count: portfolioItems.filter(item => item.category === 'mobile').length },
+    { id: 'media', label: 'Media', icon: <FaVideo />, count: portfolioItems.filter(item => item.category === 'media').length },
+    { id: 'design', label: 'Design', icon: <FaPaintBrush />, count: portfolioItems.filter(item => item.category === 'design').length },
+  ];
+
+  // Filter items
+  const filteredItems = portfolioItems.filter(item => {
+    const matchesCategory = activeCategory === 'all' || item.category === activeCategory;
+    const matchesSearch = item.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+                          item.description.toLowerCase().includes(searchTerm.toLowerCase()) ||
+                          item.tags.some(tag => tag.toLowerCase().includes(searchTerm.toLowerCase()));
+    return matchesCategory && matchesSearch;
+  });
+
+  // Animation variants
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.05,
+        delayChildren: 0.1
+      }
+    }
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, scale: 0.9 },
+    visible: {
+      opacity: 1,
+      scale: 1,
+      transition: { duration: 0.4, ease: "easeOut" }
+    },
+    hover: {
+      scale: 1.02,
+      transition: { duration: 0.3, ease: "easeOut" }
+    }
+  }satisfies Variants;
+
+  const overlayVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: { duration: 0.3 }
+    }
+  };
+
+  const modalVariants = {
+    hidden: { opacity: 0, scale: 0.8, y: 50 },
+    visible: {
+      opacity: 1,
+      scale: 1,
+      y: 0,
+      transition: { duration: 0.4, ease: "easeOut" }
+    },
+    exit: {
+      opacity: 0,
+      scale: 0.8,
+      y: 50,
+      transition: { duration: 0.3 }
+    }
+  }satisfies Variants;
+
+  return (
+    <section 
+      id="portfolio" 
+      className="py-16 md:py-20 lg:py-28 bg-primary relative overflow-hidden"
+      aria-label="Portfolio"
+    >
+      {/* Background Decorations */}
+      <div className="absolute top-1/3 left-0 w-80 h-80 bg-gold-500/5 rounded-full blur-3xl"></div>
+      <div className="absolute bottom-1/3 right-0 w-80 h-80 bg-gold-500/5 rounded-full blur-3xl"></div>
+
+      <Container>
+        <SectionHeading
+          badge="Our Portfolio"
+          title="Projects That Define Excellence"
+          subtitle="Explore our diverse portfolio of successful projects across industries and technologies."
+        />
+
+        {/* Search & Filter */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5 }}
+          className="flex flex-col md:flex-row gap-4 mb-8 md:mb-12"
+        >
+          {/* Search */}
+          <div className="relative flex-1">
+            <input
+              type="text"
+              placeholder="Search projects..."
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
+              className="w-full px-4 py-3 bg-primary-light/50 backdrop-blur-sm rounded-lg border border-gold-500/10 text-white placeholder-gray-400 focus:border-gold-500/50 focus:outline-none transition-all duration-300"
+              aria-label="Search portfolio"
+            />
+            <FaSearch className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400" />
+          </div>
+          
+          {/* Category Filters */}
+          <div className="flex flex-wrap gap-2">
+            {categories.map((category) => (
+              <button
+                key={category.id}
+                onClick={() => setActiveCategory(category.id)}
+                className={`flex items-center gap-1.5 px-3 py-2 rounded-lg text-xs md:text-sm font-medium transition-all duration-300 ${
+                  activeCategory === category.id
+                    ? 'bg-gold-500 text-primary shadow-gold'
+                    : 'bg-white/5 text-gray-400 hover:text-white hover:bg-white/10 border border-gold-500/10'
+                }`}
+                aria-label={`Filter ${category.label}`}
+                aria-pressed={activeCategory === category.id}
+              >
+                <span className="text-sm">{category.icon}</span>
+                {category.label}
+                <span className={`text-[10px] ${
+                  activeCategory === category.id ? 'text-primary/70' : 'text-gray-500'
+                }`}>
+                  ({category.count})
+                </span>
+              </button>
+            ))}
+          </div>
+        </motion.div>
+
+        {/* Portfolio Grid - Masonry Layout */}
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={activeCategory + searchTerm}
+            variants={containerVariants}
+            initial="hidden"
+            animate="visible"
+            className="columns-1 sm:columns-2 lg:columns-3 gap-4 md:gap-6 space-y-4 md:space-y-6"
+          >
+            {filteredItems.map((item) => (
+              <motion.div
+                key={item.id}
+                variants={itemVariants}
+                whileHover="hover"
+                className="break-inside-avoid relative group cursor-pointer"
+                onClick={() => setSelectedItem(item)}
+                role="button"
+                tabIndex={0}
+                onKeyPress={(e) => e.key === 'Enter' && setSelectedItem(item)}
+                aria-label={`View ${item.title}`}
+              >
+                <div className="relative rounded-xl overflow-hidden border border-gold-500/10 hover:border-gold-500/30 transition-all duration-300">
+                  {/* Image */}
+                  <img
+                    src={item.image}
+                    alt={item.title}
+                    className="w-full h-auto object-cover"
+                    loading="lazy"
+                  />
+                  
+                  {/* Category Badge */}
+                  <div className="absolute top-3 right-3 bg-primary/90 backdrop-blur-sm px-2.5 py-1 rounded-lg text-xs font-medium text-gold-500 border border-gold-500/20 flex items-center gap-1 z-10">
+                    <FaTag className="text-[10px]" />
+                    {categories.find(c => c.id === item.category)?.label}
+                  </div>
+
+                  {/* Hover Overlay */}
+                  <motion.div
+                    variants={overlayVariants}
+                    initial="hidden"
+                    whileHover="visible"
+                    className="absolute inset-0 bg-gradient-to-t from-primary/95 via-primary/70 to-transparent flex flex-col justify-end p-4 md:p-6"
+                  >
+                    <h3 className="text-white font-poppins font-semibold text-base md:text-lg mb-1">
+                      {item.title}
+                    </h3>
+                    <p className="text-gray-300 text-sm mb-3 line-clamp-2">
+                      {item.description}
+                    </p>
+                    <div className="flex flex-wrap gap-1.5 mb-3">
+                      {item.tags.slice(0, 3).map((tag, index) => (
+                        <span 
+                          key={index}
+                          className="text-[10px] px-2 py-1 bg-gold-500/20 text-gold-400 rounded border border-gold-500/10"
+                        >
+                          {tag}
+                        </span>
+                      ))}
+                      {item.tags.length > 3 && (
+                        <span className="text-[10px] px-2 py-1 bg-white/5 text-gray-400 rounded border border-gold-500/10">
+                          +{item.tags.length - 3}
+                        </span>
+                      )}
+                    </div>
+                    <div className="flex items-center justify-between">
+                      <span className="text-xs text-gray-400">
+                        {item.client} • {item.date}
+                      </span>
+                      <span className="text-accent text-sm">
+                        <FaEye />
+                      </span>
+                    </div>
+                  </motion.div>
+                </div>
+              </motion.div>
+            ))}
+          </motion.div>
+        </AnimatePresence>
+
+        {/* No Results */}
+        {filteredItems.length === 0 && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            className="text-center py-12"
+          >
+            <div className="text-gray-400 text-lg">
+              No projects found matching your criteria
+            </div>
+          </motion.div>
+        )}
+
+        {/* Project Count */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5, delay: 0.3 }}
+          className="text-center mt-8 text-sm text-gray-500"
+        >
+          Showing {filteredItems.length} of {portfolioItems.length} projects
+        </motion.div>
+      </Container>
+
+      {/* Project Detail Modal */}
+      <AnimatePresence>
+        {selectedItem && (
+          <motion.div
+            variants={overlayVariants}
+            initial="hidden"
+            animate="visible"
+            exit="hidden"
+            className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/80 backdrop-blur-md"
+            onClick={() => setSelectedItem(null)}
+          >
+            <motion.div
+              variants={modalVariants}
+              initial="hidden"
+              animate="visible"
+              exit="exit"
+              className="bg-primary-light/95 backdrop-blur-glass rounded-2xl border border-gold-500/20 max-w-3xl w-full max-h-[90vh] overflow-y-auto"
+              onClick={(e) => e.stopPropagation()}
+            >
+              {/* Close Button */}
+              <button
+                onClick={() => setSelectedItem(null)}
+                className="absolute top-4 right-4 text-gray-400 hover:text-white transition-colors duration-300"
+                aria-label="Close modal"
+              >
+                <FaTimes size={24} />
+              </button>
+
+              {/* Modal Content */}
+              <div className="p-6 md:p-8">
+                {/* Image */}
+                <div className="relative h-64 md:h-80 rounded-xl overflow-hidden mb-6">
+                  <img
+                    src={selectedItem.image}
+                    alt={selectedItem.title}
+                    className="w-full h-full object-cover"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-primary/50 to-transparent"></div>
+                  <div className="absolute bottom-4 left-4">
+                    <span className="inline-block px-3 py-1 bg-primary/90 backdrop-blur-sm rounded-lg text-xs font-medium text-gold-500 border border-gold-500/20">
+                      {categories.find(c => c.id === selectedItem.category)?.label}
+                    </span>
+                  </div>
+                </div>
+
+                {/* Details */}
+                <div className="space-y-4">
+                  <h3 className="text-white font-poppins font-bold text-2xl md:text-3xl">
+                    {selectedItem.title}
+                  </h3>
+                  
+                  <div className="flex flex-wrap gap-4 text-sm text-gray-400">
+                    <span className="flex items-center gap-1">
+                      <FaStar className="text-accent" /> {selectedItem.client}
+                    </span>
+                    <span className="flex items-center gap-1">
+                      <FaComments className="text-accent" /> {selectedItem.date}
+                    </span>
+                  </div>
+
+                  <p className="text-gray-300 text-base md:text-lg leading-relaxed">
+                    {selectedItem.description}
+                  </p>
+
+                  <div>
+                    <h4 className="text-white font-semibold text-sm mb-2">Key Tags</h4>
+                    <div className="flex flex-wrap gap-2">
+                      {selectedItem.tags.map((tag, index) => (
+                        <span
+                          key={index}
+                          className="px-3 py-1 bg-gold-500/10 text-gold-400 rounded-full text-xs border border-gold-500/20"
+                        >
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+
+                  <div className="bg-white/5 rounded-xl p-4 border border-gold-500/10">
+                    <h4 className="text-white font-semibold text-sm mb-1">Result</h4>
+                    <p className="text-gray-300 text-sm">{selectedItem.result}</p>
+                  </div>
+
+                  <Button variant="gold" size="lg" className="w-full">
+                    <FaLink className="mr-2" /> View Full Case Study
+                    <FaArrowRight className="ml-2" />
+                  </Button>
+                </div>
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </section>
+  );
+};
+
+export default Portfolio;

@@ -1,0 +1,165 @@
+@import "tailwindcss";
+
+/* ==========================
+   Theme
+========================== */
+
+@theme {
+  /* Colors */
+  --color-primary: #111827;
+  --color-primary-light: #1F2937;
+  --color-primary-dark: #0F172A;
+
+  --color-secondary: #1F2937;
+  --color-secondary-light: #374151;
+
+  --color-accent: #D4AF37;
+  --color-accent-light: #E2C75A;
+  --color-accent-dark: #B8962E;
+
+  --color-gold-50: #FDF8E6;
+  --color-gold-100: #FBF0CC;
+  --color-gold-200: #F7E199;
+  --color-gold-300: #F3D266;
+  --color-gold-400: #EFC333;
+  --color-gold-500: #D4AF37;
+  --color-gold-600: #B8962E;
+  --color-gold-700: #9C7D25;
+  --color-gold-800: #7F641C;
+  --color-gold-900: #634B13;
+
+  /* Fonts */
+
+  --font-poppins: "Poppins", sans-serif;
+  --font-inter: "Inter", sans-serif;
+
+  /* Shadows */
+
+  --shadow-gold: 0 4px 20px rgba(212, 175, 55, 0.30);
+
+  --shadow-gold-lg: 0 10px 40px rgba(212, 175, 55, 0.40);
+
+  --shadow-glass: 0 8px 32px rgba(0,0,0,.30);
+
+  --shadow-glow: 0 0 30px rgba(212,175,55,.15);
+
+  /* Blur */
+
+  --blur-glass: 20px;
+
+  /* Backgrounds */
+
+  --background-image-gradient-gold:
+      linear-gradient(135deg,#D4AF37,#F3D266,#D4AF37);
+
+  --background-image-gradient-dark:
+      linear-gradient(135deg,#111827,#1F2937);
+
+  --background-image-gradient-hero:
+      linear-gradient(
+          135deg,
+          rgba(17,24,39,.95),
+          rgba(31,41,55,.85)
+      );
+
+  /* Animations */
+
+  --animate-float: float 6s ease-in-out infinite;
+  --animate-pulse-gold: pulseGold 2s ease-in-out infinite;
+  --animate-glow: glow 3s ease-in-out infinite;
+  --animate-slide-up: slideUp .6s ease-out;
+  --animate-slide-down: slideDown .6s ease-out;
+  --animate-fade-in: fadeIn .8s ease-out;
+  --animate-zoom-in: zoomIn .6s ease-out;
+}
+
+/* ==========================
+   Keyframes
+========================== */
+
+@keyframes float {
+  0%,100%{
+      transform:translateY(0)
+  }
+  50%{
+      transform:translateY(-20px)
+  }
+}
+
+@keyframes pulseGold {
+  0%,100%{
+      opacity:1
+  }
+  50%{
+      opacity:.7
+  }
+}
+
+@keyframes glow {
+  0%,100%{
+      box-shadow:0 0 20px rgba(212,175,55,.2)
+  }
+  50%{
+      box-shadow:0 0 40px rgba(212,175,55,.4)
+  }
+}
+
+@keyframes slideUp{
+  from{
+      transform:translateY(40px);
+      opacity:0;
+  }
+  to{
+      transform:translateY(0);
+      opacity:1;
+  }
+}
+
+@keyframes slideDown{
+  from{
+      transform:translateY(-40px);
+      opacity:0;
+  }
+  to{
+      transform:translateY(0);
+      opacity:1;
+  }
+}
+
+@keyframes fadeIn{
+  from{
+      opacity:0;
+  }
+  to{
+      opacity:1;
+  }
+}
+
+@keyframes zoomIn{
+  from{
+      opacity:0;
+      transform:scale(.8);
+  }
+  to{
+      opacity:1;
+      transform:scale(1);
+  }
+}
+
+/* ==========================
+   Global
+========================== */
+
+html{
+  scroll-behavior:smooth;
+}
+
+body{
+  font-family:var(--font-inter);
+  background:var(--color-primary);
+  color:white;
+}
+
+*{
+  box-sizing:border-box;
+}
