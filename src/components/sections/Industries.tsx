@@ -311,12 +311,12 @@ const Industries: React.FC = () => {
   return (
     <section 
       id="industries" 
-      className="py-16 md:py-20 lg:py-28 bg-primary-light relative overflow-hidden"
+      className="py-16 md:py-20 lg:py-28 bg-white-light relative overflow-hidden"
       aria-label="Industries we serve"
     >
       {/* Background Decorations */}
-      <div className="absolute top-0 right-0 w-96 h-96 bg-gold-500/5 rounded-full blur-3xl"></div>
-      <div className="absolute bottom-0 left-0 w-96 h-96 bg-gold-500/5 rounded-full blur-3xl"></div>
+      <div className="absolute top-0 right-0 w-96 h-96 bg-blue-600/5 rounded-full blur-3xl"></div>
+      <div className="absolute bottom-0 left-0 w-96 h-96 bg-blue-600/5 rounded-full blur-3xl"></div>
 
       <Container>
         <SectionHeading
@@ -339,8 +339,8 @@ const Industries: React.FC = () => {
               onClick={() => setActiveCategory(category.id)}
               className={`flex items-center gap-2 px-3 md:px-5 py-2 rounded-lg text-xs md:text-sm font-medium transition-all duration-300 ${
                 activeCategory === category.id
-                  ? 'bg-gold-500 text-primary shadow-gold'
-                  : 'bg-white/5 text-gray-400 hover:text-white hover:bg-white/10 border border-gold-500/10'
+                ? 'bg-blue-600 text-primary shadow-blue'
+                : 'bg-white/5 text-gray-400 hover:text-gray-900 hover:bg-white/10 border border-blue-500/10'
               }`}
               aria-label={`Filter ${category.label}`}
               aria-pressed={activeCategory === category.id}
@@ -364,7 +364,7 @@ const Industries: React.FC = () => {
               key={industry.id}
               variants={cardVariants}
               whileHover="hover"
-              className="group bg-primary/50 backdrop-blur-sm rounded-xl overflow-hidden border border-gold-500/10 hover:border-gold-500/30 transition-all duration-300"
+              className="group bg-white/50 backdrop-blur-sm rounded-xl overflow-hidden border border-blue-500/10 hover:border-blue-500/30 transition-all duration-300"
             >
               {/* Image */}
               <div className="relative h-40 md:h-48 overflow-hidden">
@@ -379,15 +379,15 @@ const Industries: React.FC = () => {
                 <div className="absolute inset-0 bg-gradient-to-t from-primary/80 via-primary/40 to-transparent"></div>
                 
                 {/* Icon Badge */}
-                <div className={`absolute top-3 right-3 w-10 h-10 rounded-full bg-gradient-to-r ${industry.color} flex items-center justify-center text-white text-lg shadow-lg`}>
+                <div className={`absolute top-3 right-3 w-10 h-10 rounded-full bg-gradient-to-r ${industry.color} flex items-center justify-center text-gray-900 text-lg shadow-lg`}>
                   {industry.icon}
                 </div>
 
                 {/* Stats Badges */}
                 <div className="absolute bottom-3 left-3 flex gap-2">
                   {industry.stats.map((stat, index) => (
-                    <div key={index} className="bg-primary/90 backdrop-blur-sm px-2.5 py-1 rounded-lg border border-gold-500/20">
-                      <div className="text-white font-bold text-xs">{stat.value}</div>
+                    <div key={index} className="bg-white/90 backdrop-blur-sm px-2.5 py-1 rounded-lg border border-blue-500/20">
+                      <div className="text-gray-900 font-bold text-xs">{stat.value}</div>
                       <div className="text-gray-400 text-[8px] uppercase">{stat.label}</div>
                     </div>
                   ))}
@@ -396,7 +396,7 @@ const Industries: React.FC = () => {
 
               {/* Content */}
               <div className="p-4 md:p-5">
-                <h3 className="text-white font-poppins font-semibold text-base md:text-lg group-hover:text-accent transition-colors duration-300 mb-2">
+                <h3 className="text-gray-900 font-poppins font-semibold text-base md:text-lg group-hover:text-blue-600 transition-colors duration-300 mb-2">
                   {industry.name}
                 </h3>
 
@@ -409,7 +409,7 @@ const Industries: React.FC = () => {
                   {industry.services.map((service, index) => (
                     <span 
                       key={index}
-                      className="text-[10px] px-2 py-1 bg-gold-500/10 text-gold-400 rounded border border-gold-500/10"
+                      className="text-[10px] px-2 py-1 bg-blue-600/10 text-blue-500 rounded border border-blue-500/10"
                     >
                       {service}
                     </span>
@@ -419,7 +419,7 @@ const Industries: React.FC = () => {
                 <Button
                   variant="ghost"
                   size="sm"
-                  className="w-full text-gold-500 hover:text-gold-400 group/btn"
+                  className="w-full text-blue-600 hover:text-blue-500 group/btn"
                 >
                   Explore Solutions
                   <FaArrowRight className="ml-2 text-xs group-hover/btn:translate-x-1 transition-transform duration-300" />
@@ -437,32 +437,32 @@ const Industries: React.FC = () => {
           transition={{ duration: 0.5, delay: 0.3 }}
           className="mt-8 md:mt-12 grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6"
         >
-          <div className="text-center p-4 bg-white/5 backdrop-blur-sm rounded-xl border border-gold-500/10">
+          <div className="text-center p-4 bg-white/5 backdrop-blur-sm rounded-xl border border-blue-500/10">
             <div className="flex justify-center mb-2">
-              <div className="text-accent text-3xl">🌍</div>
+              <div className="text-blue-600 text-3xl">🌍</div>
             </div>
-            <div className="text-white font-bold text-lg md:text-xl">15+</div>
+            <div className="text-gray-900 font-bold text-lg md:text-xl">15+</div>
             <div className="text-gray-400 text-sm">Industries Served</div>
           </div>
-          <div className="text-center p-4 bg-white/5 backdrop-blur-sm rounded-xl border border-gold-500/10">
+          <div className="text-center p-4 bg-white/5 backdrop-blur-sm rounded-xl border border-blue-500/10">
             <div className="flex justify-center mb-2">
-              <div className="text-accent text-3xl">🏢</div>
+              <div className="text-blue-600 text-3xl">🏢</div>
             </div>
-            <div className="text-white font-bold text-lg md:text-xl">1000+</div>
+            <div className="text-gray-900 font-bold text-lg md:text-xl">1000+</div>
             <div className="text-gray-400 text-sm">Businesses Transformed</div>
           </div>
-          <div className="text-center p-4 bg-white/5 backdrop-blur-sm rounded-xl border border-gold-500/10">
+          <div className="text-center p-4 bg-white/5 backdrop-blur-sm rounded-xl border border-blue-500/10">
             <div className="flex justify-center mb-2">
-              <div className="text-accent text-3xl">⭐</div>
+              <div className="text-blue-600 text-3xl">⭐</div>
             </div>
-            <div className="text-white font-bold text-lg md:text-xl">98%</div>
+            <div className="text-gray-900 font-bold text-lg md:text-xl">98%</div>
             <div className="text-gray-400 text-sm">Client Satisfaction</div>
           </div>
-          <div className="text-center p-4 bg-white/5 backdrop-blur-sm rounded-xl border border-gold-500/10">
+          <div className="text-center p-4 bg-white/5 backdrop-blur-sm rounded-xl border border-blue-500/10">
             <div className="flex justify-center mb-2">
-              <div className="text-accent text-3xl">🏆</div>
+              <div className="text-blue-600 text-3xl">🏆</div>
             </div>
-            <div className="text-white font-bold text-lg md:text-xl">50+</div>
+            <div className="text-gray-900 font-bold text-lg md:text-xl">50+</div>
             <div className="text-gray-400 text-sm">Industry Awards</div>
           </div>
         </motion.div>
@@ -475,8 +475,8 @@ const Industries: React.FC = () => {
           transition={{ duration: 0.5, delay: 0.5 }}
           className="text-center mt-8 md:mt-12"
         >
-          <div className="bg-gradient-to-r from-gold-500/10 to-gold-500/5 rounded-2xl p-6 md:p-8 border border-gold-500/20 max-w-3xl mx-auto">
-            <h3 className="text-white font-poppins font-semibold text-xl md:text-2xl mb-3">
+          <div className="bg-gradient-to-r from-gold-500/10 to-gold-500/5 rounded-2xl p-6 md:p-8 border border-blue-500/20 max-w-3xl mx-auto">
+            <h3 className="text-gray-900 font-poppins font-semibold text-xl md:text-2xl mb-3">
               Don't See Your Industry Listed?
             </h3>
             <p className="text-gray-400 text-sm md:text-base mb-4 max-w-2xl mx-auto">

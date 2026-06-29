@@ -31,13 +31,12 @@ const About: React.FC = () => {
   ];
 
   const values = [
-    { icon: <FaBullseye className="text-accent text-2xl" />, title: 'Mission', description: 'To empower businesses with innovative digital solutions that drive growth and create lasting impact.' },
-    { icon: <FaEye className="text-accent text-2xl" />, title: 'Vision', description: 'To be the global leader in digital transformation, setting new standards of excellence.' },
-    { icon: <FaHeart className="text-accent text-2xl" />, title: 'Values', description: 'Integrity, innovation, excellence, and client-centric approach in everything we do.' },
+    { icon: <FaBullseye className="text-blue-600 text-2xl" />, title: 'Mission', description: 'To empower businesses with innovative digital solutions that drive growth and create lasting impact.' },
+    { icon: <FaEye className="text-blue-600 text-2xl" />, title: 'Vision', description: 'To be the global leader in digital transformation, setting new standards of excellence.' },
+    { icon: <FaHeart className="text-blue-600 text-2xl" />, title: 'Values', description: 'Integrity, innovation, excellence, and client-centric approach in everything we do.' },
   ];
 
-  // Animation variants
-  const containerVariants = {
+  const containerVariants: Variants = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
@@ -48,39 +47,39 @@ const About: React.FC = () => {
     }
   };
 
-  const itemVariants = {
+  const itemVariants: Variants = {
     hidden: { opacity: 0, y: 30 },
     visible: {
       opacity: 1,
       y: 0,
       transition: { duration: 0.6, ease: "easeOut" }
     }
-  }satisfies Variants;
+  };
 
-  const imageVariants = {
-  hidden: {
-    opacity: 0,
-    scale: 0.95,
-  },
-  visible: {
-    opacity: 1,
-    scale: 1,
-    transition: {
-      duration: 0.8,
-      ease: "easeOut",
+  const imageVariants: Variants = {
+    hidden: {
+      opacity: 0,
+      scale: 0.95,
     },
-  },
-} satisfies Variants;
+    visible: {
+      opacity: 1,
+      scale: 1,
+      transition: {
+        duration: 0.8,
+        ease: "easeOut",
+      },
+    },
+  };
 
   return (
     <section 
       id="about" 
-      className="py-16 md:py-20 lg:py-28 bg-primary-light relative overflow-hidden"
+      className="py-16 md:py-20 lg:py-28 bg-gray-50 relative overflow-hidden"
       aria-label="About us section"
     >
       {/* Background Decoration */}
-      <div className="absolute top-0 right-0 w-64 h-64 bg-gold-500/5 rounded-full blur-3xl"></div>
-      <div className="absolute bottom-0 left-0 w-96 h-96 bg-gold-500/5 rounded-full blur-3xl"></div>
+      <div className="absolute top-0 right-0 w-64 h-64 bg-blue-600/5 rounded-full blur-3xl"></div>
+      <div className="absolute bottom-0 left-0 w-96 h-96 bg-blue-600/5 rounded-full blur-3xl"></div>
 
       <Container>
         <div className="grid lg:grid-cols-2 gap-8 md:gap-12 lg:gap-16 items-center">
@@ -94,25 +93,25 @@ const About: React.FC = () => {
           >
             <div className="relative">
               {/* Main Image */}
-              <div className="relative rounded-2xl overflow-hidden shadow-gold-lg">
+              <div className="relative rounded-2xl overflow-hidden shadow-blue-lg">
                 <img
                   src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800"
                   alt="Our team working together"
                   className="w-full h-auto object-cover aspect-[4/3] lg:aspect-auto"
                   loading="lazy"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-primary/50 to-transparent"></div>
+                <div className="absolute inset-0 bg-gradient-to-t from-gray-900/50 to-transparent"></div>
               </div>
 
               {/* Floating Experience Badge */}
               <motion.div
                 animate={{ y: [0, -10, 0] }}
                 transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-                className="absolute -bottom-4 -right-4 sm:-bottom-6 sm:-right-6 bg-gradient-gold rounded-xl p-3 sm:p-4 md:p-5 shadow-gold-lg"
+                className="absolute -bottom-4 -right-4 sm:-bottom-6 sm:-right-6 bg-gradient-blue rounded-xl p-3 sm:p-4 md:p-5 shadow-blue-lg"
               >
                 <div className="text-center">
-                  <div className="text-xl sm:text-2xl md:text-3xl font-bold text-primary">10+</div>
-                  <div className="text-xs sm:text-sm text-primary/80 font-medium">Years Experience</div>
+                  <div className="text-xl sm:text-2xl md:text-3xl font-bold text-white">10+</div>
+                  <div className="text-xs sm:text-sm text-white/80 font-medium">Years Experience</div>
                 </div>
               </motion.div>
 
@@ -120,13 +119,13 @@ const About: React.FC = () => {
               <motion.div
                 animate={{ y: [0, 10, 0] }}
                 transition={{ duration: 4, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
-                className="absolute -top-4 -left-4 sm:-top-6 sm:-left-6 bg-primary/95 backdrop-blur-glass rounded-xl p-3 sm:p-4 md:p-5 border border-gold-500/20 shadow-gold"
+                className="absolute -top-4 -left-4 sm:-top-6 sm:-left-6 bg-white/95 backdrop-blur-glass rounded-xl p-3 sm:p-4 md:p-5 border border-blue-500/20 shadow-blue"
               >
                 <div className="flex items-center gap-2 sm:gap-3">
-                  <FaTrophy className="text-accent text-xl sm:text-2xl" />
+                  <FaTrophy className="text-blue-600 text-xl sm:text-2xl" />
                   <div>
-                    <div className="text-white font-bold text-sm sm:text-base">Award Winning</div>
-                    <div className="text-gray-400 text-xs">Top Digital Agency</div>
+                    <div className="text-gray-900 font-bold text-sm sm:text-base">Award Winning</div>
+                    <div className="text-gray-500 text-xs">Top Digital Agency</div>
                   </div>
                 </div>
               </motion.div>
@@ -144,11 +143,11 @@ const About: React.FC = () => {
                 <motion.div
                   key={stat.id}
                   variants={itemVariants}
-                  className="text-center p-3 bg-white/5 backdrop-blur-sm rounded-xl border border-gold-500/10"
+                  className="text-center p-3 bg-white/80 backdrop-blur-sm rounded-xl border border-blue-500/10 shadow-sm"
                 >
-                  <div className="text-accent text-xl mb-1">{stat.icon}</div>
-                  <div className="text-white font-bold text-lg">{stat.value}</div>
-                  <div className="text-gray-400 text-xs">{stat.label}</div>
+                  <div className="text-blue-600 text-xl mb-1">{stat.icon}</div>
+                  <div className="text-gray-900 font-bold text-lg">{stat.value}</div>
+                  <div className="text-gray-500 text-xs">{stat.label}</div>
                 </motion.div>
               ))}
             </motion.div>
@@ -173,7 +172,7 @@ const About: React.FC = () => {
             {/* Company Story */}
             <motion.p
               variants={itemVariants}
-              className="text-gray-300 text-sm sm:text-base mb-4 md:mb-6 leading-relaxed"
+              className="text-gray-600 text-sm sm:text-base mb-4 md:mb-6 leading-relaxed"
             >
               Founded in 2015, we've grown from a small team of digital enthusiasts to a 
               full-service agency with expertise across the entire digital spectrum. Our 
@@ -183,7 +182,7 @@ const About: React.FC = () => {
 
             <motion.p
               variants={itemVariants}
-              className="text-gray-400 text-sm sm:text-base mb-6 md:mb-8 leading-relaxed"
+              className="text-gray-500 text-sm sm:text-base mb-6 md:mb-8 leading-relaxed"
             >
               We combine strategic thinking with creative excellence and technical 
               expertise to deliver digital experiences that transform businesses and 
@@ -200,15 +199,15 @@ const About: React.FC = () => {
                   key={index}
                   variants={itemVariants}
                   whileHover={{ y: -4, transition: { duration: 0.2 } }}
-                  className="p-4 bg-white/5 backdrop-blur-sm rounded-xl border border-gold-500/10 hover:border-gold-500/30 transition-all duration-300 group"
+                  className="p-4 bg-white/80 backdrop-blur-sm rounded-xl border border-blue-500/10 hover:border-blue-500/30 transition-all duration-300 group shadow-sm"
                 >
                   <div className="mb-2 group-hover:scale-110 transition-transform duration-300">
                     {value.icon}
                   </div>
-                  <h4 className="text-white font-semibold text-sm mb-1">
+                  <h4 className="text-gray-900 font-semibold text-sm mb-1">
                     {value.title}
                   </h4>
-                  <p className="text-gray-400 text-xs leading-relaxed">
+                  <p className="text-gray-500 text-xs leading-relaxed">
                     {value.description}
                   </p>
                 </motion.div>
@@ -225,18 +224,18 @@ const About: React.FC = () => {
                   key={stat.id}
                   variants={itemVariants}
                   whileHover={{ scale: 1.05, transition: { duration: 0.2 } }}
-                  className="text-center p-4 bg-white/5 backdrop-blur-sm rounded-xl border border-gold-500/10 hover:border-gold-500/30 transition-all duration-300"
+                  className="text-center p-4 bg-white/80 backdrop-blur-sm rounded-xl border border-blue-500/10 hover:border-blue-500/30 transition-all duration-300 shadow-sm"
                 >
-                  <div className="text-accent text-2xl mb-2">{stat.icon}</div>
-                  <div className="text-white font-bold text-2xl">{stat.value}</div>
-                  <div className="text-gray-400 text-sm">{stat.label}</div>
+                  <div className="text-blue-600 text-2xl mb-2">{stat.icon}</div>
+                  <div className="text-gray-900 font-bold text-2xl">{stat.value}</div>
+                  <div className="text-gray-500 text-sm">{stat.label}</div>
                 </motion.div>
               ))}
             </motion.div>
 
             {/* CTA */}
             <motion.div variants={itemVariants}>
-              <Button variant="gold" size="lg" className="w-full sm:w-auto">
+              <Button variant="primary" size="lg" className="w-full sm:w-auto">
                 Learn More About Us
               </Button>
             </motion.div>

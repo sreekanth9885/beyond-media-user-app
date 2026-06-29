@@ -32,12 +32,14 @@ import Button from '../ui/Button';
 interface NavbarProps {
   className?: string;
 }
+
 interface NavbarServiceItem {
   id: string;
   name: string;
   icon: React.ReactNode;
   category: string;
 }
+
 const Navbar: React.FC<NavbarProps> = ({ className = '' }) => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const [scrolled, setScrolled] = useState<boolean>(false);
@@ -74,7 +76,7 @@ const Navbar: React.FC<NavbarProps> = ({ className = '' }) => {
     { id: 'content-marketing', name: 'Content Marketing', icon: <FaEnvelope />, category: 'Marketing' },
   ];
 
-  const dropdownVariants = {
+  const dropdownVariants: Variants = {
     hidden: { 
       opacity: 0, 
       y: -20,
@@ -93,9 +95,9 @@ const Navbar: React.FC<NavbarProps> = ({ className = '' }) => {
       scale: 0.95,
       transition: { duration: 0.2 }
     }
-  }satisfies Variants;
+  };
 
-  const mobileMenuVariants = {
+  const mobileMenuVariants: Variants = {
     hidden: { 
       opacity: 0, 
       x: '100%',
@@ -111,7 +113,7 @@ const Navbar: React.FC<NavbarProps> = ({ className = '' }) => {
       x: '100%',
       transition: { duration: 0.3, ease: "easeInOut" }
     }
-  }satisfies Variants;
+  };
 
   const handleLinkClick = useCallback((): void => {
     setIsOpen(false);
@@ -125,7 +127,7 @@ const Navbar: React.FC<NavbarProps> = ({ className = '' }) => {
       transition={{ duration: 0.6, ease: "easeOut" }}
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         scrolled 
-          ? 'bg-primary/95 backdrop-blur-glass shadow-glass border-b border-gold-500/20' 
+        ? 'bg-white/95 backdrop-blur-glass shadow-glass border-b border-blue-500/20' 
           : 'bg-transparent'
       } ${className}`}
       role="navigation"
@@ -134,37 +136,40 @@ const Navbar: React.FC<NavbarProps> = ({ className = '' }) => {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16 md:h-20">
           {/* Logo */}
-          {/* Logo */}
-<motion.div
-  whileHover={{ scale: 1.03 }}
-  className="flex items-center"
->
-  <Link
-  to="hero"
-  smooth
-  duration={500}
-  className="flex items-center gap-3 cursor-pointer"
->
-  <div className="bg-white rounded-lg p-2 shadow-md">
-    <img
-      src="/logo.svg"
-      alt="Beyond Media"
-      className="h-12 w-auto"
-    />
-  </div>
+          <motion.div
+            whileHover={{ scale: 1.03 }}
+            className="flex items-center"
+          >
+            <Link
+              to="hero"
+              smooth
+              duration={500}
+              className="flex items-center gap-3 cursor-pointer"
+            >
+              {/* Logo Image */}
+              <div className="bg-white rounded-lg p-2 shadow-blue-lg flex-shrink-0">
+                <img
+                  src="/logo.svg"
+                  alt="Beyond Media"
+                  className="h-10 w-auto"
+                  onError={(e) => {
+                    // Fallback if logo.svg doesn't exist
+                    (e.target as HTMLImageElement).style.display = 'none';
+                  }}
+                />
+              </div>
 
-  <div className="flex flex-col">
-    <span className="text-2xl font-poppins font-bold">
-      <span className="text-white">Beyond</span>
-      <span className="text-accent"> Media</span>
-    </span>
-
-    <span className="text-xs tracking-[0.3em] text-gray-400 uppercase">
-      Beyond Honest.. Beyond Limits
-    </span>
-  </div>
-</Link>
-</motion.div>
+              <div className="flex flex-col">
+                <span className="text-2xl font-poppins font-bold leading-tight">
+                  <span className="text-gray-900">Beyond</span>
+                  <span className="text-blue-600"> Media</span>
+                </span>
+                <span className="text-[10px] tracking-[0.25em] text-gray-400 uppercase leading-tight">
+                  Beyond Honest.. Beyond Limits
+                </span>
+              </div>
+            </Link>
+          </motion.div>
 
           {/* Desktop Navigation */}
           <div className="hidden lg:flex items-center space-x-1">
@@ -179,8 +184,8 @@ const Navbar: React.FC<NavbarProps> = ({ className = '' }) => {
                   to={link.to}
                   smooth={true}
                   duration={500}
-                  className="flex items-center gap-1 px-4 py-2 text-sm font-medium text-gray-300 hover:text-accent transition-colors duration-300 cursor-pointer group"
-                  activeClass="text-accent"
+                  className="flex items-center gap-1 px-4 py-2 text-sm font-medium text-gray-600 hover:text-blue-600 transition-colors duration-300 cursor-pointer group"
+                  activeClass="text-blue-600"
                   spy={true}
                   hashSpy={true}
                 >
@@ -191,7 +196,7 @@ const Navbar: React.FC<NavbarProps> = ({ className = '' }) => {
                       showServicesDropdown ? 'rotate-180' : ''
                     }`} />
                   )}
-                  <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-gold transition-all duration-300 group-hover:w-full"></span>
+                  <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-blue-600 to-blue-400 transition-all duration-300 group-hover:w-full"></span>
                 </Link>
 
                 {/* Services Dropdown */}
@@ -203,7 +208,7 @@ const Navbar: React.FC<NavbarProps> = ({ className = '' }) => {
                         initial="hidden"
                         animate="visible"
                         exit="exit"
-                        className="absolute top-full left-0 mt-2 w-72 bg-primary/95 backdrop-blur-glass rounded-xl shadow-gold-lg border border-gold-500/20 p-2"
+                        className="absolute top-full left-0 mt-2 w-72 bg-white/95 backdrop-blur-glass rounded-xl shadow-blue-lg border border-blue-500/20 p-2"
                       >
                         <div className="grid grid-cols-2 gap-1">
                           {serviceDropdownItems.map((item) => (
@@ -212,10 +217,10 @@ const Navbar: React.FC<NavbarProps> = ({ className = '' }) => {
                               to="services"
                               smooth={true}
                               duration={500}
-                              className="flex items-center gap-2 px-3 py-2 text-sm text-gray-300 hover:text-accent hover:bg-gold-500/10 rounded-lg transition-all duration-300"
+                              className="flex items-center gap-2 px-3 py-2 text-sm text-gray-600 hover:text-blue-600 hover:bg-blue-500/10 rounded-lg transition-all duration-300"
                               onClick={handleLinkClick}
                             >
-                              <span className="text-accent">{item.icon}</span>
+                              <span className="text-blue-600">{item.icon}</span>
                               {item.name}
                             </Link>
                           ))}
@@ -228,7 +233,7 @@ const Navbar: React.FC<NavbarProps> = ({ className = '' }) => {
             ))}
 
             <Button
-              variant="gold"
+              variant="primary"
               size="md"
               className="ml-4"
             >
@@ -239,7 +244,7 @@ const Navbar: React.FC<NavbarProps> = ({ className = '' }) => {
           {/* Mobile Menu Button */}
           <button
             onClick={() => setIsOpen(!isOpen)}
-            className="lg:hidden text-white hover:text-accent transition-colors duration-300 p-2"
+            className="lg:hidden text-gray-900 hover:text-blue-600 transition-colors duration-300 p-2"
             aria-label="Toggle menu"
             aria-expanded={isOpen}
           >
@@ -256,7 +261,7 @@ const Navbar: React.FC<NavbarProps> = ({ className = '' }) => {
             initial="hidden"
             animate="visible"
             exit="exit"
-            className="lg:hidden fixed inset-0 top-16 bg-primary/98 backdrop-blur-glass overflow-y-auto"
+            className="lg:hidden fixed inset-0 top-16 bg-white/98 backdrop-blur-glass overflow-y-auto"
           >
             <div className="container mx-auto px-4 py-6">
               <div className="flex flex-col space-y-2">
@@ -266,16 +271,16 @@ const Navbar: React.FC<NavbarProps> = ({ className = '' }) => {
                     to={link.to}
                     smooth={true}
                     duration={500}
-                    className="flex items-center gap-3 px-4 py-3 text-gray-300 hover:text-accent hover:bg-gold-500/10 rounded-lg transition-all duration-300"
+                    className="flex items-center gap-3 px-4 py-3 text-gray-600 hover:text-blue-600 hover:bg-blue-500/10 rounded-lg transition-all duration-300"
                     onClick={handleLinkClick}
                   >
-                    <span className="text-accent">{link.icon}</span>
+                    <span className="text-blue-600">{link.icon}</span>
                     {link.name}
                   </Link>
                 ))}
 
-                <div className="pt-4 border-t border-gold-500/20">
-                  <h4 className="text-sm font-semibold text-gold-500 mb-3">Our Services</h4>
+                <div className="pt-4 border-t border-blue-500/20">
+                  <h4 className="text-sm font-semibold text-blue-600 mb-3">Our Services</h4>
                   <div className="grid grid-cols-2 gap-2">
                     {serviceDropdownItems.map((item) => (
                       <Link
@@ -283,10 +288,10 @@ const Navbar: React.FC<NavbarProps> = ({ className = '' }) => {
                         to="services"
                         smooth={true}
                         duration={500}
-                        className="flex items-center gap-2 px-3 py-2 text-sm text-gray-300 hover:text-accent hover:bg-gold-500/10 rounded-lg transition-all duration-300"
+                        className="flex items-center gap-2 px-3 py-2 text-sm text-gray-600 hover:text-blue-600 hover:bg-blue-500/10 rounded-lg transition-all duration-300"
                         onClick={handleLinkClick}
                       >
-                        <span className="text-accent text-xs">{item.icon}</span>
+                        <span className="text-blue-600 text-xs">{item.icon}</span>
                         {item.name}
                       </Link>
                     ))}
@@ -295,7 +300,7 @@ const Navbar: React.FC<NavbarProps> = ({ className = '' }) => {
 
                 <div className="pt-4">
                   <Button
-                    variant="gold"
+                    variant="primary"
                     size="lg"
                     className="w-full"
                   >
@@ -305,19 +310,19 @@ const Navbar: React.FC<NavbarProps> = ({ className = '' }) => {
 
                 {/* Social Icons in Mobile */}
                 <div className="flex justify-center gap-4 pt-6">
-                  <a href="#" className="text-gray-400 hover:text-accent transition-colors duration-300" aria-label="Facebook">
+                  <a href="#" className="text-gray-400 hover:text-blue-600 transition-colors duration-300" aria-label="Facebook">
                     <FaFacebook size={20} />
                   </a>
-                  <a href="#" className="text-gray-400 hover:text-accent transition-colors duration-300" aria-label="Twitter">
+                  <a href="#" className="text-gray-400 hover:text-blue-600 transition-colors duration-300" aria-label="Twitter">
                     <FaTwitter size={20} />
                   </a>
-                  <a href="#" className="text-gray-400 hover:text-accent transition-colors duration-300" aria-label="LinkedIn">
+                  <a href="#" className="text-gray-400 hover:text-blue-600 transition-colors duration-300" aria-label="LinkedIn">
                     <FaLinkedin size={20} />
                   </a>
-                  <a href="#" className="text-gray-400 hover:text-accent transition-colors duration-300" aria-label="Instagram">
+                  <a href="#" className="text-gray-400 hover:text-blue-600 transition-colors duration-300" aria-label="Instagram">
                     <FaInstagram size={20} />
                   </a>
-                  <a href="#" className="text-gray-400 hover:text-accent transition-colors duration-300" aria-label="YouTube">
+                  <a href="#" className="text-gray-400 hover:text-blue-600 transition-colors duration-300" aria-label="YouTube">
                     <FaYoutube size={20} />
                   </a>
                 </div>

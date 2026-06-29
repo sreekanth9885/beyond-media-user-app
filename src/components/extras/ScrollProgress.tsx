@@ -19,11 +19,11 @@ const ScrollProgress: React.FC = () => {
 
   return (
     <motion.div
-      className="fixed top-0 left-0 right-0 h-1 z-[100] bg-primary"
+      className="fixed top-0 left-0 right-0 h-1 z-[100] bg-white"
       style={{ originX: 0 }}
     >
       <motion.div
-        className="h-full bg-gradient-gold"
+        className="h-full bg-gradient-blue"
         style={{ width: `${scrollProgress}%` }}
         animate={{ width: `${scrollProgress}%` }}
         transition={{ duration: 0.1 }}

@@ -186,7 +186,7 @@ const Statistics: React.FC = () => {
   }, [isInView, statistics]);
 
   // Animation variants
-  const containerVariants = {
+  const containerVariants: Variants = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
@@ -197,7 +197,7 @@ const Statistics: React.FC = () => {
     }
   };
 
-  const itemVariants = {
+  const itemVariants: Variants = {
     hidden: { opacity: 0, y: 30, scale: 0.9 },
     visible: {
       opacity: 1,
@@ -205,9 +205,9 @@ const Statistics: React.FC = () => {
       scale: 1,
       transition: { duration: 0.5, ease: "easeOut" }
     }
-  }satisfies Variants;
+  };
 
-  const achievementVariants = {
+  const achievementVariants: Variants = {
     hidden: { opacity: 0, scale: 0.8 },
     visible: {
       opacity: 1,
@@ -218,18 +218,18 @@ const Statistics: React.FC = () => {
       scale: 1.05,
       transition: { duration: 0.3 }
     }
-  }satisfies Variants;
+  };
 
   return (
     <section 
       id="statistics" 
       ref={sectionRef}
-      className="py-16 md:py-20 lg:py-28 bg-primary-light relative overflow-hidden"
+      className="py-16 md:py-20 lg:py-28 bg-gray-50 relative overflow-hidden"
       aria-label="Our statistics"
     >
       {/* Background Decorations */}
-      <div className="absolute top-0 right-0 w-96 h-96 bg-gold-500/5 rounded-full blur-3xl"></div>
-      <div className="absolute bottom-0 left-0 w-96 h-96 bg-gold-500/5 rounded-full blur-3xl"></div>
+      <div className="absolute top-0 right-0 w-96 h-96 bg-blue-600/5 rounded-full blur-3xl"></div>
+      <div className="absolute bottom-0 left-0 w-96 h-96 bg-blue-600/5 rounded-full blur-3xl"></div>
       
       {/* Animated Background Elements */}
       <motion.div
@@ -242,7 +242,7 @@ const Statistics: React.FC = () => {
           repeat: Infinity,
           ease: "easeInOut"
         }}
-        className="absolute top-1/4 left-1/4 w-64 h-64 bg-gold-500/10 rounded-full blur-3xl"
+        className="absolute top-1/4 left-1/4 w-64 h-64 bg-blue-600/10 rounded-full blur-3xl"
       />
       <motion.div
         animate={{
@@ -255,7 +255,7 @@ const Statistics: React.FC = () => {
           ease: "easeInOut",
           delay: 1
         }}
-        className="absolute bottom-1/4 right-1/4 w-64 h-64 bg-gold-500/10 rounded-full blur-3xl"
+        className="absolute bottom-1/4 right-1/4 w-64 h-64 bg-blue-600/10 rounded-full blur-3xl"
       />
 
       <Container>
@@ -277,7 +277,7 @@ const Statistics: React.FC = () => {
               key={stat.id}
               variants={itemVariants}
               whileHover={{ y: -8, scale: 1.02 }}
-              className="group bg-primary/50 backdrop-blur-sm rounded-xl p-4 md:p-6 border border-gold-500/10 hover:border-gold-500/30 transition-all duration-300 text-center"
+              className="group bg-white/80 backdrop-blur-sm rounded-xl p-4 md:p-6 border border-blue-500/10 hover:border-blue-500/30 shadow-sm hover:shadow-blue transition-all duration-300 text-center"
             >
               {/* Icon */}
               <div className={`w-12 h-12 mx-auto rounded-lg bg-gradient-to-r ${stat.color} flex items-center justify-center text-white text-xl mb-3 group-hover:scale-110 transition-transform duration-300`}>
@@ -285,20 +285,20 @@ const Statistics: React.FC = () => {
               </div>
 
               {/* Value */}
-              <div className="text-white font-poppins font-bold text-2xl md:text-3xl lg:text-4xl mb-1">
+              <div className="text-gray-900 font-poppins font-bold text-2xl md:text-3xl lg:text-4xl mb-1">
                 {stat.prefix || ''}
                 {counts[stat.id] !== undefined ? counts[stat.id].toLocaleString() : '0'}
                 {stat.suffix || ''}
               </div>
 
               {/* Label */}
-              <div className="text-gray-300 font-medium text-sm md:text-base">
+              <div className="text-gray-600 font-medium text-sm md:text-base">
                 {stat.label}
               </div>
 
               {/* Description */}
               {stat.description && (
-                <div className="text-gray-500 text-xs mt-1">
+                <div className="text-gray-400 text-xs mt-1">
                   {stat.description}
                 </div>
               )}
@@ -320,16 +320,16 @@ const Statistics: React.FC = () => {
               initial="hidden"
               animate={isInView ? "visible" : "hidden"}
               whileHover="hover"
-              className="flex items-center gap-3 bg-white/5 backdrop-blur-sm rounded-lg p-3 md:p-4 border border-gold-500/10 hover:border-gold-500/30 transition-all duration-300"
+              className="flex items-center gap-3 bg-white/80 backdrop-blur-sm rounded-lg p-3 md:p-4 border border-blue-500/10 hover:border-blue-500/30 shadow-sm hover:shadow-blue transition-all duration-300"
             >
               <div className={`w-10 h-10 rounded-lg bg-gradient-to-r ${achievement.color} flex items-center justify-center text-white text-lg flex-shrink-0`}>
                 {achievement.icon}
               </div>
               <div>
-                <div className="text-white font-bold text-sm md:text-base">
+                <div className="text-gray-900 font-bold text-sm md:text-base">
                   {achievement.value}
                 </div>
-                <div className="text-gray-400 text-xs">
+                <div className="text-gray-500 text-xs">
                   {achievement.label}
                 </div>
               </div>
@@ -345,29 +345,29 @@ const Statistics: React.FC = () => {
           className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6"
         >
           {/* Trust Badge 1 */}
-          <div className="flex items-center gap-4 p-4 bg-white/5 backdrop-blur-sm rounded-xl border border-gold-500/10">
-            <div className="text-accent text-3xl">🏆</div>
+          <div className="flex items-center gap-4 p-4 bg-white/80 backdrop-blur-sm rounded-xl border border-blue-500/10 shadow-sm">
+            <div className="text-blue-600 text-3xl">🏆</div>
             <div>
-              <div className="text-white font-semibold text-sm">Best Digital Agency</div>
-              <div className="text-gray-400 text-xs">Awarded 2023-2024</div>
+              <div className="text-gray-900 font-semibold text-sm">Best Digital Agency</div>
+              <div className="text-gray-500 text-xs">Awarded 2023-2024</div>
             </div>
           </div>
 
           {/* Trust Badge 2 */}
-          <div className="flex items-center gap-4 p-4 bg-white/5 backdrop-blur-sm rounded-xl border border-gold-500/10">
-            <div className="text-accent text-3xl">⭐</div>
+          <div className="flex items-center gap-4 p-4 bg-white/80 backdrop-blur-sm rounded-xl border border-blue-500/10 shadow-sm">
+            <div className="text-blue-600 text-3xl">⭐</div>
             <div>
-              <div className="text-white font-semibold text-sm">4.9/5 Rating</div>
-              <div className="text-gray-400 text-xs">Based on 500+ reviews</div>
+              <div className="text-gray-900 font-semibold text-sm">4.9/5 Rating</div>
+              <div className="text-gray-500 text-xs">Based on 500+ reviews</div>
             </div>
           </div>
 
           {/* Trust Badge 3 */}
-          <div className="flex items-center gap-4 p-4 bg-white/5 backdrop-blur-sm rounded-xl border border-gold-500/10">
-            <div className="text-accent text-3xl">🔒</div>
+          <div className="flex items-center gap-4 p-4 bg-white/80 backdrop-blur-sm rounded-xl border border-blue-500/10 shadow-sm">
+            <div className="text-blue-600 text-3xl">🔒</div>
             <div>
-              <div className="text-white font-semibold text-sm">ISO 27001 Certified</div>
-              <div className="text-gray-400 text-xs">Enterprise security standard</div>
+              <div className="text-gray-900 font-semibold text-sm">ISO 27001 Certified</div>
+              <div className="text-gray-500 text-xs">Enterprise security standard</div>
             </div>
           </div>
         </motion.div>
@@ -379,9 +379,9 @@ const Statistics: React.FC = () => {
           transition={{ duration: 0.5, delay: 0.8 }}
           className="mt-8 md:mt-12 text-center"
         >
-          <div className="inline-flex items-center gap-2 px-4 py-2 bg-gold-500/10 rounded-full border border-gold-500/20">
-            <span className="text-gold-500 text-sm font-medium">✨</span>
-            <span className="text-gray-400 text-sm">Trusted by industry leaders worldwide</span>
+          <div className="inline-flex items-center gap-2 px-4 py-2 bg-blue-50 rounded-full border border-blue-200">
+            <span className="text-blue-600 text-sm font-medium">✨</span>
+            <span className="text-gray-600 text-sm">Trusted by industry leaders worldwide</span>
           </div>
         </motion.div>
       </Container>

@@ -297,12 +297,12 @@ const Portfolio: React.FC = () => {
   return (
     <section 
       id="portfolio" 
-      className="py-16 md:py-20 lg:py-28 bg-primary relative overflow-hidden"
+      className="py-16 md:py-20 lg:py-28 bg-white relative overflow-hidden"
       aria-label="Portfolio"
     >
       {/* Background Decorations */}
-      <div className="absolute top-1/3 left-0 w-80 h-80 bg-gold-500/5 rounded-full blur-3xl"></div>
-      <div className="absolute bottom-1/3 right-0 w-80 h-80 bg-gold-500/5 rounded-full blur-3xl"></div>
+      <div className="absolute top-1/3 left-0 w-80 h-80 bg-blue-600/5 rounded-full blur-3xl"></div>
+      <div className="absolute bottom-1/3 right-0 w-80 h-80 bg-blue-600/5 rounded-full blur-3xl"></div>
 
       <Container>
         <SectionHeading
@@ -326,7 +326,7 @@ const Portfolio: React.FC = () => {
               placeholder="Search projects..."
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
-              className="w-full px-4 py-3 bg-primary-light/50 backdrop-blur-sm rounded-lg border border-gold-500/10 text-white placeholder-gray-400 focus:border-gold-500/50 focus:outline-none transition-all duration-300"
+              className="w-full px-4 py-3 bg-white-light/50 backdrop-blur-sm rounded-lg border border-blue-500/10 text-gray-900 placeholder-gray-400 focus:border-gold-500/50 focus:outline-none transition-all duration-300"
               aria-label="Search portfolio"
             />
             <FaSearch className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400" />
@@ -340,8 +340,8 @@ const Portfolio: React.FC = () => {
                 onClick={() => setActiveCategory(category.id)}
                 className={`flex items-center gap-1.5 px-3 py-2 rounded-lg text-xs md:text-sm font-medium transition-all duration-300 ${
                   activeCategory === category.id
-                    ? 'bg-gold-500 text-primary shadow-gold'
-                    : 'bg-white/5 text-gray-400 hover:text-white hover:bg-white/10 border border-gold-500/10'
+                  ? 'bg-blue-600 text-primary shadow-blue'
+                  : 'bg-white/5 text-gray-400 hover:text-gray-900 hover:bg-white/10 border border-blue-500/10'
                 }`}
                 aria-label={`Filter ${category.label}`}
                 aria-pressed={activeCategory === category.id}
@@ -349,7 +349,7 @@ const Portfolio: React.FC = () => {
                 <span className="text-sm">{category.icon}</span>
                 {category.label}
                 <span className={`text-[10px] ${
-                  activeCategory === category.id ? 'text-primary/70' : 'text-gray-500'
+                  activeCategory === category.id ? 'text-primary/70' : 'text-gray-400'
                 }`}>
                   ({category.count})
                 </span>
@@ -379,7 +379,7 @@ const Portfolio: React.FC = () => {
                 onKeyPress={(e) => e.key === 'Enter' && setSelectedItem(item)}
                 aria-label={`View ${item.title}`}
               >
-                <div className="relative rounded-xl overflow-hidden border border-gold-500/10 hover:border-gold-500/30 transition-all duration-300">
+                <div className="relative rounded-xl overflow-hidden border border-blue-500/10 hover:border-blue-500/30 transition-all duration-300">
                   {/* Image */}
                   <img
                     src={item.image}
@@ -389,7 +389,7 @@ const Portfolio: React.FC = () => {
                   />
                   
                   {/* Category Badge */}
-                  <div className="absolute top-3 right-3 bg-primary/90 backdrop-blur-sm px-2.5 py-1 rounded-lg text-xs font-medium text-gold-500 border border-gold-500/20 flex items-center gap-1 z-10">
+                  <div className="absolute top-3 right-3 bg-white/90 backdrop-blur-sm px-2.5 py-1 rounded-lg text-xs font-medium text-blue-600 border border-blue-500/20 flex items-center gap-1 z-10">
                     <FaTag className="text-[10px]" />
                     {categories.find(c => c.id === item.category)?.label}
                   </div>
@@ -401,23 +401,23 @@ const Portfolio: React.FC = () => {
                     whileHover="visible"
                     className="absolute inset-0 bg-gradient-to-t from-primary/95 via-primary/70 to-transparent flex flex-col justify-end p-4 md:p-6"
                   >
-                    <h3 className="text-white font-poppins font-semibold text-base md:text-lg mb-1">
+                    <h3 className="text-gray-900 font-poppins font-semibold text-base md:text-lg mb-1">
                       {item.title}
                     </h3>
-                    <p className="text-gray-300 text-sm mb-3 line-clamp-2">
+                    <p className="text-gray-600 text-sm mb-3 line-clamp-2">
                       {item.description}
                     </p>
                     <div className="flex flex-wrap gap-1.5 mb-3">
                       {item.tags.slice(0, 3).map((tag, index) => (
                         <span 
                           key={index}
-                          className="text-[10px] px-2 py-1 bg-gold-500/20 text-gold-400 rounded border border-gold-500/10"
+                          className="text-[10px] px-2 py-1 bg-blue-600/20 text-blue-500 rounded border border-blue-500/10"
                         >
                           {tag}
                         </span>
                       ))}
                       {item.tags.length > 3 && (
-                        <span className="text-[10px] px-2 py-1 bg-white/5 text-gray-400 rounded border border-gold-500/10">
+                        <span className="text-[10px] px-2 py-1 bg-white/5 text-gray-400 rounded border border-blue-500/10">
                           +{item.tags.length - 3}
                         </span>
                       )}
@@ -426,7 +426,7 @@ const Portfolio: React.FC = () => {
                       <span className="text-xs text-gray-400">
                         {item.client} • {item.date}
                       </span>
-                      <span className="text-accent text-sm">
+                      <span className="text-blue-600 text-sm">
                         <FaEye />
                       </span>
                     </div>
@@ -456,7 +456,7 @@ const Portfolio: React.FC = () => {
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5, delay: 0.3 }}
-          className="text-center mt-8 text-sm text-gray-500"
+          className="text-center mt-8 text-sm text-gray-400"
         >
           Showing {filteredItems.length} of {portfolioItems.length} projects
         </motion.div>
@@ -478,13 +478,13 @@ const Portfolio: React.FC = () => {
               initial="hidden"
               animate="visible"
               exit="exit"
-              className="bg-primary-light/95 backdrop-blur-glass rounded-2xl border border-gold-500/20 max-w-3xl w-full max-h-[90vh] overflow-y-auto"
+              className="bg-white-light/95 backdrop-blur-glass rounded-2xl border border-blue-500/20 max-w-3xl w-full max-h-[90vh] overflow-y-auto"
               onClick={(e) => e.stopPropagation()}
             >
               {/* Close Button */}
               <button
                 onClick={() => setSelectedItem(null)}
-                className="absolute top-4 right-4 text-gray-400 hover:text-white transition-colors duration-300"
+                className="absolute top-4 right-4 text-gray-400 hover:text-gray-900 transition-colors duration-300"
                 aria-label="Close modal"
               >
                 <FaTimes size={24} />
@@ -501,7 +501,7 @@ const Portfolio: React.FC = () => {
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-primary/50 to-transparent"></div>
                   <div className="absolute bottom-4 left-4">
-                    <span className="inline-block px-3 py-1 bg-primary/90 backdrop-blur-sm rounded-lg text-xs font-medium text-gold-500 border border-gold-500/20">
+                    <span className="inline-block px-3 py-1 bg-white/90 backdrop-blur-sm rounded-lg text-xs font-medium text-blue-600 border border-blue-500/20">
                       {categories.find(c => c.id === selectedItem.category)?.label}
                     </span>
                   </div>
@@ -509,30 +509,30 @@ const Portfolio: React.FC = () => {
 
                 {/* Details */}
                 <div className="space-y-4">
-                  <h3 className="text-white font-poppins font-bold text-2xl md:text-3xl">
+                  <h3 className="text-gray-900 font-poppins font-bold text-2xl md:text-3xl">
                     {selectedItem.title}
                   </h3>
                   
                   <div className="flex flex-wrap gap-4 text-sm text-gray-400">
                     <span className="flex items-center gap-1">
-                      <FaStar className="text-accent" /> {selectedItem.client}
+                      <FaStar className="text-blue-600" /> {selectedItem.client}
                     </span>
                     <span className="flex items-center gap-1">
-                      <FaComments className="text-accent" /> {selectedItem.date}
+                      <FaComments className="text-blue-600" /> {selectedItem.date}
                     </span>
                   </div>
 
-                  <p className="text-gray-300 text-base md:text-lg leading-relaxed">
+                  <p className="text-gray-600 text-base md:text-lg leading-relaxed">
                     {selectedItem.description}
                   </p>
 
                   <div>
-                    <h4 className="text-white font-semibold text-sm mb-2">Key Tags</h4>
+                    <h4 className="text-gray-900 font-semibold text-sm mb-2">Key Tags</h4>
                     <div className="flex flex-wrap gap-2">
                       {selectedItem.tags.map((tag, index) => (
                         <span
                           key={index}
-                          className="px-3 py-1 bg-gold-500/10 text-gold-400 rounded-full text-xs border border-gold-500/20"
+                          className="px-3 py-1 bg-blue-600/10 text-blue-500 rounded-full text-xs border border-blue-500/20"
                         >
                           {tag}
                         </span>
@@ -540,9 +540,9 @@ const Portfolio: React.FC = () => {
                     </div>
                   </div>
 
-                  <div className="bg-white/5 rounded-xl p-4 border border-gold-500/10">
-                    <h4 className="text-white font-semibold text-sm mb-1">Result</h4>
-                    <p className="text-gray-300 text-sm">{selectedItem.result}</p>
+                  <div className="bg-white/5 rounded-xl p-4 border border-blue-500/10">
+                    <h4 className="text-gray-900 font-semibold text-sm mb-1">Result</h4>
+                    <p className="text-gray-600 text-sm">{selectedItem.result}</p>
                   </div>
 
                   <Button variant="gold" size="lg" className="w-full">

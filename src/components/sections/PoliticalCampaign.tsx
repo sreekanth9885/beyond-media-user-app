@@ -177,7 +177,7 @@ const PoliticalCampaign: React.FC = () => {
   const selectedService = campaignServices.find(s => s.id === activeService) || campaignServices[0];
 
   // Animation variants
-  const containerVariants = {
+  const containerVariants: Variants = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
@@ -188,16 +188,16 @@ const PoliticalCampaign: React.FC = () => {
     }
   };
 
-  const itemVariants = {
+  const itemVariants: Variants = {
     hidden: { opacity: 0, y: 30 },
     visible: {
       opacity: 1,
       y: 0,
       transition: { duration: 0.5, ease: "easeOut" }
     }
-  }satisfies Variants;
+  };
 
-  const serviceItemVariants = {
+  const serviceItemVariants: Variants = {
     hidden: { opacity: 0, x: -20 },
     visible: {
       opacity: 1,
@@ -209,17 +209,17 @@ const PoliticalCampaign: React.FC = () => {
       x: 5,
       transition: { duration: 0.2 }
     }
-  }satisfies Variants;
+  };
 
   return (
     <section 
       id="political-campaign" 
-      className="py-16 md:py-20 lg:py-28 bg-primary-light relative overflow-hidden"
+      className="py-16 md:py-20 lg:py-28 bg-gray-50 relative overflow-hidden"
       aria-label="Political campaign services"
     >
       {/* Background Decoration */}
-      <div className="absolute top-0 left-0 w-96 h-96 bg-gold-500/5 rounded-full blur-3xl"></div>
-      <div className="absolute bottom-0 right-0 w-64 h-64 bg-gold-500/5 rounded-full blur-3xl"></div>
+      <div className="absolute top-0 left-0 w-96 h-96 bg-blue-600/5 rounded-full blur-3xl"></div>
+      <div className="absolute bottom-0 right-0 w-64 h-64 bg-blue-600/5 rounded-full blur-3xl"></div>
 
       <Container>
         <SectionHeading
@@ -241,15 +241,15 @@ const PoliticalCampaign: React.FC = () => {
               key={stat.id}
               variants={itemVariants}
               whileHover={{ scale: 1.05 }}
-              className="text-center p-4 md:p-6 bg-white/5 backdrop-blur-sm rounded-xl border border-gold-500/10 hover:border-gold-500/30 transition-all duration-300"
+              className="text-center p-4 md:p-6 bg-white/80 backdrop-blur-sm rounded-xl border border-blue-500/10 hover:border-blue-500/30 shadow-sm hover:shadow-blue transition-all duration-300"
             >
-              <div className="text-accent text-2xl md:text-3xl mb-2">
+              <div className="text-blue-600 text-2xl md:text-3xl mb-2">
                 {stat.icon}
               </div>
-              <div className="text-white font-bold text-xl md:text-2xl lg:text-3xl">
+              <div className="text-gray-900 font-bold text-xl md:text-2xl lg:text-3xl">
                 {stat.value}
               </div>
-              <div className="text-gray-400 text-sm md:text-base">
+              <div className="text-gray-500 text-sm md:text-base">
                 {stat.label}
               </div>
             </motion.div>
@@ -266,8 +266,8 @@ const PoliticalCampaign: React.FC = () => {
             transition={{ duration: 0.5 }}
             className="lg:col-span-1"
           >
-            <div className="sticky top-24 bg-primary/50 backdrop-blur-sm rounded-xl border border-gold-500/10 p-4 max-h-[600px] overflow-y-auto custom-scrollbar">
-              <h3 className="text-white font-poppins font-semibold text-sm md:text-base mb-4 px-2">
+            <div className="sticky top-24 bg-white/80 backdrop-blur-sm rounded-xl border border-blue-500/10 p-4 max-h-[600px] overflow-y-auto shadow-sm">
+              <h3 className="text-gray-900 font-poppins font-semibold text-sm md:text-base mb-4 px-2">
                 Our Campaign Services
               </h3>
               <div className="space-y-1.5">
@@ -281,13 +281,13 @@ const PoliticalCampaign: React.FC = () => {
                     onClick={() => setActiveService(service.id)}
                     className={`w-full text-left flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm transition-all duration-300 ${
                       activeService === service.id
-                        ? 'bg-gold-500 text-primary font-medium shadow-gold'
-                        : 'text-gray-400 hover:text-white hover:bg-white/5'
+                      ? 'bg-blue-600 text-white font-medium shadow-blue'
+                      : 'text-gray-600 hover:text-blue-600 hover:bg-blue-50'
                     }`}
                     aria-label={`View ${service.title} details`}
                     aria-pressed={activeService === service.id}
                   >
-                    <span className={`text-base ${activeService === service.id ? 'text-primary' : 'text-accent'}`}>
+                    <span className={`text-base ${activeService === service.id ? 'text-white' : 'text-blue-600'}`}>
                       {service.icon}
                     </span>
                     <span className="truncate">{service.title}</span>
@@ -305,7 +305,7 @@ const PoliticalCampaign: React.FC = () => {
             transition={{ duration: 0.5 }}
             className="lg:col-span-3"
           >
-            <div className="bg-primary/50 backdrop-blur-sm rounded-xl border border-gold-500/10 overflow-hidden">
+            <div className="bg-white/80 backdrop-blur-sm rounded-xl border border-blue-500/10 overflow-hidden shadow-sm">
               {/* Service Image */}
               <div className="relative h-48 md:h-64 lg:h-80 overflow-hidden">
                 <img
@@ -314,13 +314,13 @@ const PoliticalCampaign: React.FC = () => {
                   className="w-full h-full object-cover"
                   loading="lazy"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-primary via-primary/20 to-transparent"></div>
+                <div className="absolute inset-0 bg-gradient-to-t from-gray-900/60 via-gray-900/20 to-transparent"></div>
                 <div className="absolute bottom-4 left-4 md:bottom-6 md:left-6">
                   <div className="flex items-center gap-3">
-                    <div className="text-accent text-3xl md:text-4xl">
+                    <div className="text-blue-600 text-3xl md:text-4xl bg-white/90 p-2 rounded-lg shadow-sm">
                       {selectedService.icon}
                     </div>
-                    <h3 className="text-white font-poppins font-bold text-xl md:text-2xl lg:text-3xl">
+                    <h3 className="text-white font-poppins font-bold text-xl md:text-2xl lg:text-3xl drop-shadow-lg">
                       {selectedService.title}
                     </h3>
                   </div>
@@ -329,13 +329,13 @@ const PoliticalCampaign: React.FC = () => {
 
               {/* Service Content */}
               <div className="p-4 md:p-6 lg:p-8">
-                <p className="text-gray-300 text-sm md:text-base lg:text-lg leading-relaxed mb-6">
+                <p className="text-gray-600 text-sm md:text-base lg:text-lg leading-relaxed mb-6">
                   {selectedService.description}
                 </p>
 
                 {/* Features */}
                 <div className="mb-6">
-                  <h4 className="text-white font-poppins font-semibold text-sm md:text-base mb-3">
+                  <h4 className="text-gray-900 font-poppins font-semibold text-sm md:text-base mb-3">
                     Key Features
                   </h4>
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
@@ -345,9 +345,9 @@ const PoliticalCampaign: React.FC = () => {
                         initial={{ opacity: 0, x: -20 }}
                         animate={{ opacity: 1, x: 0 }}
                         transition={{ delay: index * 0.1 }}
-                        className="flex items-center gap-2 text-gray-300 text-sm"
+                        className="flex items-center gap-2 text-gray-600 text-sm bg-blue-50/50 p-2 rounded-lg"
                       >
-                        <FaCheckCircle className="text-accent text-xs flex-shrink-0" />
+                        <FaCheckCircle className="text-blue-600 text-xs flex-shrink-0" />
                         {feature}
                       </motion.div>
                     ))}
@@ -356,7 +356,7 @@ const PoliticalCampaign: React.FC = () => {
 
                 {/* CTA */}
                 <div className="flex flex-col sm:flex-row gap-3">
-                  <Button variant="gold" size="lg" className="w-full sm:w-auto">
+                  <Button variant="primary" size="lg" className="w-full sm:w-auto">
                     Learn More About {selectedService.title}
                     <FaArrowRight className="ml-2" />
                   </Button>
@@ -375,11 +375,13 @@ const PoliticalCampaign: React.FC = () => {
                   onClick={() => setActiveService(service.id)}
                   className={`flex items-center gap-2 px-3 py-2 rounded-lg text-xs transition-all duration-300 ${
                     activeService === service.id
-                      ? 'bg-gold-500 text-primary'
-                      : 'bg-white/5 text-gray-400 hover:text-white hover:bg-white/10'
+                    ? 'bg-blue-600 text-white shadow-blue'
+                    : 'bg-white text-gray-600 hover:text-blue-600 hover:bg-blue-50 border border-gray-200'
                   }`}
                 >
-                  <span className="text-accent">{service.icon}</span>
+                  <span className={activeService === service.id ? 'text-white' : 'text-blue-600'}>
+                    {service.icon}
+                  </span>
                   <span className="truncate">{service.title}</span>
                 </button>
               ))}

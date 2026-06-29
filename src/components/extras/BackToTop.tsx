@@ -32,10 +32,10 @@ const BackToTop: React.FC = () => {
           whileHover={{ scale: 1.1 }}
           whileTap={{ scale: 0.9 }}
           onClick={scrollToTop}
-          className="fixed bottom-24 right-6 z-40 p-3 bg-gradient-gold rounded-full shadow-gold-lg hover:shadow-gold transition-all duration-300"
+          className="fixed bottom-24 right-6 z-40 p-3 bg-blue-600 rounded-full shadow-blue-lg hover:shadow-blue transition-all duration-300"
           aria-label="Back to top"
         >
-          <FaArrowUp className="text-primary text-xl" />
+          <FaArrowUp className="text-white text-xl" />
         </motion.button>
       )}
     </AnimatePresence>

@@ -231,12 +231,12 @@ const Pricing: React.FC = () => {
   return (
     <section 
       id="pricing" 
-      className="py-16 md:py-20 lg:py-28 bg-primary-light relative overflow-hidden"
+      className="py-16 md:py-20 lg:py-28 bg-white-light relative overflow-hidden"
       aria-label="Pricing plans"
     >
       {/* Background Decorations */}
-      <div className="absolute top-0 right-0 w-96 h-96 bg-gold-500/5 rounded-full blur-3xl"></div>
-      <div className="absolute bottom-0 left-0 w-96 h-96 bg-gold-500/5 rounded-full blur-3xl"></div>
+      <div className="absolute top-0 right-0 w-96 h-96 bg-blue-600/5 rounded-full blur-3xl"></div>
+      <div className="absolute bottom-0 left-0 w-96 h-96 bg-blue-600/5 rounded-full blur-3xl"></div>
 
       <Container>
         <SectionHeading
@@ -254,18 +254,18 @@ const Pricing: React.FC = () => {
           className="flex items-center justify-center gap-4 mb-8 md:mb-12"
         >
           <span className={`text-sm font-medium transition-colors duration-300 ${
-            billingCycle === 'monthly' ? 'text-white' : 'text-gray-400'
+            billingCycle === 'monthly' ? 'text-gray-900' : 'text-gray-400'
           }`}>
             Monthly
           </span>
           <button
             onClick={() => setBillingCycle(billingCycle === 'monthly' ? 'yearly' : 'monthly')}
-            className="relative w-14 h-8 bg-gold-500/20 rounded-full transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-gold-500/50"
+            className="relative w-14 h-8 bg-blue-600/20 rounded-full transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-gold-500/50"
             role="switch"
             aria-checked={billingCycle === 'yearly'}
           >
             <motion.div
-              className="absolute top-1 w-6 h-6 bg-gold-500 rounded-full shadow-md"
+              className="absolute top-1 w-6 h-6 bg-blue-600 rounded-full shadow-md"
               animate={{
                 x: billingCycle === 'yearly' ? 28 : 4
               }}
@@ -273,7 +273,7 @@ const Pricing: React.FC = () => {
             />
           </button>
           <span className={`text-sm font-medium transition-colors duration-300 ${
-            billingCycle === 'yearly' ? 'text-white' : 'text-gray-400'
+            billingCycle === 'yearly' ? 'text-gray-900' : 'text-gray-400'
           }`}>
             Yearly
           </span>
@@ -296,16 +296,16 @@ const Pricing: React.FC = () => {
               <motion.div
                 key={plan.id}
                 variants={CardComponent}
-                className={`relative bg-primary/50 backdrop-blur-sm rounded-2xl border overflow-hidden transition-all duration-300 ${
+                className={`relative bg-white/50 backdrop-blur-sm rounded-2xl border overflow-hidden transition-all duration-300 ${
                   plan.isPopular
-                    ? 'border-gold-500/50 shadow-gold-lg'
-                    : 'border-gold-500/10 hover:border-gold-500/30'
+                  ? 'border-gold-500/50 shadow-blue-lg'
+                  : 'border-blue-500/10 hover:border-blue-500/30'
                 }`}
               >
                 {/* Popular Badge */}
                 {plan.isPopular && (
                   <div className="absolute top-0 right-0">
-                    <div className="bg-gradient-gold text-primary text-xs font-bold px-4 py-1.5 rounded-bl-xl">
+                    <div className="bg-gradient-blue text-primary text-xs font-bold px-4 py-1.5 rounded-bl-xl">
                       Most Popular
                     </div>
                   </div>
@@ -323,11 +323,11 @@ const Pricing: React.FC = () => {
                 <div className="p-6 md:p-8">
                   {/* Plan Header */}
                   <div className="flex items-center gap-3 mb-4">
-                    <div className={`w-12 h-12 rounded-lg bg-gradient-to-r ${plan.color} flex items-center justify-center text-white text-xl`}>
+                    <div className={`w-12 h-12 rounded-lg bg-gradient-to-r ${plan.color} flex items-center justify-center text-gray-900 text-xl`}>
                       {plan.icon}
                     </div>
                     <div>
-                      <h3 className="text-white font-poppins font-bold text-xl">
+                      <h3 className="text-gray-900 font-poppins font-bold text-xl">
                         {plan.name}
                       </h3>
                       <p className="text-gray-400 text-sm">{plan.description}</p>
@@ -337,7 +337,7 @@ const Pricing: React.FC = () => {
                   {/* Price */}
                   <div className="mb-6">
                     <div className="flex items-end gap-1">
-                      <span className="text-3xl md:text-4xl font-bold text-white">
+                      <span className="text-3xl md:text-4xl font-bold text-gray-900">
                         {plan.currency}{plan.price.toLocaleString()}
                       </span>
                       <span className="text-gray-400 text-sm mb-1">{plan.period}</span>
@@ -357,9 +357,9 @@ const Pricing: React.FC = () => {
                         initial={{ opacity: 0, x: -10 }}
                         animate={{ opacity: 1, x: 0 }}
                         transition={{ delay: index * 0.05 }}
-                        className="flex items-start gap-2 text-gray-300 text-sm"
+                        className="flex items-start gap-2 text-gray-600 text-sm"
                       >
-                        <FaCheckCircle className="text-accent text-xs flex-shrink-0 mt-0.5" />
+                        <FaCheckCircle className="text-blue-600 text-xs flex-shrink-0 mt-0.5" />
                         <span>{feature}</span>
                       </motion.div>
                     ))}
@@ -369,9 +369,9 @@ const Pricing: React.FC = () => {
                         initial={{ opacity: 0, x: -10 }}
                         animate={{ opacity: 1, x: 0 }}
                         transition={{ delay: (plan.features.included.length + index) * 0.05 }}
-                        className="flex items-start gap-2 text-gray-500 text-sm"
+                        className="flex items-start gap-2 text-gray-400 text-sm"
                       >
-                        <FaTimesCircle className="text-gray-500 text-xs flex-shrink-0 mt-0.5" />
+                        <FaTimesCircle className="text-gray-400 text-xs flex-shrink-0 mt-0.5" />
                         <span className="line-through">{feature}</span>
                       </motion.div>
                     ))}
@@ -415,12 +415,12 @@ const Pricing: React.FC = () => {
               whileInView="visible"
               whileHover="hover"
               viewport={{ once: true }}
-              className="text-center p-4 bg-white/5 backdrop-blur-sm rounded-xl border border-gold-500/10 hover:border-gold-500/30 transition-all duration-300"
+              className="text-center p-4 bg-white/5 backdrop-blur-sm rounded-xl border border-blue-500/10 hover:border-blue-500/30 transition-all duration-300"
             >
-              <div className="text-accent text-2xl md:text-3xl mb-2">
+              <div className="text-blue-600 text-2xl md:text-3xl mb-2">
                 {highlight.icon}
               </div>
-              <h4 className="text-white font-semibold text-sm md:text-base mb-1">
+              <h4 className="text-gray-900 font-semibold text-sm md:text-base mb-1">
                 {highlight.label}
               </h4>
               <p className="text-gray-400 text-xs">
@@ -440,11 +440,11 @@ const Pricing: React.FC = () => {
         >
           <p className="text-gray-400 text-sm">
             Have questions about our pricing?{' '}
-            <a href="#faq" className="text-accent hover:text-gold-400 transition-colors duration-300">
+            <a href="#faq" className="text-blue-600 hover:text-blue-500 transition-colors duration-300">
               Check our FAQ
             </a>
             {' '}or {' '}
-            <a href="#contact" className="text-accent hover:text-gold-400 transition-colors duration-300">
+            <a href="#contact" className="text-blue-600 hover:text-blue-500 transition-colors duration-300">
               Contact our sales team
             </a>
           </p>
@@ -461,7 +461,7 @@ const Pricing: React.FC = () => {
           <div className="inline-flex items-center gap-2 px-4 py-2 bg-green-500/10 rounded-full border border-green-500/20">
             <span className="text-green-400 text-sm">🔒</span>
             <span className="text-gray-400 text-sm">30-day money-back guarantee</span>
-            <span className="text-gray-500 text-sm">•</span>
+            <span className="text-gray-400 text-sm">•</span>
             <span className="text-gray-400 text-sm">No hidden fees</span>
           </div>
         </motion.div>

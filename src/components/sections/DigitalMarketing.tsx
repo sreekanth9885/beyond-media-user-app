@@ -18,7 +18,6 @@ import {
   FaCheckCircle,
   FaDollarSign,
   FaHashtag,
-//   FaTarget,
 } from 'react-icons/fa';
 import Container from '../ui/Container';
 import SectionHeading from '../ui/SectionHeading';
@@ -145,7 +144,7 @@ const DigitalMarketing: React.FC = () => {
   ];
 
   // Animation variants
-  const containerVariants = {
+  const containerVariants: Variants = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
@@ -156,16 +155,16 @@ const DigitalMarketing: React.FC = () => {
     }
   };
 
-  const itemVariants = {
+  const itemVariants: Variants = {
     hidden: { opacity: 0, y: 30 },
     visible: {
       opacity: 1,
       y: 0,
       transition: { duration: 0.5, ease: "easeOut" }
     }
-  }satisfies Variants;
+  };
 
-  const tabVariants = {
+  const tabVariants: Variants = {
     hidden: { opacity: 0, y: 20 },
     visible: {
       opacity: 1,
@@ -177,17 +176,17 @@ const DigitalMarketing: React.FC = () => {
       y: -20,
       transition: { duration: 0.3 }
     }
-  }satisfies Variants;
+  };
 
   return (
     <section 
       id="digital-marketing" 
-      className="py-16 md:py-20 lg:py-28 bg-primary relative overflow-hidden"
+      className="py-16 md:py-20 lg:py-28 bg-gray-50 relative overflow-hidden"
       aria-label="Digital marketing services"
     >
       {/* Background Decorations */}
-      <div className="absolute top-1/3 right-0 w-80 h-80 bg-gold-500/5 rounded-full blur-3xl"></div>
-      <div className="absolute bottom-1/3 left-0 w-80 h-80 bg-gold-500/5 rounded-full blur-3xl"></div>
+      <div className="absolute top-1/3 right-0 w-80 h-80 bg-blue-600/5 rounded-full blur-3xl"></div>
+      <div className="absolute bottom-1/3 left-0 w-80 h-80 bg-blue-600/5 rounded-full blur-3xl"></div>
 
       <Container>
         <SectionHeading
@@ -209,19 +208,19 @@ const DigitalMarketing: React.FC = () => {
               key={stat.id}
               variants={itemVariants}
               whileHover={{ y: -5, scale: 1.02 }}
-              className="text-center p-4 md:p-6 bg-primary-light/50 backdrop-blur-sm rounded-xl border border-gold-500/10 hover:border-gold-500/30 transition-all duration-300"
+              className="text-center p-4 md:p-6 bg-white/80 backdrop-blur-sm rounded-xl border border-blue-500/10 hover:border-blue-500/30 shadow-sm hover:shadow-blue transition-all duration-300"
             >
-              <div className="text-accent text-2xl md:text-3xl mb-2">
+              <div className="text-blue-600 text-2xl md:text-3xl mb-2">
                 {stat.icon}
               </div>
-              <div className="text-white font-bold text-xl md:text-2xl lg:text-3xl">
+              <div className="text-gray-900 font-bold text-xl md:text-2xl lg:text-3xl">
                 {stat.value}
               </div>
-              <div className="text-gray-400 text-sm md:text-base">
+              <div className="text-gray-500 text-sm md:text-base">
                 {stat.label}
               </div>
               {stat.change && (
-                <div className="text-xs text-green-400 mt-1">
+                <div className="text-xs text-green-600 mt-1 font-medium">
                   {stat.change} growth
                 </div>
               )}
@@ -243,8 +242,8 @@ const DigitalMarketing: React.FC = () => {
               onClick={() => setActiveTab(service.id)}
               className={`flex items-center gap-2 px-4 md:px-6 py-2 md:py-3 rounded-lg text-sm md:text-base font-medium transition-all duration-300 ${
                 activeTab === service.id
-                  ? 'bg-gold-500 text-primary shadow-gold'
-                  : 'bg-white/5 text-gray-400 hover:text-white hover:bg-white/10 border border-gold-500/10'
+                ? 'bg-blue-600 text-white shadow-blue'
+                : 'bg-white text-gray-600 hover:text-blue-600 hover:bg-blue-50 border border-gray-200 hover:border-blue-300'
               }`}
               aria-label={`View ${service.title}`}
               aria-pressed={activeTab === service.id}
@@ -263,7 +262,7 @@ const DigitalMarketing: React.FC = () => {
             initial="hidden"
             animate="visible"
             exit="exit"
-            className="bg-primary-light/50 backdrop-blur-sm rounded-2xl border border-gold-500/10 overflow-hidden"
+            className="bg-white/80 backdrop-blur-sm rounded-2xl border border-blue-500/10 overflow-hidden shadow-sm"
           >
             <div className="grid lg:grid-cols-2 gap-0">
               {/* Left Column - Image & Stats */}
@@ -274,27 +273,27 @@ const DigitalMarketing: React.FC = () => {
                   className="w-full h-full object-cover"
                   loading="lazy"
                 />
-                <div className="absolute inset-0 bg-gradient-to-r from-primary/80 to-transparent lg:bg-gradient-to-r"></div>
+                <div className="absolute inset-0 bg-gradient-to-r from-gray-900/60 to-transparent lg:bg-gradient-to-r"></div>
                 
                 {/* Stats Overlay */}
-                <div className="absolute bottom-4 left-4 md:bottom-6 md:left-6 bg-primary/90 backdrop-blur-sm px-4 py-2 md:px-6 md:py-3 rounded-lg border border-gold-500/20">
-                  <div className="text-gold-500 text-xs md:text-sm font-medium">Performance</div>
-                  <div className="text-white font-bold text-base md:text-lg">{selectedService.stats}</div>
+                <div className="absolute bottom-4 left-4 md:bottom-6 md:left-6 bg-white/95 backdrop-blur-sm px-4 py-2 md:px-6 md:py-3 rounded-lg border border-blue-500/20 shadow-sm">
+                  <div className="text-blue-600 text-xs md:text-sm font-medium">Performance</div>
+                  <div className="text-gray-900 font-bold text-base md:text-lg">{selectedService.stats}</div>
                 </div>
               </div>
 
               {/* Right Column - Content */}
               <div className="p-4 md:p-6 lg:p-8">
                 <div className="flex items-center gap-3 mb-3 md:mb-4">
-                  <div className="text-accent text-2xl md:text-3xl">
+                  <div className="text-blue-600 text-2xl md:text-3xl">
                     {selectedService.icon}
                   </div>
-                  <h3 className="text-white font-poppins font-bold text-xl md:text-2xl lg:text-3xl">
+                  <h3 className="text-gray-900 font-poppins font-bold text-xl md:text-2xl lg:text-3xl">
                     {selectedService.title}
                   </h3>
                 </div>
 
-                <p className="text-gray-300 text-sm md:text-base lg:text-lg leading-relaxed mb-4 md:mb-6">
+                <p className="text-gray-600 text-sm md:text-base lg:text-lg leading-relaxed mb-4 md:mb-6">
                   {selectedService.description}
                 </p>
 
@@ -306,9 +305,9 @@ const DigitalMarketing: React.FC = () => {
                       initial={{ opacity: 0, x: -20 }}
                       animate={{ opacity: 1, x: 0 }}
                       transition={{ delay: index * 0.08 }}
-                      className="flex items-start gap-2 text-gray-300 text-sm md:text-base"
+                      className="flex items-start gap-2 text-gray-600 text-sm md:text-base"
                     >
-                      <FaCheckCircle className="text-accent text-xs md:text-sm flex-shrink-0 mt-1" />
+                      <FaCheckCircle className="text-blue-600 text-xs md:text-sm flex-shrink-0 mt-1" />
                       <span>{feature}</span>
                     </motion.div>
                   ))}
@@ -317,18 +316,18 @@ const DigitalMarketing: React.FC = () => {
                 {/* Platforms (for Social Media) */}
                 {selectedService.platforms && (
                   <div className="mb-4 md:mb-6">
-                    <h4 className="text-white font-poppins font-semibold text-sm md:text-base mb-2">
+                    <h4 className="text-gray-900 font-poppins font-semibold text-sm md:text-base mb-2">
                       Platforms We Manage
                     </h4>
                     <div className="flex flex-wrap gap-2">
                       {socialPlatforms.map((platform) => (
                         <div
                           key={platform.name}
-                          className="flex items-center gap-1 px-3 py-1 bg-white/5 rounded-full border border-gold-500/10"
+                          className="flex items-center gap-1 px-3 py-1 bg-white rounded-full border border-blue-500/10 shadow-sm"
                           style={{ color: platform.color }}
                         >
                           {platform.icon}
-                          <span className="text-xs text-gray-300">{platform.name}</span>
+                          <span className="text-xs text-gray-600">{platform.name}</span>
                         </div>
                       ))}
                     </div>
@@ -338,7 +337,7 @@ const DigitalMarketing: React.FC = () => {
                 {/* Google Ads Specific Types */}
                 {activeTab === 'google-ads' && (
                   <div className="mb-4 md:mb-6">
-                    <h4 className="text-white font-poppins font-semibold text-sm md:text-base mb-2">
+                    <h4 className="text-gray-900 font-poppins font-semibold text-sm md:text-base mb-2">
                       Ad Types We Specialize In
                     </h4>
                     <div className="grid grid-cols-2 gap-2">
@@ -348,12 +347,12 @@ const DigitalMarketing: React.FC = () => {
                           initial={{ opacity: 0, scale: 0.9 }}
                           animate={{ opacity: 1, scale: 1 }}
                           transition={{ delay: index * 0.05 }}
-                          className="flex items-start gap-2 p-2 bg-white/5 rounded-lg border border-gold-500/5"
+                          className="flex items-start gap-2 p-2 bg-blue-50/50 rounded-lg border border-blue-100"
                         >
-                          <div className="text-accent text-sm">{type.icon}</div>
+                          <div className="text-blue-600 text-sm">{type.icon}</div>
                           <div>
-                            <div className="text-white text-xs font-medium">{type.title}</div>
-                            <div className="text-gray-400 text-[10px]">{type.description}</div>
+                            <div className="text-gray-900 text-xs font-medium">{type.title}</div>
+                            <div className="text-gray-500 text-[10px]">{type.description}</div>
                           </div>
                         </motion.div>
                       ))}
@@ -363,7 +362,7 @@ const DigitalMarketing: React.FC = () => {
 
                 {/* CTA */}
                 <div className="flex flex-col sm:flex-row gap-3">
-                  <Button variant="gold" size="lg" className="w-full sm:w-auto">
+                  <Button variant="primary" size="lg" className="w-full sm:w-auto">
                     Get Started with {selectedService.title}
                     <FaArrowRight className="ml-2" />
                   </Button>
@@ -391,8 +390,8 @@ const DigitalMarketing: React.FC = () => {
                 onClick={() => setActiveTab(service.id)}
                 className={`flex items-center gap-2 px-3 md:px-4 py-1.5 md:py-2 rounded-lg text-xs md:text-sm transition-all duration-300 ${
                   activeTab === service.id
-                    ? 'bg-gold-500/20 text-gold-500 border border-gold-500/30'
-                    : 'bg-white/5 text-gray-400 hover:text-white hover:bg-white/10 border border-gold-500/10'
+                  ? 'bg-blue-600 text-white shadow-blue'
+                  : 'bg-white text-gray-600 hover:text-blue-600 hover:bg-blue-50 border border-gray-200'
                 }`}
               >
                 {service.icon}

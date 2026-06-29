@@ -192,7 +192,7 @@ const FAQ: React.FC = () => {
   };
 
   // Animation variants
-  const containerVariants = {
+  const containerVariants: Variants = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
@@ -203,16 +203,16 @@ const FAQ: React.FC = () => {
     }
   };
 
-  const itemVariants = {
+  const itemVariants: Variants = {
     hidden: { opacity: 0, y: 20 },
     visible: {
       opacity: 1,
       y: 0,
       transition: { duration: 0.4, ease: "easeOut" }
     }
-  }satisfies Variants;
+  };
 
-  const contentVariants = {
+  const contentVariants: Variants = {
     hidden: { opacity: 0, height: 0 },
     visible: {
       opacity: 1,
@@ -224,17 +224,17 @@ const FAQ: React.FC = () => {
       height: 0,
       transition: { duration: 0.3, ease: "easeInOut" }
     }
-  }satisfies Variants;
+  };
 
   return (
     <section 
       id="faq" 
-      className="py-16 md:py-20 lg:py-28 bg-primary relative overflow-hidden"
+      className="py-16 md:py-20 lg:py-28 bg-gray-50 relative overflow-hidden"
       aria-label="Frequently asked questions"
     >
       {/* Background Decorations */}
-      <div className="absolute top-1/3 right-0 w-96 h-96 bg-gold-500/5 rounded-full blur-3xl"></div>
-      <div className="absolute bottom-1/3 left-0 w-96 h-96 bg-gold-500/5 rounded-full blur-3xl"></div>
+      <div className="absolute top-1/3 right-0 w-96 h-96 bg-blue-600/5 rounded-full blur-3xl"></div>
+      <div className="absolute bottom-1/3 left-0 w-96 h-96 bg-blue-600/5 rounded-full blur-3xl"></div>
 
       <Container>
         <SectionHeading
@@ -258,14 +258,14 @@ const FAQ: React.FC = () => {
               placeholder="Search for answers..."
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
-              className="w-full px-4 py-3 pl-12 bg-primary-light/50 backdrop-blur-sm rounded-lg border border-gold-500/10 text-white placeholder-gray-400 focus:border-gold-500/50 focus:outline-none transition-all duration-300"
+              className="w-full px-4 py-3 pl-12 bg-white/80 backdrop-blur-sm rounded-lg border border-blue-500/10 text-gray-900 placeholder-gray-400 focus:border-blue-500/50 focus:outline-none transition-all duration-300 shadow-sm"
               aria-label="Search FAQ"
             />
             <FaSearch className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400" />
             {searchTerm && (
               <button
                 onClick={() => setSearchTerm('')}
-                className="absolute right-4 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-white transition-colors duration-300"
+                className="absolute right-4 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-gray-900 transition-colors duration-300"
                 aria-label="Clear search"
               >
                 <FaTimes />
@@ -281,8 +281,8 @@ const FAQ: React.FC = () => {
                 onClick={() => setActiveCategory(category.id)}
                 className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs md:text-sm font-medium transition-all duration-300 ${
                   activeCategory === category.id
-                    ? 'bg-gold-500 text-primary shadow-gold'
-                    : 'bg-white/5 text-gray-400 hover:text-white hover:bg-white/10 border border-gold-500/10'
+                  ? 'bg-blue-600 text-white shadow-blue'
+                  : 'bg-white text-gray-600 hover:text-blue-600 hover:bg-blue-50 border border-gray-200 hover:border-blue-300'
                 }`}
                 aria-label={`Filter ${category.label}`}
                 aria-pressed={activeCategory === category.id}
@@ -290,7 +290,7 @@ const FAQ: React.FC = () => {
                 <span className="text-sm">{category.icon}</span>
                 {category.label}
                 <span className={`text-[10px] ${
-                  activeCategory === category.id ? 'text-primary/70' : 'text-gray-500'
+                  activeCategory === category.id ? 'text-white/70' : 'text-gray-400'
                 }`}>
                   ({category.count})
                 </span>
@@ -306,7 +306,7 @@ const FAQ: React.FC = () => {
             animate={{ opacity: 1 }}
             className="text-center py-12"
           >
-            <div className="text-gray-400 text-lg">
+            <div className="text-gray-500 text-lg">
               No questions found matching your search.
             </div>
           </motion.div>
@@ -322,28 +322,28 @@ const FAQ: React.FC = () => {
               <motion.div
                 key={item.id}
                 variants={itemVariants}
-                className={`bg-primary-light/50 backdrop-blur-sm rounded-xl border transition-all duration-300 ${
+                className={`bg-white/80 backdrop-blur-sm rounded-xl border transition-all duration-300 shadow-sm ${
                   activeId === item.id
-                    ? 'border-gold-500/50 shadow-gold'
-                    : 'border-gold-500/10 hover:border-gold-500/30'
+                  ? 'border-blue-500/50 shadow-blue'
+                  : 'border-blue-500/10 hover:border-blue-500/30'
                 }`}
               >
                 {/* Question */}
                 <button
                   onClick={() => toggleAccordion(item.id)}
-                  className="w-full flex items-center justify-between gap-4 p-4 md:p-6 text-left focus:outline-none focus:ring-2 focus:ring-gold-500/50 rounded-xl"
+                  className="w-full flex items-center justify-between gap-4 p-4 md:p-6 text-left focus:outline-none focus:ring-2 focus:ring-blue-500/50 rounded-xl"
                   aria-expanded={activeId === item.id}
                   aria-controls={`faq-answer-${item.id}`}
                 >
                   <div className="flex items-start gap-3">
-                    <span className="text-accent text-lg mt-1 flex-shrink-0">
+                    <span className="text-blue-600 text-lg mt-1 flex-shrink-0">
                       {item.icon}
                     </span>
-                    <span className="text-white font-poppins font-medium text-sm md:text-base">
+                    <span className="text-gray-900 font-poppins font-medium text-sm md:text-base">
                       {item.question}
                     </span>
                   </div>
-                  <span className="text-accent flex-shrink-0 ml-4">
+                  <span className="text-blue-600 flex-shrink-0 ml-4">
                     {activeId === item.id ? <FaChevronUp /> : <FaChevronDown />}
                   </span>
                 </button>
@@ -359,14 +359,14 @@ const FAQ: React.FC = () => {
                       exit="exit"
                     >
                       <div className="px-4 pb-4 md:px-6 md:pb-6">
-                        <div className="pt-4 border-t border-gold-500/10">
-                          <p className="text-gray-300 text-sm md:text-base leading-relaxed">
+                        <div className="pt-4 border-t border-blue-500/10">
+                          <p className="text-gray-600 text-sm md:text-base leading-relaxed">
                             {item.answer}
                           </p>
                           
                           {/* Category Tag */}
                           <div className="mt-3">
-                            <span className="inline-block text-xs px-2 py-1 bg-white/5 text-gray-400 rounded border border-gold-500/10">
+                            <span className="inline-block text-xs px-2 py-1 bg-blue-50 text-blue-600 rounded border border-blue-100">
                               {categories.find(c => c.id === item.category)?.label}
                             </span>
                           </div>
@@ -388,18 +388,18 @@ const FAQ: React.FC = () => {
           transition={{ duration: 0.5, delay: 0.3 }}
           className="mt-12 md:mt-16 text-center"
         >
-          <div className="bg-gradient-to-r from-gold-500/10 to-gold-500/5 rounded-2xl p-6 md:p-8 border border-gold-500/20 max-w-2xl mx-auto">
+          <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-6 md:p-8 border border-blue-500/20 shadow-sm max-w-2xl mx-auto">
             <div className="flex items-center justify-center gap-2 mb-3">
-              <FaQuestionCircle className="text-accent text-2xl" />
-              <h3 className="text-white font-poppins font-semibold text-xl">
+              <FaQuestionCircle className="text-blue-600 text-2xl" />
+              <h3 className="text-gray-900 font-poppins font-semibold text-xl">
                 Still Have Questions?
               </h3>
             </div>
-            <p className="text-gray-400 text-sm md:text-base mb-4">
+            <p className="text-gray-500 text-sm md:text-base mb-4">
               Can't find the answer you're looking for? Our team is here to help.
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
-              <Button variant="gold" size="lg">
+              <Button variant="primary" size="lg">
                 Contact Us
                 <FaArrowRight className="ml-2" />
               </Button>
@@ -419,15 +419,15 @@ const FAQ: React.FC = () => {
           className="mt-6 flex flex-wrap items-center justify-center gap-4 text-xs text-gray-500"
         >
           <span className="flex items-center gap-1">
-            <span className="text-accent">●</span>
+            <span className="text-blue-600">●</span>
             {faqItems.length} Frequently Asked Questions
           </span>
           <span className="flex items-center gap-1">
-            <span className="text-accent">●</span>
+            <span className="text-blue-600">●</span>
             {categories.length - 1} Categories
           </span>
           <span className="flex items-center gap-1">
-            <span className="text-accent">●</span>
+            <span className="text-blue-600">●</span>
             Updated Weekly
           </span>
         </motion.div>

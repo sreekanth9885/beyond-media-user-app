@@ -38,7 +38,7 @@ const App: React.FC = () => {
         {loading && <PageLoader />}
       </AnimatePresence>
       
-      <div className="bg-primary text-white min-h-screen font-inter">
+      <div className="bg-white text-gray-900 min-h-screen font-inter">
         <ScrollProgress />
         <Navbar />
         
@@ -59,7 +59,7 @@ const App: React.FC = () => {
           {/* <Pricing /> */}
           <FAQ />
           <Contact />
-        </main>ds
+        </main>
         
         <Footer />
         <BackToTop />

@@ -16,12 +16,14 @@ const Button: React.FC<ButtonProps> = ({
 }) => {
   const baseStyles: string = 'inline-flex items-center justify-center font-medium rounded-lg transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-primary';
   
+  // src/components/ui/Button.tsx
   const variants: Record<string, string> = {
-    primary: 'bg-primary-light text-white hover:bg-primary-dark focus:ring-gold-500/50',
-    gold: 'bg-gradient-gold text-primary font-semibold hover:shadow-gold-lg focus:ring-gold-500/50 hover:scale-105',
-    outline: 'border-2 border-gold-500 text-gold-500 hover:bg-gold-500 hover:text-primary focus:ring-gold-500/50',
-    ghost: 'text-gray-300 hover:text-accent hover:bg-gold-500/10 focus:ring-gold-500/50',
-  };
+  primary: 'bg-blue-600 text-white hover:bg-blue-700 focus:ring-blue-500/50',
+  secondary: 'bg-gray-200 text-gray-800 hover:bg-gray-300',
+  accent: 'bg-gradient-blue text-white hover:shadow-blue-lg focus:ring-blue-500/50 hover:scale-105',
+  outline: 'border-2 border-blue-600 text-blue-600 hover:bg-blue-600 hover:text-white',
+  ghost: 'text-gray-600 hover:text-blue-600 hover:bg-blue-50',
+};
 
   const sizes: Record<string, string> = {
     sm: 'px-3 py-1.5 text-sm',

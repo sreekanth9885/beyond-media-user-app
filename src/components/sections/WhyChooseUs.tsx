@@ -214,7 +214,7 @@ const WhyChooseUs: React.FC = () => {
   ];
 
   // Animation variants
-  const containerVariants = {
+  const containerVariants: Variants = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
@@ -225,8 +225,7 @@ const WhyChooseUs: React.FC = () => {
     }
   };
 
-
-  const cardVariants = {
+  const cardVariants: Variants = {
     hidden: { opacity: 0, scale: 0.9 },
     visible: {
       opacity: 1,
@@ -238,9 +237,9 @@ const WhyChooseUs: React.FC = () => {
       scale: 1.03,
       transition: { duration: 0.3 }
     }
-  }satisfies Variants;
+  };
 
-  const testimonialVariants = {
+  const testimonialVariants: Variants = {
     hidden: { opacity: 0, x: -30 },
     visible: {
       opacity: 1,
@@ -251,17 +250,17 @@ const WhyChooseUs: React.FC = () => {
       scale: 1.02,
       transition: { duration: 0.3 }
     }
-  }satisfies Variants;
+  };
 
   return (
     <section 
       id="why-choose-us" 
-      className="py-16 md:py-20 lg:py-28 bg-primary relative overflow-hidden"
+      className="py-16 md:py-20 lg:py-28 bg-gray-50 relative overflow-hidden"
       aria-label="Why choose us"
     >
       {/* Background Decorations */}
-      <div className="absolute top-1/3 left-0 w-96 h-96 bg-gold-500/5 rounded-full blur-3xl"></div>
-      <div className="absolute bottom-1/3 right-0 w-96 h-96 bg-gold-500/5 rounded-full blur-3xl"></div>
+      <div className="absolute top-1/3 left-0 w-96 h-96 bg-blue-600/5 rounded-full blur-3xl"></div>
+      <div className="absolute bottom-1/3 right-0 w-96 h-96 bg-blue-600/5 rounded-full blur-3xl"></div>
 
       <Container>
         <SectionHeading
@@ -283,7 +282,7 @@ const WhyChooseUs: React.FC = () => {
               key={value.id}
               variants={cardVariants}
               whileHover="hover"
-              className="group bg-primary-light/50 backdrop-blur-sm rounded-xl p-4 md:p-6 border border-gold-500/10 hover:border-gold-500/30 transition-all duration-300"
+              className="group bg-white/80 backdrop-blur-sm rounded-xl p-4 md:p-6 border border-blue-500/10 hover:border-blue-500/30 shadow-sm hover:shadow-blue transition-all duration-300"
             >
               {/* Icon */}
               <div className={`w-12 h-12 rounded-lg bg-gradient-to-r ${value.color} flex items-center justify-center text-white text-xl mb-3 group-hover:scale-110 transition-transform duration-300`}>
@@ -291,27 +290,27 @@ const WhyChooseUs: React.FC = () => {
               </div>
 
               {/* Content */}
-              <h3 className="text-white font-poppins font-semibold text-base md:text-lg group-hover:text-accent transition-colors duration-300 mb-2">
+              <h3 className="text-gray-900 font-poppins font-semibold text-base md:text-lg group-hover:text-blue-600 transition-colors duration-300 mb-2">
                 {value.title}
               </h3>
 
-              <p className="text-gray-400 text-sm leading-relaxed mb-3">
+              <p className="text-gray-500 text-sm leading-relaxed mb-3">
                 {value.description}
               </p>
 
               {/* Stat */}
               {value.stat && (
-                <div className="flex items-center gap-2 mb-3 bg-white/5 rounded-lg px-3 py-1.5 border border-gold-500/10">
-                  <span className="text-gold-500 font-bold text-lg">{value.stat.value}</span>
-                  <span className="text-gray-400 text-xs">{value.stat.label}</span>
+                <div className="flex items-center gap-2 mb-3 bg-blue-50/50 rounded-lg px-3 py-1.5 border border-blue-100">
+                  <span className="text-blue-600 font-bold text-lg">{value.stat.value}</span>
+                  <span className="text-gray-500 text-xs">{value.stat.label}</span>
                 </div>
               )}
 
               {/* Benefits */}
               <div className="space-y-1.5">
                 {value.benefits.slice(0, 3).map((benefit, index) => (
-                  <div key={index} className="flex items-center gap-2 text-gray-300 text-xs">
-                    <FaCheckCircle className="text-accent text-[10px] flex-shrink-0" />
+                  <div key={index} className="flex items-center gap-2 text-gray-600 text-xs">
+                    <FaCheckCircle className="text-blue-600 text-[10px] flex-shrink-0" />
                     <span>{benefit}</span>
                   </div>
                 ))}
@@ -328,21 +327,21 @@ const WhyChooseUs: React.FC = () => {
           transition={{ duration: 0.5, delay: 0.3 }}
           className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 mb-12 md:mb-16"
         >
-          <div className="text-center p-4 bg-gradient-to-br from-gold-500/10 to-gold-500/5 rounded-xl border border-gold-500/20">
-            <div className="text-accent text-3xl md:text-4xl font-bold">500+</div>
-            <div className="text-gray-400 text-sm">Projects Delivered</div>
+          <div className="text-center p-4 bg-white/80 backdrop-blur-sm rounded-xl border border-blue-500/20 shadow-sm">
+            <div className="text-blue-600 text-3xl md:text-4xl font-bold">500+</div>
+            <div className="text-gray-500 text-sm">Projects Delivered</div>
           </div>
-          <div className="text-center p-4 bg-gradient-to-br from-gold-500/10 to-gold-500/5 rounded-xl border border-gold-500/20">
-            <div className="text-accent text-3xl md:text-4xl font-bold">98%</div>
-            <div className="text-gray-400 text-sm">Client Satisfaction</div>
+          <div className="text-center p-4 bg-white/80 backdrop-blur-sm rounded-xl border border-blue-500/20 shadow-sm">
+            <div className="text-blue-600 text-3xl md:text-4xl font-bold">98%</div>
+            <div className="text-gray-500 text-sm">Client Satisfaction</div>
           </div>
-          <div className="text-center p-4 bg-gradient-to-br from-gold-500/10 to-gold-500/5 rounded-xl border border-gold-500/20">
-            <div className="text-accent text-3xl md:text-4xl font-bold">15+</div>
-            <div className="text-gray-400 text-sm">Industries Served</div>
+          <div className="text-center p-4 bg-white/80 backdrop-blur-sm rounded-xl border border-blue-500/20 shadow-sm">
+            <div className="text-blue-600 text-3xl md:text-4xl font-bold">15+</div>
+            <div className="text-gray-500 text-sm">Industries Served</div>
           </div>
-          <div className="text-center p-4 bg-gradient-to-br from-gold-500/10 to-gold-500/5 rounded-xl border border-gold-500/20">
-            <div className="text-accent text-3xl md:text-4xl font-bold">50+</div>
-            <div className="text-gray-400 text-sm">Awards Won</div>
+          <div className="text-center p-4 bg-white/80 backdrop-blur-sm rounded-xl border border-blue-500/20 shadow-sm">
+            <div className="text-blue-600 text-3xl md:text-4xl font-bold">50+</div>
+            <div className="text-gray-500 text-sm">Awards Won</div>
           </div>
         </motion.div>
 
@@ -354,7 +353,7 @@ const WhyChooseUs: React.FC = () => {
           transition={{ duration: 0.5, delay: 0.4 }}
           className="mb-12 md:mb-16"
         >
-          <h3 className="text-white font-poppins font-semibold text-xl md:text-2xl text-center mb-6">
+          <h3 className="text-gray-900 font-poppins font-semibold text-xl md:text-2xl text-center mb-6">
             What Our Clients Say
           </h3>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6">
@@ -366,17 +365,17 @@ const WhyChooseUs: React.FC = () => {
                 whileInView="visible"
                 whileHover="hover"
                 viewport={{ once: true }}
-                className="bg-primary-light/50 backdrop-blur-sm rounded-xl p-4 md:p-6 border border-gold-500/10 hover:border-gold-500/30 transition-all duration-300"
+                className="bg-white/80 backdrop-blur-sm rounded-xl p-4 md:p-6 border border-blue-500/10 hover:border-blue-500/30 shadow-sm hover:shadow-blue transition-all duration-300"
               >
                 {/* Rating */}
-                <div className="flex text-accent text-sm mb-3">
+                <div className="flex text-blue-600 text-sm mb-3">
                   {[...Array(testimonial.rating)].map((_, i) => (
                     <FaStar key={i} />
                   ))}
                 </div>
 
                 {/* Quote */}
-                <p className="text-gray-300 text-sm leading-relaxed mb-4">
+                <p className="text-gray-600 text-sm leading-relaxed mb-4">
                   "{testimonial.quote}"
                 </p>
 
@@ -389,10 +388,10 @@ const WhyChooseUs: React.FC = () => {
                     loading="lazy"
                   />
                   <div>
-                    <div className="text-white font-semibold text-sm">
+                    <div className="text-gray-900 font-semibold text-sm">
                       {testimonial.name}
                     </div>
-                    <div className="text-gray-400 text-xs">
+                    <div className="text-gray-500 text-xs">
                       {testimonial.position} • {testimonial.company}
                     </div>
                   </div>
@@ -410,18 +409,18 @@ const WhyChooseUs: React.FC = () => {
           transition={{ duration: 0.5, delay: 0.5 }}
           className="text-center"
         >
-          <div className="bg-gradient-to-r from-gold-500/10 to-gold-500/5 rounded-2xl p-6 md:p-8 lg:p-10 border border-gold-500/20 max-w-4xl mx-auto">
+          <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-6 md:p-8 lg:p-10 border border-blue-500/20 shadow-sm max-w-4xl mx-auto">
             <div className="flex items-center justify-center gap-2 mb-4">
-              <FaCrown className="text-accent text-2xl md:text-3xl" />
-              <h3 className="text-white font-poppins font-bold text-xl md:text-2xl lg:text-3xl">
+              <FaCrown className="text-blue-600 text-2xl md:text-3xl" />
+              <h3 className="text-gray-900 font-poppins font-bold text-xl md:text-2xl lg:text-3xl">
                 Ready to Experience the Difference?
               </h3>
             </div>
-            <p className="text-gray-400 text-sm md:text-base mb-6 max-w-2xl mx-auto">
+            <p className="text-gray-500 text-sm md:text-base mb-6 max-w-2xl mx-auto">
               Join hundreds of satisfied clients who have transformed their digital presence with us.
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-3 md:gap-4">
-              <Button variant="gold" size="lg">
+              <Button variant="primary" size="lg">
                 Start Your Journey
                 <FaArrowRight className="ml-2" />
               </Button>
@@ -431,13 +430,13 @@ const WhyChooseUs: React.FC = () => {
             </div>
             <div className="mt-4 flex flex-wrap items-center justify-center gap-3 text-xs text-gray-500">
               <span className="flex items-center gap-1">
-                <FaCheckCircle className="text-accent" /> No obligation
+                <FaCheckCircle className="text-blue-600" /> No obligation
               </span>
               <span className="flex items-center gap-1">
-                <FaCheckCircle className="text-accent" /> Free consultation
+                <FaCheckCircle className="text-blue-600" /> Free consultation
               </span>
               <span className="flex items-center gap-1">
-                <FaCheckCircle className="text-accent" /> 24/7 support
+                <FaCheckCircle className="text-blue-600" /> 24/7 support
               </span>
             </div>
           </div>

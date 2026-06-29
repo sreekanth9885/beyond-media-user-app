@@ -127,7 +127,7 @@ const Footer: React.FC = () => {
   };
 
   // Animation variants
-  const containerVariants = {
+  const containerVariants: Variants = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
@@ -138,24 +138,24 @@ const Footer: React.FC = () => {
     }
   };
 
-  const itemVariants = {
+  const itemVariants: Variants = {
     hidden: { opacity: 0, y: 20 },
     visible: {
       opacity: 1,
       y: 0,
       transition: { duration: 0.5, ease: "easeOut" }
     }
-  }satisfies Variants;
+  };
 
   return (
     <footer 
-      className="bg-primary-dark border-t border-gold-500/10 relative overflow-hidden"
+      className="bg-white border-t border-gray-200 relative overflow-hidden"
       role="contentinfo"
       aria-label="Footer"
     >
       {/* Background Decorations */}
-      <div className="absolute top-0 left-0 w-96 h-96 bg-gold-500/5 rounded-full blur-3xl"></div>
-      <div className="absolute bottom-0 right-0 w-96 h-96 bg-gold-500/5 rounded-full blur-3xl"></div>
+      <div className="absolute top-0 left-0 w-96 h-96 bg-blue-600/5 rounded-full blur-3xl"></div>
+      <div className="absolute bottom-0 right-0 w-96 h-96 bg-blue-600/5 rounded-full blur-3xl"></div>
 
       <Container>
         {/* Main Footer Content */}
@@ -170,26 +170,26 @@ const Footer: React.FC = () => {
           <motion.div variants={itemVariants} className="space-y-4">
             <div className="flex items-center gap-2">
               <span className="text-2xl font-poppins font-bold">
-                <span className="text-white">BEYOND</span>
-                <span className="text-accent">MEDIA</span>
+                <span className="text-gray-900">BEYOND</span>
+                <span className="text-blue-600">MEDIA</span>
               </span>
             </div>
-            <p className="text-gray-400 text-sm leading-relaxed">
+            <p className="text-gray-500 text-sm leading-relaxed">
               We craft data-driven digital strategies that elevate brands, drive engagement, and deliver measurable results across all platforms.
             </p>
             
             {/* Contact Info */}
             <div className="space-y-2">
-              <a href="tel:+919876543210" className="flex items-center gap-2 text-gray-400 hover:text-accent transition-colors duration-300 text-sm">
-                <FaPhone className="text-accent text-xs" />
+              <a href="tel:+919876543210" className="flex items-center gap-2 text-gray-500 hover:text-blue-600 transition-colors duration-300 text-sm">
+                <FaPhone className="text-blue-600 text-xs" />
                 +91 98765 43210
               </a>
-              <a href="mailto:info@beyondmedia.com" className="flex items-center gap-2 text-gray-400 hover:text-accent transition-colors duration-300 text-sm">
-                <FaEnvelope className="text-accent text-xs" />
+              <a href="mailto:info@beyondmedia.com" className="flex items-center gap-2 text-gray-500 hover:text-blue-600 transition-colors duration-300 text-sm">
+                <FaEnvelope className="text-blue-600 text-xs" />
                 info@beyondmedia.com
               </a>
-              <div className="flex items-center gap-2 text-gray-400 text-sm">
-                <FaMapMarkerAlt className="text-accent text-xs" />
+              <div className="flex items-center gap-2 text-gray-500 text-sm">
+                <FaMapMarkerAlt className="text-blue-600 text-xs" />
                 Beyond Media Tower, Cyber City, Hyderabad
               </div>
             </div>
@@ -203,7 +203,7 @@ const Footer: React.FC = () => {
                   target="_blank"
                   rel="noopener noreferrer"
                   whileHover={{ scale: 1.1, y: -3 }}
-                  className="w-9 h-9 rounded-lg bg-white/5 border border-gold-500/10 flex items-center justify-center text-gray-400 hover:text-white hover:border-gold-500/30 transition-all duration-300"
+                  className="w-9 h-9 rounded-lg bg-white border border-gray-200 flex items-center justify-center text-gray-400 hover:text-gray-900 hover:border-blue-300 transition-all duration-300 shadow-sm"
                   style={{ color: social.color }}
                   aria-label={social.name}
                 >
@@ -215,7 +215,7 @@ const Footer: React.FC = () => {
 
           {/* Quick Links */}
           <motion.div variants={itemVariants}>
-            <h4 className="text-white font-poppins font-semibold text-lg mb-4">
+            <h4 className="text-gray-900 font-poppins font-semibold text-lg mb-4">
               Quick Links
             </h4>
             <ul className="space-y-2.5">
@@ -225,9 +225,9 @@ const Footer: React.FC = () => {
                     to={link.to}
                     smooth={true}
                     duration={500}
-                    className="text-gray-400 hover:text-accent transition-colors duration-300 text-sm cursor-pointer flex items-center gap-2 group"
+                    className="text-gray-500 hover:text-blue-600 transition-colors duration-300 text-sm cursor-pointer flex items-center gap-2 group"
                   >
-                    <span className="w-1.5 h-1.5 rounded-full bg-gold-500/30 group-hover:bg-gold-500 transition-all duration-300"></span>
+                    <span className="w-1.5 h-1.5 rounded-full bg-blue-600/30 group-hover:bg-blue-600 transition-all duration-300"></span>
                     {link.label}
                   </Link>
                 </li>
@@ -237,7 +237,7 @@ const Footer: React.FC = () => {
 
           {/* Services */}
           <motion.div variants={itemVariants}>
-            <h4 className="text-white font-poppins font-semibold text-lg mb-4">
+            <h4 className="text-gray-900 font-poppins font-semibold text-lg mb-4">
               Our Services
             </h4>
             <ul className="space-y-2.5">
@@ -247,9 +247,9 @@ const Footer: React.FC = () => {
                     to={link.to}
                     smooth={true}
                     duration={500}
-                    className="text-gray-400 hover:text-accent transition-colors duration-300 text-sm cursor-pointer flex items-center gap-2 group"
+                    className="text-gray-500 hover:text-blue-600 transition-colors duration-300 text-sm cursor-pointer flex items-center gap-2 group"
                   >
-                    <span className="w-1.5 h-1.5 rounded-full bg-gold-500/30 group-hover:bg-gold-500 transition-all duration-300"></span>
+                    <span className="w-1.5 h-1.5 rounded-full bg-blue-600/30 group-hover:bg-blue-600 transition-all duration-300"></span>
                     {link.label}
                   </Link>
                 </li>
@@ -261,7 +261,7 @@ const Footer: React.FC = () => {
           <motion.div variants={itemVariants} className="space-y-6">
             {/* Industries */}
             <div>
-              <h4 className="text-white font-poppins font-semibold text-lg mb-4">
+              <h4 className="text-gray-900 font-poppins font-semibold text-lg mb-4">
                 Industries
               </h4>
               <ul className="space-y-2.5">
@@ -271,9 +271,9 @@ const Footer: React.FC = () => {
                       to={link.to}
                       smooth={true}
                       duration={500}
-                      className="text-gray-400 hover:text-accent transition-colors duration-300 text-sm cursor-pointer flex items-center gap-2 group"
+                      className="text-gray-500 hover:text-blue-600 transition-colors duration-300 text-sm cursor-pointer flex items-center gap-2 group"
                     >
-                      <span className="w-1.5 h-1.5 rounded-full bg-gold-500/30 group-hover:bg-gold-500 transition-all duration-300"></span>
+                      <span className="w-1.5 h-1.5 rounded-full bg-blue-600/30 group-hover:bg-blue-600 transition-all duration-300"></span>
                       {link.label}
                     </Link>
                   </li>
@@ -283,7 +283,7 @@ const Footer: React.FC = () => {
 
             {/* Newsletter */}
             <div>
-              <h4 className="text-white font-poppins font-semibold text-base mb-3">
+              <h4 className="text-gray-900 font-poppins font-semibold text-base mb-3">
                 Subscribe to Newsletter
               </h4>
               <form onSubmit={handleNewsletterSubmit} className="relative">
@@ -292,14 +292,14 @@ const Footer: React.FC = () => {
                   placeholder="Enter your email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  className="w-full px-4 py-2.5 pr-12 bg-white/5 border border-gold-500/10 rounded-lg text-white placeholder-gray-500 focus:border-gold-500/50 focus:outline-none transition-all duration-300 text-sm"
+                  className="w-full px-4 py-2.5 pr-12 bg-white border border-gray-200 rounded-lg text-gray-900 placeholder-gray-400 focus:border-blue-500/50 focus:outline-none transition-all duration-300 text-sm shadow-sm"
                   aria-label="Subscribe to newsletter"
                   required
                 />
                 <button
                   type="submit"
                   disabled={newsletterStatus === 'subscribing'}
-                  className="absolute right-1.5 top-1/2 transform -translate-y-1/2 p-1.5 bg-gold-500 rounded-lg text-primary hover:bg-gold-600 transition-colors duration-300 disabled:opacity-50"
+                  className="absolute right-1.5 top-1/2 transform -translate-y-1/2 p-1.5 bg-blue-600 rounded-lg text-white hover:bg-blue-700 transition-colors duration-300 disabled:opacity-50"
                   aria-label="Subscribe"
                 >
                   {newsletterStatus === 'subscribing' ? (
@@ -315,7 +315,7 @@ const Footer: React.FC = () => {
                 <motion.p
                   initial={{ opacity: 0, y: -10 }}
                   animate={{ opacity: 1, y: 0 }}
-                  className="text-green-400 text-xs mt-2"
+                  className="text-green-600 text-xs mt-2"
                 >
                   ✓ Subscribed successfully!
                 </motion.p>
@@ -324,12 +324,12 @@ const Footer: React.FC = () => {
                 <motion.p
                   initial={{ opacity: 0, y: -10 }}
                   animate={{ opacity: 1, y: 0 }}
-                  className="text-red-400 text-xs mt-2"
+                  className="text-red-500 text-xs mt-2"
                 >
                   Please enter a valid email address.
                 </motion.p>
               )}
-              <p className="text-gray-500 text-[10px] mt-2">
+              <p className="text-gray-400 text-[10px] mt-2">
                 Weekly insights. No spam. Unsubscribe anytime.
               </p>
             </div>
@@ -342,11 +342,11 @@ const Footer: React.FC = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5, delay: 0.3 }}
-          className="py-4 border-t border-gold-500/10 flex flex-wrap items-center justify-center gap-6 md:gap-8"
+          className="py-4 border-t border-gray-200 flex flex-wrap items-center justify-center gap-6 md:gap-8"
         >
           {trustBadges.map((badge) => (
             <div key={badge.id} className="flex items-center gap-2 text-gray-500 text-sm">
-              <span className="text-accent">{badge.icon}</span>
+              <span className="text-blue-600">{badge.icon}</span>
               <span>{badge.label}</span>
             </div>
           ))}
@@ -358,23 +358,22 @@ const Footer: React.FC = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5, delay: 0.4 }}
-          className="py-4 border-t border-gold-500/10 flex flex-col md:flex-row items-center justify-between gap-4 text-sm"
+          className="py-4 border-t border-gray-200 flex flex-col md:flex-row items-center justify-between gap-4 text-sm"
         >
-          <div className="text-gray-400 text-center md:text-left">
-            © {currentYear} <span className="text-accent">Beyond Media</span>. All rights reserved.
-            {/* Made with <FaHeart className="inline text-red-500 mx-1" /> in India. */}
+          <div className="text-gray-500 text-center md:text-left">
+            © {currentYear} <span className="text-blue-600">Beyond Media</span>. All rights reserved.
           </div>
 
           <div className="flex flex-wrap items-center justify-center gap-4">
-            <a href="#" className="text-gray-500 hover:text-accent transition-colors duration-300 text-xs">
+            <a href="#" className="text-gray-500 hover:text-blue-600 transition-colors duration-300 text-xs">
               Privacy Policy
             </a>
-            <span className="text-gray-600">|</span>
-            <a href="#" className="text-gray-500 hover:text-accent transition-colors duration-300 text-xs">
+            <span className="text-gray-300">|</span>
+            <a href="#" className="text-gray-500 hover:text-blue-600 transition-colors duration-300 text-xs">
               Terms of Service
             </a>
-            <span className="text-gray-600">|</span>
-            <a href="#" className="text-gray-500 hover:text-accent transition-colors duration-300 text-xs">
+            <span className="text-gray-300">|</span>
+            <a href="#" className="text-gray-500 hover:text-blue-600 transition-colors duration-300 text-xs">
               Cookie Policy
             </a>
           </div>
@@ -384,7 +383,7 @@ const Footer: React.FC = () => {
             to="hero"
             smooth={true}
             duration={500}
-            className="text-accent hover:text-gold-400 transition-colors duration-300 text-sm cursor-pointer flex items-center gap-1 group"
+            className="text-blue-600 hover:text-blue-700 transition-colors duration-300 text-sm cursor-pointer flex items-center gap-1 group"
           >
             Back to Top
             <FaArrowRight className="text-xs group-hover:translate-x-1 transition-transform duration-300" />

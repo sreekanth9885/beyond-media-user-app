@@ -30,7 +30,7 @@ import Button from '../ui/Button';
 import type { ServiceItem } from '../../types';
 
 // Service Categories
-type Category = 'all' | 'marketing' | 'political' | 'digital' | 'development';
+type Category = 'all' | 'marketing' | 'political' | 'development' | 'design' | 'media';
 
 // Service Data
 const servicesData: ServiceItem[] = [
@@ -110,7 +110,7 @@ const servicesData: ServiceItem[] = [
     features: ['Media Relations', 'Press Releases', 'Crisis Management', 'Reputation Building']
   },
 
-  // Digital Services
+  // Development Services
   {
     id: 'website-dev',
     title: 'Website Development',
@@ -129,6 +129,8 @@ const servicesData: ServiceItem[] = [
     category: 'development',
     features: ['Android', 'iOS', 'React Native', 'Flutter']
   },
+
+  // Design Services
   {
     id: 'ui-ux',
     title: 'UI/UX Design',
@@ -234,6 +236,8 @@ const Services: React.FC = () => {
     { id: 'marketing', label: 'Marketing', icon: <FaChartLine /> },
     { id: 'political', label: 'Political', icon: <FaBullhorn /> },
     { id: 'development', label: 'Development', icon: <FaCode /> },
+    { id: 'design', label: 'Design', icon: <FaPaintBrush /> },
+    { id: 'media', label: 'Media', icon: <FaVideo /> },
   ];
 
   // Filter services based on category
@@ -246,7 +250,7 @@ const Services: React.FC = () => {
   const hasMore = visibleServices < filteredServices.length;
 
   // Animation variants
-  const containerVariants = {
+  const containerVariants: Variants = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
@@ -257,7 +261,7 @@ const Services: React.FC = () => {
     }
   };
 
-  const cardVariants = {
+  const cardVariants: Variants = {
     hidden: { opacity: 0, y: 30, scale: 0.95 },
     visible: {
       opacity: 1,
@@ -270,7 +274,7 @@ const Services: React.FC = () => {
       scale: 1.02,
       transition: { duration: 0.3, ease: "easeOut" }
     }
-  } satisfies Variants;
+  };
 
   const handleLoadMore = (): void => {
     setVisibleServices(prev => prev + 6);
@@ -279,7 +283,7 @@ const Services: React.FC = () => {
   return (
     <section 
       id="services" 
-      className="py-16 md:py-20 lg:py-28 bg-primary"
+      className="py-16 md:py-20 lg:py-28 bg-gray-50"
       aria-label="Our services"
     >
       <Container>
@@ -306,8 +310,8 @@ const Services: React.FC = () => {
               }}
               className={`flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium transition-all duration-300 ${
                 activeCategory === category.id
-                  ? 'bg-gold-500 text-primary shadow-gold'
-                  : 'bg-white/5 text-gray-400 hover:text-white hover:bg-white/10 border border-gold-500/10 hover:border-gold-500/30'
+                ? 'bg-blue-600 text-white shadow-blue'
+                : 'bg-white text-gray-600 hover:text-blue-600 hover:bg-blue-50 border border-gray-200 hover:border-blue-300'
               }`}
               aria-label={`Filter ${category.label}`}
               aria-pressed={activeCategory === category.id}
@@ -332,7 +336,7 @@ const Services: React.FC = () => {
                 key={service.id}
                 variants={cardVariants}
                 whileHover="hover"
-                className="group relative bg-primary-light/50 backdrop-blur-sm rounded-xl overflow-hidden border border-gold-500/10 hover:border-gold-500/30 transition-all duration-300"
+                className="group relative bg-white rounded-xl overflow-hidden border border-gray-200 hover:border-blue-300 shadow-sm hover:shadow-blue transition-all duration-300"
               >
                 {/* Service Image */}
                 <div className="relative h-48 overflow-hidden">
@@ -344,10 +348,10 @@ const Services: React.FC = () => {
                     className="w-full h-full object-cover"
                     loading="lazy"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-primary/80 via-primary/20 to-transparent"></div>
+                  <div className="absolute inset-0 bg-gradient-to-t from-gray-900/60 via-gray-900/20 to-transparent"></div>
                   
                   {/* Category Badge */}
-                  <div className="absolute top-3 right-3 bg-primary/90 backdrop-blur-sm px-2.5 py-1 rounded-lg text-xs font-medium text-gold-500 border border-gold-500/20 flex items-center gap-1">
+                  <div className="absolute top-3 right-3 bg-white/95 backdrop-blur-sm px-2.5 py-1 rounded-lg text-xs font-medium text-blue-600 border border-blue-200 shadow-sm flex items-center gap-1">
                     <FaTag className="text-[10px]" />
                     {categories.find(c => c.id === service.category)?.label}
                   </div>
@@ -356,15 +360,15 @@ const Services: React.FC = () => {
                 {/* Service Content */}
                 <div className="p-4 md:p-5">
                   <div className="flex items-start gap-3 mb-3">
-                    <div className="text-accent text-xl md:text-2xl group-hover:scale-110 transition-transform duration-300">
+                    <div className="text-blue-600 text-xl md:text-2xl group-hover:scale-110 transition-transform duration-300">
                       {service.icon}
                     </div>
-                    <h3 className="text-white font-poppins font-semibold text-base md:text-lg group-hover:text-accent transition-colors duration-300 line-clamp-2">
+                    <h3 className="text-gray-900 font-poppins font-semibold text-base md:text-lg group-hover:text-blue-600 transition-colors duration-300 line-clamp-2">
                       {service.title}
                     </h3>
                   </div>
 
-                  <p className="text-gray-400 text-sm leading-relaxed mb-4 line-clamp-2">
+                  <p className="text-gray-500 text-sm leading-relaxed mb-4 line-clamp-2">
                     {service.description}
                   </p>
 
@@ -374,13 +378,13 @@ const Services: React.FC = () => {
                       {service.features.slice(0, 3).map((feature, index) => (
                         <span 
                           key={index}
-                          className="text-[10px] px-2 py-1 bg-gold-500/10 text-gold-400 rounded border border-gold-500/10"
+                          className="text-[10px] px-2 py-1 bg-blue-50 text-blue-600 rounded border border-blue-100"
                         >
                           {feature}
                         </span>
                       ))}
                       {service.features.length > 3 && (
-                        <span className="text-[10px] px-2 py-1 bg-white/5 text-gray-400 rounded border border-gold-500/10">
+                        <span className="text-[10px] px-2 py-1 bg-gray-50 text-gray-500 rounded border border-gray-200">
                           +{service.features.length - 3} more
                         </span>
                       )}
@@ -390,7 +394,7 @@ const Services: React.FC = () => {
                   <Button
                     variant="ghost"
                     size="sm"
-                    className="w-full text-gold-500 hover:text-gold-400 group/btn"
+                    className="w-full text-blue-600 hover:text-blue-700 group/btn"
                   >
                     Learn More 
                     <FaArrowRight className="ml-2 text-xs group-hover/btn:translate-x-1 transition-transform duration-300" />

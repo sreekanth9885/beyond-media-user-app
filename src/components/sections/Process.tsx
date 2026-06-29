@@ -156,7 +156,7 @@ const Process: React.FC = () => {
   ];
 
   // Animation variants
-  const containerVariants = {
+  const containerVariants: Variants = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
@@ -167,16 +167,16 @@ const Process: React.FC = () => {
     }
   };
 
-  const itemVariants = {
+  const itemVariants: Variants = {
     hidden: { opacity: 0, x: -30 },
     visible: {
       opacity: 1,
       x: 0,
       transition: { duration: 0.6, ease: "easeOut" }
     }
-  }satisfies Variants;
+  };
 
-  const cardVariants = {
+  const cardVariants: Variants = {
     hidden: { opacity: 0, y: 30 },
     visible: {
       opacity: 1,
@@ -187,17 +187,17 @@ const Process: React.FC = () => {
       scale: 1.03,
       transition: { duration: 0.3 }
     }
-  }satisfies Variants;
+  };
 
   return (
     <section 
       id="process" 
-      className="py-16 md:py-20 lg:py-28 bg-primary-light relative overflow-hidden"
+      className="py-16 md:py-20 lg:py-28 bg-gray-50 relative overflow-hidden"
       aria-label="Our process"
     >
       {/* Background Decorations */}
-      <div className="absolute top-0 right-0 w-96 h-96 bg-gold-500/5 rounded-full blur-3xl"></div>
-      <div className="absolute bottom-0 left-0 w-96 h-96 bg-gold-500/5 rounded-full blur-3xl"></div>
+      <div className="absolute top-0 right-0 w-96 h-96 bg-blue-600/5 rounded-full blur-3xl"></div>
+      <div className="absolute bottom-0 left-0 w-96 h-96 bg-blue-600/5 rounded-full blur-3xl"></div>
 
       <Container>
         <SectionHeading
@@ -219,15 +219,15 @@ const Process: React.FC = () => {
               key={stat.id}
               variants={itemVariants}
               whileHover={{ y: -5, scale: 1.02 }}
-              className="text-center p-4 md:p-6 bg-primary/50 backdrop-blur-sm rounded-xl border border-gold-500/10 hover:border-gold-500/30 transition-all duration-300"
+              className="text-center p-4 md:p-6 bg-white/80 backdrop-blur-sm rounded-xl border border-blue-500/10 hover:border-blue-500/30 shadow-sm hover:shadow-blue transition-all duration-300"
             >
-              <div className="text-accent text-2xl md:text-3xl mb-2">
+              <div className="text-blue-600 text-2xl md:text-3xl mb-2">
                 {stat.icon}
               </div>
-              <div className="text-white font-bold text-xl md:text-2xl lg:text-3xl">
+              <div className="text-gray-900 font-bold text-xl md:text-2xl lg:text-3xl">
                 {stat.value}
               </div>
-              <div className="text-gray-400 text-sm md:text-base">
+              <div className="text-gray-500 text-sm md:text-base">
                 {stat.label}
               </div>
             </motion.div>
@@ -237,8 +237,8 @@ const Process: React.FC = () => {
         {/* Process Timeline */}
         <div className="relative">
           {/* Timeline Line */}
-          <div className="absolute left-4 md:left-1/2 top-0 bottom-0 w-0.5 bg-gradient-to-b from-gold-500/30 via-gold-500/50 to-gold-500/30 transform -translate-x-1/2 hidden md:block"></div>
-          <div className="absolute left-4 top-0 bottom-0 w-0.5 bg-gradient-to-b from-gold-500/30 via-gold-500/50 to-gold-500/30 md:hidden"></div>
+          <div className="absolute left-4 md:left-1/2 top-0 bottom-0 w-0.5 bg-gradient-to-b from-blue-500/30 via-blue-500/50 to-blue-500/30 transform -translate-x-1/2 hidden md:block"></div>
+          <div className="absolute left-4 top-0 bottom-0 w-0.5 bg-gradient-to-b from-blue-500/30 via-blue-500/50 to-blue-500/30 md:hidden"></div>
 
           {/* Steps */}
           {processSteps.map((step, index) => (
@@ -266,22 +266,22 @@ const Process: React.FC = () => {
               }`}>
                 <motion.div
                   whileHover="hover"
-                  className="bg-primary/50 backdrop-blur-sm rounded-xl border border-gold-500/10 hover:border-gold-500/30 p-4 md:p-6 transition-all duration-300"
+                  className="bg-white/80 backdrop-blur-sm rounded-xl border border-blue-500/10 hover:border-blue-500/30 p-4 md:p-6 shadow-sm hover:shadow-blue transition-all duration-300"
                 >
                   <div className="flex items-center gap-3 mb-3">
-                    <div className={`text-accent text-2xl md:text-3xl ${
+                    <div className={`text-blue-600 text-2xl md:text-3xl ${
                       index % 2 === 0 ? 'md:order-2' : ''
                     }`}>
                       {step.icon}
                     </div>
-                    <h3 className={`text-white font-poppins font-semibold text-lg md:text-xl ${
+                    <h3 className={`text-gray-900 font-poppins font-semibold text-lg md:text-xl ${
                       index % 2 === 0 ? 'md:order-1' : ''
                     }`}>
                       {step.title}
                     </h3>
                   </div>
 
-                  <p className="text-gray-400 text-sm md:text-base leading-relaxed mb-4">
+                  <p className="text-gray-500 text-sm md:text-base leading-relaxed mb-4">
                     {step.description}
                   </p>
 
@@ -292,11 +292,11 @@ const Process: React.FC = () => {
                         initial={{ opacity: 0, x: -10 }}
                         whileInView={{ opacity: 1, x: 0 }}
                         transition={{ delay: idx * 0.05 }}
-                        className={`flex items-center gap-2 text-gray-300 text-sm ${
+                        className={`flex items-center gap-2 text-gray-600 text-sm ${
                           index % 2 === 0 ? 'md:justify-end' : ''
                         }`}
                       >
-                        <FaCheckCircle className="text-accent text-xs flex-shrink-0" />
+                        <FaCheckCircle className="text-blue-600 text-xs flex-shrink-0" />
                         <span>{detail}</span>
                       </motion.div>
                     ))}
@@ -318,14 +318,14 @@ const Process: React.FC = () => {
           transition={{ duration: 0.5, delay: 0.3 }}
           className="text-center mt-12 md:mt-16"
         >
-          <div className="bg-gradient-to-r from-gold-500/10 to-gold-500/5 rounded-2xl p-6 md:p-8 border border-gold-500/20 max-w-3xl mx-auto">
-            <h3 className="text-white font-poppins font-semibold text-xl md:text-2xl mb-3">
+          <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-6 md:p-8 border border-blue-500/20 shadow-sm max-w-3xl mx-auto">
+            <h3 className="text-gray-900 font-poppins font-semibold text-xl md:text-2xl mb-3">
               Ready to Start Your Project?
             </h3>
-            <p className="text-gray-400 text-sm md:text-base mb-4 max-w-2xl mx-auto">
+            <p className="text-gray-500 text-sm md:text-base mb-4 max-w-2xl mx-auto">
               Let's discuss how our proven process can bring your vision to life.
             </p>
-            <Button variant="gold" size="lg">
+            <Button variant="primary" size="lg">
               Start Your Journey
               <FaArrowRight className="ml-2" />
             </Button>
@@ -340,20 +340,20 @@ const Process: React.FC = () => {
           transition={{ duration: 0.5, delay: 0.5 }}
           className="mt-8 md:mt-12 grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4"
         >
-          <div className="flex items-center gap-2 text-gray-400 text-xs md:text-sm">
-            <FaShieldAlt className="text-accent" />
+          <div className="flex items-center gap-2 text-gray-500 text-xs md:text-sm">
+            <FaShieldAlt className="text-blue-600" />
             <span>Quality Assured</span>
           </div>
-          <div className="flex items-center gap-2 text-gray-400 text-xs md:text-sm">
-            <FaClock className="text-accent" />
+          <div className="flex items-center gap-2 text-gray-500 text-xs md:text-sm">
+            <FaClock className="text-blue-600" />
             <span>On-time Delivery</span>
           </div>
-          <div className="flex items-center gap-2 text-gray-400 text-xs md:text-sm">
-            <FaHandshake className="text-accent" />
+          <div className="flex items-center gap-2 text-gray-500 text-xs md:text-sm">
+            <FaHandshake className="text-blue-600" />
             <span>100% Transparency</span>
           </div>
-          <div className="flex items-center gap-2 text-gray-400 text-xs md:text-sm">
-            <FaRegLightbulb className="text-accent" />
+          <div className="flex items-center gap-2 text-gray-500 text-xs md:text-sm">
+            <FaRegLightbulb className="text-blue-600" />
             <span>Innovation Focus</span>
           </div>
         </motion.div>

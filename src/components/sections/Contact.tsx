@@ -162,7 +162,7 @@ const Contact: React.FC = () => {
   };
 
   // Animation variants
-  const containerVariants = {
+  const containerVariants: Variants = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
@@ -173,16 +173,16 @@ const Contact: React.FC = () => {
     }
   };
 
-  const itemVariants = {
+  const itemVariants: Variants = {
     hidden: { opacity: 0, y: 30 },
     visible: {
       opacity: 1,
       y: 0,
       transition: { duration: 0.5, ease: "easeOut" }
     }
-  }satisfies Variants;
+  };
 
-  const infoCardVariants = {
+  const infoCardVariants: Variants = {
     hidden: { opacity: 0, scale: 0.9 },
     visible: {
       opacity: 1,
@@ -194,17 +194,17 @@ const Contact: React.FC = () => {
       scale: 1.03,
       transition: { duration: 0.3 }
     }
-  }satisfies Variants;
+  };
 
   return (
     <section 
       id="contact" 
-      className="py-16 md:py-20 lg:py-28 bg-primary-light relative overflow-hidden"
+      className="py-16 md:py-20 lg:py-28 bg-gray-50 relative overflow-hidden"
       aria-label="Contact us"
     >
       {/* Background Decorations */}
-      <div className="absolute top-0 right-0 w-96 h-96 bg-gold-500/5 rounded-full blur-3xl"></div>
-      <div className="absolute bottom-0 left-0 w-96 h-96 bg-gold-500/5 rounded-full blur-3xl"></div>
+      <div className="absolute top-0 right-0 w-96 h-96 bg-blue-600/5 rounded-full blur-3xl"></div>
+      <div className="absolute bottom-0 left-0 w-96 h-96 bg-blue-600/5 rounded-full blur-3xl"></div>
 
       <Container>
         <SectionHeading
@@ -229,17 +229,17 @@ const Contact: React.FC = () => {
                 href={info.link}
                 variants={infoCardVariants}
                 whileHover="hover"
-                className="block bg-primary/50 backdrop-blur-sm rounded-xl p-4 md:p-6 border border-gold-500/10 hover:border-gold-500/30 transition-all duration-300 group"
+                className="block bg-white/80 backdrop-blur-sm rounded-xl p-4 md:p-6 border border-blue-500/10 hover:border-blue-500/30 shadow-sm hover:shadow-blue transition-all duration-300 group"
               >
                 <div className="flex items-start gap-4">
                   <div className={`w-12 h-12 rounded-lg bg-gradient-to-r ${info.color} flex items-center justify-center text-white text-xl flex-shrink-0 group-hover:scale-110 transition-transform duration-300`}>
                     {info.icon}
                   </div>
                   <div>
-                    <div className="text-gray-400 text-xs font-medium uppercase tracking-wider">
+                    <div className="text-gray-500 text-xs font-medium uppercase tracking-wider">
                       {info.label}
                     </div>
-                    <div className="text-white font-medium text-sm md:text-base group-hover:text-accent transition-colors duration-300">
+                    <div className="text-gray-900 font-medium text-sm md:text-base group-hover:text-blue-600 transition-colors duration-300">
                       {info.value}
                     </div>
                   </div>
@@ -250,9 +250,9 @@ const Contact: React.FC = () => {
             {/* Social Links */}
             <motion.div
               variants={itemVariants}
-              className="bg-primary/50 backdrop-blur-sm rounded-xl p-4 md:p-6 border border-gold-500/10"
+              className="bg-white/80 backdrop-blur-sm rounded-xl p-4 md:p-6 border border-blue-500/10 shadow-sm"
             >
-              <h4 className="text-white font-poppins font-semibold text-sm mb-4">
+              <h4 className="text-gray-900 font-poppins font-semibold text-sm mb-4">
                 Connect With Us
               </h4>
               <div className="flex flex-wrap gap-3">
@@ -263,7 +263,7 @@ const Contact: React.FC = () => {
                     target="_blank"
                     rel="noopener noreferrer"
                     whileHover={{ scale: 1.1, y: -3 }}
-                    className="w-10 h-10 rounded-lg bg-white/5 border border-gold-500/10 flex items-center justify-center text-gray-400 hover:text-white hover:border-gold-500/30 transition-all duration-300"
+                    className="w-10 h-10 rounded-lg bg-white border border-blue-500/10 flex items-center justify-center text-gray-400 hover:text-gray-900 hover:border-blue-500/30 transition-all duration-300 shadow-sm"
                     style={{ color: social.color }}
                     aria-label={social.name}
                   >
@@ -278,15 +278,15 @@ const Contact: React.FC = () => {
               variants={itemVariants}
               className="grid grid-cols-2 gap-3"
             >
-              <div className="bg-primary/50 backdrop-blur-sm rounded-xl p-3 border border-gold-500/10 text-center">
-                <div className="text-accent text-xl">⭐</div>
-                <div className="text-white font-bold text-sm">4.9/5</div>
-                <div className="text-gray-400 text-xs">Client Rating</div>
+              <div className="bg-white/80 backdrop-blur-sm rounded-xl p-3 border border-blue-500/10 shadow-sm text-center">
+                <div className="text-blue-600 text-xl">⭐</div>
+                <div className="text-gray-900 font-bold text-sm">4.9/5</div>
+                <div className="text-gray-500 text-xs">Client Rating</div>
               </div>
-              <div className="bg-primary/50 backdrop-blur-sm rounded-xl p-3 border border-gold-500/10 text-center">
-                <div className="text-accent text-xl">🚀</div>
-                <div className="text-white font-bold text-sm">500+</div>
-                <div className="text-gray-400 text-xs">Projects Done</div>
+              <div className="bg-white/80 backdrop-blur-sm rounded-xl p-3 border border-blue-500/10 shadow-sm text-center">
+                <div className="text-blue-600 text-xl">🚀</div>
+                <div className="text-gray-900 font-bold text-sm">500+</div>
+                <div className="text-gray-500 text-xs">Projects Done</div>
               </div>
             </motion.div>
           </motion.div>
@@ -301,12 +301,12 @@ const Contact: React.FC = () => {
           >
             <motion.div
               variants={itemVariants}
-              className="bg-primary/50 backdrop-blur-sm rounded-2xl p-6 md:p-8 border border-gold-500/10"
+              className="bg-white/80 backdrop-blur-sm rounded-2xl p-6 md:p-8 border border-blue-500/10 shadow-sm"
             >
-              <h3 className="text-white font-poppins font-semibold text-xl md:text-2xl mb-2">
+              <h3 className="text-gray-900 font-poppins font-semibold text-xl md:text-2xl mb-2">
                 Send Us a Message
               </h3>
-              <p className="text-gray-400 text-sm mb-6">
+              <p className="text-gray-500 text-sm mb-6">
                 Fill in the form below and we'll get back to you within 24 hours.
               </p>
 
@@ -314,43 +314,43 @@ const Contact: React.FC = () => {
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   {/* Name */}
                   <div>
-                    <label htmlFor="name" className="block text-gray-400 text-sm font-medium mb-1.5">
-                      Full Name <span className="text-red-400">*</span>
+                    <label htmlFor="name" className="block text-gray-600 text-sm font-medium mb-1.5">
+                      Full Name <span className="text-red-500">*</span>
                     </label>
                     <div className="relative">
+                      {/* <FaUser className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 z-10" /> */}
                       <input
                         type="text"
                         id="name"
                         name="name"
                         value={formData.name}
                         onChange={handleChange}
-                        className="w-full px-4 py-3 pl-10 bg-white/5 border border-gold-500/10 rounded-lg text-white placeholder-gray-500 focus:border-gold-500/50 focus:outline-none transition-all duration-300"
+                        className="w-full pl-10 pr-4 py-3 bg-white border border-gray-200 rounded-lg text-gray-900 placeholder-gray-400 focus:border-blue-500/50 focus:outline-none transition-all duration-300 shadow-sm"
                         placeholder="John Doe"
                         required
                         aria-required="true"
                       />
-                      <FaUser className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-500" />
                     </div>
                   </div>
 
                   {/* Email */}
                   <div>
-                    <label htmlFor="email" className="block text-gray-400 text-sm font-medium mb-1.5">
-                      Email Address <span className="text-red-400">*</span>
+                    <label htmlFor="email" className="block text-gray-600 text-sm font-medium mb-1.5">
+                      Email Address <span className="text-red-500">*</span>
                     </label>
                     <div className="relative">
+                      {/* <FaEnvelope className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 z-10" /> */}
                       <input
                         type="email"
                         id="email"
                         name="email"
                         value={formData.email}
                         onChange={handleChange}
-                        className="w-full px-4 py-3 pl-10 bg-white/5 border border-gold-500/10 rounded-lg text-white placeholder-gray-500 focus:border-gold-500/50 focus:outline-none transition-all duration-300"
+                        className="w-full pl-10 pr-4 py-3 bg-white border border-gray-200 rounded-lg text-gray-900 placeholder-gray-400 focus:border-blue-500/50 focus:outline-none transition-all duration-300 shadow-sm"
                         placeholder="john@example.com"
                         required
                         aria-required="true"
                       />
-                      <FaEnvelope className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-500" />
                     </div>
                   </div>
                 </div>
@@ -358,46 +358,46 @@ const Contact: React.FC = () => {
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   {/* Phone */}
                   <div>
-                    <label htmlFor="phone" className="block text-gray-400 text-sm font-medium mb-1.5">
+                    <label htmlFor="phone" className="block text-gray-600 text-sm font-medium mb-1.5">
                       Phone Number
                     </label>
                     <div className="relative">
+                      {/* <FaPhone className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 z-10" /> */}
                       <input
                         type="tel"
                         id="phone"
                         name="phone"
                         value={formData.phone}
                         onChange={handleChange}
-                        className="w-full px-4 py-3 pl-10 bg-white/5 border border-gold-500/10 rounded-lg text-white placeholder-gray-500 focus:border-gold-500/50 focus:outline-none transition-all duration-300"
+                        className="w-full pl-10 pr-4 py-3 bg-white border border-gray-200 rounded-lg text-gray-900 placeholder-gray-400 focus:border-blue-500/50 focus:outline-none transition-all duration-300 shadow-sm"
                         placeholder="+91 98765 43210"
                       />
-                      <FaPhone className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-500" />
                     </div>
                   </div>
 
                   {/* Company */}
                   <div>
-                    <label htmlFor="company" className="block text-gray-400 text-sm font-medium mb-1.5">
+                    <label htmlFor="company" className="block text-gray-600 text-sm font-medium mb-1.5">
                       Company Name
                     </label>
                     <div className="relative">
+                      {/* <FaBuilding className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 z-10" /> */}
                       <input
                         type="text"
                         id="company"
                         name="company"
                         value={formData.company}
                         onChange={handleChange}
-                        className="w-full px-4 py-3 pl-10 bg-white/5 border border-gold-500/10 rounded-lg text-white placeholder-gray-500 focus:border-gold-500/50 focus:outline-none transition-all duration-300"
+                        className="w-full pl-10 pr-4 py-3 bg-white border border-gray-200 rounded-lg text-gray-900 placeholder-gray-400 focus:border-blue-500/50 focus:outline-none transition-all duration-300 shadow-sm"
                         placeholder="Your Company"
                       />
-                      <FaBuilding className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-500" />
                     </div>
                   </div>
                 </div>
 
                 {/* Service */}
                 <div>
-                  <label htmlFor="service" className="block text-gray-400 text-sm font-medium mb-1.5">
+                  <label htmlFor="service" className="block text-gray-600 text-sm font-medium mb-1.5">
                     Service Interested In
                   </label>
                   <select
@@ -405,11 +405,11 @@ const Contact: React.FC = () => {
                     name="service"
                     value={formData.service}
                     onChange={handleChange}
-                    className="w-full px-4 py-3 bg-white/5 border border-gold-500/10 rounded-lg text-white placeholder-gray-500 focus:border-gold-500/50 focus:outline-none transition-all duration-300 appearance-none"
+                    className="w-full px-4 py-3 bg-white border border-gray-200 rounded-lg text-gray-900 placeholder-gray-400 focus:border-blue-500/50 focus:outline-none transition-all duration-300 shadow-sm appearance-none"
                   >
                     <option value="">Select a service</option>
                     {services.map((service) => (
-                      <option key={service} value={service} className="bg-primary">
+                      <option key={service} value={service} className="bg-white">
                         {service}
                       </option>
                     ))}
@@ -418,7 +418,7 @@ const Contact: React.FC = () => {
 
                 {/* Subject */}
                 <div>
-                  <label htmlFor="subject" className="block text-gray-400 text-sm font-medium mb-1.5">
+                  <label htmlFor="subject" className="block text-gray-600 text-sm font-medium mb-1.5">
                     Subject
                   </label>
                   <input
@@ -427,36 +427,36 @@ const Contact: React.FC = () => {
                     name="subject"
                     value={formData.subject}
                     onChange={handleChange}
-                    className="w-full px-4 py-3 bg-white/5 border border-gold-500/10 rounded-lg text-white placeholder-gray-500 focus:border-gold-500/50 focus:outline-none transition-all duration-300"
+                    className="w-full px-4 py-3 bg-white border border-gray-200 rounded-lg text-gray-900 placeholder-gray-400 focus:border-blue-500/50 focus:outline-none transition-all duration-300 shadow-sm"
                     placeholder="How can we help?"
                   />
                 </div>
 
                 {/* Message */}
                 <div>
-                  <label htmlFor="message" className="block text-gray-400 text-sm font-medium mb-1.5">
-                    Message <span className="text-red-400">*</span>
+                  <label htmlFor="message" className="block text-gray-600 text-sm font-medium mb-1.5">
+                    Message <span className="text-red-500">*</span>
                   </label>
                   <div className="relative">
+                    {/* <FaComment className="absolute left-3 top-3 text-gray-400 z-10" /> */}
                     <textarea
                       id="message"
                       name="message"
                       value={formData.message}
                       onChange={handleChange}
                       rows={5}
-                      className="w-full px-4 py-3 pl-10 bg-white/5 border border-gold-500/10 rounded-lg text-white placeholder-gray-500 focus:border-gold-500/50 focus:outline-none transition-all duration-300 resize-y"
+                      className="w-full pl-10 pr-4 py-3 bg-white border border-gray-200 rounded-lg text-gray-900 placeholder-gray-400 focus:border-blue-500/50 focus:outline-none transition-all duration-300 shadow-sm resize-y"
                       placeholder="Tell us about your project..."
                       required
                       aria-required="true"
                     />
-                    <FaComment className="absolute left-3 top-3 text-gray-500" />
                   </div>
                 </div>
 
                 {/* Submit Button */}
                 <Button
                   type="submit"
-                  variant="gold"
+                  variant="primary"
                   size="lg"
                   className="w-full"
                   disabled={formStatus === 'submitting'}
@@ -484,7 +484,7 @@ const Contact: React.FC = () => {
                   <motion.div
                     initial={{ opacity: 0, y: -10 }}
                     animate={{ opacity: 1, y: 0 }}
-                    className="text-red-400 text-sm bg-red-400/10 p-3 rounded-lg border border-red-400/20"
+                    className="text-red-500 text-sm bg-red-50 p-3 rounded-lg border border-red-200"
                   >
                     {formError}
                   </motion.div>
@@ -494,7 +494,7 @@ const Contact: React.FC = () => {
                   <motion.div
                     initial={{ opacity: 0, y: -10 }}
                     animate={{ opacity: 1, y: 0 }}
-                    className="text-green-400 text-sm bg-green-400/10 p-3 rounded-lg border border-green-400/20 flex items-center gap-2"
+                    className="text-green-600 text-sm bg-green-50 p-3 rounded-lg border border-green-200 flex items-center gap-2"
                   >
                     <FaCheckCircle />
                     Thank you for your message! We'll get back to you within 24 hours.
@@ -518,23 +518,23 @@ const Contact: React.FC = () => {
           transition={{ duration: 0.5, delay: 0.3 }}
           className="mt-12 md:mt-16"
         >
-          <div className="bg-primary/50 backdrop-blur-sm rounded-2xl overflow-hidden border border-gold-500/10 h-64 md:h-80 relative">
+          <div className="bg-white/80 backdrop-blur-sm rounded-2xl overflow-hidden border border-blue-500/10 h-64 md:h-80 relative shadow-sm">
             <img
               src="https://images.unsplash.com/photo-1569336415962-a4bd9f69cd83?w=1200&h=400&fit=crop"
               alt="Office location map"
               className="w-full h-full object-cover"
               loading="lazy"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-primary/60 to-transparent flex items-end justify-center">
-              <div className="bg-primary/90 backdrop-blur-sm px-6 py-4 rounded-t-2xl border border-gold-500/20 text-center">
-                <p className="text-gray-400 text-sm">
+            <div className="absolute inset-0 bg-gradient-to-t from-gray-900/60 to-transparent flex items-end justify-center">
+              <div className="bg-white/95 backdrop-blur-sm px-6 py-4 rounded-t-2xl border border-blue-500/20 shadow-sm text-center">
+                <p className="text-gray-600 text-sm">
                   📍 DigitalPro Tower, Cyber City, Hyderabad, India
                 </p>
                 <a 
                   href="https://maps.google.com" 
                   target="_blank" 
                   rel="noopener noreferrer"
-                  className="text-accent text-xs hover:text-gold-400 transition-colors duration-300"
+                  className="text-blue-600 text-xs hover:text-blue-500 transition-colors duration-300"
                 >
                   View on Google Maps →
                 </a>
@@ -552,19 +552,19 @@ const Contact: React.FC = () => {
           className="mt-8 flex flex-wrap items-center justify-center gap-4 md:gap-8 text-gray-500 text-xs"
         >
           <span className="flex items-center gap-2">
-            <FaShieldAlt className="text-accent" />
+            <FaShieldAlt className="text-blue-600" />
             Secure & Confidential
           </span>
           <span className="flex items-center gap-2">
-            <FaHeadset className="text-accent" />
+            <FaHeadset className="text-blue-600" />
             24/7 Support
           </span>
           <span className="flex items-center gap-2">
-            <FaClock className="text-accent" />
+            <FaClock className="text-blue-600" />
             Fast Response Time
           </span>
           <span className="flex items-center gap-2">
-            <FaStar className="text-accent" />
+            <FaStar className="text-blue-600" />
             98% Client Satisfaction
           </span>
         </motion.div>

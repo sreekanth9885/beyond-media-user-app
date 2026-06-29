@@ -285,12 +285,12 @@ const Features: React.FC = () => {
   return (
     <section 
       id="features" 
-      className="py-16 md:py-20 lg:py-28 bg-primary relative overflow-hidden"
+      className="py-16 md:py-20 lg:py-28 bg-white relative overflow-hidden"
       aria-label="Features"
     >
       {/* Background Decorations */}
-      <div className="absolute top-1/3 right-0 w-96 h-96 bg-gold-500/5 rounded-full blur-3xl"></div>
-      <div className="absolute bottom-1/3 left-0 w-96 h-96 bg-gold-500/5 rounded-full blur-3xl"></div>
+      <div className="absolute top-1/3 right-0 w-96 h-96 bg-blue-600/5 rounded-full blur-3xl"></div>
+      <div className="absolute bottom-1/3 left-0 w-96 h-96 bg-blue-600/5 rounded-full blur-3xl"></div>
 
       <Container>
         <SectionHeading
@@ -313,8 +313,8 @@ const Features: React.FC = () => {
               onClick={() => setActiveCategory(category.id)}
               className={`flex items-center gap-2 px-4 md:px-6 py-2 md:py-3 rounded-lg text-sm md:text-base font-medium transition-all duration-300 ${
                 activeCategory === category.id
-                  ? 'bg-gold-500 text-primary shadow-gold'
-                  : 'bg-white/5 text-gray-400 hover:text-white hover:bg-white/10 border border-gold-500/10'
+                ? 'bg-blue-600 text-primary shadow-blue'
+                : 'bg-white/5 text-gray-400 hover:text-gray-900 hover:bg-white/10 border border-blue-500/10'
               }`}
               aria-label={`View ${category.label}`}
               aria-pressed={activeCategory === category.id}
@@ -338,7 +338,7 @@ const Features: React.FC = () => {
               key={feature.id}
               variants={cardVariants}
               whileHover="hover"
-              className="group bg-primary-light/50 backdrop-blur-sm rounded-xl overflow-hidden border border-gold-500/10 hover:border-gold-500/30 transition-all duration-300"
+              className="group bg-white-light/50 backdrop-blur-sm rounded-xl overflow-hidden border border-blue-500/10 hover:border-blue-500/30 transition-all duration-300"
             >
               {/* Feature Image */}
               <div className="relative h-40 md:h-48 overflow-hidden">
@@ -353,7 +353,7 @@ const Features: React.FC = () => {
                 <div className="absolute inset-0 bg-gradient-to-t from-primary/80 via-primary/40 to-transparent"></div>
                 
                 {/* Icon Badge */}
-                <div className={`absolute top-3 right-3 w-10 h-10 rounded-full bg-gradient-to-r ${feature.color} flex items-center justify-center text-white text-lg shadow-lg`}>
+                <div className={`absolute top-3 right-3 w-10 h-10 rounded-full bg-gradient-to-r ${feature.color} flex items-center justify-center text-gray-900 text-lg shadow-lg`}>
                   {feature.icon}
                 </div>
               </div>
@@ -361,7 +361,7 @@ const Features: React.FC = () => {
               {/* Content */}
               <div className="p-4 md:p-6">
                 <div className="flex items-start gap-3 mb-3">
-                  <h3 className="text-white font-poppins font-semibold text-base md:text-lg group-hover:text-accent transition-colors duration-300">
+                  <h3 className="text-gray-900 font-poppins font-semibold text-base md:text-lg group-hover:text-blue-600 transition-colors duration-300">
                     {feature.title}
                   </h3>
                 </div>
@@ -378,9 +378,9 @@ const Features: React.FC = () => {
                       initial={{ opacity: 0, x: -10 }}
                       animate={{ opacity: 1, x: 0 }}
                       transition={{ delay: index * 0.05 }}
-                      className="flex items-center gap-2 text-gray-300 text-xs md:text-sm"
+                      className="flex items-center gap-2 text-gray-600 text-xs md:text-sm"
                     >
-                      <FaCheckCircle className="text-accent text-xs flex-shrink-0" />
+                      <FaCheckCircle className="text-blue-600 text-xs flex-shrink-0" />
                       <span>{benefit}</span>
                     </motion.div>
                   ))}
@@ -389,7 +389,7 @@ const Features: React.FC = () => {
                 <Button
                   variant="ghost"
                   size="sm"
-                  className="text-gold-500 hover:text-gold-400 group/btn"
+                  className="text-blue-600 hover:text-blue-500 group/btn"
                 >
                   Learn More
                   <FaArrowRight className="ml-2 text-xs group-hover/btn:translate-x-1 transition-transform duration-300" />
@@ -408,11 +408,11 @@ const Features: React.FC = () => {
             transition={{ duration: 0.5, delay: 0.3 }}
             className="mt-8 md:mt-12 text-center"
           >
-            <div className="inline-block bg-primary/50 backdrop-blur-sm px-6 md:px-8 py-4 md:py-6 rounded-xl border border-gold-500/10">
-              <div className="text-accent text-2xl md:text-3xl mb-2">
+            <div className="inline-block bg-white/50 backdrop-blur-sm px-6 md:px-8 py-4 md:py-6 rounded-xl border border-blue-500/10">
+              <div className="text-blue-600 text-2xl md:text-3xl mb-2">
                 {selectedCategory.icon}
               </div>
-              <h3 className="text-white font-poppins font-semibold text-lg md:text-xl mb-2">
+              <h3 className="text-gray-900 font-poppins font-semibold text-lg md:text-xl mb-2">
                 {selectedCategory.label}
               </h3>
               <p className="text-gray-400 text-sm md:text-base max-w-2xl mx-auto">
@@ -431,24 +431,24 @@ const Features: React.FC = () => {
           transition={{ duration: 0.5, delay: 0.5 }}
           className="mt-8 md:mt-12 grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4"
         >
-          <div className="flex flex-col items-center p-3 md:p-4 bg-white/5 rounded-lg border border-gold-500/10">
-            <FaMedal className="text-accent text-2xl md:text-3xl mb-2" />
-            <span className="text-white font-semibold text-sm md:text-base">100+</span>
+          <div className="flex flex-col items-center p-3 md:p-4 bg-white/5 rounded-lg border border-blue-500/10">
+            <FaMedal className="text-blue-600 text-2xl md:text-3xl mb-2" />
+            <span className="text-gray-900 font-semibold text-sm md:text-base">100+</span>
             <span className="text-gray-400 text-xs md:text-sm">Industry Awards</span>
           </div>
-          <div className="flex flex-col items-center p-3 md:p-4 bg-white/5 rounded-lg border border-gold-500/10">
-            <FaAward className="text-accent text-2xl md:text-3xl mb-2" />
-            <span className="text-white font-semibold text-sm md:text-base">98%</span>
+          <div className="flex flex-col items-center p-3 md:p-4 bg-white/5 rounded-lg border border-blue-500/10">
+            <FaAward className="text-blue-600 text-2xl md:text-3xl mb-2" />
+            <span className="text-gray-900 font-semibold text-sm md:text-base">98%</span>
             <span className="text-gray-400 text-xs md:text-sm">Client Retention</span>
           </div>
-          <div className="flex flex-col items-center p-3 md:p-4 bg-white/5 rounded-lg border border-gold-500/10">
-            <FaHandshake className="text-accent text-2xl md:text-3xl mb-2" />
-            <span className="text-white font-semibold text-sm md:text-base">500+</span>
+          <div className="flex flex-col items-center p-3 md:p-4 bg-white/5 rounded-lg border border-blue-500/10">
+            <FaHandshake className="text-blue-600 text-2xl md:text-3xl mb-2" />
+            <span className="text-gray-900 font-semibold text-sm md:text-base">500+</span>
             <span className="text-gray-400 text-xs md:text-sm">Partners Worldwide</span>
           </div>
-          <div className="flex flex-col items-center p-3 md:p-4 bg-white/5 rounded-lg border border-gold-500/10">
-            <FaGlobe className="text-accent text-2xl md:text-3xl mb-2" />
-            <span className="text-white font-semibold text-sm md:text-base">50+</span>
+          <div className="flex flex-col items-center p-3 md:p-4 bg-white/5 rounded-lg border border-blue-500/10">
+            <FaGlobe className="text-blue-600 text-2xl md:text-3xl mb-2" />
+            <span className="text-gray-900 font-semibold text-sm md:text-base">50+</span>
             <span className="text-gray-400 text-xs md:text-sm">Countries Served</span>
           </div>
         </motion.div>
