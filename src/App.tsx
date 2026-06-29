@@ -9,14 +9,14 @@ import About from './components/sections/About';
 import Services from './components/sections/Services';
 import PoliticalCampaign from './components/sections/PoliticalCampaign';
 import DigitalMarketing from './components/sections/DigitalMarketing';
-import Portfolio from './components/sections/Portfolio';
+// import Portfolio from './components/sections/Portfolio';
 import ITServices from './components/sections/ITServices';
 import Process from './components/sections/Process';
-import Industries from './components/sections/Industries';
+// import Industries from './components/sections/Industries';
 import WhyChooseUs from './components/sections/WhyChooseUs';
 import Statistics from './components/sections/Statistics';
 import Testimonials from './components/sections/Testimonials';
-import Pricing from './components/sections/Pricing';
+// import Pricing from './components/sections/Pricing';
 import FAQ from './components/sections/FAQ';
 import Contact from './components/sections/Contact';
 import Footer from './components/layout/Footer';
@@ -49,14 +49,14 @@ const App: React.FC = () => {
           <PoliticalCampaign />
           <DigitalMarketing />
           <ITServices />
-          <Portfolio />
+          {/* <Portfolio /> */}
           <Process />
           {/* <Features /> */}
-          <Industries />
+          {/* <Industries /> */}
           <WhyChooseUs />
           <Statistics />
           <Testimonials />
-          <Pricing />
+          {/* <Pricing /> */}
           <FAQ />
           <Contact />
         </main>ds

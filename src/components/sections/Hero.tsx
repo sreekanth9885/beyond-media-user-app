@@ -188,7 +188,7 @@ const Hero: React.FC = () => {
           </motion.div>
 
           {/* Trusted Brands */}
-          <motion.div
+          {/* <motion.div
             variants={itemVariants}
             className="border-t border-gold-500/10 pt-6 md:pt-8"
           >
@@ -201,7 +201,7 @@ const Hero: React.FC = () => {
               <div className="text-white/50 text-lg md:text-xl lg:text-2xl font-bold">Amazon</div>
               <div className="text-white/50 text-lg md:text-xl lg:text-2xl font-bold">Apple</div>
             </div>
-          </motion.div>
+          </motion.div> */}
         </motion.div>
       </Container>
 

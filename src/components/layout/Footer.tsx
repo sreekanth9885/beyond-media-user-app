@@ -14,7 +14,6 @@ import {
   FaArrowRight,
   FaCheckCircle,
   FaPaperPlane,
-  FaHeart,
   FaShieldAlt,
   FaLock,
   FaClock,
@@ -171,8 +170,8 @@ const Footer: React.FC = () => {
           <motion.div variants={itemVariants} className="space-y-4">
             <div className="flex items-center gap-2">
               <span className="text-2xl font-poppins font-bold">
-                <span className="text-white">DIGITAL</span>
-                <span className="text-accent">PRO</span>
+                <span className="text-white">BEYOND</span>
+                <span className="text-accent">MEDIA</span>
               </span>
             </div>
             <p className="text-gray-400 text-sm leading-relaxed">
@@ -185,13 +184,13 @@ const Footer: React.FC = () => {
                 <FaPhone className="text-accent text-xs" />
                 +91 98765 43210
               </a>
-              <a href="mailto:info@digitalpro.com" className="flex items-center gap-2 text-gray-400 hover:text-accent transition-colors duration-300 text-sm">
+              <a href="mailto:info@beyondmedia.com" className="flex items-center gap-2 text-gray-400 hover:text-accent transition-colors duration-300 text-sm">
                 <FaEnvelope className="text-accent text-xs" />
-                info@digitalpro.com
+                info@beyondmedia.com
               </a>
               <div className="flex items-center gap-2 text-gray-400 text-sm">
                 <FaMapMarkerAlt className="text-accent text-xs" />
-                DigitalPro Tower, Cyber City, Hyderabad
+                Beyond Media Tower, Cyber City, Hyderabad
               </div>
             </div>
 
@@ -362,8 +361,8 @@ const Footer: React.FC = () => {
           className="py-4 border-t border-gold-500/10 flex flex-col md:flex-row items-center justify-between gap-4 text-sm"
         >
           <div className="text-gray-400 text-center md:text-left">
-            © {currentYear} <span className="text-accent">DigitalPro</span>. All rights reserved.
-            Made with <FaHeart className="inline text-red-500 mx-1" /> in India.
+            © {currentYear} <span className="text-accent">Beyond Media</span>. All rights reserved.
+            {/* Made with <FaHeart className="inline text-red-500 mx-1" /> in India. */}
           </div>
 
           <div className="flex flex-wrap items-center justify-center gap-4">

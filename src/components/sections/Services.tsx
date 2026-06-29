@@ -30,7 +30,7 @@ import Button from '../ui/Button';
 import type { ServiceItem } from '../../types';
 
 // Service Categories
-type Category = 'all' | 'marketing' | 'political' | 'digital' | 'development' | 'media' | 'design';
+type Category = 'all' | 'marketing' | 'political' | 'digital' | 'development';
 
 // Service Data
 const servicesData: ServiceItem[] = [
@@ -234,8 +234,6 @@ const Services: React.FC = () => {
     { id: 'marketing', label: 'Marketing', icon: <FaChartLine /> },
     { id: 'political', label: 'Political', icon: <FaBullhorn /> },
     { id: 'development', label: 'Development', icon: <FaCode /> },
-    { id: 'design', label: 'Design', icon: <FaPaintBrush /> },
-    { id: 'media', label: 'Media', icon: <FaVideo /> },
   ];
 
   // Filter services based on category

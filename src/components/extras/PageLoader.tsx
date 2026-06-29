@@ -35,8 +35,8 @@ const PageLoader: React.FC<PageLoaderProps> = ({ className = '' }) => {
           className="mt-6"
         >
           <span className="text-2xl font-poppins font-bold">
-            <span className="text-white">DIGITAL</span>
-            <span className="text-accent">PRO</span>
+            <span className="text-white">BEYOND</span>
+            <span className="text-accent">MEDIA</span>
           </span>
         </motion.div>
         
