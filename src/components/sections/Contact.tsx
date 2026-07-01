@@ -508,6 +508,7 @@ const Contact: React.FC = () => {
         </div>
 
         {/* Google Map Placeholder */}
+        {/* Google Map */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -516,27 +517,21 @@ const Contact: React.FC = () => {
           className="mt-12 md:mt-16"
         >
           <div className="bg-white/80 backdrop-blur-sm rounded-2xl overflow-hidden border border-blue-500/10 h-64 md:h-80 relative shadow-sm">
-            <img
-              src="https://images.unsplash.com/photo-1569336415962-a4bd9f69cd83?w=1200&h=400&fit=crop"
-              alt="Office location map"
-              className="w-full h-full object-cover"
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3807.234567890123!2d78.390321!3d17.449876!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bcb90d1c5b0c0c5%3A0x8b8b8b8b8b8b8b8b!2sMadhapur%2C%20Hyderabad%2C%20Telangana!5e0!3m2!1sen!2sin!4v1234567890"
+              width="100%"
+              height="100%"
+              style={{ border: 0 }}
+              allowFullScreen
               loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+              title="Office Location Map"
+              className="w-full h-full"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-gray-900/60 to-transparent flex items-end justify-center">
-              <div className="bg-white/95 backdrop-blur-sm px-6 py-4 rounded-t-2xl border border-blue-500/20 shadow-sm text-center">
-                <p className="text-gray-600 text-sm">
-                  📍 Madhapur, Hyderabad, Telangana 500081
-                </p>
-
-                <a
-                  href="https://www.google.com/maps/search/?api=1&query=Madhapur+Hyderabad"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-blue-600 text-xs hover:text-blue-500 transition-colors duration-300"
-                >
-                  View on Google Maps →
-                </a>
-              </div>
+            <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 bg-white/95 backdrop-blur-sm px-6 py-3 rounded-xl border border-blue-500/20 shadow-sm text-center">
+              <p className="text-gray-600 text-sm font-medium">
+                📍 Madhapur, Hyderabad, Telangana 500081
+              </p>
             </div>
           </div>
         </motion.div>
