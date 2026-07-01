@@ -171,6 +171,7 @@ const Navbar: React.FC<NavbarProps> = ({ className = '' }) => {
               <div className="flex flex-col">
                 <span className="text-lg sm:text-2xl font-poppins font-bold leading-tight">
                   <span className="text-gray-900">Beyond</span>
+                  <span className="text-yellow-500"> I</span>
                   <span className="text-blue-600"> Media</span>
                 </span>
                 <span className="hidden xs:block text-[8px] sm:text-[10px] tracking-[0.2em] sm:tracking-[0.25em] text-gray-400 uppercase leading-tight">
