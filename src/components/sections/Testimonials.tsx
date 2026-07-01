@@ -65,7 +65,7 @@ const Testimonials: React.FC = () => {
       company: 'GrowthHub Inc.',
       content: 'The best decision we made was partnering with DigitalPro. Our digital presence has never been stronger. Their social media strategy and content marketing delivered exceptional results.',
       rating: 5,
-      image: 'https://images.unsplash.com/photo-1494790108372-be9c29b29330?w=200&h=200&fit=crop',
+      image: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=200&h=200&fit=crop',
       industry: 'Marketing',
       date: 'December 2023',
       platform: 'LinkedIn',

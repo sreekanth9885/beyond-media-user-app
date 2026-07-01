@@ -13,15 +13,9 @@ import {
   FaPaintBrush,
   FaBuilding,
   FaFilm,
-  FaEnvelope,
   FaChartLine,
-  FaArrowRight,
   FaHandshake,
-  FaHeartbeat,
-  FaUniversity,
   FaGlobe,
-  FaTv,
-  FaStar,
   FaTag
 } from 'react-icons/fa';
 import Container from '../ui/Container';
@@ -49,7 +43,7 @@ const servicesData: ServiceItem[] = [
     title: 'Meta Ads',
     description: 'Reach your audience effectively through Facebook and Instagram advertising platforms.',
     icon: <FaFacebook />,
-    image: 'https://images.unsplash.com/photo-1611162616475-46b635cb6868?w=600&h=400&fit=crop',
+    image: 'https://images.unsplash.com/photo-1611162616305-c69b3fa7fbe0?w=600&h=400&fit=crop',
     category: 'marketing',
     features: ['Facebook Ads', 'Instagram Ads', 'Retargeting', 'Lookalike Audiences']
   },
@@ -67,19 +61,19 @@ const servicesData: ServiceItem[] = [
     title: 'YouTube SEO',
     description: 'Optimize your YouTube channel for maximum visibility and subscriber growth.',
     icon: <FaYoutube />,
-    image: 'https://images.unsplash.com/photo-1611162616305-c69b3fa7fbe0?w=600&h=400&fit=crop',
+    image: 'https://images.unsplash.com/photo-1611162616475-46b635cb6868?w=600&h=400&fit=crop',
     category: 'marketing',
     features: ['Keyword Research', 'Thumbnail Optimization', 'Ranking', 'Channel Growth']
   },
-  {
-    id: 'content-marketing',
-    title: 'Content Marketing',
-    description: 'Create compelling content that engages your audience and drives conversions.',
-    icon: <FaEnvelope />,
-    image: 'https://images.unsplash.com/photo-1432889490241-7f0332774d30?w=600&h=400&fit=crop',
-    category: 'marketing',
-    features: ['Blog Posts', 'White Papers', 'Case Studies', 'Newsletters']
-  },
+  // {
+  //   id: 'content-marketing',
+  //   title: 'Content Marketing',
+  //   description: 'Create compelling content that engages your audience and drives conversions.',
+  //   icon: <FaEnvelope />,
+  //   image: 'https://images.unsplash.com/photo-1432889490241-7f0332774d30?w=600&h=400&fit=crop',
+  //   category: 'marketing',
+  //   features: ['Blog Posts', 'White Papers', 'Case Studies', 'Newsletters']
+  // },
 
   // Political Services
   {
@@ -165,7 +159,7 @@ const servicesData: ServiceItem[] = [
     title: 'Live Event Coverage',
     description: 'Professional live coverage for events, conferences, and celebrations.',
     icon: <FaVideo />,
-    image: 'https://images.unsplash.com/photo-1536240478700-b869070f9279?w=600&h=400&fit=crop',
+    image: 'https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=600&h=400&fit=crop',
     category: 'media',
     features: ['Multi Camera Setup', 'Drone Coverage', 'Live Streaming', 'Event Photography']
   },
@@ -174,57 +168,57 @@ const servicesData: ServiceItem[] = [
     title: 'Video Editing',
     description: 'Professional video editing and post-production services.',
     icon: <FaFilm />,
-    image: 'https://images.unsplash.com/photo-1536240478700-b869070f9279?w=600&h=400&fit=crop',
+    image: 'https://images.unsplash.com/photo-1598899134739-24c46f58b8c0?w=600&h=400&fit=crop',
     category: 'media',
     features: ['Color Grading', 'Sound Design', 'Motion Graphics', 'Visual Effects']
   },
 
   // Industry-Specific
-  {
-    id: 'healthcare',
-    title: 'Healthcare Promotions',
-    description: 'Specialized digital marketing for healthcare providers and organizations.',
-    icon: <FaHeartbeat />,
-    image: 'https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=600&h=400&fit=crop',
-    category: 'marketing',
-    features: ['Patient Acquisition', 'Healthcare SEO', 'Medical Branding', 'Compliance']
-  },
-  {
-    id: 'education',
-    title: 'Educational Promotions',
-    description: 'Digital strategies that connect students with educational opportunities.',
-    icon: <FaUniversity />,
-    image: 'https://images.unsplash.com/photo-1509062522246-3755977927d7?w=600&h=400&fit=crop',
-    category: 'marketing',
-    features: ['Student Recruitment', 'Online Learning', 'School Branding', 'Admissions']
-  },
-  {
-    id: 'entertainment',
-    title: 'Entertainment Promotions',
-    description: 'Creative marketing campaigns for entertainment and media brands.',
-    icon: <FaTv />,
-    image: 'https://images.unsplash.com/photo-1536240478700-b869070f9279?w=600&h=400&fit=crop',
-    category: 'marketing',
-    features: ['Event Marketing', 'Ticket Sales', 'Social Media', 'Content Creation']
-  },
-  {
-    id: 'real-estate',
-    title: 'Real Estate Promotions',
-    description: 'Digital marketing solutions for real estate agents and developers.',
-    icon: <FaBuilding />,
-    image: 'https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=600&h=400&fit=crop',
-    category: 'marketing',
-    features: ['Property Listings', 'Virtual Tours', 'Lead Generation', 'Open House Marketing']
-  },
-  {
-    id: 'devotional',
-    title: 'Devotional Promotions',
-    description: 'Respectful and engaging digital strategies for spiritual organizations.',
-    icon: <FaStar />,
-    image: 'https://images.unsplash.com/photo-1541872703-74c5e44368f9?w=600&h=400&fit=crop',
-    category: 'political',
-    features: ['Event Promotion', 'Devotional Content', 'Community Engagement']
-  },
+  // {
+  //   id: 'healthcare',
+  //   title: 'Healthcare Promotions',
+  //   description: 'Specialized digital marketing for healthcare providers and organizations.',
+  //   icon: <FaHeartbeat />,
+  //   image: 'https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=600&h=400&fit=crop',
+  //   category: 'marketing',
+  //   features: ['Patient Acquisition', 'Healthcare SEO', 'Medical Branding', 'Compliance']
+  // },
+  // {
+  //   id: 'education',
+  //   title: 'Educational Promotions',
+  //   description: 'Digital strategies that connect students with educational opportunities.',
+  //   icon: <FaUniversity />,
+  //   image: 'https://images.unsplash.com/photo-1509062522246-3755977927d7?w=600&h=400&fit=crop',
+  //   category: 'marketing',
+  //   features: ['Student Recruitment', 'Online Learning', 'School Branding', 'Admissions']
+  // },
+  // {
+  //   id: 'entertainment',
+  //   title: 'Entertainment Promotions',
+  //   description: 'Creative marketing campaigns for entertainment and media brands.',
+  //   icon: <FaTv />,
+  //   image: 'https://images.unsplash.com/photo-1536240478700-b869070f9279?w=600&h=400&fit=crop',
+  //   category: 'marketing',
+  //   features: ['Event Marketing', 'Ticket Sales', 'Social Media', 'Content Creation']
+  // },
+  // {
+  //   id: 'real-estate',
+  //   title: 'Real Estate Promotions',
+  //   description: 'Digital marketing solutions for real estate agents and developers.',
+  //   icon: <FaBuilding />,
+  //   image: 'https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=600&h=400&fit=crop',
+  //   category: 'marketing',
+  //   features: ['Property Listings', 'Virtual Tours', 'Lead Generation', 'Open House Marketing']
+  // },
+  // {
+  //   id: 'devotional',
+  //   title: 'Devotional Promotions',
+  //   description: 'Respectful and engaging digital strategies for spiritual organizations.',
+  //   icon: <FaStar />,
+  //   image: 'https://images.unsplash.com/photo-1541872703-74c5e44368f9?w=600&h=400&fit=crop',
+  //   category: 'political',
+  //   features: ['Event Promotion', 'Devotional Content', 'Community Engagement']
+  // },
 ];
 
 const Services: React.FC = () => {
@@ -390,14 +384,14 @@ const Services: React.FC = () => {
                     </div>
                   )}
 
-                  <Button
+                  {/* <Button
                     variant="ghost"
                     size="sm"
                     className="w-full text-blue-600 hover:text-blue-700 group/btn"
                   >
-                    Learn More 
+                    Learn More
                     <FaArrowRight className="ml-2 text-xs group-hover/btn:translate-x-1 transition-transform duration-300" />
-                  </Button>
+                  </Button> */}
                 </div>
               </motion.div>
             ))}

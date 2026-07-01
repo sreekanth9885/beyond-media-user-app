@@ -65,7 +65,7 @@ const PoliticalCampaign: React.FC = () => {
       title: 'Booth Management',
       description: 'Comprehensive booth management ensuring maximum voter turnout and efficient polling operations.',
       icon: <FaBuilding />,
-      image: 'https://images.unsplash.com/photo-1589829540156-4478f750fcf4?w=600&h=400&fit=crop',
+      image: 'https://images.unsplash.com/photo-1582139329536-e7284fece509?w=600&h=400&fit=crop',
       features: ['Booth Setup', 'Volunteer Management', 'Voter Mobilization', 'Real-time Monitoring']
     },
     {
@@ -113,7 +113,7 @@ const PoliticalCampaign: React.FC = () => {
       title: 'Ground Campaign',
       description: 'Powerful on-ground operations including rallies, door-to-door, and community engagement.',
       icon: <FaUsersCog />,
-      image: 'https://images.unsplash.com/photo-1589829540156-4478f750fcf4?w=600&h=400&fit=crop',
+      image: 'https://images.unsplash.com/photo-1541872703-74c5e44368f9?w=600&h=400&fit=crop',
       features: ['Rally Planning', 'Door-to-Door', 'Community Events', 'Volunteer Coordination']
     },
     {
