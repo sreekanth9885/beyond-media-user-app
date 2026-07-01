@@ -8,7 +8,6 @@ import {
   FaHeart, 
   FaLightbulb, 
   FaCheckCircle,
-  FaStar,
   FaCrown,
   FaArrowRight,
   FaChartLine,
@@ -183,35 +182,35 @@ const WhyChooseUs: React.FC = () => {
     }
   ];
 
-  const testimonials: Testimonial[] = [
-    {
-      id: '1',
-      name: 'Rajesh Kumar',
-      position: 'CEO',
-      company: 'TechCorp Solutions',
-      quote: 'DigitalPro transformed our business completely. Their innovative approach and technical expertise are unmatched.',
-      rating: 5,
-      image: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&h=100&fit=crop'
-    },
-    {
-      id: '2',
-      name: 'Priya Sharma',
-      position: 'Marketing Director',
-      company: 'GrowthHub Inc.',
-      quote: 'The best decision we made was partnering with DigitalPro. Our digital presence has never been stronger.',
-      rating: 5,
-      image: 'https://images.unsplash.com/photo-1494790108372-be9c29b29330?w=100&h=100&fit=crop'
-    },
-    {
-      id: '3',
-      name: 'Amit Patel',
-      position: 'Campaign Manager',
-      company: 'Political Strategy Group',
-      quote: 'Their political campaign expertise is extraordinary. They helped us win by a significant margin.',
-      rating: 5,
-      image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop'
-    }
-  ];
+  // const testimonials: Testimonial[] = [
+  //   {
+  //     id: '1',
+  //     name: 'Rajesh Kumar',
+  //     position: 'CEO',
+  //     company: 'TechCorp Solutions',
+  //     quote: 'DigitalPro transformed our business completely. Their innovative approach and technical expertise are unmatched.',
+  //     rating: 5,
+  //     image: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&h=100&fit=crop'
+  //   },
+  //   {
+  //     id: '2',
+  //     name: 'Priya Sharma',
+  //     position: 'Marketing Director',
+  //     company: 'GrowthHub Inc.',
+  //     quote: 'The best decision we made was partnering with DigitalPro. Our digital presence has never been stronger.',
+  //     rating: 5,
+  //     image: 'https://images.unsplash.com/photo-1494790108372-be9c29b29330?w=100&h=100&fit=crop'
+  //   },
+  //   {
+  //     id: '3',
+  //     name: 'Amit Patel',
+  //     position: 'Campaign Manager',
+  //     company: 'Political Strategy Group',
+  //     quote: 'Their political campaign expertise is extraordinary. They helped us win by a significant margin.',
+  //     rating: 5,
+  //     image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop'
+  //   }
+  // ];
 
   // Animation variants
   const containerVariants: Variants = {
@@ -239,18 +238,18 @@ const WhyChooseUs: React.FC = () => {
     }
   };
 
-  const testimonialVariants: Variants = {
-    hidden: { opacity: 0, x: -30 },
-    visible: {
-      opacity: 1,
-      x: 0,
-      transition: { duration: 0.5, ease: "easeOut" }
-    },
-    hover: {
-      scale: 1.02,
-      transition: { duration: 0.3 }
-    }
-  };
+  // const testimonialVariants: Variants = {
+  //   hidden: { opacity: 0, x: -30 },
+  //   visible: {
+  //     opacity: 1,
+  //     x: 0,
+  //     transition: { duration: 0.5, ease: "easeOut" }
+  //   },
+  //   hover: {
+  //     scale: 1.02,
+  //     transition: { duration: 0.3 }
+  //   }
+  // };
 
   return (
     <section 

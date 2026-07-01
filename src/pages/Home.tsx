@@ -8,7 +8,7 @@ import Process from "../components/sections/Process";
 import WhyChooseUs from "../components/sections/WhyChooseUs";
 import Statistics from "../components/sections/Statistics";
 import Testimonials from "../components/sections/Testimonials";
-import FAQ from "../components/sections/FAQ";
+// import FAQ from "../components/sections/FAQ";
 import Contact from "../components/sections/Contact";
 
 const Home = () => {
@@ -24,7 +24,7 @@ const Home = () => {
       <WhyChooseUs />
       <Statistics />
       <Testimonials />
-      <FAQ />
+      {/* <FAQ /> */}
       <Contact />
     </main>
   );
