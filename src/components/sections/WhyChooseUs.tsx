@@ -346,7 +346,7 @@ const WhyChooseUs: React.FC = () => {
         </motion.div>
 
         {/* Testimonials */}
-        <motion.div
+        {/* <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -367,19 +367,16 @@ const WhyChooseUs: React.FC = () => {
                 viewport={{ once: true }}
                 className="bg-white/80 backdrop-blur-sm rounded-xl p-4 md:p-6 border border-blue-500/10 hover:border-blue-500/30 shadow-sm hover:shadow-blue transition-all duration-300"
               >
-                {/* Rating */}
                 <div className="flex text-blue-600 text-sm mb-3">
                   {[...Array(testimonial.rating)].map((_, i) => (
                     <FaStar key={i} />
                   ))}
                 </div>
 
-                {/* Quote */}
                 <p className="text-gray-600 text-sm leading-relaxed mb-4">
                   "{testimonial.quote}"
                 </p>
 
-                {/* Author */}
                 <div className="flex items-center gap-3">
                   <img
                     src={testimonial.image}
@@ -399,7 +396,7 @@ const WhyChooseUs: React.FC = () => {
               </motion.div>
             ))}
           </div>
-        </motion.div>
+        </motion.div> */}
 
         {/* CTA */}
         <motion.div
