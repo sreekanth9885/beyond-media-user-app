@@ -169,7 +169,7 @@ const Navbar: React.FC<NavbarProps> = ({ className = '' }) => {
                 className="flex items-center gap-2 sm:gap-3 cursor-pointer"
               >
                 {/* Logo Image - Mobile Optimized */}
-                <div className="bg-white/10 backdrop-blur-sm rounded-lg p-1.5 sm:p-2 shadow-purple-lg flex-shrink-0 w-9 h-9 sm:w-12 sm:h-12 flex items-center justify-center border border-white/10">
+                <div className="bg-white backdrop-blur-sm rounded-lg p-1.5 sm:p-2 shadow-purple-lg flex-shrink-0 w-9 h-9 sm:w-12 sm:h-12 flex items-center justify-center border border-white/10">
                   <img
                     src="/logo.svg"
                     alt="Beyond Media"
