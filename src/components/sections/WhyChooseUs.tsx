@@ -32,15 +32,15 @@ interface ValueProposition {
   };
 }
 
-interface Testimonial {
-  id: string;
-  name: string;
-  position: string;
-  company: string;
-  quote: string;
-  rating: number;
-  image: string;
-}
+// interface Testimonial {
+//   id: string;
+//   name: string;
+//   position: string;
+//   company: string;
+//   quote: string;
+//   rating: number;
+//   image: string;
+// }
 
 const WhyChooseUs: React.FC = () => {
   const valuePropositions: ValueProposition[] = [
