@@ -26,7 +26,6 @@ import {
   FaEnvelope
 } from 'react-icons/fa';
 import { Link as RouterLink, useLocation, useNavigate } from 'react-router-dom';
-import { Link as ScrollLink } from 'react-scroll';
 import Button from '../ui/Button';
 
 interface NavbarProps {
