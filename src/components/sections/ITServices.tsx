@@ -13,8 +13,6 @@ import {
   FaCog,
   FaCubes,
   FaGraduationCap,
-  FaUniversity,
-  FaUtensils,
   FaHospital,
   FaStore,
   FaFileInvoice,
