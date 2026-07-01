@@ -1,6 +1,6 @@
 // src/components/sections/Hero.tsx
 import React, { useState, useEffect } from 'react';
-import { motion, type Variants, AnimatePresence } from 'framer-motion';
+import { motion, type Variants } from 'framer-motion';
 import { 
   FaPlay, 
   FaChartLine, 
@@ -19,7 +19,7 @@ import Container from '../ui/Container';
 
 const Hero: React.FC = () => {
   const [currentWordIndex, setCurrentWordIndex] = useState(0);
-  const [isVisible, setIsVisible] = useState(true);
+  // const [isVisible, setIsVisible] = useState(true);
 
   const rotatingWords = [
     'Digital Marketing',
@@ -33,10 +33,10 @@ const Hero: React.FC = () => {
   // Rotate words every 3 seconds with fade effect
   useEffect(() => {
     const interval = setInterval(() => {
-      setIsVisible(false);
+      // setIsVisible(false);
       setTimeout(() => {
         setCurrentWordIndex((prev) => (prev + 1) % rotatingWords.length);
-        setIsVisible(true);
+        // setIsVisible(true);
       }, 300);
     }, 3000);
 
@@ -63,23 +63,23 @@ const Hero: React.FC = () => {
     }
   };
 
-  const floatingAnimation = {
-    y: [0, -10, 0],
-    transition: {
-      duration: 3,
-      repeat: Infinity,
-      ease: "easeInOut"
-    }
-  };
+  // const floatingAnimation = {
+  //   y: [0, -10, 0],
+  //   transition: {
+  //     duration: 3,
+  //     repeat: Infinity,
+  //     ease: "easeInOut"
+  //   }
+  // };
 
-  const pulseAnimation = {
-    scale: [1, 1.05, 1],
-    transition: {
-      duration: 2,
-      repeat: Infinity,
-      ease: "easeInOut"
-    }
-  };
+  // const pulseAnimation = {
+  //   scale: [1, 1.05, 1],
+  //   transition: {
+  //     duration: 2,
+  //     repeat: Infinity,
+  //     ease: "easeInOut"
+  //   }
+  // };
 
   const statsVariants: Variants = {
     hidden: { opacity: 0, scale: 0.8 },
