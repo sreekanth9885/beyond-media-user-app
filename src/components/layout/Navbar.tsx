@@ -139,8 +139,8 @@ const Navbar: React.FC<NavbarProps> = ({ className = '' }) => {
       transition={{ duration: 0.6, ease: "easeOut" }}
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         scrolled 
-        ? 'bg-white/95 backdrop-blur-glass shadow-glass border-b border-blue-500/20' 
-          : 'bg-transparent'
+        ? 'bg-purple-900 backdrop-blur-glass shadow-lg border-b border-white/10'
+        : 'bg-purple-900 backdrop-blur-glass border-b border-white/5'
       } ${className}`}
       role="navigation"
       aria-label="Main navigation"
@@ -157,7 +157,7 @@ const Navbar: React.FC<NavbarProps> = ({ className = '' }) => {
               className="flex items-center gap-2 sm:gap-3 cursor-pointer"
             >
               {/* Logo Image - Mobile Optimized */}
-              <div className="bg-white rounded-lg p-1.5 sm:p-2 shadow-blue-lg flex-shrink-0 w-9 h-9 sm:w-12 sm:h-12 flex items-center justify-center">
+              <div className="bg-white backdrop-blur-sm rounded-lg p-1.5 sm:p-2 shadow-purple-lg flex-shrink-0 w-9 h-9 sm:w-12 sm:h-12 flex items-center justify-center border border-white/10">
                 <img
                   src="/logo.svg"
                   alt="Beyond Media"
@@ -170,18 +170,18 @@ const Navbar: React.FC<NavbarProps> = ({ className = '' }) => {
 
               <div className="flex flex-col">
                 <span className="text-lg sm:text-2xl font-poppins font-bold leading-tight">
-                  <span className="text-gray-900">Beyond</span>
-                  <span className="text-yellow-500"> I</span>
-                  <span className="text-blue-600"> Media</span>
+                  <span className="text-white">Beyond</span>
+                  <span className="text-yellow-300"> I</span>
+                  <span className="text-purple-300"> Media</span>
                 </span>
-                <span className="hidden xs:block text-[8px] sm:text-[10px] tracking-[0.2em] sm:tracking-[0.25em] text-gray-400 uppercase leading-tight">
+                <span className="hidden xs:block text-[8px] sm:text-[10px] tracking-[0.2em] sm:tracking-[0.25em] text-purple-300/60 uppercase leading-tight">
                   Beyond Honest.. Beyond Limits
                 </span>
               </div>
             </RouterLink>
           </motion.div>
 
-          {/* Desktop Navigation - No Icons */}
+          {/* Desktop Navigation - Bright White Links */}
           <div className="hidden lg:flex items-center space-x-1">
             {navLinks.map((link) => (
               <div
@@ -193,8 +193,8 @@ const Navbar: React.FC<NavbarProps> = ({ className = '' }) => {
                 <RouterLink
                   to={link.path}
                   className={`flex items-center px-4 py-2 text-sm font-medium transition-colors duration-300 cursor-pointer group ${isActive(link.path)
-                      ? 'text-blue-600' 
-                      : 'text-gray-600 hover:text-blue-600'
+                      ? 'text-white'
+                      : 'text-white hover:text-white'
                     }`}
                 >
                   {link.name}
@@ -203,11 +203,11 @@ const Navbar: React.FC<NavbarProps> = ({ className = '' }) => {
                       showServicesDropdown ? 'rotate-180' : ''
                     }`} />
                   )}
-                  <span className={`absolute bottom-0 left-0 h-0.5 bg-gradient-to-r from-blue-600 to-blue-400 transition-all duration-300 ${isActive(link.path) ? 'w-full' : 'w-0 group-hover:w-full'
+                  <span className={`absolute bottom-0 left-0 h-0.5 bg-gradient-to-r from-purple-400 to-purple-300 transition-all duration-300 ${isActive(link.path) ? 'w-full' : 'w-0 group-hover:w-full'
                     }`}></span>
                 </RouterLink>
 
-                {/* Services Dropdown - No Icons */}
+                {/* Services Dropdown */}
                 {link.hasDropdown && (
                   <AnimatePresence>
                     {showServicesDropdown && (
@@ -216,14 +216,14 @@ const Navbar: React.FC<NavbarProps> = ({ className = '' }) => {
                         initial="hidden"
                         animate="visible"
                         exit="exit"
-                        className="absolute top-full left-0 mt-2 w-64 bg-white/95 backdrop-blur-glass rounded-xl shadow-blue-lg border border-blue-500/20 p-2"
+                        className="absolute top-full left-0 mt-2 w-64 bg-purple-900/95 backdrop-blur-glass rounded-xl shadow-2xl border border-white/10 p-2"
                       >
                         <div className="grid grid-cols-1 gap-0.5">
                           {serviceDropdownItems.map((item) => (
                             <button
                               key={item.id}
                               onClick={() => handleServiceClick(item.path)}
-                              className="flex items-center px-3 py-2 text-sm text-gray-600 hover:text-blue-600 hover:bg-blue-500/10 rounded-lg transition-all duration-300 text-left"
+                              className="flex items-center px-3 py-2 text-sm text-white hover:text-white hover:bg-white/10 rounded-lg transition-all duration-300 text-left"
                             >
                               {item.name}
                             </button>
@@ -239,7 +239,7 @@ const Navbar: React.FC<NavbarProps> = ({ className = '' }) => {
             <Button
               variant="primary"
               size="md"
-              className="ml-4"
+              className="ml-4 bg-gradient-to-r from-purple-500 to-purple-700 text-white hover:from-purple-600 hover:to-purple-800 shadow-purple-lg"
               onClick={() => navigate('/contact')}
             >
               Get Started
@@ -249,7 +249,7 @@ const Navbar: React.FC<NavbarProps> = ({ className = '' }) => {
           {/* Mobile Menu Button */}
           <button
             onClick={() => setIsOpen(!isOpen)}
-            className="lg:hidden text-gray-900 hover:text-blue-600 transition-colors duration-300 p-2"
+            className="lg:hidden text-white hover:text-purple-300 transition-colors duration-300 p-2"
             aria-label="Toggle menu"
             aria-expanded={isOpen}
           >
@@ -258,7 +258,7 @@ const Navbar: React.FC<NavbarProps> = ({ className = '' }) => {
         </div>
       </div>
 
-      {/* Mobile Menu - No Icons */}
+      {/* Mobile Menu - Bright White Links */}
       <AnimatePresence>
         {isOpen && (
           <motion.div
@@ -266,7 +266,7 @@ const Navbar: React.FC<NavbarProps> = ({ className = '' }) => {
             initial="hidden"
             animate="visible"
             exit="exit"
-            className="lg:hidden fixed inset-0 top-16 bg-white/98 backdrop-blur-glass overflow-y-auto"
+            className="lg:hidden fixed inset-0 top-16 bg-purple-900/98 backdrop-blur-glass overflow-y-auto"
           >
             <div className="container mx-auto px-4 py-6">
               <div className="flex flex-col space-y-2">
@@ -275,8 +275,8 @@ const Navbar: React.FC<NavbarProps> = ({ className = '' }) => {
                     key={link.name}
                     to={link.path}
                     className={`flex items-center px-4 py-3 rounded-lg transition-all duration-300 ${isActive(link.path)
-                        ? 'text-blue-600 bg-blue-500/10'
-                        : 'text-gray-600 hover:text-blue-600 hover:bg-blue-500/10'
+                        ? 'text-white bg-white/10'
+                        : 'text-white hover:text-white hover:bg-white/10'
                       }`}
                     onClick={handleLinkClick}
                   >
@@ -284,14 +284,14 @@ const Navbar: React.FC<NavbarProps> = ({ className = '' }) => {
                   </RouterLink>
                 ))}
 
-                <div className="pt-4 border-t border-blue-500/20">
-                  <h4 className="text-sm font-semibold text-blue-600 mb-3">Our Services</h4>
+                <div className="pt-4 border-t border-white/10">
+                  <h4 className="text-sm font-semibold text-purple-300 mb-3">Our Services</h4>
                   <div className="grid grid-cols-2 gap-2">
                     {serviceDropdownItems.map((item) => (
                       <button
                         key={item.id}
                         onClick={() => handleServiceClick(item.path)}
-                        className="flex items-center px-3 py-2 text-sm text-gray-600 hover:text-blue-600 hover:bg-blue-500/10 rounded-lg transition-all duration-300 text-left"
+                        className="flex items-center px-3 py-2 text-sm text-white hover:text-white hover:bg-white/10 rounded-lg transition-all duration-300 text-left"
                       >
                         {item.name}
                       </button>
@@ -303,7 +303,7 @@ const Navbar: React.FC<NavbarProps> = ({ className = '' }) => {
                   <Button
                     variant="primary"
                     size="lg"
-                    className="w-full"
+                    className="w-full bg-gradient-to-r from-purple-500 to-purple-700 text-white hover:from-purple-600 hover:to-purple-800 shadow-purple-lg"
                     onClick={() => {
                       navigate('/contact');
                       setIsOpen(false);
@@ -315,19 +315,19 @@ const Navbar: React.FC<NavbarProps> = ({ className = '' }) => {
 
                 {/* Social Icons in Mobile */}
                 <div className="flex justify-center gap-4 pt-6">
-                  <a href="#" className="text-gray-400 hover:text-blue-600 transition-colors duration-300" aria-label="Facebook">
+                  <a href="#" className="text-white hover:text-white transition-colors duration-300" aria-label="Facebook">
                     <FaFacebook size={20} />
                   </a>
-                  <a href="#" className="text-gray-400 hover:text-blue-600 transition-colors duration-300" aria-label="Twitter">
+                  <a href="#" className="text-white hover:text-white transition-colors duration-300" aria-label="Twitter">
                     <FaTwitter size={20} />
                   </a>
-                  <a href="#" className="text-gray-400 hover:text-blue-600 transition-colors duration-300" aria-label="LinkedIn">
+                  <a href="#" className="text-white hover:text-white transition-colors duration-300" aria-label="LinkedIn">
                     <FaLinkedin size={20} />
                   </a>
-                  <a href="#" className="text-gray-400 hover:text-blue-600 transition-colors duration-300" aria-label="Instagram">
+                  <a href="#" className="text-white hover:text-white transition-colors duration-300" aria-label="Instagram">
                     <FaInstagram size={20} />
                   </a>
-                  <a href="#" className="text-gray-400 hover:text-blue-600 transition-colors duration-300" aria-label="YouTube">
+                  <a href="#" className="text-white hover:text-white transition-colors duration-300" aria-label="YouTube">
                     <FaYoutube size={20} />
                   </a>
                 </div>

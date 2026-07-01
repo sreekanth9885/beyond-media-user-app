@@ -17,7 +17,7 @@ const FloatingCall: React.FC<FloatingCallProps> = ({
       whileHover={{ scale: 1.1 }}
       whileTap={{ scale: 0.9 }}
       href={`tel:${phoneNumber}`}
-      className="fixed bottom-40 right-6 z-40 p-3 bg-blue-600 rounded-full shadow-blue-lg hover:shadow-blue hover:bg-blue-700 transition-all duration-300"
+      className="fixed bottom-40 right-6 z-40 p-3 bg-gradient-to-r from-purple-500 to-purple-700 rounded-full shadow-lg hover:shadow-2xl hover:shadow-purple-500/30 hover:from-purple-600 hover:to-purple-800 transition-all duration-300"
       aria-label="Call us"
     >
       <FaPhone className="text-white text-2xl" />

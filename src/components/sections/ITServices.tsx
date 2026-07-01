@@ -46,7 +46,7 @@ const ITServices: React.FC = () => {
   ];
 
   const itServices: ITService[] = [
-  // ===== Web Development =====
+    // ===== Web Development =====
     {
       id: 'corporate-websites',
       title: 'Corporate Websites',
@@ -96,26 +96,6 @@ const ITServices: React.FC = () => {
       category: 'web',
       technologies: ['React', 'Node.js', 'MySQL', 'FHIR', 'HL7'],
       features: ['Patient Records', 'Appointment Scheduling', 'Billing', 'Telemedicine']
-    },
-    {
-      id: 'college-management',
-      title: 'College Management System',
-      description: 'End-to-end management solution for higher education institutions and universities.',
-      icon: <FaUniversity />,
-      image: 'https://images.unsplash.com/photo-1523050854058-8df90110c7f1?w=600&h=400&fit=crop',
-      category: 'web',
-      technologies: ['Angular', 'Python', 'Django', 'PostgreSQL', 'Docker'],
-      features: ['Admissions', 'Fee Management', 'Exam Scheduling', 'Alumni Network']
-    },
-    {
-      id: 'restaurant-pos',
-      title: 'Restaurant POS System',
-      description: 'Modern point-of-sale solutions for restaurants, cafes, and food service businesses.',
-      icon: <FaUtensils />,
-      image: 'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=600&h=400&fit=crop',
-      category: 'web',
-      technologies: ['React', 'Node.js', 'MongoDB', 'Socket.io', 'Stripe'],
-      features: ['Order Management', 'Inventory Tracking', 'Table Booking', 'Payment Integration']
     },
     {
       id: 'billing-software',
@@ -169,16 +149,6 @@ const ITServices: React.FC = () => {
       technologies: ['React Native', 'Redux', 'Node.js', 'Firebase', 'Expo'],
       features: ['Cross-Platform', 'Hot Reloading', 'Native Components', 'Code Sharing']
     },
-    {
-      id: 'flutter-apps',
-      title: 'Flutter App Development',
-      description: 'Beautiful, fast, and natively compiled applications using Google\'s Flutter framework.',
-      icon: <FaMobileAlt />,
-      image: 'https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=600&h=400&fit=crop',
-      category: 'app',
-      technologies: ['Dart', 'Flutter', 'Firebase', 'BLoC', 'GetX'],
-      features: ['Single Codebase', 'Hot Reload', 'Custom Widgets', 'Faster Development']
-    },
   ];
 
   const filteredServices = itServices.filter(s => s.category === activeCategory);
@@ -214,18 +184,28 @@ const ITServices: React.FC = () => {
   return (
     <section 
       id="it-services" 
-      className="py-16 md:py-20 lg:py-28 bg-gray-50 relative overflow-hidden"
+      className="py-16 md:py-20 lg:py-28 bg-purple-900 relative overflow-hidden"
       aria-label="IT services"
     >
       {/* Background Decorations */}
-      <div className="absolute top-0 right-0 w-96 h-96 bg-blue-600/5 rounded-full blur-3xl"></div>
-      <div className="absolute bottom-0 left-0 w-96 h-96 bg-blue-600/5 rounded-full blur-3xl"></div>
+      <div className="absolute top-0 right-0 w-64 h-64 bg-purple-400/10 rounded-full blur-3xl"></div>
+      <div className="absolute bottom-0 left-0 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl"></div>
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-purple-600/10 rounded-full blur-3xl"></div>
+      <div className="absolute top-20 left-20 w-72 h-72 bg-purple-500/10 rounded-full blur-3xl"></div>
+      <div className="absolute bottom-20 right-20 w-80 h-80 bg-purple-700/10 rounded-full blur-3xl"></div>
+
+      {/* Glowing orb decorations */}
+      <div className="absolute top-10 right-10 w-32 h-32 bg-purple-400/20 rounded-full blur-2xl animate-pulse"></div>
+      <div className="absolute bottom-10 left-10 w-40 h-40 bg-purple-500/20 rounded-full blur-2xl animate-pulse" style={{ animationDelay: '2s' }}></div>
 
       <Container>
         <SectionHeading
           badge="IT Services"
           title="Technology Solutions for Modern Business"
           subtitle="End-to-end web and app development solutions designed to transform your digital operations."
+          badgeClassName="bg-purple-500/20 text-purple-200 border-purple-400/30 backdrop-blur-sm"
+          titleClassName="text-white"
+          subtitleClassName="text-purple-200"
         />
 
         {/* Category Navigation */}
@@ -242,8 +222,8 @@ const ITServices: React.FC = () => {
               onClick={() => setActiveCategory(category.id)}
               className={`flex items-center gap-2 px-4 md:px-6 py-2 md:py-3 rounded-lg text-sm md:text-base font-medium transition-all duration-300 ${
                 activeCategory === category.id
-                ? 'bg-blue-600 text-white shadow-blue'
-                : 'bg-white text-gray-600 hover:text-blue-600 hover:bg-blue-50 border border-gray-200 hover:border-blue-300'
+                ? 'bg-gradient-to-r from-purple-500 to-purple-700 text-white shadow-2xl shadow-purple-500/30'
+                : 'bg-white/10 backdrop-blur-sm text-purple-200 hover:text-white hover:bg-white/20 border border-white/10 hover:border-purple-400/50'
               }`}
               aria-label={`View ${category.label}`}
               aria-pressed={activeCategory === category.id}
@@ -269,7 +249,7 @@ const ITServices: React.FC = () => {
                 key={service.id}
                 variants={cardVariants}
                 whileHover="hover"
-                className="group bg-white rounded-xl overflow-hidden border border-gray-200 hover:border-blue-300 shadow-sm hover:shadow-blue transition-all duration-300"
+                className="group bg-white/10 backdrop-blur-sm rounded-xl overflow-hidden border border-white/10 hover:border-purple-400/50 shadow-lg hover:shadow-2xl hover:shadow-purple-500/20 transition-all duration-300 hover:bg-white/20"
               >
                 {/* Image */}
                 <div className="relative h-48 overflow-hidden">
@@ -281,10 +261,10 @@ const ITServices: React.FC = () => {
                     className="w-full h-full object-cover"
                     loading="lazy"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-gray-900/60 via-gray-900/20 to-transparent"></div>
+                  <div className="absolute inset-0 bg-gradient-to-t from-purple-900/80 via-purple-900/30 to-transparent"></div>
                   
                   {/* Tech Stack Badge */}
-                  <div className="absolute top-3 right-3 bg-white/95 backdrop-blur-sm px-2.5 py-1 rounded-lg text-xs font-medium text-blue-600 border border-blue-200 shadow-sm flex items-center gap-1">
+                  <div className="absolute top-3 right-3 bg-purple-500/30 backdrop-blur-sm px-2.5 py-1 rounded-lg text-xs font-medium text-purple-200 border border-purple-400/30 shadow-sm flex items-center gap-1">
                     <FaCode className="text-[10px]" />
                     {service.technologies.slice(0, 3).join(', ')}
                     {service.technologies.length > 3 && ' +'}
@@ -294,15 +274,15 @@ const ITServices: React.FC = () => {
                 {/* Content */}
                 <div className="p-4 md:p-5">
                   <div className="flex items-start gap-3 mb-3">
-                    <div className="text-blue-600 text-xl md:text-2xl group-hover:scale-110 transition-transform duration-300">
+                    <div className="text-purple-300 text-xl md:text-2xl group-hover:scale-110 group-hover:text-purple-200 transition-all duration-300">
                       {service.icon}
                     </div>
-                    <h3 className="text-gray-900 font-poppins font-semibold text-base md:text-lg group-hover:text-blue-600 transition-colors duration-300 line-clamp-2">
+                    <h3 className="text-white font-poppins font-semibold text-base md:text-lg group-hover:text-purple-200 transition-colors duration-300 line-clamp-2">
                       {service.title}
                     </h3>
                   </div>
 
-                  <p className="text-gray-500 text-sm leading-relaxed mb-4 line-clamp-3">
+                  <p className="text-purple-200/80 text-sm leading-relaxed mb-4 line-clamp-3">
                     {service.description}
                   </p>
 
@@ -311,13 +291,13 @@ const ITServices: React.FC = () => {
                     {service.features.slice(0, 3).map((feature, index) => (
                       <span 
                         key={index}
-                        className="text-[10px] px-2 py-1 bg-blue-50 text-blue-600 rounded border border-blue-100"
+                        className="text-[10px] px-2 py-1 bg-purple-500/20 text-purple-200 rounded border border-purple-400/20"
                       >
                         {feature}
                       </span>
                     ))}
                     {service.features.length > 3 && (
-                      <span className="text-[10px] px-2 py-1 bg-gray-50 text-gray-500 rounded border border-gray-200">
+                      <span className="text-[10px] px-2 py-1 bg-white/5 text-purple-300 rounded border border-white/10">
                         +{service.features.length - 3}
                       </span>
                     )}
@@ -328,13 +308,13 @@ const ITServices: React.FC = () => {
                     {service.technologies.slice(0, 4).map((tech, index) => (
                       <span 
                         key={index}
-                        className="text-[9px] px-2 py-0.5 bg-gray-50 text-gray-500 rounded border border-gray-200"
+                        className="text-[9px] px-2 py-0.5 bg-white/5 text-purple-300 rounded border border-white/10"
                       >
                         {tech}
                       </span>
                     ))}
                     {service.technologies.length > 4 && (
-                      <span className="text-[9px] px-2 py-0.5 bg-gray-50 text-gray-500 rounded border border-gray-200">
+                      <span className="text-[9px] px-2 py-0.5 bg-white/5 text-purple-300 rounded border border-white/10">
                         +{service.technologies.length - 4}
                       </span>
                     )}
@@ -343,7 +323,7 @@ const ITServices: React.FC = () => {
                   <Button
                     variant="ghost"
                     size="sm"
-                    className="w-full text-blue-600 hover:text-blue-700 group/btn"
+                    className="w-full text-purple-300 hover:text-purple-200 group/btn"
                   >
                     Learn More 
                     <FaArrowRight className="ml-2 text-xs group-hover/btn:translate-x-1 transition-transform duration-300" />
@@ -363,14 +343,14 @@ const ITServices: React.FC = () => {
             transition={{ duration: 0.5, delay: 0.3 }}
             className="mt-8 md:mt-12 text-center"
           >
-            <div className="inline-block bg-white/80 backdrop-blur-sm px-6 md:px-8 py-4 md:py-6 rounded-xl border border-blue-500/10 shadow-sm">
-              <div className="text-blue-600 text-3xl md:text-4xl mb-2">
+            <div className="inline-block bg-white/10 backdrop-blur-sm px-6 md:px-8 py-4 md:py-6 rounded-xl border border-white/10 shadow-lg">
+              <div className="text-purple-300 text-3xl md:text-4xl mb-2">
                 {selectedCategory.icon}
               </div>
-              <h3 className="text-gray-900 font-poppins font-semibold text-xl md:text-2xl mb-2">
+              <h3 className="text-white font-poppins font-semibold text-xl md:text-2xl mb-2">
                 {selectedCategory.label}
               </h3>
-              <p className="text-gray-500 text-sm md:text-base max-w-2xl mx-auto">
+              <p className="text-purple-200 text-sm md:text-base max-w-2xl mx-auto">
                 Explore our comprehensive {selectedCategory.label.toLowerCase()} solutions 
                 designed to meet your specific business needs.
               </p>
@@ -386,20 +366,20 @@ const ITServices: React.FC = () => {
           transition={{ duration: 0.5, delay: 0.5 }}
           className="mt-8 md:mt-12 flex flex-wrap items-center justify-center gap-4 md:gap-8"
         >
-          <div className="flex items-center gap-2 text-gray-500 text-sm">
-            <FaShieldAlt className="text-blue-600" />
+          <div className="flex items-center gap-2 text-purple-300 text-sm">
+            <FaShieldAlt className="text-purple-400" />
             <span>100% Secure</span>
           </div>
-          <div className="flex items-center gap-2 text-gray-500 text-sm">
-            <FaCheckCircle className="text-blue-600" />
+          <div className="flex items-center gap-2 text-purple-300 text-sm">
+            <FaCheckCircle className="text-purple-400" />
             <span>Quality Assured</span>
           </div>
-          <div className="flex items-center gap-2 text-gray-500 text-sm">
-            <FaSync className="text-blue-600" />
+          <div className="flex items-center gap-2 text-purple-300 text-sm">
+            <FaSync className="text-purple-400" />
             <span>Agile Development</span>
           </div>
-          <div className="flex items-center gap-2 text-gray-500 text-sm">
-            <FaLock className="text-blue-600" />
+          <div className="flex items-center gap-2 text-purple-300 text-sm">
+            <FaLock className="text-purple-400" />
             <span>Data Privacy</span>
           </div>
         </motion.div>
@@ -412,16 +392,16 @@ const ITServices: React.FC = () => {
           transition={{ duration: 0.5, delay: 0.6 }}
           className="mt-6 md:mt-8 text-center"
         >
-          <p className="text-xs text-gray-400 mb-3">Technologies We Work With</p>
+          <p className="text-xs text-purple-300 mb-3">Technologies We Work With</p>
           <div className="flex flex-wrap items-center justify-center gap-3 md:gap-4">
-            <span className="px-3 py-1 bg-white rounded-full text-xs text-gray-600 border border-gray-200 shadow-sm">React</span>
-            <span className="px-3 py-1 bg-white rounded-full text-xs text-gray-600 border border-gray-200 shadow-sm">Node.js</span>
-            <span className="px-3 py-1 bg-white rounded-full text-xs text-gray-600 border border-gray-200 shadow-sm">Python</span>
-            <span className="px-3 py-1 bg-white rounded-full text-xs text-gray-600 border border-gray-200 shadow-sm">React Native</span>
-            <span className="px-3 py-1 bg-white rounded-full text-xs text-gray-600 border border-gray-200 shadow-sm">Flutter</span>
-            <span className="px-3 py-1 bg-white rounded-full text-xs text-gray-600 border border-gray-200 shadow-sm">Swift</span>
-            <span className="px-3 py-1 bg-white rounded-full text-xs text-gray-600 border border-gray-200 shadow-sm">Kotlin</span>
-            <span className="px-3 py-1 bg-white rounded-full text-xs text-gray-600 border border-gray-200 shadow-sm">Docker</span>
+            <span className="px-3 py-1 bg-purple-500/20 backdrop-blur-sm rounded-full text-xs text-purple-200 border border-purple-400/30 shadow-sm">React</span>
+            <span className="px-3 py-1 bg-purple-500/20 backdrop-blur-sm rounded-full text-xs text-purple-200 border border-purple-400/30 shadow-sm">Node.js</span>
+            <span className="px-3 py-1 bg-purple-500/20 backdrop-blur-sm rounded-full text-xs text-purple-200 border border-purple-400/30 shadow-sm">Python</span>
+            <span className="px-3 py-1 bg-purple-500/20 backdrop-blur-sm rounded-full text-xs text-purple-200 border border-purple-400/30 shadow-sm">React Native</span>
+            <span className="px-3 py-1 bg-purple-500/20 backdrop-blur-sm rounded-full text-xs text-purple-200 border border-purple-400/30 shadow-sm">Flutter</span>
+            <span className="px-3 py-1 bg-purple-500/20 backdrop-blur-sm rounded-full text-xs text-purple-200 border border-purple-400/30 shadow-sm">Swift</span>
+            <span className="px-3 py-1 bg-purple-500/20 backdrop-blur-sm rounded-full text-xs text-purple-200 border border-purple-400/30 shadow-sm">Kotlin</span>
+            <span className="px-3 py-1 bg-purple-500/20 backdrop-blur-sm rounded-full text-xs text-purple-200 border border-purple-400/30 shadow-sm">Docker</span>
           </div>
         </motion.div>
       </Container>

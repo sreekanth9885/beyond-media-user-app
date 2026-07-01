@@ -1,29 +1,36 @@
 // src/components/ui/SectionHeading.tsx
 import React from 'react';
 import { motion } from 'framer-motion';
-import type { SectionHeadingProps } from '../../types';
 
-const SectionHeading: React.FC<SectionHeadingProps> = ({ 
-  badge, 
-  title, 
-  subtitle, 
+interface SectionHeadingProps {
+  badge?: string;
+  title: string;
+  subtitle?: string;
+  centered?: boolean;
+  className?: string;
+  badgeClassName?: string;
+  titleClassName?: string;
+  subtitleClassName?: string;
+}
+
+const SectionHeading: React.FC<SectionHeadingProps> = ({
+  badge,
+  title,
+  subtitle,
+  centered = true,
   className = '',
-  centered = true 
+  badgeClassName = '',
+  titleClassName = '',
+  subtitleClassName = '',
 }) => {
-  // Split title to highlight last word with gold color
-  const words: string[] = title.split(' ');
-  const lastWord: string = words.pop() || '';
-  const restOfTitle: string = words.join(' ');
-
   return (
     <div className={`${centered ? 'text-center' : 'text-left'} ${className}`}>
       {badge && (
         <motion.span
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 10 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
-          className="inline-block px-4 py-1.5 mb-4 text-xs font-semibold tracking-widest uppercase bg-blue-500/10 text-blue-600 rounded-full border border-blue-500/20"
+          className={`inline-block px-4 py-1.5 rounded-full text-xs font-semibold uppercase tracking-wider bg-purple-500/20 text-purple-200 border border-purple-400/30 backdrop-blur-sm mb-4 ${badgeClassName}`}
         >
           {badge}
         </motion.span>
@@ -33,11 +40,10 @@ const SectionHeading: React.FC<SectionHeadingProps> = ({
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
-        transition={{ duration: 0.6, delay: 0.1 }}
-        className="font-poppins text-3xl md:text-4xl lg:text-5xl font-bold mb-4"
+        transition={{ delay: 0.1 }}
+        className={`text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4 ${titleClassName}`}
       >
-        {restOfTitle && <span className="text-gray-900">{restOfTitle} </span>}
-        <span className="text-blue-600">{lastWord}</span>
+        {title}
       </motion.h2>
       
       {subtitle && (
@@ -45,8 +51,8 @@ const SectionHeading: React.FC<SectionHeadingProps> = ({
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.2 }}
-          className="text-gray-400 text-lg max-w-3xl mx-auto"
+          transition={{ delay: 0.2 }}
+          className={`text-base md:text-lg text-purple-200 max-w-2xl ${centered ? 'mx-auto' : ''} ${subtitleClassName}`}
         >
           {subtitle}
         </motion.p>

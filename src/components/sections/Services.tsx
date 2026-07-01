@@ -65,15 +65,6 @@ const servicesData: ServiceItem[] = [
     category: 'marketing',
     features: ['Keyword Research', 'Thumbnail Optimization', 'Ranking', 'Channel Growth']
   },
-  // {
-  //   id: 'content-marketing',
-  //   title: 'Content Marketing',
-  //   description: 'Create compelling content that engages your audience and drives conversions.',
-  //   icon: <FaEnvelope />,
-  //   image: 'https://images.unsplash.com/photo-1432889490241-7f0332774d30?w=600&h=400&fit=crop',
-  //   category: 'marketing',
-  //   features: ['Blog Posts', 'White Papers', 'Case Studies', 'Newsletters']
-  // },
 
   // Political Services
   {
@@ -172,53 +163,6 @@ const servicesData: ServiceItem[] = [
     category: 'media',
     features: ['Color Grading', 'Sound Design', 'Motion Graphics', 'Visual Effects']
   },
-
-  // Industry-Specific
-  // {
-  //   id: 'healthcare',
-  //   title: 'Healthcare Promotions',
-  //   description: 'Specialized digital marketing for healthcare providers and organizations.',
-  //   icon: <FaHeartbeat />,
-  //   image: 'https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=600&h=400&fit=crop',
-  //   category: 'marketing',
-  //   features: ['Patient Acquisition', 'Healthcare SEO', 'Medical Branding', 'Compliance']
-  // },
-  // {
-  //   id: 'education',
-  //   title: 'Educational Promotions',
-  //   description: 'Digital strategies that connect students with educational opportunities.',
-  //   icon: <FaUniversity />,
-  //   image: 'https://images.unsplash.com/photo-1509062522246-3755977927d7?w=600&h=400&fit=crop',
-  //   category: 'marketing',
-  //   features: ['Student Recruitment', 'Online Learning', 'School Branding', 'Admissions']
-  // },
-  // {
-  //   id: 'entertainment',
-  //   title: 'Entertainment Promotions',
-  //   description: 'Creative marketing campaigns for entertainment and media brands.',
-  //   icon: <FaTv />,
-  //   image: 'https://images.unsplash.com/photo-1536240478700-b869070f9279?w=600&h=400&fit=crop',
-  //   category: 'marketing',
-  //   features: ['Event Marketing', 'Ticket Sales', 'Social Media', 'Content Creation']
-  // },
-  // {
-  //   id: 'real-estate',
-  //   title: 'Real Estate Promotions',
-  //   description: 'Digital marketing solutions for real estate agents and developers.',
-  //   icon: <FaBuilding />,
-  //   image: 'https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=600&h=400&fit=crop',
-  //   category: 'marketing',
-  //   features: ['Property Listings', 'Virtual Tours', 'Lead Generation', 'Open House Marketing']
-  // },
-  // {
-  //   id: 'devotional',
-  //   title: 'Devotional Promotions',
-  //   description: 'Respectful and engaging digital strategies for spiritual organizations.',
-  //   icon: <FaStar />,
-  //   image: 'https://images.unsplash.com/photo-1541872703-74c5e44368f9?w=600&h=400&fit=crop',
-  //   category: 'political',
-  //   features: ['Event Promotion', 'Devotional Content', 'Community Engagement']
-  // },
 ];
 
 const Services: React.FC = () => {
@@ -276,14 +220,28 @@ const Services: React.FC = () => {
   return (
     <section 
       id="services" 
-      className="py-16 md:py-20 lg:py-28 bg-gray-50"
+      className="py-16 md:py-20 lg:py-28 bg-purple-900 relative overflow-hidden"
       aria-label="Our services"
     >
+      {/* Background Decoration */}
+      <div className="absolute top-0 right-0 w-64 h-64 bg-purple-400/10 rounded-full blur-3xl"></div>
+      <div className="absolute bottom-0 left-0 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl"></div>
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-purple-600/10 rounded-full blur-3xl"></div>
+      <div className="absolute top-20 left-20 w-72 h-72 bg-purple-500/10 rounded-full blur-3xl"></div>
+      <div className="absolute bottom-20 right-20 w-80 h-80 bg-purple-700/10 rounded-full blur-3xl"></div>
+
+      {/* Glowing orb decorations */}
+      <div className="absolute top-10 right-10 w-32 h-32 bg-purple-400/20 rounded-full blur-2xl animate-pulse"></div>
+      <div className="absolute bottom-10 left-10 w-40 h-40 bg-purple-500/20 rounded-full blur-2xl animate-pulse" style={{ animationDelay: '2s' }}></div>
+
       <Container>
         <SectionHeading
           badge="Our Services"
           title="What We Do Best"
           subtitle="From strategy to execution, we provide comprehensive digital solutions that drive real results."
+          badgeClassName="bg-purple-500/20 text-purple-200 border-purple-400/30 backdrop-blur-sm"
+          titleClassName="text-white"
+          subtitleClassName="text-purple-200"
         />
 
         {/* Category Filters */}
@@ -303,8 +261,8 @@ const Services: React.FC = () => {
               }}
               className={`flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium transition-all duration-300 ${
                 activeCategory === category.id
-                ? 'bg-blue-600 text-white shadow-blue'
-                : 'bg-white text-gray-600 hover:text-blue-600 hover:bg-blue-50 border border-gray-200 hover:border-blue-300'
+                ? 'bg-gradient-to-r from-purple-500 to-purple-700 text-white shadow-2xl shadow-purple-500/30'
+                : 'bg-white/10 backdrop-blur-sm text-purple-200 hover:text-white hover:bg-white/20 border border-white/10 hover:border-purple-400/50'
               }`}
               aria-label={`Filter ${category.label}`}
               aria-pressed={activeCategory === category.id}
@@ -329,7 +287,7 @@ const Services: React.FC = () => {
                 key={service.id}
                 variants={cardVariants}
                 whileHover="hover"
-                className="group relative bg-white rounded-xl overflow-hidden border border-gray-200 hover:border-blue-300 shadow-sm hover:shadow-blue transition-all duration-300"
+                className="group relative bg-white/10 backdrop-blur-sm rounded-xl overflow-hidden border border-white/10 hover:border-purple-400/50 shadow-lg hover:shadow-2xl hover:shadow-purple-500/20 transition-all duration-300 hover:bg-white/20"
               >
                 {/* Service Image */}
                 <div className="relative h-48 overflow-hidden">
@@ -341,10 +299,10 @@ const Services: React.FC = () => {
                     className="w-full h-full object-cover"
                     loading="lazy"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-gray-900/60 via-gray-900/20 to-transparent"></div>
+                  <div className="absolute inset-0 bg-gradient-to-t from-purple-900/80 via-purple-900/30 to-transparent"></div>
                   
                   {/* Category Badge */}
-                  <div className="absolute top-3 right-3 bg-white/95 backdrop-blur-sm px-2.5 py-1 rounded-lg text-xs font-medium text-blue-600 border border-blue-200 shadow-sm flex items-center gap-1">
+                  <div className="absolute top-3 right-3 bg-purple-500/30 backdrop-blur-sm px-2.5 py-1 rounded-lg text-xs font-medium text-purple-200 border border-purple-400/30 shadow-sm flex items-center gap-1">
                     <FaTag className="text-[10px]" />
                     {categories.find(c => c.id === service.category)?.label}
                   </div>
@@ -353,15 +311,15 @@ const Services: React.FC = () => {
                 {/* Service Content */}
                 <div className="p-4 md:p-5">
                   <div className="flex items-start gap-3 mb-3">
-                    <div className="text-blue-600 text-xl md:text-2xl group-hover:scale-110 transition-transform duration-300">
+                    <div className="text-purple-300 text-xl md:text-2xl group-hover:scale-110 group-hover:text-purple-200 transition-all duration-300">
                       {service.icon}
                     </div>
-                    <h3 className="text-gray-900 font-poppins font-semibold text-base md:text-lg group-hover:text-blue-600 transition-colors duration-300 line-clamp-2">
+                    <h3 className="text-white font-poppins font-semibold text-base md:text-lg group-hover:text-purple-200 transition-colors duration-300 line-clamp-2">
                       {service.title}
                     </h3>
                   </div>
 
-                  <p className="text-gray-500 text-sm leading-relaxed mb-4 line-clamp-2">
+                  <p className="text-purple-200/80 text-sm leading-relaxed mb-4 line-clamp-2">
                     {service.description}
                   </p>
 
@@ -371,27 +329,18 @@ const Services: React.FC = () => {
                       {service.features.slice(0, 3).map((feature, index) => (
                         <span 
                           key={index}
-                          className="text-[10px] px-2 py-1 bg-blue-50 text-blue-600 rounded border border-blue-100"
+                          className="text-[10px] px-2 py-1 bg-purple-500/20 text-purple-200 rounded border border-purple-400/20"
                         >
                           {feature}
                         </span>
                       ))}
                       {service.features.length > 3 && (
-                        <span className="text-[10px] px-2 py-1 bg-gray-50 text-gray-500 rounded border border-gray-200">
+                        <span className="text-[10px] px-2 py-1 bg-white/5 text-purple-300 rounded border border-white/10">
                           +{service.features.length - 3} more
                         </span>
                       )}
                     </div>
                   )}
-
-                  {/* <Button
-                    variant="ghost"
-                    size="sm"
-                    className="w-full text-blue-600 hover:text-blue-700 group/btn"
-                  >
-                    Learn More
-                    <FaArrowRight className="ml-2 text-xs group-hover/btn:translate-x-1 transition-transform duration-300" />
-                  </Button> */}
                 </div>
               </motion.div>
             ))}
@@ -411,7 +360,7 @@ const Services: React.FC = () => {
               variant="outline"
               size="lg"
               onClick={handleLoadMore}
-              className="min-w-[200px]"
+              className="min-w-[200px] border-purple-400/50 text-purple-200 hover:bg-purple-500/20 hover:border-purple-400 transition-all duration-300"
             >
               Load More Services
             </Button>
@@ -424,7 +373,7 @@ const Services: React.FC = () => {
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5, delay: 0.5 }}
-          className="text-center mt-4 text-sm text-gray-500"
+          className="text-center mt-4 text-sm text-purple-300"
         >
           Showing {displayedServices.length} of {filteredServices.length} services
         </motion.div>

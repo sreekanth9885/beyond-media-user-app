@@ -49,7 +49,7 @@ const Statistics: React.FC = () => {
       value: 500,
       suffix: '+',
       icon: <FaProjectDiagram />,
-      color: 'from-blue-500 to-blue-600',
+      color: 'from-purple-400 to-purple-600',
       description: 'Across 15+ industries'
     },
     {
@@ -58,7 +58,7 @@ const Statistics: React.FC = () => {
       value: 200,
       suffix: '+',
       icon: <FaUsers />,
-      color: 'from-green-500 to-green-600',
+      color: 'from-purple-500 to-purple-700',
       description: '98% satisfaction rate'
     },
     {
@@ -67,7 +67,7 @@ const Statistics: React.FC = () => {
       value: 150,
       suffix: '+',
       icon: <FaBullhorn />,
-      color: 'from-yellow-500 to-yellow-600',
+      color: 'from-purple-400 to-purple-600',
       description: 'Political & marketing'
     },
     {
@@ -77,7 +77,7 @@ const Statistics: React.FC = () => {
       prefix: '$',
       suffix: 'M+',
       icon: <FaDollarSign />,
-      color: 'from-purple-500 to-purple-600',
+      color: 'from-purple-500 to-purple-700',
       description: 'For our clients'
     },
     {
@@ -86,7 +86,7 @@ const Statistics: React.FC = () => {
       value: 10,
       suffix: '+',
       icon: <FaClock />,
-      color: 'from-red-500 to-red-600',
+      color: 'from-purple-400 to-purple-600',
       description: 'Industry expertise'
     },
     {
@@ -95,7 +95,7 @@ const Statistics: React.FC = () => {
       value: 50,
       suffix: '+',
       icon: <FaUserTie />,
-      color: 'from-pink-500 to-pink-600',
+      color: 'from-purple-500 to-purple-700',
       description: 'Experts & specialists'
     },
     {
@@ -104,7 +104,7 @@ const Statistics: React.FC = () => {
       value: 50,
       suffix: '+',
       icon: <FaTrophy />,
-      color: 'from-amber-500 to-amber-600',
+      color: 'from-purple-400 to-purple-600',
       description: 'Industry recognition'
     },
     {
@@ -113,7 +113,7 @@ const Statistics: React.FC = () => {
       value: 98,
       suffix: '%',
       icon: <FaStar />,
-      color: 'from-indigo-500 to-indigo-600',
+      color: 'from-purple-500 to-purple-700',
       description: 'Excellence in service'
     }
   ];
@@ -124,28 +124,28 @@ const Statistics: React.FC = () => {
       label: 'Countries Served',
       value: '50+',
       icon: <FaGlobe />,
-      color: 'from-cyan-500 to-cyan-600'
+      color: 'from-purple-400 to-purple-600'
     },
     {
       id: '2',
       label: 'Partners Worldwide',
       value: '500+',
       icon: <FaHandshake />,
-      color: 'from-teal-500 to-teal-600'
+      color: 'from-purple-500 to-purple-700'
     },
     {
       id: '3',
       label: 'Industry Leaders',
       value: '100+',
       icon: <FaBuilding />,
-      color: 'from-violet-500 to-violet-600'
+      color: 'from-purple-400 to-purple-600'
     },
     {
       id: '4',
       label: 'Digital Transformations',
       value: '300+',
       icon: <FaRocket />,
-      color: 'from-orange-500 to-orange-600'
+      color: 'from-purple-500 to-purple-700'
     }
   ];
 
@@ -224,45 +224,28 @@ const Statistics: React.FC = () => {
     <section 
       id="statistics" 
       ref={sectionRef}
-      className="py-16 md:py-20 lg:py-28 bg-gray-50 relative overflow-hidden"
+      className="py-16 md:py-20 lg:py-28 bg-purple-900 relative overflow-hidden"
       aria-label="Our statistics"
     >
       {/* Background Decorations */}
-      <div className="absolute top-0 right-0 w-96 h-96 bg-blue-600/5 rounded-full blur-3xl"></div>
-      <div className="absolute bottom-0 left-0 w-96 h-96 bg-blue-600/5 rounded-full blur-3xl"></div>
+      <div className="absolute top-0 right-0 w-64 h-64 bg-purple-400/10 rounded-full blur-3xl"></div>
+      <div className="absolute bottom-0 left-0 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl"></div>
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-purple-600/10 rounded-full blur-3xl"></div>
+      <div className="absolute top-20 left-20 w-72 h-72 bg-purple-500/10 rounded-full blur-3xl"></div>
+      <div className="absolute bottom-20 right-20 w-80 h-80 bg-purple-700/10 rounded-full blur-3xl"></div>
       
-      {/* Animated Background Elements */}
-      <motion.div
-        animate={{
-          scale: [1, 1.2, 1],
-          opacity: [0.3, 0.6, 0.3],
-        }}
-        transition={{
-          duration: 8,
-          repeat: Infinity,
-          ease: "easeInOut"
-        }}
-        className="absolute top-1/4 left-1/4 w-64 h-64 bg-blue-600/10 rounded-full blur-3xl"
-      />
-      <motion.div
-        animate={{
-          scale: [1.2, 1, 1.2],
-          opacity: [0.3, 0.6, 0.3],
-        }}
-        transition={{
-          duration: 10,
-          repeat: Infinity,
-          ease: "easeInOut",
-          delay: 1
-        }}
-        className="absolute bottom-1/4 right-1/4 w-64 h-64 bg-blue-600/10 rounded-full blur-3xl"
-      />
+      {/* Glowing orb decorations */}
+      <div className="absolute top-10 right-10 w-32 h-32 bg-purple-400/20 rounded-full blur-2xl animate-pulse"></div>
+      <div className="absolute bottom-10 left-10 w-40 h-40 bg-purple-500/20 rounded-full blur-2xl animate-pulse" style={{ animationDelay: '2s' }}></div>
 
       <Container>
         <SectionHeading
           badge="Our Impact"
           title="Numbers That Speak Volumes"
           subtitle="Our track record of success is reflected in the metrics that matter most to our clients."
+          badgeClassName="bg-purple-500/20 text-purple-200 border-purple-400/30 backdrop-blur-sm"
+          titleClassName="text-white"
+          subtitleClassName="text-purple-200"
         />
 
         {/* Main Statistics Grid */}
@@ -277,28 +260,28 @@ const Statistics: React.FC = () => {
               key={stat.id}
               variants={itemVariants}
               whileHover={{ y: -8, scale: 1.02 }}
-              className="group bg-white/80 backdrop-blur-sm rounded-xl p-4 md:p-6 border border-blue-500/10 hover:border-blue-500/30 shadow-sm hover:shadow-blue transition-all duration-300 text-center"
+              className="group bg-white/10 backdrop-blur-sm rounded-xl p-4 md:p-6 border border-white/10 hover:border-purple-400/50 shadow-lg hover:shadow-2xl hover:shadow-purple-500/20 transition-all duration-300 text-center hover:bg-white/20"
             >
               {/* Icon */}
-              <div className={`w-12 h-12 mx-auto rounded-lg bg-gradient-to-r ${stat.color} flex items-center justify-center text-white text-xl mb-3 group-hover:scale-110 transition-transform duration-300`}>
+              <div className={`w-12 h-12 mx-auto rounded-lg bg-gradient-to-r ${stat.color} flex items-center justify-center text-white text-xl mb-3 group-hover:scale-110 transition-transform duration-300 shadow-lg`}>
                 {stat.icon}
               </div>
 
               {/* Value */}
-              <div className="text-gray-900 font-poppins font-bold text-2xl md:text-3xl lg:text-4xl mb-1">
+              <div className="text-white font-poppins font-bold text-2xl md:text-3xl lg:text-4xl mb-1">
                 {stat.prefix || ''}
                 {counts[stat.id] !== undefined ? counts[stat.id].toLocaleString() : '0'}
                 {stat.suffix || ''}
               </div>
 
               {/* Label */}
-              <div className="text-gray-600 font-medium text-sm md:text-base">
+              <div className="text-purple-200 font-medium text-sm md:text-base">
                 {stat.label}
               </div>
 
               {/* Description */}
               {stat.description && (
-                <div className="text-gray-400 text-xs mt-1">
+                <div className="text-purple-300/60 text-xs mt-1">
                   {stat.description}
                 </div>
               )}
@@ -320,16 +303,16 @@ const Statistics: React.FC = () => {
               initial="hidden"
               animate={isInView ? "visible" : "hidden"}
               whileHover="hover"
-              className="flex items-center gap-3 bg-white/80 backdrop-blur-sm rounded-lg p-3 md:p-4 border border-blue-500/10 hover:border-blue-500/30 shadow-sm hover:shadow-blue transition-all duration-300"
+              className="flex items-center gap-3 bg-white/10 backdrop-blur-sm rounded-lg p-3 md:p-4 border border-white/10 hover:border-purple-400/50 shadow-lg hover:shadow-2xl hover:shadow-purple-500/20 transition-all duration-300 hover:bg-white/20"
             >
-              <div className={`w-10 h-10 rounded-lg bg-gradient-to-r ${achievement.color} flex items-center justify-center text-white text-lg flex-shrink-0`}>
+              <div className={`w-10 h-10 rounded-lg bg-gradient-to-r ${achievement.color} flex items-center justify-center text-white text-lg flex-shrink-0 shadow-lg`}>
                 {achievement.icon}
               </div>
               <div>
-                <div className="text-gray-900 font-bold text-sm md:text-base">
+                <div className="text-white font-bold text-sm md:text-base">
                   {achievement.value}
                 </div>
-                <div className="text-gray-500 text-xs">
+                <div className="text-purple-200 text-xs">
                   {achievement.label}
                 </div>
               </div>
@@ -345,29 +328,29 @@ const Statistics: React.FC = () => {
           className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6"
         >
           {/* Trust Badge 1 */}
-          <div className="flex items-center gap-4 p-4 bg-white/80 backdrop-blur-sm rounded-xl border border-blue-500/10 shadow-sm">
-            <div className="text-blue-600 text-3xl">🏆</div>
+          <div className="flex items-center gap-4 p-4 bg-white/10 backdrop-blur-sm rounded-xl border border-white/10 shadow-lg hover:shadow-2xl hover:shadow-purple-500/20 transition-all duration-300 hover:bg-white/20">
+            <div className="text-purple-300 text-3xl">🏆</div>
             <div>
-              <div className="text-gray-900 font-semibold text-sm">Best Digital Agency</div>
-              <div className="text-gray-500 text-xs">Awarded 2023-2024</div>
+              <div className="text-white font-semibold text-sm">Best Digital Agency</div>
+              <div className="text-purple-200 text-xs">Awarded 2023-2024</div>
             </div>
           </div>
 
           {/* Trust Badge 2 */}
-          <div className="flex items-center gap-4 p-4 bg-white/80 backdrop-blur-sm rounded-xl border border-blue-500/10 shadow-sm">
-            <div className="text-blue-600 text-3xl">⭐</div>
+          <div className="flex items-center gap-4 p-4 bg-white/10 backdrop-blur-sm rounded-xl border border-white/10 shadow-lg hover:shadow-2xl hover:shadow-purple-500/20 transition-all duration-300 hover:bg-white/20">
+            <div className="text-purple-300 text-3xl">⭐</div>
             <div>
-              <div className="text-gray-900 font-semibold text-sm">4.9/5 Rating</div>
-              <div className="text-gray-500 text-xs">Based on 500+ reviews</div>
+              <div className="text-white font-semibold text-sm">4.9/5 Rating</div>
+              <div className="text-purple-200 text-xs">Based on 500+ reviews</div>
             </div>
           </div>
 
           {/* Trust Badge 3 */}
-          <div className="flex items-center gap-4 p-4 bg-white/80 backdrop-blur-sm rounded-xl border border-blue-500/10 shadow-sm">
-            <div className="text-blue-600 text-3xl">🔒</div>
+          <div className="flex items-center gap-4 p-4 bg-white/10 backdrop-blur-sm rounded-xl border border-white/10 shadow-lg hover:shadow-2xl hover:shadow-purple-500/20 transition-all duration-300 hover:bg-white/20">
+            <div className="text-purple-300 text-3xl">🔒</div>
             <div>
-              <div className="text-gray-900 font-semibold text-sm">ISO 27001 Certified</div>
-              <div className="text-gray-500 text-xs">Enterprise security standard</div>
+              <div className="text-white font-semibold text-sm">ISO 27001 Certified</div>
+              <div className="text-purple-200 text-xs">Enterprise security standard</div>
             </div>
           </div>
         </motion.div>
@@ -379,9 +362,9 @@ const Statistics: React.FC = () => {
           transition={{ duration: 0.5, delay: 0.8 }}
           className="mt-8 md:mt-12 text-center"
         >
-          <div className="inline-flex items-center gap-2 px-4 py-2 bg-blue-50 rounded-full border border-blue-200">
-            <span className="text-blue-600 text-sm font-medium">✨</span>
-            <span className="text-gray-600 text-sm">Trusted by industry leaders worldwide</span>
+          <div className="inline-flex items-center gap-2 px-4 py-2 bg-purple-500/20 rounded-full border border-purple-400/30 backdrop-blur-sm">
+            <span className="text-purple-300 text-sm font-medium">✨</span>
+            <span className="text-purple-200 text-sm">Trusted by industry leaders worldwide</span>
           </div>
         </motion.div>
       </Container>

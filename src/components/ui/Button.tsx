@@ -14,16 +14,15 @@ const Button: React.FC<ButtonProps> = ({
   ariaLabel,
   ...props 
 }) => {
-  const baseStyles: string = 'inline-flex items-center justify-center font-medium rounded-lg transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-primary';
-  
-  // src/components/ui/Button.tsx
+  const baseStyles: string = 'inline-flex items-center justify-center font-medium rounded-lg transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-purple-900';
+
   const variants: Record<string, string> = {
-  primary: 'bg-blue-600 text-white hover:bg-blue-700 focus:ring-blue-500/50',
-  secondary: 'bg-gray-200 text-gray-800 hover:bg-gray-300',
-  accent: 'bg-gradient-blue text-white hover:shadow-blue-lg focus:ring-blue-500/50 hover:scale-105',
-  outline: 'border-2 border-blue-600 text-blue-600 hover:bg-blue-600 hover:text-white',
-  ghost: 'text-gray-600 hover:text-blue-600 hover:bg-blue-50',
-};
+    primary: 'bg-gradient-to-r from-purple-500 to-purple-700 text-white hover:from-purple-600 hover:to-purple-800 focus:ring-purple-500/50 shadow-lg hover:shadow-2xl hover:shadow-purple-500/30',
+    secondary: 'bg-white/10 backdrop-blur-sm text-white hover:bg-white/20 border border-white/10',
+    accent: 'bg-gradient-to-r from-purple-400 to-purple-600 text-white hover:from-purple-500 hover:to-purple-700 shadow-lg hover:shadow-2xl hover:shadow-purple-500/30 hover:scale-105',
+    outline: 'border-2 border-purple-400/50 text-purple-200 hover:bg-purple-500/20 hover:border-purple-400 hover:text-white',
+    ghost: 'text-purple-200 hover:text-white hover:bg-white/10',
+  };
 
   const sizes: Record<string, string> = {
     sm: 'px-3 py-1.5 text-sm',

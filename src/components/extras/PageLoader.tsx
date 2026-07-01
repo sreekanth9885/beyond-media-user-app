@@ -12,7 +12,7 @@ const PageLoader: React.FC<PageLoaderProps> = ({ className = '' }) => {
       initial={{ opacity: 1 }}
       exit={{ opacity: 0 }}
       transition={{ duration: 0.5 }}
-      className={`fixed inset-0 z-[9999] flex items-center justify-center bg-white ${className}`}
+      className={`fixed inset-0 z-[9999] flex items-center justify-center bg-purple-900 ${className}`}
     >
       <div className="flex flex-col items-center">
         <motion.div
@@ -25,7 +25,7 @@ const PageLoader: React.FC<PageLoaderProps> = ({ className = '' }) => {
             repeat: Infinity,
             ease: "easeInOut"
           }}
-          className="w-16 h-16 border-4 border-blue-500/30 border-t-gold-500 rounded-full"
+          className="w-16 h-16 border-4 border-purple-400/30 border-t-purple-400 rounded-full"
         />
         
         <motion.div
@@ -35,8 +35,8 @@ const PageLoader: React.FC<PageLoaderProps> = ({ className = '' }) => {
           className="mt-6"
         >
           <span className="text-2xl font-poppins font-bold">
-            <span className="text-gray-900">BEYOND</span>
-            <span className="text-blue-600">MEDIA</span>
+            <span className="text-white">BEYOND</span>
+            <span className="text-purple-300">MEDIA</span>
           </span>
         </motion.div>
         
@@ -44,7 +44,7 @@ const PageLoader: React.FC<PageLoaderProps> = ({ className = '' }) => {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.8 }}
-          className="mt-2 text-sm text-gray-400"
+          className="mt-2 text-sm text-purple-300/60"
         >
           Loading...
         </motion.div>

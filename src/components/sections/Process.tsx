@@ -54,7 +54,7 @@ const Process: React.FC = () => {
       title: 'Research & Discovery',
       description: 'Deep dive into your business, goals, and market to create a data-driven strategy.',
       icon: <FaSearch />,
-      color: 'from-blue-500 to-blue-600',
+      color: 'from-purple-400 to-purple-600',
       details: [
         'Business requirements gathering',
         'Market research & analysis',
@@ -69,7 +69,7 @@ const Process: React.FC = () => {
       title: 'Strategic Planning',
       description: 'Develop comprehensive roadmap with clear milestones and measurable objectives.',
       icon: <FaClipboardList />,
-      color: 'from-purple-500 to-purple-600',
+      color: 'from-purple-500 to-purple-700',
       details: [
         'Project roadmap creation',
         'Resource allocation',
@@ -84,7 +84,7 @@ const Process: React.FC = () => {
       title: 'Design & Prototyping',
       description: 'Create stunning designs and interactive prototypes that bring ideas to life.',
       icon: <FaPencilRuler />,
-      color: 'from-pink-500 to-pink-600',
+      color: 'from-purple-400 to-purple-600',
       details: [
         'User experience (UX) design',
         'User interface (UI) design',
@@ -99,7 +99,7 @@ const Process: React.FC = () => {
       title: 'Development & Testing',
       description: 'Build robust solutions with clean code, comprehensive testing, and quality assurance.',
       icon: <FaCode />,
-      color: 'from-green-500 to-green-600',
+      color: 'from-purple-500 to-purple-700',
       details: [
         'Frontend development',
         'Backend development',
@@ -114,7 +114,7 @@ const Process: React.FC = () => {
       title: 'Marketing & Launch',
       description: 'Execute strategic marketing campaigns to ensure successful product launch.',
       icon: <FaBullhorn />,
-      color: 'from-orange-500 to-orange-600',
+      color: 'from-purple-400 to-purple-600',
       details: [
         'Go-to-market strategy',
         'Digital marketing campaigns',
@@ -129,7 +129,7 @@ const Process: React.FC = () => {
       title: 'Optimization & Growth',
       description: 'Continuous improvement through data analysis, user feedback, and performance monitoring.',
       icon: <FaChartLine />,
-      color: 'from-red-500 to-red-600',
+      color: 'from-purple-500 to-purple-700',
       details: [
         'Performance analytics',
         'User behavior analysis',
@@ -144,7 +144,7 @@ const Process: React.FC = () => {
       title: 'Support & Maintenance',
       description: 'Dedicated support and regular maintenance to keep your solutions running smoothly.',
       icon: <FaHeadset />,
-      color: 'from-teal-500 to-teal-600',
+      color: 'from-purple-400 to-purple-600',
       details: [
         '24/7 technical support',
         'Regular updates & patches',
@@ -192,18 +192,28 @@ const Process: React.FC = () => {
   return (
     <section 
       id="process" 
-      className="py-16 md:py-20 lg:py-28 bg-gray-50 relative overflow-hidden"
+      className="py-16 md:py-20 lg:py-28 bg-purple-900 relative overflow-hidden"
       aria-label="Our process"
     >
       {/* Background Decorations */}
-      <div className="absolute top-0 right-0 w-96 h-96 bg-blue-600/5 rounded-full blur-3xl"></div>
-      <div className="absolute bottom-0 left-0 w-96 h-96 bg-blue-600/5 rounded-full blur-3xl"></div>
+      <div className="absolute top-0 right-0 w-64 h-64 bg-purple-400/10 rounded-full blur-3xl"></div>
+      <div className="absolute bottom-0 left-0 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl"></div>
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-purple-600/10 rounded-full blur-3xl"></div>
+      <div className="absolute top-20 left-20 w-72 h-72 bg-purple-500/10 rounded-full blur-3xl"></div>
+      <div className="absolute bottom-20 right-20 w-80 h-80 bg-purple-700/10 rounded-full blur-3xl"></div>
+
+      {/* Glowing orb decorations */}
+      <div className="absolute top-10 right-10 w-32 h-32 bg-purple-400/20 rounded-full blur-2xl animate-pulse"></div>
+      <div className="absolute bottom-10 left-10 w-40 h-40 bg-purple-500/20 rounded-full blur-2xl animate-pulse" style={{ animationDelay: '2s' }}></div>
 
       <Container>
         <SectionHeading
           badge="Our Process"
           title="How We Bring Ideas to Life"
           subtitle="A proven methodology that ensures successful delivery from concept to completion."
+          badgeClassName="bg-purple-500/20 text-purple-200 border-purple-400/30 backdrop-blur-sm"
+          titleClassName="text-white"
+          subtitleClassName="text-purple-200"
         />
 
         {/* Process Statistics */}
@@ -219,15 +229,15 @@ const Process: React.FC = () => {
               key={stat.id}
               variants={itemVariants}
               whileHover={{ y: -5, scale: 1.02 }}
-              className="text-center p-4 md:p-6 bg-white/80 backdrop-blur-sm rounded-xl border border-blue-500/10 hover:border-blue-500/30 shadow-sm hover:shadow-blue transition-all duration-300"
+              className="text-center p-4 md:p-6 bg-white/10 backdrop-blur-sm rounded-xl border border-white/10 hover:border-purple-400/50 shadow-lg hover:shadow-2xl hover:shadow-purple-500/20 transition-all duration-300 hover:bg-white/20"
             >
-              <div className="text-blue-600 text-2xl md:text-3xl mb-2">
+              <div className="text-purple-300 text-2xl md:text-3xl mb-2">
                 {stat.icon}
               </div>
-              <div className="text-gray-900 font-bold text-xl md:text-2xl lg:text-3xl">
+              <div className="text-white font-bold text-xl md:text-2xl lg:text-3xl">
                 {stat.value}
               </div>
-              <div className="text-gray-500 text-sm md:text-base">
+              <div className="text-purple-300 text-sm md:text-base">
                 {stat.label}
               </div>
             </motion.div>
@@ -237,8 +247,8 @@ const Process: React.FC = () => {
         {/* Process Timeline */}
         <div className="relative">
           {/* Timeline Line */}
-          <div className="absolute left-4 md:left-1/2 top-0 bottom-0 w-0.5 bg-gradient-to-b from-blue-500/30 via-blue-500/50 to-blue-500/30 transform -translate-x-1/2 hidden md:block"></div>
-          <div className="absolute left-4 top-0 bottom-0 w-0.5 bg-gradient-to-b from-blue-500/30 via-blue-500/50 to-blue-500/30 md:hidden"></div>
+          <div className="absolute left-4 md:left-1/2 top-0 bottom-0 w-0.5 bg-gradient-to-b from-purple-400/30 via-purple-400/50 to-purple-400/30 transform -translate-x-1/2 hidden md:block"></div>
+          <div className="absolute left-4 top-0 bottom-0 w-0.5 bg-gradient-to-b from-purple-400/30 via-purple-400/50 to-purple-400/30 md:hidden"></div>
 
           {/* Steps */}
           {processSteps.map((step, index) => (
@@ -255,7 +265,7 @@ const Process: React.FC = () => {
               {/* Timeline Dot */}
               <motion.div
                 whileHover={{ scale: 1.2 }}
-                className={`absolute left-4 md:left-1/2 transform -translate-x-1/2 w-10 h-10 rounded-full bg-gradient-to-r ${step.color} flex items-center justify-center text-white font-bold text-sm z-10 shadow-lg`}
+                className={`absolute left-4 md:left-1/2 transform -translate-x-1/2 w-10 h-10 rounded-full bg-gradient-to-r ${step.color} flex items-center justify-center text-white font-bold text-sm z-10 shadow-2xl shadow-purple-500/30`}
               >
                 {step.number}
               </motion.div>
@@ -266,22 +276,22 @@ const Process: React.FC = () => {
               }`}>
                 <motion.div
                   whileHover="hover"
-                  className="bg-white/80 backdrop-blur-sm rounded-xl border border-blue-500/10 hover:border-blue-500/30 p-4 md:p-6 shadow-sm hover:shadow-blue transition-all duration-300"
+                  className="bg-white/10 backdrop-blur-sm rounded-xl border border-white/10 hover:border-purple-400/50 p-4 md:p-6 shadow-lg hover:shadow-2xl hover:shadow-purple-500/20 transition-all duration-300 hover:bg-white/20"
                 >
                   <div className="flex items-center gap-3 mb-3">
-                    <div className={`text-blue-600 text-2xl md:text-3xl ${
+                    <div className={`text-purple-300 text-2xl md:text-3xl ${
                       index % 2 === 0 ? 'md:order-2' : ''
                     }`}>
                       {step.icon}
                     </div>
-                    <h3 className={`text-gray-900 font-poppins font-semibold text-lg md:text-xl ${
+                    <h3 className={`text-white font-poppins font-semibold text-lg md:text-xl ${
                       index % 2 === 0 ? 'md:order-1' : ''
                     }`}>
                       {step.title}
                     </h3>
                   </div>
 
-                  <p className="text-gray-500 text-sm md:text-base leading-relaxed mb-4">
+                  <p className="text-purple-200 text-sm md:text-base leading-relaxed mb-4">
                     {step.description}
                   </p>
 
@@ -292,11 +302,11 @@ const Process: React.FC = () => {
                         initial={{ opacity: 0, x: -10 }}
                         whileInView={{ opacity: 1, x: 0 }}
                         transition={{ delay: idx * 0.05 }}
-                        className={`flex items-center gap-2 text-gray-600 text-sm ${
+                        className={`flex items-center gap-2 text-purple-200 text-sm ${
                           index % 2 === 0 ? 'md:justify-end' : ''
                         }`}
                       >
-                        <FaCheckCircle className="text-blue-600 text-xs flex-shrink-0" />
+                        <FaCheckCircle className="text-purple-300 text-xs flex-shrink-0" />
                         <span>{detail}</span>
                       </motion.div>
                     ))}
@@ -318,14 +328,18 @@ const Process: React.FC = () => {
           transition={{ duration: 0.5, delay: 0.3 }}
           className="text-center mt-12 md:mt-16"
         >
-          <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-6 md:p-8 border border-blue-500/20 shadow-sm max-w-3xl mx-auto">
-            <h3 className="text-gray-900 font-poppins font-semibold text-xl md:text-2xl mb-3">
+          <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 md:p-8 border border-white/10 shadow-lg max-w-3xl mx-auto hover:shadow-2xl hover:shadow-purple-500/20 transition-all duration-300">
+            <h3 className="text-white font-poppins font-semibold text-xl md:text-2xl mb-3">
               Ready to Start Your Project?
             </h3>
-            <p className="text-gray-500 text-sm md:text-base mb-4 max-w-2xl mx-auto">
+            <p className="text-purple-200 text-sm md:text-base mb-4 max-w-2xl mx-auto">
               Let's discuss how our proven process can bring your vision to life.
             </p>
-            <Button variant="primary" size="lg">
+            <Button
+              variant="primary"
+              size="lg"
+              className="bg-gradient-to-r from-purple-500 to-purple-700 text-white hover:from-purple-600 hover:to-purple-800 hover:shadow-2xl hover:shadow-purple-500/30 transition-all duration-300"
+            >
               Start Your Journey
               <FaArrowRight className="ml-2" />
             </Button>
@@ -340,20 +354,20 @@ const Process: React.FC = () => {
           transition={{ duration: 0.5, delay: 0.5 }}
           className="mt-8 md:mt-12 grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4"
         >
-          <div className="flex items-center gap-2 text-gray-500 text-xs md:text-sm">
-            <FaShieldAlt className="text-blue-600" />
+          <div className="flex items-center gap-2 text-purple-300 text-xs md:text-sm">
+            <FaShieldAlt className="text-purple-400" />
             <span>Quality Assured</span>
           </div>
-          <div className="flex items-center gap-2 text-gray-500 text-xs md:text-sm">
-            <FaClock className="text-blue-600" />
+          <div className="flex items-center gap-2 text-purple-300 text-xs md:text-sm">
+            <FaClock className="text-purple-400" />
             <span>On-time Delivery</span>
           </div>
-          <div className="flex items-center gap-2 text-gray-500 text-xs md:text-sm">
-            <FaHandshake className="text-blue-600" />
+          <div className="flex items-center gap-2 text-purple-300 text-xs md:text-sm">
+            <FaHandshake className="text-purple-400" />
             <span>100% Transparency</span>
           </div>
-          <div className="flex items-center gap-2 text-gray-500 text-xs md:text-sm">
-            <FaRegLightbulb className="text-blue-600" />
+          <div className="flex items-center gap-2 text-purple-300 text-xs md:text-sm">
+            <FaRegLightbulb className="text-purple-400" />
             <span>Innovation Focus</span>
           </div>
         </motion.div>

@@ -126,10 +126,10 @@ const Testimonials: React.FC = () => {
   ];
 
   const trustBadges: TrustBadge[] = [
-    { id: '1', name: 'Google Reviews', icon: <FaGoogle />, rating: '4.9', count: '200+', color: 'from-red-500 to-yellow-500' },
-    { id: '2', name: 'LinkedIn', icon: <FaLinkedin />, rating: '4.8', count: '150+', color: 'from-blue-500 to-blue-600' },
-    { id: '3', name: 'Facebook', icon: <FaFacebook />, rating: '4.9', count: '100+', color: 'from-blue-600 to-blue-700' },
-    { id: '4', name: 'Trustpilot', icon: <FaStar />, rating: '4.7', count: '80+', color: 'from-green-500 to-green-600' },
+    { id: '1', name: 'Google Reviews', icon: <FaGoogle />, rating: '4.9', count: '200+', color: 'from-purple-400 to-purple-600' },
+    { id: '2', name: 'LinkedIn', icon: <FaLinkedin />, rating: '4.8', count: '150+', color: 'from-purple-500 to-purple-700' },
+    { id: '3', name: 'Facebook', icon: <FaFacebook />, rating: '4.9', count: '100+', color: 'from-purple-400 to-purple-600' },
+    { id: '4', name: 'Trustpilot', icon: <FaStar />, rating: '4.7', count: '80+', color: 'from-purple-500 to-purple-700' },
   ];
 
   const nextTestimonial = () => {
@@ -191,12 +191,19 @@ const Testimonials: React.FC = () => {
   return (
     <section 
       id="testimonials" 
-      className="py-16 md:py-20 lg:py-28 bg-gray-50 relative overflow-hidden"
+      className="py-16 md:py-20 lg:py-28 bg-purple-900 relative overflow-hidden"
       aria-label="Client testimonials"
     >
       {/* Background Decorations */}
-      <div className="absolute top-0 left-0 w-96 h-96 bg-blue-600/5 rounded-full blur-3xl"></div>
-      <div className="absolute bottom-0 right-0 w-96 h-96 bg-blue-600/5 rounded-full blur-3xl"></div>
+      <div className="absolute top-0 right-0 w-64 h-64 bg-purple-400/10 rounded-full blur-3xl"></div>
+      <div className="absolute bottom-0 left-0 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl"></div>
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-purple-600/10 rounded-full blur-3xl"></div>
+      <div className="absolute top-20 left-20 w-72 h-72 bg-purple-500/10 rounded-full blur-3xl"></div>
+      <div className="absolute bottom-20 right-20 w-80 h-80 bg-purple-700/10 rounded-full blur-3xl"></div>
+
+      {/* Glowing orb decorations */}
+      <div className="absolute top-10 right-10 w-32 h-32 bg-purple-400/20 rounded-full blur-2xl animate-pulse"></div>
+      <div className="absolute bottom-10 left-10 w-40 h-40 bg-purple-500/20 rounded-full blur-2xl animate-pulse" style={{ animationDelay: '2s' }}></div>
       
       {/* Animated Quote Marks */}
       <motion.div
@@ -210,7 +217,7 @@ const Testimonials: React.FC = () => {
           repeat: Infinity,
           ease: "easeInOut"
         }}
-        className="absolute top-20 right-20 text-9xl text-blue-600/5 font-serif"
+        className="absolute top-20 right-20 text-9xl text-purple-400/10 font-serif"
       >
         ❝
       </motion.div>
@@ -226,7 +233,7 @@ const Testimonials: React.FC = () => {
           ease: "easeInOut",
           delay: 1
         }}
-        className="absolute bottom-20 left-20 text-9xl text-blue-600/5 font-serif"
+        className="absolute bottom-20 left-20 text-9xl text-purple-400/10 font-serif"
       >
         ❞
       </motion.div>
@@ -236,6 +243,9 @@ const Testimonials: React.FC = () => {
           badge="Testimonials"
           title="What Our Clients Say"
           subtitle="Real stories from real clients who have experienced the DigitalPro difference."
+          badgeClassName="bg-purple-500/20 text-purple-200 border-purple-400/30 backdrop-blur-sm"
+          titleClassName="text-white"
+          subtitleClassName="text-purple-200"
         />
 
         {/* Trust Badges */}
@@ -251,14 +261,14 @@ const Testimonials: React.FC = () => {
               key={badge.id}
               variants={itemVariants}
               whileHover={{ scale: 1.05 }}
-              className="flex items-center gap-3 px-4 py-2 bg-white/80 backdrop-blur-sm rounded-full border border-blue-500/10 hover:border-blue-500/30 shadow-sm hover:shadow-blue transition-all duration-300"
+              className="flex items-center gap-3 px-4 py-2 bg-white/10 backdrop-blur-sm rounded-full border border-white/10 hover:border-purple-400/50 shadow-lg hover:shadow-2xl hover:shadow-purple-500/20 transition-all duration-300 hover:bg-white/20"
             >
-              <div className={`w-8 h-8 rounded-full bg-gradient-to-r ${badge.color} flex items-center justify-center text-white text-sm`}>
+              <div className={`w-8 h-8 rounded-full bg-gradient-to-r ${badge.color} flex items-center justify-center text-white text-sm shadow-lg`}>
                 {badge.icon}
               </div>
               <div>
-                <div className="text-gray-900 font-semibold text-sm">{badge.rating}</div>
-                <div className="text-gray-500 text-xs">{badge.count} reviews</div>
+                <div className="text-white font-semibold text-sm">{badge.rating}</div>
+                <div className="text-purple-200 text-xs">{badge.count} reviews</div>
               </div>
             </motion.div>
           ))}
@@ -274,7 +284,7 @@ const Testimonials: React.FC = () => {
               initial="enter"
               animate="center"
               exit="exit"
-              className="bg-white/80 backdrop-blur-sm rounded-2xl border border-blue-500/10 p-6 md:p-8 lg:p-10 shadow-sm"
+              className="bg-white/10 backdrop-blur-sm rounded-2xl border border-white/10 p-6 md:p-8 lg:p-10 shadow-lg hover:shadow-2xl hover:shadow-purple-500/20 transition-all duration-300"
             >
               <div className="flex flex-col md:flex-row gap-6 md:gap-8 items-start">
                 {/* Client Avatar */}
@@ -283,10 +293,10 @@ const Testimonials: React.FC = () => {
                     <img
                       src={testimonials[currentIndex].image}
                       alt={testimonials[currentIndex].name}
-                      className="w-20 h-20 md:w-24 md:h-24 rounded-full object-cover border-2 border-blue-500/20"
+                      className="w-20 h-20 md:w-24 md:h-24 rounded-full object-cover border-2 border-purple-400/30"
                       loading="lazy"
                     />
-                    <div className="absolute -bottom-1 -right-1 bg-blue-600 rounded-full p-1">
+                    <div className="absolute -bottom-1 -right-1 bg-gradient-to-r from-purple-500 to-purple-700 rounded-full p-1 shadow-lg">
                       <FaCheckCircle className="text-white text-xs" />
                     </div>
                   </div>
@@ -295,7 +305,7 @@ const Testimonials: React.FC = () => {
                 {/* Content */}
                 <div className="flex-1">
                   {/* Rating */}
-                  <div className="flex text-blue-600 text-sm mb-3">
+                  <div className="flex text-purple-300 text-sm mb-3">
                     {[...Array(5)].map((_, i) => (
                       <FaStar key={i} />
                     ))}
@@ -303,36 +313,36 @@ const Testimonials: React.FC = () => {
 
                   {/* Quote */}
                   <div className="relative">
-                    <FaQuoteLeft className="text-blue-600/20 text-2xl absolute -top-2 -left-2" />
-                    <p className="text-gray-600 text-base md:text-lg leading-relaxed pl-6 mb-4">
+                    <FaQuoteLeft className="text-purple-400/20 text-2xl absolute -top-2 -left-2" />
+                    <p className="text-purple-200 text-base md:text-lg leading-relaxed pl-6 mb-4">
                       {testimonials[currentIndex].content}
                     </p>
-                    <FaQuoteRight className="text-blue-600/20 text-2xl absolute -bottom-2 -right-2" />
+                    <FaQuoteRight className="text-purple-400/20 text-2xl absolute -bottom-2 -right-2" />
                   </div>
 
                   {/* Client Info */}
-                  <div className="flex flex-wrap items-center justify-between mt-4 pt-4 border-t border-blue-500/10">
+                  <div className="flex flex-wrap items-center justify-between mt-4 pt-4 border-t border-white/10">
                     <div>
-                      <h4 className="text-gray-900 font-poppins font-semibold text-lg">
+                      <h4 className="text-white font-poppins font-semibold text-lg">
                         {testimonials[currentIndex].name}
                       </h4>
-                      <p className="text-gray-500 text-sm">
+                      <p className="text-purple-200 text-sm">
                         {testimonials[currentIndex].position} • {testimonials[currentIndex].company}
                       </p>
                       <div className="flex items-center gap-2 mt-1">
-                        <span className="text-xs text-gray-500">
+                        <span className="text-xs text-purple-300">
                           {testimonials[currentIndex].industry}
                         </span>
-                        <span className="text-xs text-gray-400">•</span>
-                        <span className="text-xs text-gray-500">
+                        <span className="text-xs text-purple-300/50">•</span>
+                        <span className="text-xs text-purple-300">
                           {testimonials[currentIndex].date}
                         </span>
                       </div>
                     </div>
                     {testimonials[currentIndex].platformIcon && (
-                      <div className="flex items-center gap-2 text-gray-500">
+                      <div className="flex items-center gap-2 text-purple-300">
                         <span className="text-xs">Review on</span>
-                        <span className="text-blue-600 text-lg">
+                        <span className="text-purple-300 text-lg">
                           {testimonials[currentIndex].platformIcon}
                         </span>
                       </div>
@@ -347,7 +357,7 @@ const Testimonials: React.FC = () => {
           <div className="flex items-center justify-between mt-6">
             <button
               onClick={prevTestimonial}
-              className="p-2 rounded-full bg-white/80 hover:bg-blue-50 border border-blue-500/10 hover:border-blue-500/30 transition-all duration-300 text-gray-500 hover:text-blue-600 shadow-sm"
+              className="p-2 rounded-full bg-white/10 backdrop-blur-sm hover:bg-white/20 border border-white/10 hover:border-purple-400/50 transition-all duration-300 text-purple-200 hover:text-white shadow-lg hover:shadow-purple-500/20"
               aria-label="Previous testimonial"
             >
               <FaArrowLeft />
@@ -361,8 +371,8 @@ const Testimonials: React.FC = () => {
                   onClick={() => goToTestimonial(index)}
                   className={`w-2 h-2 rounded-full transition-all duration-300 ${
                     index === currentIndex
-                    ? 'w-8 bg-blue-600'
-                    : 'bg-gray-300 hover:bg-gray-400'
+                    ? 'w-8 bg-gradient-to-r from-purple-400 to-purple-600'
+                    : 'bg-purple-400/30 hover:bg-purple-400/50'
                   }`}
                   aria-label={`Go to testimonial ${index + 1}`}
                 />
@@ -371,49 +381,13 @@ const Testimonials: React.FC = () => {
 
             <button
               onClick={nextTestimonial}
-              className="p-2 rounded-full bg-white/80 hover:bg-blue-50 border border-blue-500/10 hover:border-blue-500/30 transition-all duration-300 text-gray-500 hover:text-blue-600 shadow-sm"
+              className="p-2 rounded-full bg-white/10 backdrop-blur-sm hover:bg-white/20 border border-white/10 hover:border-purple-400/50 transition-all duration-300 text-purple-200 hover:text-white shadow-lg hover:shadow-purple-500/20"
               aria-label="Next testimonial"
             >
               <FaArrowRight />
             </button>
           </div>
         </div>
-
-        {/* Client Logos / Brands */}
-        {/* <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5, delay: 0.3 }}
-          className="mt-12 md:mt-16 pt-8 md:pt-12 border-t border-blue-500/10"
-        >
-          <p className="text-center text-gray-500 text-sm mb-6 tracking-wider uppercase">
-            Trusted by industry leaders
-          </p>
-          <div className="flex flex-wrap items-center justify-center gap-6 md:gap-12 opacity-60 hover:opacity-100 transition-opacity duration-300">
-            <div className="text-gray-900/50 font-bold text-xl">Google</div>
-            <div className="text-gray-900/50 font-bold text-xl">Microsoft</div>
-            <div className="text-gray-900/50 font-bold text-xl">Amazon</div>
-            <div className="text-gray-900/50 font-bold text-xl">Apple</div>
-            <div className="text-gray-900/50 font-bold text-xl">Meta</div>
-            <div className="text-gray-900/50 font-bold text-xl">Tesla</div>
-          </div>
-        </motion.div> */}
-
-        {/* CTA */}
-        {/* <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5, delay: 0.5 }}
-          className="text-center mt-8 md:mt-12"
-        >
-          <div className="inline-flex items-center gap-2 px-6 py-3 bg-white/80 backdrop-blur-sm rounded-full border border-blue-500/10 shadow-sm">
-            <span className="text-gray-500 text-sm">⭐ Join our</span>
-            <span className="text-blue-600 font-semibold text-sm">100+</span>
-            <span className="text-gray-500 text-sm">happy clients</span>
-          </div>
-        </motion.div> */}
       </Container>
     </section>
   );

@@ -40,7 +40,9 @@ const App = () => {
 
       {!loading && (
         <BrowserRouter>
-          <div className="min-h-screen bg-white text-gray-900 font-inter">
+          <div
+            className="min-h-screen font-inter"
+          >
             <ScrollProgress />
 
             <Navbar />
