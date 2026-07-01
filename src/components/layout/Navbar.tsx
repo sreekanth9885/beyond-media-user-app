@@ -25,12 +25,19 @@ import {
   FaPhone,
   FaEnvelope
 } from 'react-icons/fa';
-import { Link } from 'react-scroll';
-import type { NavLink } from '../../types';
+import { Link as RouterLink, useLocation, useNavigate } from 'react-router-dom';
+import { Link as ScrollLink } from 'react-scroll';
 import Button from '../ui/Button';
 
 interface NavbarProps {
   className?: string;
+}
+
+interface NavLink {
+  name: string;
+  path: string;
+  icon: React.ReactNode;
+  hasDropdown?: boolean;
 }
 
 interface NavbarServiceItem {
@@ -38,12 +45,15 @@ interface NavbarServiceItem {
   name: string;
   icon: React.ReactNode;
   category: string;
+  path: string;
 }
 
 const Navbar: React.FC<NavbarProps> = ({ className = '' }) => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const [scrolled, setScrolled] = useState<boolean>(false);
   const [showServicesDropdown, setShowServicesDropdown] = useState<boolean>(false);
+  const location = useLocation();
+  const navigate = useNavigate();
 
   useEffect(() => {
     const handleScroll = (): void => {
@@ -53,27 +63,33 @@ const Navbar: React.FC<NavbarProps> = ({ className = '' }) => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  // Close mobile menu on route change
+  useEffect(() => {
+    setIsOpen(false);
+    setShowServicesDropdown(false);
+  }, [location]);
+
   const navLinks: NavLink[] = [
-    { name: 'Home', to: 'hero', icon: <FaHome /> },
-    { name: 'About', to: 'about', icon: <FaInfoCircle /> },
-    { name: 'Services', to: 'services', icon: <FaCogs />, hasDropdown: true },
-    { name: 'Portfolio', to: 'portfolio', icon: <FaBriefcase /> },
-    { name: 'Contact', to: 'contact', icon: <FaPhone /> },
+    { name: 'Home', path: '/', icon: <FaHome /> },
+    { name: 'About', path: '/about', icon: <FaInfoCircle /> },
+    { name: 'Services', path: '/services', icon: <FaCogs />, hasDropdown: true },
+    { name: 'Portfolio', path: '/portfolio', icon: <FaBriefcase /> },
+    { name: 'Contact', path: '/contact', icon: <FaPhone /> },
   ];
 
   const serviceDropdownItems: NavbarServiceItem[] = [
-    { id: 'google-ads', name: 'Google Ads', icon: <FaGoogle />, category: 'Marketing' },
-    { id: 'meta-ads', name: 'Meta Ads', icon: <FaFacebook />, category: 'Marketing' },
-    { id: 'political-campaign', name: 'Political Campaign', icon: <FaBullhorn />, category: 'Political' },
-    { id: 'social-media', name: 'Social Media Marketing', icon: <FaUsers />, category: 'Marketing' },
-    { id: 'youtube-seo', name: 'YouTube SEO', icon: <FaYoutube />, category: 'SEO' },
-    { id: 'live-coverage', name: 'Live Coverage', icon: <FaVideo />, category: 'Media' },
-    { id: 'web-dev', name: 'Web Development', icon: <FaCode />, category: 'Development' },
-    { id: 'mobile-apps', name: 'Mobile Apps', icon: <FaMobileAlt />, category: 'Development' },
-    { id: 'graphic-design', name: 'Graphic Design', icon: <FaPaintBrush />, category: 'Design' },
-    { id: 'branding', name: 'Branding', icon: <FaBuilding />, category: 'Design' },
-    { id: 'video-editing', name: 'Video Editing', icon: <FaVideo />, category: 'Media' },
-    { id: 'content-marketing', name: 'Content Marketing', icon: <FaEnvelope />, category: 'Marketing' },
+    { id: 'google-ads', name: 'Google Ads', icon: <FaGoogle />, category: 'Marketing', path: '/services#google-ads' },
+    { id: 'meta-ads', name: 'Meta Ads', icon: <FaFacebook />, category: 'Marketing', path: '/services#meta-ads' },
+    { id: 'political-campaign', name: 'Political Campaign', icon: <FaBullhorn />, category: 'Political', path: '/political-campaigns' },
+    { id: 'social-media', name: 'Social Media Marketing', icon: <FaUsers />, category: 'Marketing', path: '/digital-marketing#social-media' },
+    { id: 'youtube-seo', name: 'YouTube SEO', icon: <FaYoutube />, category: 'SEO', path: '/digital-marketing#youtube-seo' },
+    { id: 'live-coverage', name: 'Live Coverage', icon: <FaVideo />, category: 'Media', path: '/services#live-coverage' },
+    { id: 'web-dev', name: 'Web Development', icon: <FaCode />, category: 'Development', path: '/it-services#web-dev' },
+    { id: 'mobile-apps', name: 'Mobile Apps', icon: <FaMobileAlt />, category: 'Development', path: '/it-services#mobile-apps' },
+    { id: 'graphic-design', name: 'Graphic Design', icon: <FaPaintBrush />, category: 'Design', path: '/services#graphic-design' },
+    { id: 'branding', name: 'Branding', icon: <FaBuilding />, category: 'Design', path: '/services#branding' },
+    { id: 'video-editing', name: 'Video Editing', icon: <FaVideo />, category: 'Media', path: '/services#video-editing' },
+    { id: 'content-marketing', name: 'Content Marketing', icon: <FaEnvelope />, category: 'Marketing', path: '/services#content-marketing' },
   ];
 
   const dropdownVariants: Variants = {
@@ -120,6 +136,19 @@ const Navbar: React.FC<NavbarProps> = ({ className = '' }) => {
     setShowServicesDropdown(false);
   }, []);
 
+  const handleServiceClick = (path: string): void => {
+    navigate(path);
+    setIsOpen(false);
+    setShowServicesDropdown(false);
+  };
+
+  const isActive = (path: string): boolean => {
+    if (path === '/') {
+      return location.pathname === '/';
+    }
+    return location.pathname === path || location.pathname.startsWith(path + '/');
+  };
+
   return (
     <motion.nav
       initial={{ y: -100 }}
@@ -138,37 +167,34 @@ const Navbar: React.FC<NavbarProps> = ({ className = '' }) => {
           {/* Logo */}
           <motion.div
             whileHover={{ scale: 1.03 }}
-            className="flex items-center"
+            className="flex items-center flex-shrink-0"
           >
-            <Link
-              to="hero"
-              smooth
-              duration={500}
-              className="flex items-center gap-3 cursor-pointer"
+            <RouterLink
+              to="/"
+              className="flex items-center gap-2 sm:gap-3 cursor-pointer"
             >
-              {/* Logo Image */}
-              <div className="bg-white rounded-lg p-2 shadow-blue-lg flex-shrink-0">
+              {/* Logo Image - Mobile Optimized */}
+              <div className="bg-white rounded-lg p-1.5 sm:p-2 shadow-blue-lg flex-shrink-0 w-9 h-9 sm:w-12 sm:h-12 flex items-center justify-center">
                 <img
                   src="/logo.svg"
                   alt="Beyond Media"
-                  className="h-10 w-auto"
+                  className="h-6 w-auto sm:h-10"
                   onError={(e) => {
-                    // Fallback if logo.svg doesn't exist
                     (e.target as HTMLImageElement).style.display = 'none';
                   }}
                 />
               </div>
 
               <div className="flex flex-col">
-                <span className="text-2xl font-poppins font-bold leading-tight">
+                <span className="text-lg sm:text-2xl font-poppins font-bold leading-tight">
                   <span className="text-gray-900">Beyond</span>
                   <span className="text-blue-600"> Media</span>
                 </span>
-                <span className="text-[10px] tracking-[0.25em] text-gray-400 uppercase leading-tight">
+                <span className="hidden xs:block text-[8px] sm:text-[10px] tracking-[0.2em] sm:tracking-[0.25em] text-gray-400 uppercase leading-tight">
                   Beyond Honest.. Beyond Limits
                 </span>
               </div>
-            </Link>
+            </RouterLink>
           </motion.div>
 
           {/* Desktop Navigation */}
@@ -180,14 +206,12 @@ const Navbar: React.FC<NavbarProps> = ({ className = '' }) => {
                 onMouseEnter={() => link.hasDropdown && setShowServicesDropdown(true)}
                 onMouseLeave={() => link.hasDropdown && setShowServicesDropdown(false)}
               >
-                <Link
-                  to={link.to}
-                  smooth={true}
-                  duration={500}
-                  className="flex items-center gap-1 px-4 py-2 text-sm font-medium text-gray-600 hover:text-blue-600 transition-colors duration-300 cursor-pointer group"
-                  activeClass="text-blue-600"
-                  spy={true}
-                  hashSpy={true}
+                <RouterLink
+                  to={link.path}
+                  className={`flex items-center gap-1 px-4 py-2 text-sm font-medium transition-colors duration-300 cursor-pointer group ${isActive(link.path)
+                      ? 'text-blue-600'
+                      : 'text-gray-600 hover:text-blue-600'
+                    }`}
                 >
                   {link.icon}
                   {link.name}
@@ -196,8 +220,9 @@ const Navbar: React.FC<NavbarProps> = ({ className = '' }) => {
                       showServicesDropdown ? 'rotate-180' : ''
                     }`} />
                   )}
-                  <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-blue-600 to-blue-400 transition-all duration-300 group-hover:w-full"></span>
-                </Link>
+                  <span className={`absolute bottom-0 left-0 h-0.5 bg-gradient-to-r from-blue-600 to-blue-400 transition-all duration-300 ${isActive(link.path) ? 'w-full' : 'w-0 group-hover:w-full'
+                    }`}></span>
+                </RouterLink>
 
                 {/* Services Dropdown */}
                 {link.hasDropdown && (
@@ -212,17 +237,14 @@ const Navbar: React.FC<NavbarProps> = ({ className = '' }) => {
                       >
                         <div className="grid grid-cols-2 gap-1">
                           {serviceDropdownItems.map((item) => (
-                            <Link
+                            <button
                               key={item.id}
-                              to="services"
-                              smooth={true}
-                              duration={500}
-                              className="flex items-center gap-2 px-3 py-2 text-sm text-gray-600 hover:text-blue-600 hover:bg-blue-500/10 rounded-lg transition-all duration-300"
-                              onClick={handleLinkClick}
+                              onClick={() => handleServiceClick(item.path)}
+                              className="flex items-center gap-2 px-3 py-2 text-sm text-gray-600 hover:text-blue-600 hover:bg-blue-500/10 rounded-lg transition-all duration-300 text-left"
                             >
                               <span className="text-blue-600">{item.icon}</span>
                               {item.name}
-                            </Link>
+                            </button>
                           ))}
                         </div>
                       </motion.div>
@@ -236,6 +258,7 @@ const Navbar: React.FC<NavbarProps> = ({ className = '' }) => {
               variant="primary"
               size="md"
               className="ml-4"
+              onClick={() => navigate('/contact')}
             >
               Get Started
             </Button>
@@ -266,34 +289,32 @@ const Navbar: React.FC<NavbarProps> = ({ className = '' }) => {
             <div className="container mx-auto px-4 py-6">
               <div className="flex flex-col space-y-2">
                 {navLinks.map((link) => (
-                  <Link
+                  <RouterLink
                     key={link.name}
-                    to={link.to}
-                    smooth={true}
-                    duration={500}
-                    className="flex items-center gap-3 px-4 py-3 text-gray-600 hover:text-blue-600 hover:bg-blue-500/10 rounded-lg transition-all duration-300"
+                    to={link.path}
+                    className={`flex items-center gap-3 px-4 py-3 rounded-lg transition-all duration-300 ${isActive(link.path)
+                        ? 'text-blue-600 bg-blue-500/10'
+                        : 'text-gray-600 hover:text-blue-600 hover:bg-blue-500/10'
+                      }`}
                     onClick={handleLinkClick}
                   >
                     <span className="text-blue-600">{link.icon}</span>
                     {link.name}
-                  </Link>
+                  </RouterLink>
                 ))}
 
                 <div className="pt-4 border-t border-blue-500/20">
                   <h4 className="text-sm font-semibold text-blue-600 mb-3">Our Services</h4>
                   <div className="grid grid-cols-2 gap-2">
                     {serviceDropdownItems.map((item) => (
-                      <Link
+                      <button
                         key={item.id}
-                        to="services"
-                        smooth={true}
-                        duration={500}
-                        className="flex items-center gap-2 px-3 py-2 text-sm text-gray-600 hover:text-blue-600 hover:bg-blue-500/10 rounded-lg transition-all duration-300"
-                        onClick={handleLinkClick}
+                        onClick={() => handleServiceClick(item.path)}
+                        className="flex items-center gap-2 px-3 py-2 text-sm text-gray-600 hover:text-blue-600 hover:bg-blue-500/10 rounded-lg transition-all duration-300 text-left"
                       >
                         <span className="text-blue-600 text-xs">{item.icon}</span>
                         {item.name}
-                      </Link>
+                      </button>
                     ))}
                   </div>
                 </div>
@@ -303,6 +324,10 @@ const Navbar: React.FC<NavbarProps> = ({ className = '' }) => {
                     variant="primary"
                     size="lg"
                     className="w-full"
+                    onClick={() => {
+                      navigate('/contact');
+                      setIsOpen(false);
+                    }}
                   >
                     Get Started
                   </Button>
