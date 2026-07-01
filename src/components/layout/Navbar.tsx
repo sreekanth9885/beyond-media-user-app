@@ -52,6 +52,18 @@ const Navbar: React.FC<NavbarProps> = ({ className = '' }) => {
     setShowServicesDropdown(false);
   }, [location]);
 
+  // Prevent body scroll when mobile menu is open
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
+    }
+    return () => {
+      document.body.style.overflow = 'unset';
+    };
+  }, [isOpen]);
+
   const navLinks: NavLink[] = [
     { name: 'Home', path: '/' },
     { name: 'About', path: '/about' },
@@ -98,12 +110,12 @@ const Navbar: React.FC<NavbarProps> = ({ className = '' }) => {
 
   const mobileMenuVariants: Variants = {
     hidden: { 
-      opacity: 0, 
+      opacity: 0,
       x: '100%',
       transition: { duration: 0.3, ease: "easeInOut" }
     },
     visible: { 
-      opacity: 1, 
+      opacity: 1,
       x: 0,
       transition: { duration: 0.3, ease: "easeInOut" }
     },
@@ -133,132 +145,132 @@ const Navbar: React.FC<NavbarProps> = ({ className = '' }) => {
   };
 
   return (
-    <motion.nav
-      initial={{ y: -100 }}
-      animate={{ y: 0 }}
-      transition={{ duration: 0.6, ease: "easeOut" }}
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled 
-        ? 'bg-purple-900 backdrop-blur-glass shadow-lg border-b border-white/10'
-        : 'bg-purple-900 backdrop-blur-glass border-b border-white/5'
-      } ${className}`}
-      role="navigation"
-      aria-label="Main navigation"
-    >
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16 md:h-20">
-          {/* Logo */}
-          <motion.div
-            whileHover={{ scale: 1.03 }}
-            className="flex items-center flex-shrink-0"
-          >
-            <RouterLink
-              to="/"
-              className="flex items-center gap-2 sm:gap-3 cursor-pointer"
+    <>
+      <motion.nav
+        initial={{ y: -100 }}
+        animate={{ y: 0 }}
+        transition={{ duration: 0.6, ease: "easeOut" }}
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled 
+            ? 'bg-purple-900/95 backdrop-blur-glass shadow-lg border-b border-white/10'
+            : 'bg-purple-900/80 backdrop-blur-glass border-b border-white/5'
+          } ${className}`}
+        role="navigation"
+        aria-label="Main navigation"
+      >
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex items-center justify-between h-16 md:h-20">
+            {/* Logo */}
+            <motion.div
+              whileHover={{ scale: 1.03 }}
+              className="flex items-center flex-shrink-0"
             >
-              {/* Logo Image - Mobile Optimized */}
-              <div className="bg-white backdrop-blur-sm rounded-lg p-1.5 sm:p-2 shadow-purple-lg flex-shrink-0 w-9 h-9 sm:w-12 sm:h-12 flex items-center justify-center border border-white/10">
-                <img
-                  src="/logo.svg"
-                  alt="Beyond Media"
-                  className="h-6 w-auto sm:h-10"
-                  onError={(e) => {
-                    (e.target as HTMLImageElement).style.display = 'none';
-                  }}
-                />
-              </div>
-
-              <div className="flex flex-col">
-                <span className="text-lg sm:text-2xl font-poppins font-bold leading-tight">
-                  <span className="text-white">Beyond</span>
-                  <span className="text-yellow-300"> I</span>
-                  <span className="text-purple-300"> Media</span>
-                </span>
-                <span className="hidden xs:block text-[8px] sm:text-[10px] tracking-[0.2em] sm:tracking-[0.25em] text-purple-300/60 uppercase leading-tight">
-                  Beyond Honest.. Beyond Limits
-                </span>
-              </div>
-            </RouterLink>
-          </motion.div>
-
-          {/* Desktop Navigation - Bright White Links */}
-          <div className="hidden lg:flex items-center space-x-1">
-            {navLinks.map((link) => (
-              <div
-                key={link.name}
-                className="relative"
-                onMouseEnter={() => link.hasDropdown && setShowServicesDropdown(true)}
-                onMouseLeave={() => link.hasDropdown && setShowServicesDropdown(false)}
+              <RouterLink
+                to="/"
+                className="flex items-center gap-2 sm:gap-3 cursor-pointer"
               >
-                <RouterLink
-                  to={link.path}
-                  className={`flex items-center px-4 py-2 text-sm font-medium transition-colors duration-300 cursor-pointer group ${isActive(link.path)
-                      ? 'text-white'
-                      : 'text-white hover:text-white'
-                    }`}
+                {/* Logo Image - Mobile Optimized */}
+                <div className="bg-white/10 backdrop-blur-sm rounded-lg p-1.5 sm:p-2 shadow-purple-lg flex-shrink-0 w-9 h-9 sm:w-12 sm:h-12 flex items-center justify-center border border-white/10">
+                  <img
+                    src="/logo.svg"
+                    alt="Beyond Media"
+                    className="h-6 w-auto sm:h-10"
+                    onError={(e) => {
+                      (e.target as HTMLImageElement).style.display = 'none';
+                    }}
+                  />
+                </div>
+
+                <div className="flex flex-col">
+                  <span className="text-lg sm:text-2xl font-poppins font-bold leading-tight">
+                    <span className="text-white">Beyond</span>
+                    <span className="text-yellow-300"> I</span>
+                    <span className="text-purple-300"> Media</span>
+                  </span>
+                  <span className="hidden xs:block text-[8px] sm:text-[10px] tracking-[0.2em] sm:tracking-[0.25em] text-purple-300/60 uppercase leading-tight">
+                    Beyond Honest.. Beyond Limits
+                  </span>
+                </div>
+              </RouterLink>
+            </motion.div>
+
+            {/* Desktop Navigation */}
+            <div className="hidden lg:flex items-center space-x-1">
+              {navLinks.map((link) => (
+                <div
+                  key={link.name}
+                  className="relative"
+                  onMouseEnter={() => link.hasDropdown && setShowServicesDropdown(true)}
+                  onMouseLeave={() => link.hasDropdown && setShowServicesDropdown(false)}
                 >
-                  {link.name}
-                  {link.hasDropdown && (
-                    <FaChevronDown className={`ml-1 text-xs transition-transform duration-300 ${
-                      showServicesDropdown ? 'rotate-180' : ''
-                    }`} />
-                  )}
-                  <span className={`absolute bottom-0 left-0 h-0.5 bg-gradient-to-r from-purple-400 to-purple-300 transition-all duration-300 ${isActive(link.path) ? 'w-full' : 'w-0 group-hover:w-full'
-                    }`}></span>
-                </RouterLink>
-
-                {/* Services Dropdown */}
-                {link.hasDropdown && (
-                  <AnimatePresence>
-                    {showServicesDropdown && (
-                      <motion.div
-                        variants={dropdownVariants}
-                        initial="hidden"
-                        animate="visible"
-                        exit="exit"
-                        className="absolute top-full left-0 mt-2 w-64 bg-purple-900/95 backdrop-blur-glass rounded-xl shadow-2xl border border-white/10 p-2"
-                      >
-                        <div className="grid grid-cols-1 gap-0.5">
-                          {serviceDropdownItems.map((item) => (
-                            <button
-                              key={item.id}
-                              onClick={() => handleServiceClick(item.path)}
-                              className="flex items-center px-3 py-2 text-sm text-white hover:text-white hover:bg-white/10 rounded-lg transition-all duration-300 text-left"
-                            >
-                              {item.name}
-                            </button>
-                          ))}
-                        </div>
-                      </motion.div>
+                  <RouterLink
+                    to={link.path}
+                    className={`flex items-center px-4 py-2 text-sm font-medium transition-colors duration-300 cursor-pointer group ${isActive(link.path)
+                        ? 'text-white'
+                      : 'text-white/80 hover:text-white'
+                    }`}
+                  >
+                    {link.name}
+                    {link.hasDropdown && (
+                      <FaChevronDown className={`ml-1 text-xs transition-transform duration-300 ${showServicesDropdown ? 'rotate-180' : ''
+                        }`} />
                     )}
-                  </AnimatePresence>
-                )}
-              </div>
-            ))}
+                    <span className={`absolute bottom-0 left-0 h-0.5 bg-gradient-to-r from-purple-400 to-purple-300 transition-all duration-300 ${isActive(link.path) ? 'w-full' : 'w-0 group-hover:w-full'
+                    }`}></span>
+                  </RouterLink>
 
-            <Button
-              variant="primary"
-              size="md"
-              className="ml-4 bg-gradient-to-r from-purple-500 to-purple-700 text-white hover:from-purple-600 hover:to-purple-800 shadow-purple-lg"
-              onClick={() => navigate('/contact')}
+                  {/* Services Dropdown */}
+                  {link.hasDropdown && (
+                    <AnimatePresence>
+                      {showServicesDropdown && (
+                        <motion.div
+                          variants={dropdownVariants}
+                          initial="hidden"
+                          animate="visible"
+                          exit="exit"
+                          className="absolute top-full left-0 mt-2 w-64 bg-purple-900/95 backdrop-blur-glass rounded-xl shadow-2xl border border-white/10 p-2"
+                        >
+                          <div className="grid grid-cols-1 gap-0.5">
+                            {serviceDropdownItems.map((item) => (
+                              <button
+                                key={item.id}
+                                onClick={() => handleServiceClick(item.path)}
+                                className="flex items-center px-3 py-2 text-sm text-white/80 hover:text-white hover:bg-white/10 rounded-lg transition-all duration-300 text-left"
+                              >
+                                {item.name}
+                              </button>
+                            ))}
+                          </div>
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
+                  )}
+                </div>
+              ))}
+
+              <Button
+                variant="primary"
+                size="md"
+                className="ml-4 bg-gradient-to-r from-purple-500 to-purple-700 text-white hover:from-purple-600 hover:to-purple-800 shadow-purple-lg"
+                onClick={() => navigate('/contact')}
+              >
+                Get Started
+              </Button>
+            </div>
+
+            {/* Mobile Menu Button */}
+            <button
+              onClick={() => setIsOpen(!isOpen)}
+              className="lg:hidden text-white hover:text-purple-300 transition-colors duration-300 p-2 z-50"
+              aria-label="Toggle menu"
+              aria-expanded={isOpen}
             >
-              Get Started
-            </Button>
+              {isOpen ? <FaTimes size={24} /> : <FaBars size={24} />}
+            </button>
           </div>
-
-          {/* Mobile Menu Button */}
-          <button
-            onClick={() => setIsOpen(!isOpen)}
-            className="lg:hidden text-white hover:text-purple-300 transition-colors duration-300 p-2"
-            aria-label="Toggle menu"
-            aria-expanded={isOpen}
-          >
-            {isOpen ? <FaTimes size={24} /> : <FaBars size={24} />}
-          </button>
         </div>
-      </div>
+      </motion.nav>
 
-      {/* Mobile Menu - Bright White Links */}
+      {/* Mobile Menu - Separate from nav for better rendering */}
       <AnimatePresence>
         {isOpen && (
           <motion.div
@@ -266,9 +278,9 @@ const Navbar: React.FC<NavbarProps> = ({ className = '' }) => {
             initial="hidden"
             animate="visible"
             exit="exit"
-            className="lg:hidden fixed inset-0 top-16 bg-purple-900/98 backdrop-blur-glass overflow-y-auto"
+            className="lg:hidden fixed inset-0 top-16 bg-purple-900/98 backdrop-blur-glass overflow-y-auto z-40"
           >
-            <div className="container mx-auto px-4 py-6">
+            <div className="container mx-auto px-4 py-6 min-h-screen">
               <div className="flex flex-col space-y-2">
                 {navLinks.map((link) => (
                   <RouterLink
@@ -276,7 +288,7 @@ const Navbar: React.FC<NavbarProps> = ({ className = '' }) => {
                     to={link.path}
                     className={`flex items-center px-4 py-3 rounded-lg transition-all duration-300 ${isActive(link.path)
                         ? 'text-white bg-white/10'
-                        : 'text-white hover:text-white hover:bg-white/10'
+                        : 'text-white/80 hover:text-white hover:bg-white/10'
                       }`}
                     onClick={handleLinkClick}
                   >
@@ -291,7 +303,7 @@ const Navbar: React.FC<NavbarProps> = ({ className = '' }) => {
                       <button
                         key={item.id}
                         onClick={() => handleServiceClick(item.path)}
-                        className="flex items-center px-3 py-2 text-sm text-white hover:text-white hover:bg-white/10 rounded-lg transition-all duration-300 text-left"
+                        className="flex items-center px-3 py-2 text-sm text-white/80 hover:text-white hover:bg-white/10 rounded-lg transition-all duration-300 text-left"
                       >
                         {item.name}
                       </button>
@@ -315,19 +327,19 @@ const Navbar: React.FC<NavbarProps> = ({ className = '' }) => {
 
                 {/* Social Icons in Mobile */}
                 <div className="flex justify-center gap-4 pt-6">
-                  <a href="#" className="text-white hover:text-white transition-colors duration-300" aria-label="Facebook">
+                  <a href="#" className="text-white/60 hover:text-white transition-colors duration-300" aria-label="Facebook">
                     <FaFacebook size={20} />
                   </a>
-                  <a href="#" className="text-white hover:text-white transition-colors duration-300" aria-label="Twitter">
+                  <a href="#" className="text-white/60 hover:text-white transition-colors duration-300" aria-label="Twitter">
                     <FaTwitter size={20} />
                   </a>
-                  <a href="#" className="text-white hover:text-white transition-colors duration-300" aria-label="LinkedIn">
+                  <a href="#" className="text-white/60 hover:text-white transition-colors duration-300" aria-label="LinkedIn">
                     <FaLinkedin size={20} />
                   </a>
-                  <a href="#" className="text-white hover:text-white transition-colors duration-300" aria-label="Instagram">
+                  <a href="#" className="text-white/60 hover:text-white transition-colors duration-300" aria-label="Instagram">
                     <FaInstagram size={20} />
                   </a>
-                  <a href="#" className="text-white hover:text-white transition-colors duration-300" aria-label="YouTube">
+                  <a href="#" className="text-white/60 hover:text-white transition-colors duration-300" aria-label="YouTube">
                     <FaYoutube size={20} />
                   </a>
                 </div>
@@ -336,7 +348,7 @@ const Navbar: React.FC<NavbarProps> = ({ className = '' }) => {
           </motion.div>
         )}
       </AnimatePresence>
-    </motion.nav>
+    </>
   );
 };
 
