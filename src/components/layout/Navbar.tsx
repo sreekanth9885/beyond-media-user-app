@@ -5,25 +5,11 @@ import {
   FaBars, 
   FaTimes, 
   FaChevronDown,
-  FaGoogle,
   FaFacebook,
   FaInstagram,
   FaTwitter,
   FaLinkedin,
   FaYoutube,
-  FaCode,
-  FaMobileAlt,
-  FaPaintBrush,
-  FaVideo,
-  FaBullhorn,
-  FaUsers,
-  FaBuilding,
-  FaHome,
-  FaInfoCircle,
-  FaCogs,
-  FaBriefcase,
-  FaPhone,
-  FaEnvelope
 } from 'react-icons/fa';
 import { Link as RouterLink, useLocation, useNavigate } from 'react-router-dom';
 import Button from '../ui/Button';
@@ -35,14 +21,12 @@ interface NavbarProps {
 interface NavLink {
   name: string;
   path: string;
-  icon: React.ReactNode;
   hasDropdown?: boolean;
 }
 
 interface NavbarServiceItem {
   id: string;
   name: string;
-  icon: React.ReactNode;
   category: string;
   path: string;
 }
@@ -69,26 +53,26 @@ const Navbar: React.FC<NavbarProps> = ({ className = '' }) => {
   }, [location]);
 
   const navLinks: NavLink[] = [
-    { name: 'Home', path: '/', icon: <FaHome /> },
-    { name: 'About', path: '/about', icon: <FaInfoCircle /> },
-    { name: 'Services', path: '/services', icon: <FaCogs />, hasDropdown: true },
-    { name: 'Portfolio', path: '/portfolio', icon: <FaBriefcase /> },
-    { name: 'Contact', path: '/contact', icon: <FaPhone /> },
+    { name: 'Home', path: '/' },
+    { name: 'About', path: '/about' },
+    { name: 'Services', path: '/services', hasDropdown: true },
+    { name: 'Portfolio', path: '/portfolio' },
+    { name: 'Contact', path: '/contact' },
   ];
 
   const serviceDropdownItems: NavbarServiceItem[] = [
-    { id: 'google-ads', name: 'Google Ads', icon: <FaGoogle />, category: 'Marketing', path: '/services#google-ads' },
-    { id: 'meta-ads', name: 'Meta Ads', icon: <FaFacebook />, category: 'Marketing', path: '/services#meta-ads' },
-    { id: 'political-campaign', name: 'Political Campaign', icon: <FaBullhorn />, category: 'Political', path: '/political-campaigns' },
-    { id: 'social-media', name: 'Social Media Marketing', icon: <FaUsers />, category: 'Marketing', path: '/digital-marketing#social-media' },
-    { id: 'youtube-seo', name: 'YouTube SEO', icon: <FaYoutube />, category: 'SEO', path: '/digital-marketing#youtube-seo' },
-    { id: 'live-coverage', name: 'Live Coverage', icon: <FaVideo />, category: 'Media', path: '/services#live-coverage' },
-    { id: 'web-dev', name: 'Web Development', icon: <FaCode />, category: 'Development', path: '/it-services#web-dev' },
-    { id: 'mobile-apps', name: 'Mobile Apps', icon: <FaMobileAlt />, category: 'Development', path: '/it-services#mobile-apps' },
-    { id: 'graphic-design', name: 'Graphic Design', icon: <FaPaintBrush />, category: 'Design', path: '/services#graphic-design' },
-    { id: 'branding', name: 'Branding', icon: <FaBuilding />, category: 'Design', path: '/services#branding' },
-    { id: 'video-editing', name: 'Video Editing', icon: <FaVideo />, category: 'Media', path: '/services#video-editing' },
-    { id: 'content-marketing', name: 'Content Marketing', icon: <FaEnvelope />, category: 'Marketing', path: '/services#content-marketing' },
+    { id: 'google-ads', name: 'Google Ads', category: 'Marketing', path: '/services#google-ads' },
+    { id: 'meta-ads', name: 'Meta Ads', category: 'Marketing', path: '/services#meta-ads' },
+    { id: 'political-campaign', name: 'Political Campaign', category: 'Political', path: '/political-campaigns' },
+    { id: 'social-media', name: 'Social Media Marketing', category: 'Marketing', path: '/digital-marketing#social-media' },
+    { id: 'youtube-seo', name: 'YouTube SEO', category: 'SEO', path: '/digital-marketing#youtube-seo' },
+    { id: 'live-coverage', name: 'Live Coverage', category: 'Media', path: '/services#live-coverage' },
+    { id: 'web-dev', name: 'Web Development', category: 'Development', path: '/it-services#web-dev' },
+    { id: 'mobile-apps', name: 'Mobile Apps', category: 'Development', path: '/it-services#mobile-apps' },
+    { id: 'graphic-design', name: 'Graphic Design', category: 'Design', path: '/services#graphic-design' },
+    { id: 'branding', name: 'Branding', category: 'Design', path: '/services#branding' },
+    { id: 'video-editing', name: 'Video Editing', category: 'Media', path: '/services#video-editing' },
+    { id: 'content-marketing', name: 'Content Marketing', category: 'Marketing', path: '/services#content-marketing' },
   ];
 
   const dropdownVariants: Variants = {
@@ -187,7 +171,6 @@ const Navbar: React.FC<NavbarProps> = ({ className = '' }) => {
               <div className="flex flex-col">
                 <span className="text-lg sm:text-2xl font-poppins font-bold leading-tight">
                   <span className="text-gray-900">Beyond</span>
-                  <span className="text-yellow-500"> I</span>
                   <span className="text-blue-600"> Media</span>
                 </span>
                 <span className="hidden xs:block text-[8px] sm:text-[10px] tracking-[0.2em] sm:tracking-[0.25em] text-gray-400 uppercase leading-tight">
@@ -197,7 +180,7 @@ const Navbar: React.FC<NavbarProps> = ({ className = '' }) => {
             </RouterLink>
           </motion.div>
 
-          {/* Desktop Navigation */}
+          {/* Desktop Navigation - No Icons */}
           <div className="hidden lg:flex items-center space-x-1">
             {navLinks.map((link) => (
               <div
@@ -208,12 +191,11 @@ const Navbar: React.FC<NavbarProps> = ({ className = '' }) => {
               >
                 <RouterLink
                   to={link.path}
-                  className={`flex items-center gap-1 px-4 py-2 text-sm font-medium transition-colors duration-300 cursor-pointer group ${isActive(link.path)
-                      ? 'text-blue-600'
+                  className={`flex items-center px-4 py-2 text-sm font-medium transition-colors duration-300 cursor-pointer group ${isActive(link.path)
+                      ? 'text-blue-600' 
                       : 'text-gray-600 hover:text-blue-600'
                     }`}
                 >
-                  {link.icon}
                   {link.name}
                   {link.hasDropdown && (
                     <FaChevronDown className={`ml-1 text-xs transition-transform duration-300 ${
@@ -224,7 +206,7 @@ const Navbar: React.FC<NavbarProps> = ({ className = '' }) => {
                     }`}></span>
                 </RouterLink>
 
-                {/* Services Dropdown */}
+                {/* Services Dropdown - No Icons */}
                 {link.hasDropdown && (
                   <AnimatePresence>
                     {showServicesDropdown && (
@@ -233,16 +215,15 @@ const Navbar: React.FC<NavbarProps> = ({ className = '' }) => {
                         initial="hidden"
                         animate="visible"
                         exit="exit"
-                        className="absolute top-full left-0 mt-2 w-72 bg-white/95 backdrop-blur-glass rounded-xl shadow-blue-lg border border-blue-500/20 p-2"
+                        className="absolute top-full left-0 mt-2 w-64 bg-white/95 backdrop-blur-glass rounded-xl shadow-blue-lg border border-blue-500/20 p-2"
                       >
-                        <div className="grid grid-cols-2 gap-1">
+                        <div className="grid grid-cols-1 gap-0.5">
                           {serviceDropdownItems.map((item) => (
                             <button
                               key={item.id}
                               onClick={() => handleServiceClick(item.path)}
-                              className="flex items-center gap-2 px-3 py-2 text-sm text-gray-600 hover:text-blue-600 hover:bg-blue-500/10 rounded-lg transition-all duration-300 text-left"
+                              className="flex items-center px-3 py-2 text-sm text-gray-600 hover:text-blue-600 hover:bg-blue-500/10 rounded-lg transition-all duration-300 text-left"
                             >
-                              <span className="text-blue-600">{item.icon}</span>
                               {item.name}
                             </button>
                           ))}
@@ -276,7 +257,7 @@ const Navbar: React.FC<NavbarProps> = ({ className = '' }) => {
         </div>
       </div>
 
-      {/* Mobile Menu */}
+      {/* Mobile Menu - No Icons */}
       <AnimatePresence>
         {isOpen && (
           <motion.div
@@ -292,13 +273,12 @@ const Navbar: React.FC<NavbarProps> = ({ className = '' }) => {
                   <RouterLink
                     key={link.name}
                     to={link.path}
-                    className={`flex items-center gap-3 px-4 py-3 rounded-lg transition-all duration-300 ${isActive(link.path)
+                    className={`flex items-center px-4 py-3 rounded-lg transition-all duration-300 ${isActive(link.path)
                         ? 'text-blue-600 bg-blue-500/10'
                         : 'text-gray-600 hover:text-blue-600 hover:bg-blue-500/10'
                       }`}
                     onClick={handleLinkClick}
                   >
-                    <span className="text-blue-600">{link.icon}</span>
                     {link.name}
                   </RouterLink>
                 ))}
@@ -310,9 +290,8 @@ const Navbar: React.FC<NavbarProps> = ({ className = '' }) => {
                       <button
                         key={item.id}
                         onClick={() => handleServiceClick(item.path)}
-                        className="flex items-center gap-2 px-3 py-2 text-sm text-gray-600 hover:text-blue-600 hover:bg-blue-500/10 rounded-lg transition-all duration-300 text-left"
+                        className="flex items-center px-3 py-2 text-sm text-gray-600 hover:text-blue-600 hover:bg-blue-500/10 rounded-lg transition-all duration-300 text-left"
                       >
-                        <span className="text-blue-600 text-xs">{item.icon}</span>
                         {item.name}
                       </button>
                     ))}
