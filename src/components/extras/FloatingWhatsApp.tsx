@@ -8,7 +8,7 @@ interface FloatingWhatsAppProps {
 }
 
 const FloatingWhatsApp: React.FC<FloatingWhatsAppProps> = ({ 
-  phoneNumber = '919876543210' 
+  phoneNumber = '+91 9010079111'
 }) => {
   return (
     <motion.a

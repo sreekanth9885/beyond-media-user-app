@@ -73,11 +73,11 @@ const Contact: React.FC = () => {
     {
       id: 'address',
       label: 'Office Address',
-      value: 'DigitalPro Tower, Cyber City, Hyderabad, India',
+      value: 'Madhapur, Hyderabad, Telangana 500081',
       icon: <FaMapMarkerAlt />,
-      link: 'https://maps.google.com',
+      link: 'https://maps.google.com/?q=Madhapur,Hyderabad',
       color: 'from-red-500 to-red-600'
-    },
+    }, 
     {
       id: 'hours',
       label: 'Working Hours',
@@ -525,11 +525,12 @@ const Contact: React.FC = () => {
             <div className="absolute inset-0 bg-gradient-to-t from-gray-900/60 to-transparent flex items-end justify-center">
               <div className="bg-white/95 backdrop-blur-sm px-6 py-4 rounded-t-2xl border border-blue-500/20 shadow-sm text-center">
                 <p className="text-gray-600 text-sm">
-                  📍 DigitalPro Tower, Cyber City, Hyderabad, India
+                  📍 Madhapur, Hyderabad, Telangana 500081
                 </p>
-                <a 
-                  href="https://maps.google.com" 
-                  target="_blank" 
+
+                <a
+                  href="https://www.google.com/maps/search/?api=1&query=Madhapur+Hyderabad"
+                  target="_blank"
                   rel="noopener noreferrer"
                   className="text-blue-600 text-xs hover:text-blue-500 transition-colors duration-300"
                 >
