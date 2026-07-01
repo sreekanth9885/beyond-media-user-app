@@ -304,7 +304,7 @@ const Contact: React.FC = () => {
                 Send Us a Message
               </h3>
               <p className="text-gray-500 text-sm mb-6">
-                Fill in the form below and we will get back to you within 24 hours.
+                Fill in the form below and we'll get back to you within 24 hours.
               </p>
 
               <form onSubmit={handleSubmit} className="space-y-4">
