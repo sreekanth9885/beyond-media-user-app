@@ -246,7 +246,7 @@ const Portfolio: React.FC = () => {
   });
 
   // Animation variants
-  const containerVariants = {
+  const containerVariants: Variants = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
@@ -257,7 +257,7 @@ const Portfolio: React.FC = () => {
     }
   };
 
-  const itemVariants = {
+  const itemVariants: Variants = {
     hidden: { opacity: 0, scale: 0.9 },
     visible: {
       opacity: 1,
@@ -268,9 +268,9 @@ const Portfolio: React.FC = () => {
       scale: 1.02,
       transition: { duration: 0.3, ease: "easeOut" }
     }
-  }satisfies Variants;
+  };
 
-  const overlayVariants = {
+  const overlayVariants: Variants = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
@@ -278,7 +278,7 @@ const Portfolio: React.FC = () => {
     }
   };
 
-  const modalVariants = {
+  const modalVariants: Variants = {
     hidden: { opacity: 0, scale: 0.8, y: 50 },
     visible: {
       opacity: 1,
@@ -292,23 +292,33 @@ const Portfolio: React.FC = () => {
       y: 50,
       transition: { duration: 0.3 }
     }
-  }satisfies Variants;
+  };
 
   return (
     <section 
       id="portfolio" 
-      className="py-16 md:py-20 lg:py-28 bg-white relative overflow-hidden"
+      className="py-16 md:py-20 lg:py-28 bg-purple-900 relative overflow-hidden"
       aria-label="Portfolio"
     >
       {/* Background Decorations */}
-      <div className="absolute top-1/3 left-0 w-80 h-80 bg-blue-600/5 rounded-full blur-3xl"></div>
-      <div className="absolute bottom-1/3 right-0 w-80 h-80 bg-blue-600/5 rounded-full blur-3xl"></div>
+      <div className="absolute top-0 right-0 w-64 h-64 bg-purple-400/10 rounded-full blur-3xl"></div>
+      <div className="absolute bottom-0 left-0 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl"></div>
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-purple-600/10 rounded-full blur-3xl"></div>
+      <div className="absolute top-20 left-20 w-72 h-72 bg-purple-500/10 rounded-full blur-3xl"></div>
+      <div className="absolute bottom-20 right-20 w-80 h-80 bg-purple-700/10 rounded-full blur-3xl"></div>
+
+      {/* Glowing orb decorations */}
+      <div className="absolute top-10 right-10 w-32 h-32 bg-purple-400/20 rounded-full blur-2xl animate-pulse"></div>
+      <div className="absolute bottom-10 left-10 w-40 h-40 bg-purple-500/20 rounded-full blur-2xl animate-pulse" style={{ animationDelay: '2s' }}></div>
 
       <Container>
         <SectionHeading
           badge="Our Portfolio"
           title="Projects That Define Excellence"
           subtitle="Explore our diverse portfolio of successful projects across industries and technologies."
+          badgeClassName="bg-purple-500/20 text-purple-200 border-purple-400/30 backdrop-blur-sm"
+          titleClassName="text-white"
+          subtitleClassName="text-purple-200"
         />
 
         {/* Search & Filter */}
@@ -326,10 +336,10 @@ const Portfolio: React.FC = () => {
               placeholder="Search projects..."
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
-              className="w-full px-4 py-3 bg-white-light/50 backdrop-blur-sm rounded-lg border border-blue-500/10 text-gray-900 placeholder-gray-400 focus:border-gold-500/50 focus:outline-none transition-all duration-300"
+              className="w-full px-4 py-3 bg-white/10 backdrop-blur-sm rounded-lg border border-white/10 text-white placeholder-purple-300/50 focus:border-purple-400/50 focus:outline-none transition-all duration-300 shadow-lg"
               aria-label="Search portfolio"
             />
-            <FaSearch className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400" />
+            <FaSearch className="absolute right-3 top-1/2 transform -translate-y-1/2 text-purple-300" />
           </div>
           
           {/* Category Filters */}
@@ -340,8 +350,8 @@ const Portfolio: React.FC = () => {
                 onClick={() => setActiveCategory(category.id)}
                 className={`flex items-center gap-1.5 px-3 py-2 rounded-lg text-xs md:text-sm font-medium transition-all duration-300 ${
                   activeCategory === category.id
-                  ? 'bg-blue-600 text-primary shadow-blue'
-                  : 'bg-white/5 text-gray-400 hover:text-gray-900 hover:bg-white/10 border border-blue-500/10'
+                  ? 'bg-gradient-to-r from-purple-500 to-purple-700 text-white shadow-2xl shadow-purple-500/30'
+                  : 'bg-white/10 backdrop-blur-sm text-purple-200 hover:text-white hover:bg-white/20 border border-white/10 hover:border-purple-400/50'
                 }`}
                 aria-label={`Filter ${category.label}`}
                 aria-pressed={activeCategory === category.id}
@@ -349,7 +359,7 @@ const Portfolio: React.FC = () => {
                 <span className="text-sm">{category.icon}</span>
                 {category.label}
                 <span className={`text-[10px] ${
-                  activeCategory === category.id ? 'text-primary/70' : 'text-gray-400'
+                  activeCategory === category.id ? 'text-purple-200' : 'text-purple-300'
                 }`}>
                   ({category.count})
                 </span>
@@ -379,7 +389,7 @@ const Portfolio: React.FC = () => {
                 onKeyPress={(e) => e.key === 'Enter' && setSelectedItem(item)}
                 aria-label={`View ${item.title}`}
               >
-                <div className="relative rounded-xl overflow-hidden border border-blue-500/10 hover:border-blue-500/30 transition-all duration-300">
+                <div className="relative rounded-xl overflow-hidden border border-white/10 hover:border-purple-400/50 transition-all duration-300 shadow-lg hover:shadow-2xl hover:shadow-purple-500/20">
                   {/* Image */}
                   <img
                     src={item.image}
@@ -389,7 +399,7 @@ const Portfolio: React.FC = () => {
                   />
                   
                   {/* Category Badge */}
-                  <div className="absolute top-3 right-3 bg-white/90 backdrop-blur-sm px-2.5 py-1 rounded-lg text-xs font-medium text-blue-600 border border-blue-500/20 flex items-center gap-1 z-10">
+                  <div className="absolute top-3 right-3 bg-purple-500/30 backdrop-blur-sm px-2.5 py-1 rounded-lg text-xs font-medium text-purple-200 border border-purple-400/30 flex items-center gap-1 z-10 shadow-lg">
                     <FaTag className="text-[10px]" />
                     {categories.find(c => c.id === item.category)?.label}
                   </div>
@@ -399,34 +409,34 @@ const Portfolio: React.FC = () => {
                     variants={overlayVariants}
                     initial="hidden"
                     whileHover="visible"
-                    className="absolute inset-0 bg-gradient-to-t from-primary/95 via-primary/70 to-transparent flex flex-col justify-end p-4 md:p-6"
+                    className="absolute inset-0 bg-gradient-to-t from-purple-900/95 via-purple-900/80 to-transparent flex flex-col justify-end p-4 md:p-6"
                   >
-                    <h3 className="text-gray-900 font-poppins font-semibold text-base md:text-lg mb-1">
+                    <h3 className="text-white font-poppins font-semibold text-base md:text-lg mb-1">
                       {item.title}
                     </h3>
-                    <p className="text-gray-600 text-sm mb-3 line-clamp-2">
+                    <p className="text-purple-200 text-sm mb-3 line-clamp-2">
                       {item.description}
                     </p>
                     <div className="flex flex-wrap gap-1.5 mb-3">
                       {item.tags.slice(0, 3).map((tag, index) => (
                         <span 
                           key={index}
-                          className="text-[10px] px-2 py-1 bg-blue-600/20 text-blue-500 rounded border border-blue-500/10"
+                          className="text-[10px] px-2 py-1 bg-purple-500/20 text-purple-200 rounded border border-purple-400/20"
                         >
                           {tag}
                         </span>
                       ))}
                       {item.tags.length > 3 && (
-                        <span className="text-[10px] px-2 py-1 bg-white/5 text-gray-400 rounded border border-blue-500/10">
+                        <span className="text-[10px] px-2 py-1 bg-white/5 text-purple-300 rounded border border-white/10">
                           +{item.tags.length - 3}
                         </span>
                       )}
                     </div>
                     <div className="flex items-center justify-between">
-                      <span className="text-xs text-gray-400">
+                      <span className="text-xs text-purple-300">
                         {item.client} • {item.date}
                       </span>
-                      <span className="text-blue-600 text-sm">
+                      <span className="text-purple-300 text-sm">
                         <FaEye />
                       </span>
                     </div>
@@ -444,7 +454,7 @@ const Portfolio: React.FC = () => {
             animate={{ opacity: 1 }}
             className="text-center py-12"
           >
-            <div className="text-gray-400 text-lg">
+            <div className="text-purple-300 text-lg">
               No projects found matching your criteria
             </div>
           </motion.div>
@@ -456,7 +466,7 @@ const Portfolio: React.FC = () => {
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5, delay: 0.3 }}
-          className="text-center mt-8 text-sm text-gray-400"
+          className="text-center mt-8 text-sm text-purple-300"
         >
           Showing {filteredItems.length} of {portfolioItems.length} projects
         </motion.div>
@@ -478,13 +488,13 @@ const Portfolio: React.FC = () => {
               initial="hidden"
               animate="visible"
               exit="exit"
-              className="bg-white-light/95 backdrop-blur-glass rounded-2xl border border-blue-500/20 max-w-3xl w-full max-h-[90vh] overflow-y-auto"
+              className="bg-purple-900/95 backdrop-blur-glass rounded-2xl border border-white/10 max-w-3xl w-full max-h-[90vh] overflow-y-auto shadow-2xl"
               onClick={(e) => e.stopPropagation()}
             >
               {/* Close Button */}
               <button
                 onClick={() => setSelectedItem(null)}
-                className="absolute top-4 right-4 text-gray-400 hover:text-gray-900 transition-colors duration-300"
+                className="absolute top-4 right-4 text-purple-300 hover:text-white transition-colors duration-300 z-10"
                 aria-label="Close modal"
               >
                 <FaTimes size={24} />
@@ -499,9 +509,9 @@ const Portfolio: React.FC = () => {
                     alt={selectedItem.title}
                     className="w-full h-full object-cover"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-primary/50 to-transparent"></div>
+                  <div className="absolute inset-0 bg-gradient-to-t from-purple-900/80 to-transparent"></div>
                   <div className="absolute bottom-4 left-4">
-                    <span className="inline-block px-3 py-1 bg-white/90 backdrop-blur-sm rounded-lg text-xs font-medium text-blue-600 border border-blue-500/20">
+                    <span className="inline-block px-3 py-1 bg-purple-500/30 backdrop-blur-sm rounded-lg text-xs font-medium text-purple-200 border border-purple-400/30">
                       {categories.find(c => c.id === selectedItem.category)?.label}
                     </span>
                   </div>
@@ -509,30 +519,30 @@ const Portfolio: React.FC = () => {
 
                 {/* Details */}
                 <div className="space-y-4">
-                  <h3 className="text-gray-900 font-poppins font-bold text-2xl md:text-3xl">
+                  <h3 className="text-white font-poppins font-bold text-2xl md:text-3xl">
                     {selectedItem.title}
                   </h3>
                   
-                  <div className="flex flex-wrap gap-4 text-sm text-gray-400">
+                  <div className="flex flex-wrap gap-4 text-sm text-purple-300">
                     <span className="flex items-center gap-1">
-                      <FaStar className="text-blue-600" /> {selectedItem.client}
+                      <FaStar className="text-purple-400" /> {selectedItem.client}
                     </span>
                     <span className="flex items-center gap-1">
-                      <FaComments className="text-blue-600" /> {selectedItem.date}
+                      <FaComments className="text-purple-400" /> {selectedItem.date}
                     </span>
                   </div>
 
-                  <p className="text-gray-600 text-base md:text-lg leading-relaxed">
+                  <p className="text-purple-200 text-base md:text-lg leading-relaxed">
                     {selectedItem.description}
                   </p>
 
                   <div>
-                    <h4 className="text-gray-900 font-semibold text-sm mb-2">Key Tags</h4>
+                    <h4 className="text-white font-semibold text-sm mb-2">Key Tags</h4>
                     <div className="flex flex-wrap gap-2">
                       {selectedItem.tags.map((tag, index) => (
                         <span
                           key={index}
-                          className="px-3 py-1 bg-blue-600/10 text-blue-500 rounded-full text-xs border border-blue-500/20"
+                          className="px-3 py-1 bg-purple-500/20 text-purple-200 rounded-full text-xs border border-purple-400/20"
                         >
                           {tag}
                         </span>
@@ -540,12 +550,16 @@ const Portfolio: React.FC = () => {
                     </div>
                   </div>
 
-                  <div className="bg-white/5 rounded-xl p-4 border border-blue-500/10">
-                    <h4 className="text-gray-900 font-semibold text-sm mb-1">Result</h4>
-                    <p className="text-gray-600 text-sm">{selectedItem.result}</p>
+                  <div className="bg-white/10 backdrop-blur-sm rounded-xl p-4 border border-white/10">
+                    <h4 className="text-white font-semibold text-sm mb-1">Result</h4>
+                    <p className="text-purple-200 text-sm">{selectedItem.result}</p>
                   </div>
 
-                  <Button variant="gold" size="lg" className="w-full">
+                  <Button
+                    variant="primary"
+                    size="lg"
+                    className="w-full bg-gradient-to-r from-purple-500 to-purple-700 text-white hover:from-purple-600 hover:to-purple-800 shadow-purple-lg"
+                  >
                     <FaLink className="mr-2" /> View Full Case Study
                     <FaArrowRight className="ml-2" />
                   </Button>

@@ -309,7 +309,7 @@ body {
    Link Styles
 ========================== */
 
-a {
+/* a {
   color: var(--color-purple-600);
   text-decoration: none;
   transition: color 0.3s ease;
@@ -317,7 +317,7 @@ a {
 
 a:hover {
   color: var(--color-purple-700);
-}
+} */
 
 /* ==========================
    Heading Styles
@@ -325,7 +325,7 @@ a:hover {
 
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-poppins);
-  color: var(--color-gray-900);
+  color: var(--color-gray-200);
 }
 
 /* ==========================

@@ -204,10 +204,10 @@ const Navbar: React.FC<NavbarProps> = ({ className = '' }) => {
                 >
                   <RouterLink
                     to={link.path}
-                    className={`flex items-center px-4 py-2 text-sm font-medium transition-colors duration-300 cursor-pointer group ${isActive(link.path)
-                        ? 'text-white'
-                      : 'text-white/80 hover:text-white'
-                    }`}
+                    className={`relative flex items-center px-4 py-2 text-sm font-semibold transition-all duration-300 cursor-pointer group ${isActive(link.path)
+                      ? 'text-white drop-shadow-[0_0_8px_rgba(255,255,255,0.35)]'
+                      : 'text-white hover:text-purple-200'
+                      }`}
                   >
                     {link.name}
                     {link.hasDropdown && (
@@ -234,7 +234,7 @@ const Navbar: React.FC<NavbarProps> = ({ className = '' }) => {
                               <button
                                 key={item.id}
                                 onClick={() => handleServiceClick(item.path)}
-                                className="flex items-center px-3 py-2 text-sm text-white/80 hover:text-white hover:bg-white/10 rounded-lg transition-all duration-300 text-left"
+                                className="flex items-center w-full px-3 py-2.5 text-sm font-medium text-white hover:text-purple-200 hover:bg-white/10 rounded-lg transition-all duration-300 text-left"
                               >
                                 {item.name}
                               </button>
@@ -286,9 +286,9 @@ const Navbar: React.FC<NavbarProps> = ({ className = '' }) => {
                   <RouterLink
                     key={link.name}
                     to={link.path}
-                    className={`flex items-center px-4 py-3 rounded-lg transition-all duration-300 ${isActive(link.path)
-                        ? 'text-white bg-white/10'
-                        : 'text-white/80 hover:text-white hover:bg-white/10'
+                    className={`relative flex items-center px-4 py-2 text-sm font-semibold transition-all duration-300 cursor-pointer group ${isActive(link.path)
+                      ? 'text-white drop-shadow-[0_0_8px_rgba(255,255,255,0.35)]'
+                      : 'text-white hover:text-purple-200'
                       }`}
                     onClick={handleLinkClick}
                   >
@@ -297,13 +297,13 @@ const Navbar: React.FC<NavbarProps> = ({ className = '' }) => {
                 ))}
 
                 <div className="pt-4 border-t border-white/10">
-                  <h4 className="text-sm font-semibold text-purple-300 mb-3">Our Services</h4>
+                  <span className="text-sm font-semibold text-white/60 mb-3">Our Services</span>
                   <div className="grid grid-cols-2 gap-2">
                     {serviceDropdownItems.map((item) => (
                       <button
                         key={item.id}
                         onClick={() => handleServiceClick(item.path)}
-                        className="flex items-center px-3 py-2 text-sm text-white/80 hover:text-white hover:bg-white/10 rounded-lg transition-all duration-300 text-left"
+                        className="flex items-center px-3 py-2.5 text-sm font-medium text-white hover:text-purple-200 hover:bg-white/10 rounded-lg transition-all duration-300 text-left"
                       >
                         {item.name}
                       </button>

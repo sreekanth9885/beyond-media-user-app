@@ -183,7 +183,7 @@ const Footer: React.FC = () => {
             <div className="space-y-2">
               <a href="tel:+919876543210" className="flex items-center gap-2 text-gray-300 hover:text-white transition-colors duration-300 text-sm">
                 <FaPhone className="text-purple-300 text-xs" />
-                +91 98765 43210
+                +91 9010079111
               </a>
               <a href="mailto:info@beyondmedia.com" className="flex items-center gap-2 text-gray-300 hover:text-white transition-colors duration-300 text-sm">
                 <FaEnvelope className="text-purple-300 text-xs" />
