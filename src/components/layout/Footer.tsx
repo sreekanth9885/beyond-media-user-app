@@ -14,10 +14,6 @@ import {
   FaArrowRight,
   FaCheckCircle,
   FaPaperPlane,
-  FaShieldAlt,
-  FaLock,
-  FaClock,
-  FaGlobe
 } from 'react-icons/fa';
 import { Link } from 'react-scroll';
 import Container from '../ui/Container';
@@ -34,24 +30,12 @@ interface ServiceLink {
   to: string;
 }
 
-interface IndustryLink {
-  id: string;
-  label: string;
-  to: string;
-}
-
 interface SocialLink {
   id: string;
   name: string;
   icon: React.ReactNode;
   url: string;
   color: string;
-}
-
-interface TrustBadge {
-  id: string;
-  label: string;
-  icon: React.ReactNode;
 }
 
 const Footer: React.FC = () => {
@@ -78,17 +62,6 @@ const Footer: React.FC = () => {
     { id: '8', label: 'Mobile App Development', to: 'it-services' },
   ];
 
-  const industryLinks: IndustryLink[] = [
-    { id: '1', label: 'Education', to: 'industries' },
-    { id: '2', label: 'Healthcare', to: 'industries' },
-    { id: '3', label: 'Politics', to: 'industries' },
-    { id: '4', label: 'Entertainment', to: 'industries' },
-    { id: '5', label: 'Business', to: 'industries' },
-    { id: '6', label: 'Real Estate', to: 'industries' },
-    { id: '7', label: 'Technology', to: 'industries' },
-    { id: '8', label: 'NGOs', to: 'industries' },
-  ];
-
   const socialLinks: SocialLink[] = [
     { id: 'facebook', name: 'Facebook', icon: <FaFacebook />, url: '#', color: '#1877F2' },
     { id: 'twitter', name: 'Twitter', icon: <FaTwitter />, url: '#', color: '#1DA1F2' },
@@ -96,13 +69,6 @@ const Footer: React.FC = () => {
     { id: 'instagram', name: 'Instagram', icon: <FaInstagram />, url: '#', color: '#E4405F' },
     { id: 'youtube', name: 'YouTube', icon: <FaYoutube />, url: '#', color: '#FF0000' },
     { id: 'whatsapp', name: 'WhatsApp', icon: <FaWhatsapp />, url: '#', color: '#25D366' },
-  ];
-
-  const trustBadges: TrustBadge[] = [
-    { id: '1', label: 'Secure Payments', icon: <FaLock /> },
-    { id: '2', label: 'Data Privacy', icon: <FaShieldAlt /> },
-    { id: '3', label: '24/7 Support', icon: <FaClock /> },
-    { id: '4', label: 'Global Reach', icon: <FaGlobe /> },
   ];
 
   const currentYear = new Date().getFullYear();

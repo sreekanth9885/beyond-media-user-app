@@ -6,7 +6,6 @@ import DigitalMarketing from "../components/sections/DigitalMarketing";
 import ITServices from "../components/sections/ITServices";
 import Process from "../components/sections/Process";
 import WhyChooseUs from "../components/sections/WhyChooseUs";
-import Statistics from "../components/sections/Statistics";
 import Testimonials from "../components/sections/Testimonials";
 // import FAQ from "../components/sections/FAQ";
 import Contact from "../components/sections/Contact";

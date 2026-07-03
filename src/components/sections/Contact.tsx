@@ -18,9 +18,6 @@ import {
   FaHeadset,
   FaShieldAlt,
   FaStar,
-  FaUser,
-  FaBuilding,
-  FaComment,
 } from 'react-icons/fa';
 import Container from '../ui/Container';
 import SectionHeading from '../ui/SectionHeading';
