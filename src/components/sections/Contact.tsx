@@ -97,12 +97,48 @@ const Contact: React.FC = () => {
   ];
 
   const socialLinks: SocialLink[] = [
-    { id: 'facebook', name: 'Facebook', icon: <FaFacebook />, url: '#', color: '#1877F2' },
-    { id: 'twitter', name: 'Twitter', icon: <FaTwitter />, url: '#', color: '#1DA1F2' },
-    { id: 'linkedin', name: 'LinkedIn', icon: <FaLinkedin />, url: '#', color: '#0A66C2' },
-    { id: 'instagram', name: 'Instagram', icon: <FaInstagram />, url: '#', color: '#E4405F' },
-    { id: 'youtube', name: 'YouTube', icon: <FaYoutube />, url: '#', color: '#FF0000' },
-    { id: 'whatsapp', name: 'WhatsApp', icon: <FaWhatsapp />, url: '#', color: '#25D366' }
+    {
+      id: 'facebook',
+      name: 'Facebook',
+      icon: <FaFacebook />,
+      url: 'https://www.facebook.com/beyondmedia',
+      color: '#1877F2'
+    },
+    {
+      id: 'twitter',
+      name: 'Twitter',
+      icon: <FaTwitter />,
+      url: 'https://x.com/BeyondIMedia',
+      color: '#1DA1F2'
+    },
+    {
+      id: 'linkedin',
+      name: 'LinkedIn',
+      icon: <FaLinkedin />,
+      url: 'https://www.linkedin.com/company/beyondmedia',
+      color: '#0A66C2'
+    },
+    {
+      id: 'instagram',
+      name: 'Instagram',
+      icon: <FaInstagram />,
+      url: 'https://www.instagram.com/beyondmedia',
+      color: '#E4405F'
+    },
+    {
+      id: 'youtube',
+      name: 'YouTube',
+      icon: <FaYoutube />,
+      url: 'https://www.youtube.com/@BeyondPolitics9',
+      color: '#FF0000'
+    },
+    {
+      id: 'whatsapp',
+      name: 'WhatsApp',
+      icon: <FaWhatsapp />,
+      url: 'https://wa.me/+919010079111',
+      color: '#25D366'
+    }
   ];
 
   const services = [
@@ -364,7 +400,7 @@ const Contact: React.FC = () => {
                       Full Name <span className="text-red-400">*</span>
                     </label>
                     <div className="relative">
-                      <FaUser className="absolute left-3 top-1/2 transform -translate-y-1/2 text-purple-400 z-10" />
+                      {/* <FaUser className="absolute left-3 top-1/2 transform -translate-y-1/2 text-purple-400 z-10" /> */}
                       <input
                         type="text"
                         id="name"
@@ -385,7 +421,7 @@ const Contact: React.FC = () => {
                       Email Address <span className="text-red-400">*</span>
                     </label>
                     <div className="relative">
-                      <FaEnvelope className="absolute left-3 top-1/2 transform -translate-y-1/2 text-purple-400 z-10" />
+                      {/* <FaEnvelope className="absolute left-3 top-1/2 transform -translate-y-1/2 text-purple-400 z-10" /> */}
                       <input
                         type="email"
                         id="email"
@@ -408,7 +444,7 @@ const Contact: React.FC = () => {
                       Phone Number
                     </label>
                     <div className="relative">
-                      <FaPhone className="absolute left-3 top-1/2 transform -translate-y-1/2 text-purple-400 z-10" />
+                      {/* <FaPhone className="absolute left-3 top-1/2 transform -translate-y-1/2 text-purple-400 z-10" /> */}
                       <input
                         type="tel"
                         id="phone"
@@ -427,7 +463,7 @@ const Contact: React.FC = () => {
                       Company Name
                     </label>
                     <div className="relative">
-                      <FaBuilding className="absolute left-3 top-1/2 transform -translate-y-1/2 text-purple-400 z-10" />
+                      {/* <FaBuilding className="absolute left-3 top-1/2 transform -translate-y-1/2 text-purple-400 z-10" /> */}
                       <input
                         type="text"
                         id="company"
@@ -484,7 +520,7 @@ const Contact: React.FC = () => {
                     Message <span className="text-red-400">*</span>
                   </label>
                   <div className="relative">
-                    <FaComment className="absolute left-3 top-3 text-purple-400 z-10" />
+                    {/* <FaComment className="absolute left-3 top-3 text-purple-400 z-10" /> */}
                     <textarea
                       id="message"
                       name="message"

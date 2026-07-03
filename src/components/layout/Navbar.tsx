@@ -76,6 +76,7 @@ const Navbar: React.FC<NavbarProps> = ({ className = '' }) => {
     { id: 'google-ads', name: 'Google Ads', category: 'Marketing', path: '/services#google-ads' },
     { id: 'meta-ads', name: 'Meta Ads', category: 'Marketing', path: '/services#meta-ads' },
     { id: 'political-campaign', name: 'Political Campaign', category: 'Political', path: '/political-campaigns' },
+    { id: 'political-events', name: 'Political Events', category: 'Political', path: '/political-campaigns#political-events' },
     { id: 'social-media', name: 'Social Media Marketing', category: 'Marketing', path: '/digital-marketing#social-media' },
     { id: 'youtube-seo', name: 'YouTube SEO', category: 'SEO', path: '/digital-marketing#youtube-seo' },
     { id: 'live-coverage', name: 'Live Coverage', category: 'Media', path: '/services#live-coverage' },
@@ -184,11 +185,11 @@ const Navbar: React.FC<NavbarProps> = ({ className = '' }) => {
                   <span className="text-lg sm:text-2xl font-poppins font-bold leading-tight">
                     <span className="text-white">Beyond</span>
                     <span className="text-yellow-300"> I</span>
-                    <span className="text-purple-300"> Media</span>
+                    <span className="text-white"> Media</span>
                   </span>
-                  <span className="hidden xs:block text-[8px] sm:text-[10px] tracking-[0.2em] sm:tracking-[0.25em] text-purple-300/60 uppercase leading-tight">
+                  {/* <span className="hidden xs:block text-[8px] sm:text-[10px] tracking-[0.2em] sm:tracking-[0.25em] text-white uppercase leading-tight">
                     Beyond Honest.. Beyond Limits
-                  </span>
+                  </span> */}
                 </div>
               </RouterLink>
             </motion.div>
@@ -251,7 +252,7 @@ const Navbar: React.FC<NavbarProps> = ({ className = '' }) => {
                 variant="primary"
                 size="md"
                 className="ml-4 bg-gradient-to-r from-purple-500 to-purple-700 text-white hover:from-purple-600 hover:to-purple-800 shadow-purple-lg"
-                onClick={() => navigate('/contact')}
+                onClick={() => window.open('https://wa.me/+919010079111', '_blank')}
               >
                 Get Started
               </Button>
@@ -316,10 +317,7 @@ const Navbar: React.FC<NavbarProps> = ({ className = '' }) => {
                     variant="primary"
                     size="lg"
                     className="w-full bg-gradient-to-r from-purple-500 to-purple-700 text-white hover:from-purple-600 hover:to-purple-800 shadow-purple-lg"
-                    onClick={() => {
-                      navigate('/contact');
-                      setIsOpen(false);
-                    }}
+                    onClick={() => window.open('https://wa.me/+919010079111', '_blank')}
                   >
                     Get Started
                   </Button>

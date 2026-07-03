@@ -36,7 +36,8 @@ const PageLoader: React.FC<PageLoaderProps> = ({ className = '' }) => {
         >
           <span className="text-2xl font-poppins font-bold">
             <span className="text-white">BEYOND</span>
-            <span className="text-purple-300">MEDIA</span>
+            <span className="text-yellow-300"> I</span>
+            <span className="text-purple-300"> MEDIA</span>
           </span>
         </motion.div>
         

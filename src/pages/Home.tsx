@@ -22,7 +22,7 @@ const Home = () => {
       <ITServices />
       <Process />
       <WhyChooseUs />
-      <Statistics />
+      {/* <Statistics /> */}
       <Testimonials />
       {/* <FAQ /> */}
       <Contact />

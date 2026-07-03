@@ -231,7 +231,7 @@ const Process: React.FC = () => {
               whileHover={{ y: -5, scale: 1.02 }}
               className="text-center p-4 md:p-6 bg-white/10 backdrop-blur-sm rounded-xl border border-white/10 hover:border-purple-400/50 shadow-lg hover:shadow-2xl hover:shadow-purple-500/20 transition-all duration-300 hover:bg-white/20"
             >
-              <div className="text-purple-300 text-2xl md:text-3xl mb-2">
+              <div className="text-white text-2xl md:text-3xl mb-2">
                 {stat.icon}
               </div>
               <div className="text-white font-bold text-xl md:text-2xl lg:text-3xl">
@@ -339,6 +339,12 @@ const Process: React.FC = () => {
               variant="primary"
               size="lg"
               className="bg-gradient-to-r from-purple-500 to-purple-700 text-white hover:from-purple-600 hover:to-purple-800 hover:shadow-2xl hover:shadow-purple-500/30 transition-all duration-300"
+              onClick={() => {
+                const element = document.getElementById('contact');
+                if (element) {
+                  element.scrollIntoView({ behavior: 'smooth' });
+                }
+              }}
             >
               Start Your Journey
               <FaArrowRight className="ml-2" />

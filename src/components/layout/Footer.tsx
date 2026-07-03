@@ -172,7 +172,8 @@ const Footer: React.FC = () => {
             <div className="flex items-center gap-2">
               <span className="text-2xl font-poppins font-bold">
                 <span className="text-white">BEYOND</span>
-                <span className="text-purple-300">MEDIA</span>
+                <span className="text-yellow-300"> I</span>
+                <span className="text-white"> MEDIA</span>
               </span>
             </div>
             <p className="text-gray-300 text-sm leading-relaxed">
@@ -262,7 +263,7 @@ const Footer: React.FC = () => {
           <motion.div variants={itemVariants} className="space-y-6">
             {/* Industries */}
             <div>
-              <h4 className="text-white font-poppins font-semibold text-lg mb-4">
+              {/* <h4 className="text-white font-poppins font-semibold text-lg mb-4">
                 Industries
               </h4>
               <ul className="space-y-2.5">
@@ -279,7 +280,7 @@ const Footer: React.FC = () => {
                     </Link>
                   </li>
                 ))}
-              </ul>
+              </ul> */}
             </div>
 
             {/* Newsletter */}
@@ -336,47 +337,19 @@ const Footer: React.FC = () => {
             </div>
           </motion.div>
         </motion.div>
-
-        {/* Trust Badges */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5, delay: 0.3 }}
-          className="py-4 border-t border-white/10 flex flex-wrap items-center justify-center gap-6 md:gap-8"
-        >
-          {trustBadges.map((badge) => (
-            <div key={badge.id} className="flex items-center gap-2 text-gray-300 text-sm">
-              <span className="text-purple-300">{badge.icon}</span>
-              <span>{badge.label}</span>
-            </div>
-          ))}
-        </motion.div>
-
-        {/* Bottom Bar */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5, delay: 0.4 }}
-          className="py-4 border-t border-white/10 flex flex-col md:flex-row items-center justify-between gap-4 text-sm"
+          className="py-4 border-t border-white/10 flex flex-col md:flex-row items-center justify-center gap-4 text-sm"
         >
           <div className="text-gray-300 text-center md:text-left">
-            © {currentYear} <span className="text-purple-300">Beyond Media</span>. All rights reserved.
-          </div>
-
-          <div className="flex flex-wrap items-center justify-center gap-4">
-            <a href="#" className="text-gray-300 hover:text-white transition-colors duration-300 text-xs">
-              Privacy Policy
-            </a>
-            <span className="text-gray-500">|</span>
-            <a href="#" className="text-gray-300 hover:text-white transition-colors duration-300 text-xs">
-              Terms of Service
-            </a>
-            <span className="text-gray-500">|</span>
-            <a href="#" className="text-gray-300 hover:text-white transition-colors duration-300 text-xs">
-              Cookie Policy
-            </a>
+            © {currentYear} <span className=" font-poppins font-bold">
+              <span className="text-white">BEYOND</span>
+              <span className="text-yellow-300"> I</span>
+              <span className="text-white"> MEDIA</span>
+            </span>. All rights reserved.
           </div>
 
           {/* Back to Top Link */}

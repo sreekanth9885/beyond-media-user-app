@@ -324,6 +324,12 @@ const WhyChooseUs: React.FC = () => {
                 variant="primary"
                 size="lg"
                 className="bg-gradient-to-r from-purple-500 to-purple-700 text-white hover:from-purple-600 hover:to-purple-800 hover:shadow-2xl hover:shadow-purple-500/30 transition-all duration-300"
+                onClick={() => {
+                  const element = document.getElementById('contact');
+                  if (element) {
+                    element.scrollIntoView({ behavior: 'smooth' });
+                  }
+                }}
               >
                 Start Your Journey
                 <FaArrowRight className="ml-2" />
@@ -332,6 +338,9 @@ const WhyChooseUs: React.FC = () => {
                 variant="outline"
                 size="lg"
                 className="border-purple-400/50 text-purple-200 hover:bg-purple-500/20 hover:border-purple-400 transition-all duration-300"
+                onClick={() => {
+                  window.location.href = 'tel:+919010079111';
+                }}
               >
                 <FaHeadset className="mr-2" /> Contact Sales
               </Button>

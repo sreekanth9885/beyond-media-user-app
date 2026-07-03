@@ -311,7 +311,7 @@ const Services: React.FC = () => {
                 {/* Service Content */}
                 <div className="p-4 md:p-5">
                   <div className="flex items-start gap-3 mb-3">
-                    <div className="text-purple-300 text-xl md:text-2xl group-hover:scale-110 group-hover:text-purple-200 transition-all duration-300">
+                    <div className="text-white text-xl md:text-2xl group-hover:scale-110 group-hover:text-purple-200 transition-all duration-300">
                       {service.icon}
                     </div>
                     <h3 className="text-white font-poppins font-semibold text-base md:text-lg group-hover:text-purple-200 transition-colors duration-300 line-clamp-2">

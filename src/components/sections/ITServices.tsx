@@ -9,16 +9,8 @@ import {
   FaAndroid,
   FaReact,
   FaArrowRight,
-  FaCheckCircle,
   FaCog,
-  FaCubes,
-  FaGraduationCap,
-  FaHospital,
   FaStore,
-  FaFileInvoice,
-  FaShieldAlt,
-  FaSync,
-  FaLock,
 } from 'react-icons/fa';
 import Container from '../ui/Container';
 import SectionHeading from '../ui/SectionHeading';
@@ -75,47 +67,6 @@ const ITServices: React.FC = () => {
       technologies: ['Salesforce', 'Odoo', 'SAP', 'Microsoft Dynamics', 'Custom'],
       features: ['Lead Management', 'Sales Automation', 'Reporting', 'Integration']
     },
-    {
-      id: 'school-management',
-      title: 'School Management System',
-      description: 'Complete digital solution for educational institutions to manage students, staff, and operations.',
-      icon: <FaGraduationCap />,
-      image: 'https://images.unsplash.com/photo-1509062522246-3755977927d7?w=600&h=400&fit=crop',
-      category: 'web',
-      technologies: ['React', 'Node.js', 'PostgreSQL', 'MongoDB', 'Python'],
-      features: ['Student Records', 'Attendance', 'Grading', 'Parent Portal']
-    },
-    {
-      id: 'hospital-management',
-      title: 'Hospital Management System',
-      description: 'Comprehensive healthcare management solutions for hospitals, clinics, and medical practices.',
-      icon: <FaHospital />,
-      image: 'https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=600&h=400&fit=crop',
-      category: 'web',
-      technologies: ['React', 'Node.js', 'MySQL', 'FHIR', 'HL7'],
-      features: ['Patient Records', 'Appointment Scheduling', 'Billing', 'Telemedicine']
-    },
-    {
-      id: 'billing-software',
-      title: 'Billing & Invoicing Software',
-      description: 'Automated billing and invoicing solutions to streamline your financial operations.',
-      icon: <FaFileInvoice />,
-      image: 'https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=600&h=400&fit=crop',
-      category: 'web',
-      technologies: ['Python', 'Django', 'PostgreSQL', 'REST API', 'React'],
-      features: ['Invoice Generation', 'Payment Tracking', 'Tax Management', 'Analytics']
-    },
-    {
-      id: 'inventory-management',
-      title: 'Inventory Management System',
-      description: 'Real-time inventory tracking and management solutions for retail and manufacturing.',
-      icon: <FaCubes />,
-      image: 'https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=600&h=400&fit=crop',
-      category: 'web',
-      technologies: ['Node.js', 'Express', 'MongoDB', 'React', 'Docker'],
-      features: ['Stock Tracking', 'Supply Chain', 'Order Fulfillment', 'Reporting']
-    },
-
     // ===== App Development =====
     {
       id: 'android-apps',
@@ -132,7 +83,7 @@ const ITServices: React.FC = () => {
       title: 'iOS App Development',
       description: 'Premium iOS applications built with Swift for the Apple ecosystem.',
       icon: <FaApple />,
-      image: 'https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=600&h=400&fit=crop',
+      image: 'https://images.unsplash.com/photo-1558655146-9f40138edfeb',
       category: 'app',
       technologies: ['Swift', 'iOS SDK', 'Core Data', 'CloudKit', 'TestFlight'],
       features: ['Native UI', 'App Store', 'Face/Touch ID', 'iCloud Integration']
@@ -142,7 +93,7 @@ const ITServices: React.FC = () => {
       title: 'React Native Apps',
       description: 'Cross-platform mobile applications with native performance and code sharing.',
       icon: <FaReact />,
-      image: 'https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=600&h=400&fit=crop',
+      image: 'https://images.unsplash.com/photo-1555774698-0b77e0d5fac6',
       category: 'app',
       technologies: ['React Native', 'Redux', 'Node.js', 'Firebase', 'Expo'],
       features: ['Cross-Platform', 'Hot Reloading', 'Native Components', 'Code Sharing']
@@ -355,53 +306,6 @@ const ITServices: React.FC = () => {
             </div>
           </motion.div>
         )}
-
-        {/* Trust Badges */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5, delay: 0.5 }}
-          className="mt-8 md:mt-12 flex flex-wrap items-center justify-center gap-4 md:gap-8"
-        >
-          <div className="flex items-center gap-2 text-purple-300 text-sm">
-            <FaShieldAlt className="text-purple-400" />
-            <span>100% Secure</span>
-          </div>
-          <div className="flex items-center gap-2 text-purple-300 text-sm">
-            <FaCheckCircle className="text-purple-400" />
-            <span>Quality Assured</span>
-          </div>
-          <div className="flex items-center gap-2 text-purple-300 text-sm">
-            <FaSync className="text-purple-400" />
-            <span>Agile Development</span>
-          </div>
-          <div className="flex items-center gap-2 text-purple-300 text-sm">
-            <FaLock className="text-purple-400" />
-            <span>Data Privacy</span>
-          </div>
-        </motion.div>
-
-        {/* Tech Stack Showcase */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5, delay: 0.6 }}
-          className="mt-6 md:mt-8 text-center"
-        >
-          <p className="text-xs text-purple-300 mb-3">Technologies We Work With</p>
-          <div className="flex flex-wrap items-center justify-center gap-3 md:gap-4">
-            <span className="px-3 py-1 bg-purple-500/20 backdrop-blur-sm rounded-full text-xs text-purple-200 border border-purple-400/30 shadow-sm">React</span>
-            <span className="px-3 py-1 bg-purple-500/20 backdrop-blur-sm rounded-full text-xs text-purple-200 border border-purple-400/30 shadow-sm">Node.js</span>
-            <span className="px-3 py-1 bg-purple-500/20 backdrop-blur-sm rounded-full text-xs text-purple-200 border border-purple-400/30 shadow-sm">Python</span>
-            <span className="px-3 py-1 bg-purple-500/20 backdrop-blur-sm rounded-full text-xs text-purple-200 border border-purple-400/30 shadow-sm">React Native</span>
-            <span className="px-3 py-1 bg-purple-500/20 backdrop-blur-sm rounded-full text-xs text-purple-200 border border-purple-400/30 shadow-sm">Flutter</span>
-            <span className="px-3 py-1 bg-purple-500/20 backdrop-blur-sm rounded-full text-xs text-purple-200 border border-purple-400/30 shadow-sm">Swift</span>
-            <span className="px-3 py-1 bg-purple-500/20 backdrop-blur-sm rounded-full text-xs text-purple-200 border border-purple-400/30 shadow-sm">Kotlin</span>
-            <span className="px-3 py-1 bg-purple-500/20 backdrop-blur-sm rounded-full text-xs text-purple-200 border border-purple-400/30 shadow-sm">Docker</span>
-          </div>
-        </motion.div>
       </Container>
     </section>
   );

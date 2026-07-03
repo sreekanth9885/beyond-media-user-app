@@ -31,9 +31,9 @@ const About: React.FC = () => {
   ];
 
   const values = [
-    { icon: <FaBullseye className="text-purple-300 text-2xl" />, title: 'Mission', description: 'To empower businesses with innovative digital solutions that drive growth and create lasting impact.' },
-    { icon: <FaEye className="text-purple-300 text-2xl" />, title: 'Vision', description: 'To be the global leader in digital transformation, setting new standards of excellence.' },
-    { icon: <FaHeart className="text-purple-300 text-2xl" />, title: 'Values', description: 'Integrity, innovation, excellence, and client-centric approach in everything we do.' },
+    { icon: <FaBullseye className="text-white text-2xl" />, title: 'Mission', description: 'To empower businesses with innovative digital solutions that drive growth and create lasting impact.' },
+    { icon: <FaEye className="text-white text-2xl" />, title: 'Vision', description: 'To be the global leader in digital transformation, setting new standards of excellence.' },
+    { icon: <FaHeart className="text-white text-2xl" />, title: 'Values', description: 'Integrity, innovation, excellence, and client-centric approach in everything we do.' },
   ];
 
   const containerVariants: Variants = {
@@ -129,7 +129,7 @@ const About: React.FC = () => {
                 className="absolute -top-4 -left-4 sm:-top-6 sm:-left-6 bg-white/10 backdrop-blur-glass rounded-xl p-3 sm:p-4 md:p-5 border border-white/20 shadow-2xl"
               >
                 <div className="flex items-center gap-2 sm:gap-3">
-                  <FaTrophy className="text-purple-300 text-xl sm:text-2xl" />
+                  <FaTrophy className="text-white text-xl sm:text-2xl" />
                   <div>
                     <div className="text-white font-bold text-sm sm:text-base">Award Winning</div>
                     <div className="text-purple-300 text-xs">Top Digital Agency</div>
@@ -152,7 +152,7 @@ const About: React.FC = () => {
                   variants={itemVariants}
                   className="text-center p-3 bg-white/10 backdrop-blur-sm rounded-xl border border-white/10 shadow-lg hover:border-purple-400/50 transition-all duration-300 hover:bg-white/20"
                 >
-                  <div className="text-purple-300 text-xl mb-1">{stat.icon}</div>
+                  <div className="text-white text-xl mb-1">{stat.icon}</div>
                   <div className="text-white font-bold text-lg">{stat.value}</div>
                   <div className="text-purple-300 text-xs">{stat.label}</div>
                 </motion.div>
@@ -239,7 +239,7 @@ const About: React.FC = () => {
                   }}
                   className="text-center p-4 bg-white/10 backdrop-blur-sm rounded-xl border border-white/10 hover:border-purple-400/50 transition-all duration-300 shadow-lg hover:shadow-2xl hover:bg-white/20"
                 >
-                  <div className="text-purple-300 text-2xl mb-2">{stat.icon}</div>
+                  <div className="text-white text-2xl mb-2">{stat.icon}</div>
                   <div className="text-white font-bold text-2xl">{stat.value}</div>
                   <div className="text-purple-300 text-sm">{stat.label}</div>
                 </motion.div>

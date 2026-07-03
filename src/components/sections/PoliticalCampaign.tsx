@@ -8,8 +8,6 @@ import {
   FaNewspaper,
   FaDesktop,
   FaStar,
-  FaPhone,
-  FaArrowRight,
   FaCheckCircle,
   FaBuilding,
   FaGlobe,
@@ -19,11 +17,11 @@ import {
   FaPoll,
   FaFileAlt,
   FaIdCard,
-  FaPodcast
+  FaPodcast,
+  FaCalendarAlt
 } from 'react-icons/fa';
 import Container from '../ui/Container';
 import SectionHeading from '../ui/SectionHeading';
-import Button from '../ui/Button';
 
 interface CampaignService {
   id: string;
@@ -57,8 +55,16 @@ const PoliticalCampaign: React.FC = () => {
       title: 'Election Strategy',
       description: 'Data-driven campaign strategies that win elections through targeted messaging and smart resource allocation.',
       icon: <FaBullhorn />,
-      image: 'https://images.unsplash.com/photo-1541872703-74c5e44368f9?w=600&h=400&fit=crop',
+      image: '/public/modi.jpg',
       features: ['Voter Analysis', 'Message Development', 'Resource Planning', 'Timeline Management']
+    },
+    {
+      id: 'events',
+      title: 'Political Events',
+      description: 'Strategic planning and execution of campaign events to engage voters and build momentum.',
+      icon: <FaCalendarAlt />,
+      image: '/public/modi.jpg',
+      features: ['Event Planning', 'Venue Selection', 'Speaker Coordination', 'Attendee Engagement']
     },
     {
       id: 'booth',
@@ -365,7 +371,7 @@ const PoliticalCampaign: React.FC = () => {
                 </div>
 
                 {/* CTA */}
-                <div className="flex flex-col sm:flex-row gap-3">
+                {/* <div className="flex flex-col sm:flex-row gap-3">
                   <Button
                     variant="primary"
                     size="lg"
@@ -381,7 +387,7 @@ const PoliticalCampaign: React.FC = () => {
                   >
                     <FaPhone className="mr-2" /> Contact Campaign Team
                   </Button>
-                </div>
+                </div> */}
               </div>
             </div>
 

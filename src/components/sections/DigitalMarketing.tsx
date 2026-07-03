@@ -14,14 +14,12 @@ import {
   FaChartLine,
   FaUsers,
   FaRocket,
-  FaArrowRight,
   FaCheckCircle,
   FaDollarSign,
   FaHashtag,
 } from 'react-icons/fa';
 import Container from '../ui/Container';
 import SectionHeading from '../ui/SectionHeading';
-import Button from '../ui/Button';
 
 interface DigitalService {
   id: string;
@@ -69,23 +67,7 @@ const DigitalMarketing: React.FC = () => {
         'Remarketing - Re-engage visitors'
       ]
     },
-    {
-      id: 'meta-ads',
-      title: 'Meta Ads',
-      description: 'Harness the power of Facebook and Instagram advertising to reach your target audience with precision and scale.',
-      icon: <FaFacebook />,
-      image: 'https://images.unsplash.com/photo-1611162616475-46b635cb6868?w=600&h=400&fit=crop',
-      stats: 'Average ROAS: 5.2x',
-      features: [
-        'Facebook Ads - Massive audience reach',
-        'Instagram Ads - Visual storytelling',
-        'Retargeting - Re-engage warm prospects',
-        'Lookalike Audiences - Find new customers',
-        'Dynamic Ads - Personalized product ads',
-        'Lead Ads - Capture leads natively'
-      ],
-      platforms: ['Facebook', 'Instagram', 'Messenger', 'Audience Network']
-    },
+
     {
       id: 'social-media',
       title: 'Social Media Marketing',
@@ -118,6 +100,23 @@ const DigitalMarketing: React.FC = () => {
         'Analytics Tracking - Performance monitoring',
         'Content Strategy - Engagement optimization'
       ]
+    },
+    {
+      id: 'meta-ads',
+      title: 'Meta Ads',
+      description: 'Harness the power of Facebook and Instagram advertising to reach your target audience with precision and scale.',
+      icon: <FaFacebook />,
+      image: 'https://images.unsplash.com/photo-1611162616475-46b635cb6868?w=600&h=400&fit=crop',
+      stats: 'Average ROAS: 5.2x',
+      features: [
+        'Facebook Ads - Massive audience reach',
+        'Instagram Ads - Visual storytelling',
+        'Retargeting - Re-engage warm prospects',
+        'Lookalike Audiences - Find new customers',
+        'Dynamic Ads - Personalized product ads',
+        'Lead Ads - Capture leads natively'
+      ],
+      platforms: ['Facebook', 'Instagram', 'Messenger', 'Audience Network']
     }
   ];
 
@@ -220,7 +219,7 @@ const DigitalMarketing: React.FC = () => {
               whileHover={{ y: -5, scale: 1.02 }}
               className="text-center p-4 md:p-6 bg-white/10 backdrop-blur-sm rounded-xl border border-white/10 hover:border-purple-400/50 shadow-lg hover:shadow-2xl hover:shadow-purple-500/20 transition-all duration-300 hover:bg-white/20"
             >
-              <div className="text-purple-300 text-2xl md:text-3xl mb-2">
+              <div className="text-white text-2xl md:text-3xl mb-2">
                 {stat.icon}
               </div>
               <div className="text-white font-bold text-xl md:text-2xl lg:text-3xl">
@@ -359,7 +358,7 @@ const DigitalMarketing: React.FC = () => {
                           transition={{ delay: index * 0.05 }}
                           className="flex items-start gap-2 p-2 bg-purple-500/20 rounded-lg border border-purple-400/20"
                         >
-                          <div className="text-purple-300 text-sm">{type.icon}</div>
+                          <div className="text-white text-sm">{type.icon}</div>
                           <div>
                             <div className="text-white text-xs font-medium">{type.title}</div>
                             <div className="text-purple-200 text-[10px]">{type.description}</div>
@@ -371,7 +370,7 @@ const DigitalMarketing: React.FC = () => {
                 )}
 
                 {/* CTA */}
-                <div className="flex flex-col sm:flex-row gap-3">
+                {/* <div className="flex flex-col sm:flex-row gap-3">
                   <Button
                     variant="primary"
                     size="lg"
@@ -387,7 +386,7 @@ const DigitalMarketing: React.FC = () => {
                   >
                     <FaChartLine className="mr-2" /> View Case Studies
                   </Button>
-                </div>
+                </div> */}
               </div>
             </div>
           </motion.div>

@@ -204,6 +204,7 @@ const Hero: React.FC = () => {
                 variant="primary"
                 size="lg"
                 className="w-full sm:w-auto min-w-[160px] text-sm md:text-base bg-gradient-to-r from-purple-500 to-purple-700 text-white hover:from-purple-600 hover:to-purple-800 hover:shadow-2xl hover:shadow-purple-500/30 transition-all duration-300 relative group overflow-hidden"
+                onClick={() => window.open('https://wa.me/+919010079111', '_blank')}
               >
                 <motion.span
                   animate={{ x: [-100, 100] }}
@@ -266,7 +267,7 @@ const Hero: React.FC = () => {
                     delay: index * 0.5
                   }}
                 >
-                  <stat.icon className="text-purple-300 text-2xl md:text-3xl mx-auto mb-2" />
+                  <stat.icon className="text-white text-2xl md:text-3xl mx-auto mb-2" />
                 </motion.div>
                 <motion.div
                   initial={{ opacity: 0, scale: 0.5 }}
