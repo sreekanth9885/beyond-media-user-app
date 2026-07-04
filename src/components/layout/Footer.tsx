@@ -64,11 +64,11 @@ const Footer: React.FC = () => {
 
   const socialLinks: SocialLink[] = [
     { id: 'facebook', name: 'Facebook', icon: <FaFacebook />, url: '#', color: '#1877F2' },
-    { id: 'twitter', name: 'Twitter', icon: <FaTwitter />, url: '#', color: '#1DA1F2' },
+    { id: 'twitter', name: 'Twitter', icon: <FaTwitter />, url: 'https://x.com/BeyondIMedia', color: '#1DA1F2' },
     { id: 'linkedin', name: 'LinkedIn', icon: <FaLinkedin />, url: '#', color: '#0A66C2' },
     { id: 'instagram', name: 'Instagram', icon: <FaInstagram />, url: '#', color: '#E4405F' },
-    { id: 'youtube', name: 'YouTube', icon: <FaYoutube />, url: '#', color: '#FF0000' },
-    { id: 'whatsapp', name: 'WhatsApp', icon: <FaWhatsapp />, url: '#', color: '#25D366' },
+    { id: 'youtube', name: 'YouTube', icon: <FaYoutube />, url: 'https://www.youtube.com/@BeyondPolitics9', color: '#FF0000' },
+    { id: 'whatsapp', name: 'WhatsApp', icon: <FaWhatsapp />, url: 'https://wa.me/+919010079111', color: '#25D366' },
   ];
 
   const currentYear = new Date().getFullYear();

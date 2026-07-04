@@ -55,7 +55,7 @@ const PoliticalCampaign: React.FC = () => {
       title: 'Election Strategy',
       description: 'Data-driven campaign strategies that win elections through targeted messaging and smart resource allocation.',
       icon: <FaBullhorn />,
-      image: '/public/modi.jpg',
+      image: '/modi.jpg',
       features: ['Voter Analysis', 'Message Development', 'Resource Planning', 'Timeline Management']
     },
     {
@@ -63,7 +63,7 @@ const PoliticalCampaign: React.FC = () => {
       title: 'Political Events',
       description: 'Strategic planning and execution of campaign events to engage voters and build momentum.',
       icon: <FaCalendarAlt />,
-      image: '/public/modi.jpg',
+      image: '/modi.jpg',
       features: ['Event Planning', 'Venue Selection', 'Speaker Coordination', 'Attendee Engagement']
     },
     {
@@ -259,7 +259,7 @@ const PoliticalCampaign: React.FC = () => {
               whileHover={{ scale: 1.05 }}
               className="text-center p-4 md:p-6 bg-white/10 backdrop-blur-sm rounded-xl border border-white/10 hover:border-purple-400/50 shadow-lg hover:shadow-2xl hover:shadow-purple-500/20 transition-all duration-300 hover:bg-white/20"
             >
-              <div className="text-purple-300 text-2xl md:text-3xl mb-2">
+              <div className="text-white text-2xl md:text-3xl mb-2">
                 {stat.icon}
               </div>
               <div className="text-white font-bold text-xl md:text-2xl lg:text-3xl">

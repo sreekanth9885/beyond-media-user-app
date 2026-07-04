@@ -18,7 +18,6 @@ import PoliticalCampaignPage from "./pages/PoliticalCampaignPage";
 import DigitalMarketingPage from "./pages/DigitalMarketingPage";
 import ITServicesPage from "./pages/ITServicesPage";
 import ContactPage from "./pages/ContactPage";
-import NotFound from "./pages/NotFound";
 import Portfolio from "./components/sections/Portfolio";
 
 // Pages
@@ -62,7 +61,7 @@ const App = () => {
               <Route path="/it-services" element={<ITServicesPage />} />
               <Route path="/contact" element={<ContactPage />} />
 
-              <Route path="*" element={<NotFound />} />
+              {/* <Route path="*" element={<NotFound />} /> */}
               <Route path="/portfolio" element={<Portfolio />} />
             </Routes>
 

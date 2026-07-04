@@ -39,6 +39,7 @@ const Navbar: React.FC<NavbarProps> = ({ className = '' }) => {
   const navigate = useNavigate();
 
   useEffect(() => {
+    setScrolled(window.scrollY > 50);
     const handleScroll = (): void => {
       setScrolled(window.scrollY > 50);
     };
