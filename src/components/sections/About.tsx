@@ -1,39 +1,157 @@
 // src/components/sections/About.tsx
-import React from 'react';
-import { motion, type Variants } from 'framer-motion';
+import React, { useRef, useState, useEffect } from 'react';
+import { motion, type Variants, useInView } from 'framer-motion';
 import { 
-  FaBullseye, 
-  FaEye, 
-  FaHeart, 
   FaTrophy,
   FaAward,
   FaUsers,
   FaCalendarAlt,
-  FaCheckCircle
+  FaCheckCircle,
+  FaHome,
+  FaHospital,
+  FaGraduationCap,
+  FaTruck,
+  FaUtensils,
+  FaStore,
+  FaBuilding,
 } from 'react-icons/fa';
 import Container from '../ui/Container';
 import SectionHeading from '../ui/SectionHeading';
-import Button from '../ui/Button';
 
 interface AboutStat {
   id: string;
   label: string;
-  value: string;
+  value: number;
+  suffix?: string;
   icon: React.ReactNode;
 }
 
+interface Industry {
+  id: string;
+  name: string;
+  icon: React.ReactNode;
+  description: string;
+  color: string;
+}
+
 const About: React.FC = () => {
+  const sectionRef = useRef<HTMLDivElement>(null);
+  const isInView = useInView(sectionRef, { once: false, amount: 0.2 }); // changed to false for re-trigger
+  const [hasAnimated, setHasAnimated] = useState(false);
+
+  const [counts, setCounts] = useState({
+    experience: 0,
+    projects: 0,
+    clients: 0,
+    awards: 0
+  });
+
+  // Animated counter effect - triggers on scroll
+  useEffect(() => {
+    if (!isInView) {
+      // Reset counts when out of view (optional)
+      // setCounts({ experience: 0, projects: 0, clients: 0, awards: 0 });
+      // setHasAnimated(false);
+      return;
+    }
+
+    if (hasAnimated) return; // Prevent re-animation if already done
+
+    const targets = {
+      experience: 10,
+      projects: 500,
+      clients: 200,
+      awards: 50
+    };
+
+    const duration = 2500;
+    const startTime = Date.now();
+
+    const updateCounts = () => {
+      const elapsed = Date.now() - startTime;
+      const progress = Math.min(elapsed / duration, 1);
+      const easeOutQuart = 1 - Math.pow(1 - progress, 4);
+
+      setCounts({
+        experience: Math.floor(targets.experience * easeOutQuart),
+        projects: Math.floor(targets.projects * easeOutQuart),
+        clients: Math.floor(targets.clients * easeOutQuart),
+        awards: Math.floor(targets.awards * easeOutQuart)
+      });
+
+      if (progress < 1) {
+        requestAnimationFrame(updateCounts);
+      } else {
+        setCounts({
+          experience: targets.experience,
+          projects: targets.projects,
+          clients: targets.clients,
+          awards: targets.awards
+        });
+        setHasAnimated(true);
+      }
+    };
+
+    updateCounts();
+  }, [isInView, hasAnimated]);
+
+  // Reset animation when scrolling away and back (optional)
+  useEffect(() => {
+    if (!isInView) {
+      setHasAnimated(false);
+    }
+  }, [isInView]);
+
   const stats: AboutStat[] = [
-    { id: '1', label: 'Years Experience', value: '10+', icon: <FaCalendarAlt /> },
-    { id: '2', label: 'Projects Delivered', value: '500+', icon: <FaCheckCircle /> },
-    { id: '3', label: 'Happy Clients', value: '200+', icon: <FaUsers /> },
-    { id: '4', label: 'Awards Won', value: '50+', icon: <FaAward /> },
+    { id: '1', label: 'Years Experience', value: counts.experience, suffix: '+', icon: <FaCalendarAlt /> },
+    { id: '2', label: 'Projects Delivered', value: counts.projects, suffix: '+', icon: <FaCheckCircle /> },
+    { id: '3', label: 'Happy Clients', value: counts.clients, suffix: '+', icon: <FaUsers /> },
+    { id: '4', label: 'Awards Won', value: counts.awards, suffix: '+', icon: <FaAward /> },
   ];
 
-  const values = [
-    { icon: <FaBullseye className="text-white text-2xl" />, title: 'Mission', description: 'To empower businesses with innovative digital solutions that drive growth and create lasting impact.' },
-    { icon: <FaEye className="text-white text-2xl" />, title: 'Vision', description: 'To be the global leader in digital transformation, setting new standards of excellence.' },
-    { icon: <FaHeart className="text-white text-2xl" />, title: 'Values', description: 'Integrity, innovation, excellence, and client-centric approach in everything we do.' },
+  const industries: Industry[] = [
+    {
+      id: 'real-estate',
+      name: 'Real Estate',
+      icon: <FaHome />,
+      description: 'Digital solutions for property listings, virtual tours, and lead generation.',
+      color: 'from-blue-500 to-blue-600'
+    },
+    {
+      id: 'healthcare',
+      name: 'Healthcare',
+      icon: <FaHospital />,
+      description: 'Patient acquisition, healthcare marketing, and medical branding solutions.',
+      color: 'from-green-500 to-green-600'
+    },
+    {
+      id: 'education',
+      name: 'Educational Institutions',
+      icon: <FaGraduationCap />,
+      description: 'Student recruitment, online learning platforms, and school branding.',
+      color: 'from-yellow-500 to-yellow-600'
+    },
+    {
+      id: 'logistics',
+      name: 'Logistics',
+      icon: <FaTruck />,
+      description: 'Supply chain solutions, fleet management, and logistics optimization.',
+      color: 'from-orange-500 to-orange-600'
+    },
+    {
+      id: 'restaurants',
+      name: 'Restaurants',
+      icon: <FaUtensils />,
+      description: 'POS systems, online ordering, reservation management, and loyalty programs.',
+      color: 'from-red-500 to-red-600'
+    },
+    {
+      id: 'local-business',
+      name: 'Local Business',
+      icon: <FaStore />,
+      description: 'Local SEO, Google My Business optimization, and community engagement.',
+      color: 'from-purple-500 to-purple-600'
+    },
   ];
 
   const containerVariants: Variants = {
@@ -41,7 +159,7 @@ const About: React.FC = () => {
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.15,
+        staggerChildren: 0.1,
         delayChildren: 0.2
       }
     }
@@ -52,7 +170,7 @@ const About: React.FC = () => {
     visible: {
       opacity: 1,
       y: 0,
-      transition: { duration: 0.6, ease: "easeOut" }
+      transition: { duration: 0.5, ease: "easeOut" }
     }
   };
 
@@ -74,6 +192,7 @@ const About: React.FC = () => {
   return (
     <section 
       id="about" 
+      ref={sectionRef}
       className="py-16 md:py-20 lg:py-28 bg-purple-900 relative overflow-hidden"
       aria-label="About us section"
     >
@@ -89,7 +208,7 @@ const About: React.FC = () => {
       <div className="absolute bottom-10 left-10 w-40 h-40 bg-purple-500/20 rounded-full blur-2xl animate-pulse" style={{ animationDelay: '2s' }}></div>
 
       <Container>
-        <div className="grid lg:grid-cols-2 gap-8 md:gap-12 lg:gap-16 items-center">
+        <div className="grid lg:grid-cols-2 gap-8 md:gap-12 lg:gap-16 items-start">
           {/* Left Column - Image */}
           <motion.div
             variants={imageVariants}
@@ -138,12 +257,11 @@ const About: React.FC = () => {
               </motion.div>
             </div>
 
-            {/* Stats Row - Mobile */}
+            {/* Stats Row - Mobile - Animated on Scroll */}
             <motion.div
               variants={containerVariants}
               initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, amount: 0.2 }}
+              animate={isInView ? "visible" : "hidden"}
               className="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4 mt-6 lg:hidden"
             >
               {stats.map((stat) => (
@@ -153,7 +271,9 @@ const About: React.FC = () => {
                   className="text-center p-3 bg-white/10 backdrop-blur-sm rounded-xl border border-white/10 shadow-lg hover:border-purple-400/50 transition-all duration-300 hover:bg-white/20"
                 >
                   <div className="text-white text-xl mb-1">{stat.icon}</div>
-                  <div className="text-white font-bold text-lg">{stat.value}</div>
+                  <div className="text-white font-bold text-lg">
+                    {stat.value}{stat.suffix}
+                  </div>
                   <div className="text-purple-300 text-xs">{stat.label}</div>
                 </motion.div>
               ))}
@@ -170,8 +290,8 @@ const About: React.FC = () => {
           >
             <SectionHeading
               badge="About Us"
-              title="We Build Digital Excellence"
-              subtitle="Discover how our expertise, innovation, and dedication drive success for businesses worldwide."
+              title="Beyond I Media"
+              subtitle="India-based organization dedicated to advancing public policy research, political analysis, governance research, and multi-sector social development initiatives."
               centered={false}
               className="text-left mb-6 md:mb-8"
               badgeClassName="bg-purple-500/20 text-purple-200 border-purple-400/30 backdrop-blur-sm"
@@ -184,49 +304,62 @@ const About: React.FC = () => {
               variants={itemVariants}
               className="text-purple-100 text-sm sm:text-base mb-4 md:mb-6 leading-relaxed"
             >
-              Founded in 2015, we've grown from a small team of digital enthusiasts to a 
-              full-service agency with expertise across the entire digital spectrum. Our 
-              journey has been defined by innovation, excellence, and an unwavering 
-              commitment to client success.
+              B I M (Beyond I Media) is an India-based organization dedicated to advancing public policy research, political analysis, governance research, and multi-sector social development initiatives. The organization's focus is to create a strong team of young analysts, researchers, and practitioners who leverage data, evidence, and field-based insights to support better governance and informed public decision-making in the country.
             </motion.p>
 
             <motion.p
               variants={itemVariants}
               className="text-purple-200/80 text-sm sm:text-base mb-6 md:mb-8 leading-relaxed"
             >
-              We combine strategic thinking with creative excellence and technical 
-              expertise to deliver digital experiences that transform businesses and 
-              drive meaningful results.
+              Operating at the intersection of public policy research, governance analysis, and community engagement, B I M integrates analytical rigor with field-level understanding to address real-world challenges. Through research, training, and grassroots initiatives, we contribute to building stronger democratic systems and sustainable development pathways.
             </motion.p>
 
-            {/* Values Grid - Purple Theme */}
+            {/* Industries We Work With */}
             <motion.div
               variants={containerVariants}
-              className="grid sm:grid-cols-3 gap-3 md:gap-4 mb-6 md:mb-8"
+              className="mb-6 md:mb-8"
             >
-              {values.map((value, index) => (
-                <motion.div
-                  key={index}
-                  variants={itemVariants}
-                  whileHover={{ y: -4, transition: { duration: 0.2 } }}
-                  className="p-4 bg-white/10 backdrop-blur-sm rounded-xl border border-white/10 hover:border-purple-400/50 transition-all duration-300 group shadow-lg hover:shadow-2xl hover:bg-white/20"
-                >
-                  <div className="mb-2 group-hover:scale-110 group-hover:text-purple-200 transition-all duration-300">
-                    {value.icon}
-                  </div>
-                  <h4 className="text-white font-semibold text-sm mb-1">
-                    {value.title}
-                  </h4>
-                  <p className="text-purple-200 text-xs leading-relaxed">
-                    {value.description}
-                  </p>
-                </motion.div>
-              ))}
+              <motion.h3
+                variants={itemVariants}
+                className="text-white font-poppins font-semibold text-lg mb-4 flex items-center gap-2"
+              >
+                <FaBuilding className="text-purple-400" />
+                Industries We Work With
+              </motion.h3>
+              <motion.div
+                variants={containerVariants}
+                className="grid grid-cols-2 sm:grid-cols-3 gap-3"
+              >
+                {industries.map((industry) => (
+                  <motion.div
+                    key={industry.id}
+                    variants={itemVariants}
+                    whileHover={{
+                      scale: 1.05,
+                      y: -4,
+                      transition: { duration: 0.2 }
+                    }}
+                    className="p-3 bg-white/10 backdrop-blur-sm rounded-xl border border-white/10 hover:border-purple-400/50 transition-all duration-300 group shadow-lg hover:shadow-2xl hover:bg-white/20 text-center"
+                  >
+                    <div className={`w-10 h-10 mx-auto rounded-lg bg-gradient-to-r ${industry.color} flex items-center justify-center text-white text-lg mb-2 group-hover:scale-110 transition-transform duration-300`}>
+                      {industry.icon}
+                    </div>
+                    <h4 className="text-white font-semibold text-xs sm:text-sm mb-1">
+                      {industry.name}
+                    </h4>
+                    <p className="text-purple-300 text-[10px] leading-relaxed hidden sm:block">
+                      {industry.description}
+                    </p>
+                  </motion.div>
+                ))}
+              </motion.div>
             </motion.div>
 
-            {/* Stats Row - Desktop */}
+            {/* Stats Row - Desktop - Animated on Scroll */}
             <motion.div
               variants={containerVariants}
+              initial="hidden"
+              animate={isInView ? "visible" : "hidden"}
               className="hidden lg:grid grid-cols-4 gap-4 mb-6 md:mb-8"
             >
               {stats.map((stat) => (
@@ -240,21 +373,12 @@ const About: React.FC = () => {
                   className="text-center p-4 bg-white/10 backdrop-blur-sm rounded-xl border border-white/10 hover:border-purple-400/50 transition-all duration-300 shadow-lg hover:shadow-2xl hover:bg-white/20"
                 >
                   <div className="text-white text-2xl mb-2">{stat.icon}</div>
-                  <div className="text-white font-bold text-2xl">{stat.value}</div>
+                  <div className="text-white font-bold text-2xl">
+                    {stat.value}{stat.suffix}
+                  </div>
                   <div className="text-purple-300 text-sm">{stat.label}</div>
                 </motion.div>
               ))}
-            </motion.div>
-
-            {/* CTA */}
-            <motion.div variants={itemVariants}>
-              <Button
-                variant="primary"
-                size="lg"
-                className="w-full sm:w-auto bg-gradient-to-r from-purple-500 to-purple-700 text-white hover:from-purple-600 hover:to-purple-800 hover:shadow-2xl hover:shadow-purple-500/30 transition-all duration-300"
-              >
-                Learn More About Us
-              </Button>
             </motion.div>
           </motion.div>
         </div>

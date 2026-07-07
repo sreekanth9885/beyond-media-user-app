@@ -3,20 +3,31 @@ import React, { useState } from 'react';
 import { motion, AnimatePresence, type Variants } from 'framer-motion';
 import { 
   FaGoogle, 
-  FaFacebook, 
   FaBullhorn, 
   FaUsers, 
-  FaYoutube, 
   FaVideo,
   FaCode,
   FaMobileAlt,
   FaPaintBrush,
   FaBuilding,
-  FaFilm,
   FaChartLine,
   FaHandshake,
   FaGlobe,
-  FaTag
+  FaTag,
+  FaComments,
+  FaSearch,
+  FaLightbulb,
+  FaGraduationCap,
+  FaFileAlt,
+  FaUserTie,
+  FaMicrophone,
+  FaPlay,
+  FaAd,
+  FaEnvelope,
+  FaPoll,
+  FaStar,
+  FaShieldAlt,
+  FaRocket
 } from 'react-icons/fa';
 import Container from '../ui/Container';
 import SectionHeading from '../ui/SectionHeading';
@@ -24,157 +35,262 @@ import Button from '../ui/Button';
 import type { ServiceItem } from '../../types';
 
 // Service Categories
-type Category = 'all' | 'marketing' | 'political' | 'media' | 'development';
+type Category = 'all' | 'marketing' | 'political' | 'media' | 'development' | 'advisory' | 'capacity';
 
 // Service Data
 const servicesData: ServiceItem[] = [
-  // Marketing Services
+  // ===== POLICY RESEARCH & ANALYTICS =====
+  {
+    id: 'policy-research',
+    title: 'Policy Research & Analytics',
+    description: 'Public policy research and analysis, data-driven governance studies, election and political analysis, policy briefs, reports, and publications.',
+    icon: <FaFileAlt />,
+    image: 'https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=600&h=400&fit=crop',
+    category: 'advisory',
+    features: ['Public Policy Research', 'Data-driven Governance', 'Election Analysis', 'Policy Briefs & Reports']
+  },
+  {
+    id: 'governance-research',
+    title: 'Governance & Social Development',
+    description: 'Research on public systems and service delivery, social impact program design and evaluation, community-driven development initiatives.',
+    icon: <FaBuilding />,
+    image: 'https://images.unsplash.com/photo-1557804506-669a67965ba0?w=600&h=400&fit=crop',
+    category: 'advisory',
+    features: ['Public Systems Research', 'Social Impact Design', 'Community Development', 'Program Evaluation']
+  },
+  {
+    id: 'opinion-analytics',
+    title: 'Political & Public Opinion Analytics',
+    description: 'Political campaign research, public opinion and perception studies, data-driven insights for strategic political engagement.',
+    icon: <FaPoll />,
+    image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&h=400&fit=crop',
+    category: 'advisory',
+    features: ['Campaign Research', 'Public Opinion Studies', 'Perception Analysis', 'Strategic Insights']
+  },
+
+  // ===== CANDIDATE DEVELOPMENT =====
+  {
+    id: 'candidate-grooming',
+    title: 'Candidate Personality & Leadership Development',
+    description: 'End-to-end grooming for election candidates, personalized speech script development, training on public speaking and message delivery.',
+    icon: <FaUserTie />,
+    image: 'https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=600&h=400&fit=crop',
+    category: 'political',
+    features: ['Candidate Grooming', 'Speech Writing', 'Public Speaking Training', 'Message Delivery']
+  },
+  {
+    id: 'media-training',
+    title: 'Media Training & Body Language',
+    description: 'Training on interacting with people during political meetings, body language and stage presence coaching, holistic public engagement preparation.',
+    icon: <FaMicrophone />,
+    image: 'https://images.unsplash.com/photo-1478737270239-2f02b77fc618?w=600&h=400&fit=crop',
+    category: 'political',
+    features: ['Body Language Coaching', 'Stage Presence', 'Public Interaction', 'Media Readiness']
+  },
+  {
+    id: 'personal-branding',
+    title: 'Social Media Visibility & Personal Branding',
+    description: 'Social media visibility and personal branding for candidates, holistic preparation for public and political engagement.',
+    icon: <FaStar />,
+    image: 'https://images.unsplash.com/photo-1611162618071-b39a2ec055fb?w=600&h=400&fit=crop',
+    category: 'political',
+    features: ['Social Media Visibility', 'Personal Branding', 'Public Engagement', 'Candidate Image Building']
+  },
+
+  // ===== DIGITAL MEDIA SERVICES =====
+  {
+    id: 'digital-strategy',
+    title: 'Digital Campaign Strategy',
+    description: 'Political campaign digital strategy planning, website development and campaign landing pages, digital advertising campaigns.',
+    icon: <FaRocket />,
+    image: 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=600&h=400&fit=crop',
+    category: 'marketing',
+    features: ['Digital Strategy Planning', 'Campaign Landing Pages', 'Digital Advertising', 'Website Development']
+  },
   {
     id: 'google-ads',
-    title: 'Google Ads',
-    description: 'Drive targeted traffic with Search, Shopping, Display, and Performance Max campaigns.',
+    title: 'Google Ads & Digital Advertising',
+    description: 'Digital advertising campaigns across Google, YouTube, OTT & Display Ads for maximum reach and engagement.',
     icon: <FaGoogle />,
     image: 'https://images.unsplash.com/photo-1563986768609-322da13575f3?w=600&h=400&fit=crop',
     category: 'marketing',
-    features: ['Search Ads', 'Shopping Ads', 'Display Ads', 'Performance Max', 'Lead Generation']
+    features: ['Google Ads', 'YouTube Ads', 'OTT Advertising', 'Display Ads', 'Performance Tracking']
   },
   {
-    id: 'meta-ads',
-    title: 'Meta Ads',
-    description: 'Reach your audience effectively through Facebook and Instagram advertising platforms.',
-    icon: <FaFacebook />,
-    image: 'https://images.unsplash.com/photo-1611162616305-c69b3fa7fbe0?w=600&h=400&fit=crop',
+    id: 'creative-design',
+    title: 'Creative Design & Promotions',
+    description: 'Creative design for political promotions and awareness campaigns, infographics, manifesto creatives, and presentation materials.',
+    icon: <FaPaintBrush />,
+    image: 'https://images.unsplash.com/photo-1561070791-2526d30994b5?w=600&h=400&fit=crop',
+    category: 'media',
+    features: ['Political Promotions', 'Awareness Campaigns', 'Infographics', 'Manifesto Creatives', 'Presentations']
+  },
+  {
+    id: 'video-production',
+    title: 'Video Production & Campaign Films',
+    description: 'Video production, campaign films, promotional content, and engaging visual storytelling for political campaigns.',
+    icon: <FaPlay />,
+    image: 'https://images.unsplash.com/photo-1536240478700-b869070f9279?w=600&h=400&fit=crop',
+    category: 'media',
+    features: ['Campaign Films', 'Promotional Content', 'Video Production', 'Visual Storytelling']
+  },
+  {
+    id: 'reputation-management',
+    title: 'Online Reputation & Perception Management',
+    description: 'Online reputation and perception management, digital voter outreach campaigns, and targeted communication strategies.',
+    icon: <FaShieldAlt />,
+    image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&h=400&fit=crop',
     category: 'marketing',
-    features: ['Facebook Ads', 'Instagram Ads', 'Retargeting', 'Lookalike Audiences']
+    features: ['Reputation Management', 'Perception Management', 'Voter Outreach', 'Targeted Communication']
   },
   {
-    id: 'social-media',
-    title: 'Social Media Marketing',
-    description: 'Build brand presence across Facebook, Instagram, Twitter, LinkedIn, and YouTube.',
+    id: 'email-sms-campaigns',
+    title: 'Email, SMS & Digital Voter Outreach',
+    description: 'Email, SMS, and digital voter outreach campaigns, constituency-focused targeted communication for maximum impact.',
+    icon: <FaEnvelope />,
+    image: 'https://images.unsplash.com/photo-1432889490241-7f0332774d30?w=600&h=400&fit=crop',
+    category: 'marketing',
+    features: ['Email Campaigns', 'SMS Marketing', 'Voter Outreach', 'Targeted Communication']
+  },
+  {
+    id: 'analytics-tracking',
+    title: 'Digital Analytics & Performance Tracking',
+    description: 'Digital analytics, audience insights, campaign performance tracking, and constituency-focused targeted communication campaigns.',
+    icon: <FaChartLine />,
+    image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&h=400&fit=crop',
+    category: 'marketing',
+    features: ['Performance Analytics', 'Audience Insights', 'Campaign Tracking', 'Data-driven Optimization']
+  },
+
+  // ===== SOCIAL MEDIA MANAGEMENT =====
+  {
+    id: 'social-media-management',
+    title: 'Complete Social Media Management',
+    description: 'Complete management of Facebook, Instagram, X (Twitter), YouTube, WhatsApp & Telegram platforms with daily content creation.',
     icon: <FaUsers />,
     image: 'https://images.unsplash.com/photo-1611162618071-b39a2ec055fb?w=600&h=400&fit=crop',
     category: 'marketing',
-    features: ['Content Planning', 'Daily Posting', 'Creative Design', 'Community Management']
+    features: ['Facebook', 'Instagram', 'X (Twitter)', 'YouTube', 'WhatsApp', 'Telegram']
   },
   {
-    id: 'youtube-seo',
-    title: 'YouTube SEO',
-    description: 'Optimize your YouTube channel for maximum visibility and subscriber growth.',
-    icon: <FaYoutube />,
+    id: 'content-creation',
+    title: 'Content Creation & Publishing',
+    description: 'Daily social media content creation and publishing, Reels, shorts, and engagement-driven content production for maximum reach.',
+    icon: <FaComments />,
     image: 'https://images.unsplash.com/photo-1611162616475-46b635cb6868?w=600&h=400&fit=crop',
     category: 'marketing',
-    features: ['Keyword Research', 'Thumbnail Optimization', 'Ranking', 'Channel Growth']
+    features: ['Daily Content Creation', 'Reels & Shorts', 'Engagement Content', 'Content Publishing']
+  },
+  {
+    id: 'political-social-branding',
+    title: 'Political Branding & Image Building',
+    description: 'Political branding and leader image building, hashtag campaigns and trend-based political communication for brand recognition.',
+    icon: <FaBuilding />,
+    image: 'https://images.unsplash.com/photo-1557804506-669a67965ba0?w=600&h=400&fit=crop',
+    category: 'political',
+    features: ['Leader Image Building', 'Hashtag Campaigns', 'Trend-based Communication', 'Political Branding']
+  },
+  {
+    id: 'social-advertising',
+    title: 'Social Media Advertising & Outreach',
+    description: 'Social media advertising and voter outreach campaigns, community management and public engagement handling for political campaigns.',
+    icon: <FaAd />,
+    image: 'https://images.unsplash.com/photo-1611162616305-c69b3fa7fbe0?w=600&h=400&fit=crop',
+    category: 'marketing',
+    features: ['Social Media Ads', 'Voter Outreach', 'Community Management', 'Public Engagement']
+  },
+  {
+    id: 'social-listening',
+    title: 'Social Listening & Sentiment Analysis',
+    description: 'Social listening, sentiment analysis, opposition monitoring, crisis communication and rapid response management for campaigns.',
+    icon: <FaSearch />,
+    image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&h=400&fit=crop',
+    category: 'marketing',
+    features: ['Social Listening', 'Sentiment Analysis', 'Opposition Monitoring', 'Crisis Communication', 'Rapid Response']
+  },
+  {
+    id: 'social-reporting',
+    title: 'Reporting, Analytics & Growth Strategy',
+    description: 'Monthly reporting, analytics, and growth strategy support for continuous improvement and campaign optimization.',
+    icon: <FaChartLine />,
+    image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&h=400&fit=crop',
+    category: 'marketing',
+    features: ['Monthly Reporting', 'Performance Analytics', 'Growth Strategy', 'Continuous Improvement']
   },
 
-  // Political Services
+  // ===== POLITICAL CAMPAIGN MANAGEMENT =====
   {
     id: 'political-campaign',
     title: 'Political Campaign Management',
-    description: 'Comprehensive campaign strategies for successful political elections.',
+    description: 'Comprehensive campaign strategies for successful political elections including election strategy, booth management, and war room operations.',
     icon: <FaBullhorn />,
     image: 'https://images.unsplash.com/photo-1541872703-74c5e44368f9?w=600&h=400&fit=crop',
     category: 'political',
-    features: ['Election Strategy', 'Booth Management', 'War Room', 'Campaign Analytics']
-  },
-  {
-    id: 'political-branding',
-    title: 'Political Branding',
-    description: 'Build a powerful political brand identity that resonates with voters.',
-    icon: <FaBuilding />,
-    image: 'https://images.unsplash.com/photo-1540910419892-4a36d2c3266c?w=600&h=400&fit=crop',
-    category: 'political',
-    features: ['Candidate Branding', 'Visual Identity', 'Slogan Development', 'Media Management']
-  },
-  {
-    id: 'public-relations',
-    title: 'Public Relations',
-    description: 'Strategic PR campaigns that build trust and enhance public image.',
-    icon: <FaHandshake />,
-    image: 'https://images.unsplash.com/photo-1557804506-669a67965ba0?w=600&h=400&fit=crop',
-    category: 'political',
-    features: ['Media Relations', 'Press Releases', 'Crisis Management', 'Reputation Building']
+    features: ['Election Strategy', 'Booth Management', 'War Room Operations', 'Campaign Analytics', 'Ground Operations']
   },
 
-  // Development Services
+  // ===== CAPACITY BUILDING =====
   {
-    id: 'website-dev',
-    title: 'Website Development',
-    description: 'Custom websites that combine stunning design with powerful functionality.',
+    id: 'training-programs',
+    title: 'Training Programs for Students',
+    description: 'Training programs for students and early-career professionals, policy workshops and knowledge sessions for capacity building.',
+    icon: <FaGraduationCap />,
+    image: 'https://images.unsplash.com/photo-1523050854058-8df90110c7f1?w=600&h=400&fit=crop',
+    category: 'capacity',
+    features: ['Student Training', 'Early-career Programs', 'Policy Workshops', 'Knowledge Sessions']
+  },
+  {
+    id: 'grassroots-research',
+    title: 'Grassroots Research & Engagement',
+    description: 'Grassroots research and field engagement initiatives, community-driven development approaches for sustainable impact.',
+    icon: <FaHandshake />,
+    image: 'https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=600&h=400&fit=crop',
+    category: 'capacity',
+    features: ['Grassroots Research', 'Field Engagement', 'Community Development', 'Sustainable Impact']
+  },
+
+  // ===== STRATEGIC ADVISORY =====
+  {
+    id: 'strategic-advisory',
+    title: 'Strategic Advisory Services',
+    description: 'Evidence-based policy recommendations, governance improvement strategies, stakeholder and community insights for informed decision-making.',
+    icon: <FaLightbulb />,
+    image: 'https://images.unsplash.com/photo-1557804506-669a67965ba0?w=600&h=400&fit=crop',
+    category: 'advisory',
+    features: ['Policy Recommendations', 'Governance Strategies', 'Stakeholder Insights', 'Community Insights']
+  },
+  {
+    id: 'website-development',
+    title: 'Website & Campaign Landing Pages',
+    description: 'Custom website development and campaign landing pages that combine stunning design with powerful functionality for political campaigns.',
     icon: <FaCode />,
     image: 'https://images.unsplash.com/photo-1547658719-da2b51169166?w=600&h=400&fit=crop',
     category: 'development',
-    features: ['Corporate Websites', 'E-commerce', 'CRM/ERP', 'School Management']
+    features: ['Custom Websites', 'Campaign Landing Pages', 'SEO Optimization', 'Responsive Design']
   },
   {
     id: 'mobile-apps',
     title: 'Mobile App Development',
-    description: 'Native and cross-platform mobile apps that deliver exceptional user experiences.',
+    description: 'Native and cross-platform mobile apps that deliver exceptional user experiences for campaigns and voter engagement.',
     icon: <FaMobileAlt />,
     image: 'https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=600&h=400&fit=crop',
     category: 'development',
-    features: ['Android', 'iOS', 'React Native', 'Flutter']
-  },
-
-  // Design Services
-  {
-    id: 'ui-ux',
-    title: 'UI/UX Design',
-    description: 'User-centered design that creates intuitive and engaging digital experiences.',
-    icon: <FaPaintBrush />,
-    image: 'https://images.unsplash.com/photo-1561070791-2526d30994b5?w=600&h=400&fit=crop',
-    category: 'design',
-    features: ['UI Design', 'UX Research', 'Prototyping', 'User Testing']
-  },
-  {
-    id: 'graphic-design',
-    title: 'Graphic Design',
-    description: 'Eye-catching visual designs that communicate your brand message effectively.',
-    icon: <FaPaintBrush />,
-    image: 'https://images.unsplash.com/photo-1561070791-2526d30994b5?w=600&h=400&fit=crop',
-    category: 'design',
-    features: ['Logo Design', 'Brochures', 'Social Media Graphics', 'Print Materials']
-  },
-  {
-    id: 'branding',
-    title: 'Branding',
-    description: 'Comprehensive branding solutions that establish your unique identity.',
-    icon: <FaBuilding />,
-    image: 'https://images.unsplash.com/photo-1557804506-669a67965ba0?w=600&h=400&fit=crop',
-    category: 'design',
-    features: ['Brand Strategy', 'Visual Identity', 'Brand Guidelines', 'Brand Voice']
-  },
-
-  // Media Services
-  {
-    id: 'live-coverage',
-    title: 'Live Event Coverage',
-    description: 'Professional live coverage for events, conferences, and celebrations.',
-    icon: <FaVideo />,
-    image: 'https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=600&h=400&fit=crop',
-    category: 'media',
-    features: ['Multi Camera Setup', 'Drone Coverage', 'Live Streaming', 'Event Photography']
-  },
-  {
-    id: 'video-editing',
-    title: 'Video Editing',
-    description: 'Professional video editing and post-production services.',
-    icon: <FaFilm />,
-    image: 'https://images.unsplash.com/photo-1598899134739-24c46f58b8c0?w=600&h=400&fit=crop',
-    category: 'media',
-    features: ['Color Grading', 'Sound Design', 'Motion Graphics', 'Visual Effects']
+    features: ['Android Apps', 'iOS Apps', 'React Native', 'Flutter', 'Voter Engagement']
   },
 ];
 
 const Services: React.FC = () => {
   const [activeCategory, setActiveCategory] = useState<Category>('all');
-  const [visibleServices, setVisibleServices] = useState<number>(8);
+  const [visibleServices, setVisibleServices] = useState<number>(25);
 
   const categories: { id: Category; label: string; icon: React.ReactNode }[] = [
     { id: 'all', label: 'All Services', icon: <FaGlobe /> },
-    { id: 'marketing', label: 'Marketing', icon: <FaChartLine /> },
-    { id: 'political', label: 'Political', icon: <FaBullhorn /> },
-    { id: 'media', label: 'Media', icon: <FaVideo /> },
+    { id: 'marketing', label: 'Digital Media', icon: <FaRocket /> },
+    { id: 'political', label: 'Political Services', icon: <FaBullhorn /> },
+    { id: 'media', label: 'Creative & Media', icon: <FaVideo /> },
     { id: 'development', label: 'Development', icon: <FaCode /> },
+    { id: 'advisory', label: 'Research & Advisory', icon: <FaFileAlt /> },
+    { id: 'capacity', label: 'Capacity Building', icon: <FaGraduationCap /> },
   ];
 
   // Filter services based on category
@@ -238,7 +354,7 @@ const Services: React.FC = () => {
         <SectionHeading
           badge="Our Services"
           title="What We Do Best"
-          subtitle="From strategy to execution, we provide comprehensive digital solutions that drive real results."
+          subtitle="From strategy to execution, we provide comprehensive solutions for governance, political campaigns, and social development."
           badgeClassName="bg-purple-500/20 text-purple-200 border-purple-400/30 backdrop-blur-sm"
           titleClassName="text-white"
           subtitleClassName="text-purple-200"
@@ -285,6 +401,7 @@ const Services: React.FC = () => {
             {displayedServices.map((service) => (
               <motion.div
                 key={service.id}
+                id={service.id}
                 variants={cardVariants}
                 whileHover="hover"
                 className="group relative bg-white/10 backdrop-blur-sm rounded-xl overflow-hidden border border-white/10 hover:border-purple-400/50 shadow-lg hover:shadow-2xl hover:shadow-purple-500/20 transition-all duration-300 hover:bg-white/20"

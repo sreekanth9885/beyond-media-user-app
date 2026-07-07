@@ -19,6 +19,7 @@ import DigitalMarketingPage from "./pages/DigitalMarketingPage";
 import ITServicesPage from "./pages/ITServicesPage";
 import ContactPage from "./pages/ContactPage";
 import Portfolio from "./components/sections/Portfolio";
+import ScrollToHash from "./components/common/ScrollToHash";
 
 // Pages
 
@@ -39,6 +40,7 @@ const App = () => {
 
       {!loading && (
         <BrowserRouter>
+          <ScrollToHash />
           <div
             className="min-h-screen font-inter"
           >

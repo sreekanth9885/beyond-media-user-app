@@ -5,11 +5,6 @@ import {
   FaBars, 
   FaTimes, 
   FaChevronDown,
-  FaFacebook,
-  FaInstagram,
-  FaTwitter,
-  FaLinkedin,
-  FaYoutube,
 } from 'react-icons/fa';
 import { Link as RouterLink, useLocation, useNavigate } from 'react-router-dom';
 import Button from '../ui/Button';
@@ -74,20 +69,52 @@ const Navbar: React.FC<NavbarProps> = ({ className = '' }) => {
   ];
 
   const serviceDropdownItems: NavbarServiceItem[] = [
-    { id: 'google-ads', name: 'Google Ads', category: 'Marketing', path: '/services#google-ads' },
-    { id: 'meta-ads', name: 'Meta Ads', category: 'Marketing', path: '/services#meta-ads' },
-    { id: 'political-campaign', name: 'Political Campaign', category: 'Political', path: '/political-campaigns' },
-    { id: 'political-events', name: 'Political Events', category: 'Political', path: '/political-campaigns#political-events' },
-    { id: 'social-media', name: 'Social Media Marketing', category: 'Marketing', path: '/digital-marketing#social-media' },
-    { id: 'youtube-seo', name: 'YouTube SEO', category: 'SEO', path: '/digital-marketing#youtube-seo' },
-    { id: 'live-coverage', name: 'Live Coverage', category: 'Media', path: '/services#live-coverage' },
-    { id: 'web-dev', name: 'Web Development', category: 'Development', path: '/it-services#web-dev' },
-    { id: 'mobile-apps', name: 'Mobile Apps', category: 'Development', path: '/it-services#mobile-apps' },
-    { id: 'graphic-design', name: 'Graphic Design', category: 'Design', path: '/services#graphic-design' },
-    { id: 'branding', name: 'Branding', category: 'Design', path: '/services#branding' },
-    { id: 'video-editing', name: 'Video Editing', category: 'Media', path: '/services#video-editing' },
-    { id: 'content-marketing', name: 'Content Marketing', category: 'Marketing', path: '/services#content-marketing' },
+    // ===== RESEARCH & ADVISORY =====
+    { id: 'policy-research', name: 'Policy Research & Analytics', category: 'Research & Advisory', path: '/services#policy-research' },
+    { id: 'governance-research', name: 'Governance & Social Development', category: 'Research & Advisory', path: '/services#governance-research' },
+    { id: 'opinion-analytics', name: 'Political & Public Opinion Analytics', category: 'Research & Advisory', path: '/services#opinion-analytics' },
+    { id: 'strategic-advisory', name: 'Strategic Advisory Services', category: 'Research & Advisory', path: '/services#strategic-advisory' },
+
+    // ===== POLITICAL SERVICES =====
+    { id: 'political-campaign', name: 'Political Campaign Management', category: 'Political Services', path: '/services#political-campaign' },
+    { id: 'candidate-grooming', name: 'Candidate Personality Development', category: 'Political Services', path: '/services#candidate-grooming' },
+    { id: 'media-training', name: 'Media Training & Body Language', category: 'Political Services', path: '/services#media-training' },
+    { id: 'personal-branding', name: 'Social Media Visibility & Branding', category: 'Political Services', path: '/services#personal-branding' },
+    { id: 'political-social-branding', name: 'Political Branding & Image Building', category: 'Political Services', path: '/services#political-social-branding' },
+
+    // ===== DIGITAL MARKETING =====
+    { id: 'digital-strategy', name: 'Digital Campaign Strategy', category: 'Digital Marketing', path: '/services#digital-strategy' },
+    { id: 'google-ads', name: 'Google Ads & Digital Advertising', category: 'Digital Marketing', path: '/services#google-ads' },
+    { id: 'social-media-management', name: 'Complete Social Media Management', category: 'Digital Marketing', path: '/services#social-media-management' },
+    { id: 'content-creation', name: 'Content Creation & Publishing', category: 'Digital Marketing', path: '/services#content-creation' },
+    { id: 'social-advertising', name: 'Social Media Advertising & Outreach', category: 'Digital Marketing', path: '/services#social-advertising' },
+    { id: 'social-listening', name: 'Social Listening & Sentiment Analysis', category: 'Digital Marketing', path: '/services#social-listening' },
+    { id: 'social-reporting', name: 'Reporting, Analytics & Growth Strategy', category: 'Digital Marketing', path: '/services#social-reporting' },
+    { id: 'email-sms-campaigns', name: 'Email, SMS & Digital Outreach', category: 'Digital Marketing', path: '/services#email-sms-campaigns' },
+    { id: 'analytics-tracking', name: 'Digital Analytics & Performance Tracking', category: 'Digital Marketing', path: '/services#analytics-tracking' },
+    { id: 'reputation-management', name: 'Online Reputation & Perception Management', category: 'Digital Marketing', path: '/services#reputation-management' },
+
+    // ===== CREATIVE & MEDIA =====
+    { id: 'creative-design', name: 'Creative Design & Promotions', category: 'Creative & Media', path: '/services#creative-design' },
+    { id: 'video-production', name: 'Video Production & Campaign Films', category: 'Creative & Media', path: '/services#video-production' },
+
+    // ===== DEVELOPMENT =====
+    { id: 'website-development', name: 'Website & Campaign Landing Pages', category: 'Development', path: '/services#website-development' },
+    { id: 'mobile-apps', name: 'Mobile App Development', category: 'Development', path: '/services#mobile-apps' },
+
+    // ===== CAPACITY BUILDING =====
+    { id: 'training-programs', name: 'Training Programs for Students', category: 'Capacity Building', path: '/services#training-programs' },
+    { id: 'grassroots-research', name: 'Grassroots Research & Engagement', category: 'Capacity Building', path: '/services#grassroots-research' },
   ];
+
+  // Group services by category for better organization
+  const groupedServices = serviceDropdownItems.reduce((acc, item) => {
+    if (!acc[item.category]) {
+      acc[item.category] = [];
+    }
+    acc[item.category].push(item);
+    return acc;
+  }, {} as Record<string, NavbarServiceItem[]>);
 
   const dropdownVariants: Variants = {
     hidden: { 
@@ -134,9 +161,12 @@ const Navbar: React.FC<NavbarProps> = ({ className = '' }) => {
   }, []);
 
   const handleServiceClick = (path: string): void => {
-    navigate(path);
+    // Close mobile menu first
     setIsOpen(false);
     setShowServicesDropdown(false);
+
+    // Navigate to the path
+    navigate(path);
   };
 
   const isActive = (path: string): boolean => {
@@ -144,6 +174,14 @@ const Navbar: React.FC<NavbarProps> = ({ className = '' }) => {
       return location.pathname === '/';
     }
     return location.pathname === path || location.pathname.startsWith(path + '/');
+  };
+
+  // Check if current path matches service path
+  const isServiceActive = (path: string): boolean => {
+    const hash = path.split('#')[1];
+    if (!hash) return false;
+    // Check if we're on the services page and the hash matches
+    return location.pathname === '/services' && location.hash === `#${hash}`;
   };
 
   return (
@@ -188,9 +226,6 @@ const Navbar: React.FC<NavbarProps> = ({ className = '' }) => {
                     <span className="text-yellow-300"> I</span>
                     <span className="text-white"> Media</span>
                   </span>
-                  {/* <span className="hidden xs:block text-[8px] sm:text-[10px] tracking-[0.2em] sm:tracking-[0.25em] text-white uppercase leading-tight">
-                    Beyond Honest.. Beyond Limits
-                  </span> */}
                 </div>
               </RouterLink>
             </motion.div>
@@ -220,7 +255,7 @@ const Navbar: React.FC<NavbarProps> = ({ className = '' }) => {
                     }`}></span>
                   </RouterLink>
 
-                  {/* Services Dropdown */}
+                  {/* Services Dropdown - Grouped by Category */}
                   {link.hasDropdown && (
                     <AnimatePresence>
                       {showServicesDropdown && (
@@ -229,19 +264,29 @@ const Navbar: React.FC<NavbarProps> = ({ className = '' }) => {
                           initial="hidden"
                           animate="visible"
                           exit="exit"
-                          className="absolute top-full left-0 mt-2 w-64 bg-purple-900/95 backdrop-blur-glass rounded-xl shadow-2xl border border-white/10 p-2"
+                          className="absolute top-full left-0 mt-2 w-80 bg-purple-900/95 backdrop-blur-glass rounded-xl shadow-2xl border border-white/10 p-3 max-h-[70vh] overflow-y-auto"
                         >
-                          <div className="grid grid-cols-1 gap-0.5">
-                            {serviceDropdownItems.map((item) => (
-                              <button
-                                key={item.id}
-                                onClick={() => handleServiceClick(item.path)}
-                                className="flex items-center w-full px-3 py-2.5 text-sm font-medium text-white hover:text-purple-200 hover:bg-white/10 rounded-lg transition-all duration-300 text-left"
-                              >
-                                {item.name}
-                              </button>
-                            ))}
-                          </div>
+                          {Object.entries(groupedServices).map(([category, items]) => (
+                            <div key={category} className="mb-3 last:mb-0">
+                              <div className="text-xs font-semibold text-purple-300 uppercase tracking-wider mb-1.5 px-2">
+                                {category}
+                              </div>
+                              <div className="grid grid-cols-1 gap-0.5">
+                                {items.map((item) => (
+                                  <button
+                                    key={item.id}
+                                    onClick={() => handleServiceClick(item.path)}
+                                    className={`flex items-center w-full px-3 py-2 text-sm font-medium rounded-lg transition-all duration-300 text-left ${isServiceActive(item.path)
+                                      ? 'bg-purple-500/30 text-white'
+                                      : 'text-white hover:text-purple-200 hover:bg-white/10'
+                                      }`}
+                                  >
+                                    {item.name}
+                                  </button>
+                                ))}
+                              </div>
+                            </div>
+                          ))}
                         </motion.div>
                       )}
                     </AnimatePresence>
@@ -272,7 +317,7 @@ const Navbar: React.FC<NavbarProps> = ({ className = '' }) => {
         </div>
       </motion.nav>
 
-      {/* Mobile Menu - Separate from nav for better rendering */}
+      {/* Mobile Menu - Grouped by Category */}
       <AnimatePresence>
         {isOpen && (
           <motion.div
@@ -288,9 +333,9 @@ const Navbar: React.FC<NavbarProps> = ({ className = '' }) => {
                   <RouterLink
                     key={link.name}
                     to={link.path}
-                    className={`relative flex items-center px-4 py-2 text-sm font-semibold transition-all duration-300 cursor-pointer group ${isActive(link.path)
-                      ? 'text-white drop-shadow-[0_0_8px_rgba(255,255,255,0.35)]'
-                      : 'text-white hover:text-purple-200'
+                    className={`relative flex items-center px-4 py-3 text-sm font-semibold transition-all duration-300 cursor-pointer group ${isActive(link.path)
+                      ? 'text-white drop-shadow-[0_0_8px_rgba(255,255,255,0.35)] bg-white/5 rounded-lg'
+                      : 'text-white hover:text-purple-200 hover:bg-white/5 rounded-lg'
                       }`}
                     onClick={handleLinkClick}
                   >
@@ -299,18 +344,28 @@ const Navbar: React.FC<NavbarProps> = ({ className = '' }) => {
                 ))}
 
                 <div className="pt-4 border-t border-white/10">
-                  <span className="text-sm font-semibold text-white/60 mb-3">Our Services</span>
-                  <div className="grid grid-cols-2 gap-2">
-                    {serviceDropdownItems.map((item) => (
-                      <button
-                        key={item.id}
-                        onClick={() => handleServiceClick(item.path)}
-                        className="flex items-center px-3 py-2.5 text-sm font-medium text-white hover:text-purple-200 hover:bg-white/10 rounded-lg transition-all duration-300 text-left"
-                      >
-                        {item.name}
-                      </button>
-                    ))}
-                  </div>
+                  <span className="text-sm font-semibold text-white/60 mb-3 block">Our Services</span>
+                  {Object.entries(groupedServices).map(([category, items]) => (
+                    <div key={category} className="mb-4 last:mb-0">
+                      <div className="text-xs font-semibold text-purple-300 uppercase tracking-wider mb-2 px-2">
+                        {category}
+                      </div>
+                      <div className="grid grid-cols-2 gap-1.5">
+                        {items.map((item) => (
+                          <button
+                            key={item.id}
+                            onClick={() => handleServiceClick(item.path)}
+                            className={`flex items-center px-3 py-2.5 text-sm font-medium rounded-lg transition-all duration-300 text-left ${isServiceActive(item.path)
+                              ? 'bg-purple-500/30 text-white'
+                              : 'text-white hover:text-purple-200 hover:bg-white/10'
+                              }`}
+                          >
+                            {item.name}
+                          </button>
+                        ))}
+                      </div>
+                    </div>
+                  ))}
                 </div>
 
                 <div className="pt-4">
@@ -322,25 +377,6 @@ const Navbar: React.FC<NavbarProps> = ({ className = '' }) => {
                   >
                     Get Started
                   </Button>
-                </div>
-
-                {/* Social Icons in Mobile */}
-                <div className="flex justify-center gap-4 pt-6">
-                  <a href="#" className="text-white/60 hover:text-white transition-colors duration-300" aria-label="Facebook">
-                    <FaFacebook size={20} />
-                  </a>
-                  <a href="#" className="text-white/60 hover:text-white transition-colors duration-300" aria-label="Twitter">
-                    <FaTwitter size={20} />
-                  </a>
-                  <a href="#" className="text-white/60 hover:text-white transition-colors duration-300" aria-label="LinkedIn">
-                    <FaLinkedin size={20} />
-                  </a>
-                  <a href="#" className="text-white/60 hover:text-white transition-colors duration-300" aria-label="Instagram">
-                    <FaInstagram size={20} />
-                  </a>
-                  <a href="#" className="text-white/60 hover:text-white transition-colors duration-300" aria-label="YouTube">
-                    <FaYoutube size={20} />
-                  </a>
                 </div>
               </div>
             </div>

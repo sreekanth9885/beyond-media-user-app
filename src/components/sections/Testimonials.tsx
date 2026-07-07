@@ -8,10 +8,11 @@ import {
   FaArrowLeft, 
   FaArrowRight, 
   FaCheckCircle,
-  FaTwitter,
   FaLinkedin,
   FaFacebook,
   FaGoogle,
+  FaUserTie,
+  FaBuilding,
 } from 'react-icons/fa';
 import Container from '../ui/Container';
 import SectionHeading from '../ui/SectionHeading';
@@ -21,14 +22,12 @@ interface Testimonial {
   name: string;
   position: string;
   company: string;
-  companyLogo?: string;
   content: string;
   rating: number;
   image: string;
   industry: string;
   date: string;
-  platform?: string;
-  platformIcon?: React.ReactNode;
+  type: 'political' | 'business';
 }
 
 interface TrustBadge {
@@ -43,87 +42,244 @@ interface TrustBadge {
 const Testimonials: React.FC = () => {
   const [currentIndex, setCurrentIndex] = useState<number>(0);
   const [direction, setDirection] = useState<number>(0);
+  const [activeTab, setActiveTab] = useState<'political' | 'business'>('political');
 
   const testimonials: Testimonial[] = [
+    // ===== POLITICAL CLIENTS =====
     {
-      id: '1',
-      name: 'Rajesh Kumar',
-      position: 'CEO & Founder',
-      company: 'TechCorp Solutions',
-      content: 'DigitalPro transformed our business completely. Their innovative approach to digital marketing and technical expertise is unmatched. We saw a 300% increase in leads within the first three months.',
+      id: 'p1',
+      name: 'K.P. Vivekananda',
+      position: 'WHIP BRS Leader',
+      company: 'Political Party',
+      content: 'Their strategic political campaign management helped us connect with voters like never before. The digital outreach and ground campaign coordination were exceptional.',
       rating: 5,
-      image: 'https://images.unsplash.com/photo-1568602471122-7832951cc4c5?w=200&h=200&fit=crop&crop=face',
-      industry: 'Technology',
+      image: '/kpvivek.jpg',
+      industry: 'Politics',
+      date: 'March 2024',
+      type: 'political'
+    },
+    {
+      id: 'p2',
+      name: 'A. Maheswar Reddy',
+      position: 'BJP Leader - Telangana',
+      company: 'BJP',
+      content: 'The team at Beyond Media understood our political landscape perfectly. Their data-driven approach and voter engagement strategies gave us a significant edge.',
+      rating: 5,
+      image: '/maheshwar.jpg',
+      industry: 'Politics',
+      date: 'February 2024',
+      type: 'political'
+    },
+    {
+      id: 'p3',
+      name: 'Pulla Rao',
+      position: 'Ex Minister',
+      company: 'TDP MLA',
+      content: 'Beyond Media\'s political branding and campaign management services are world-class. They helped us build a strong connect with our constituency.',
+      rating: 5,
+      image: '/pullarao.jpg',
+      industry: 'Politics',
       date: 'January 2024',
-      platform: 'Google',
-      platformIcon: <FaGoogle />
+      type: 'political'
     },
     {
-      id: '2',
-      name: 'Priya Sharma',
-      position: 'Marketing Director',
-      company: 'GrowthHub Inc.',
-      content: 'The best decision we made was partnering with DigitalPro. Our digital presence has never been stronger. Their social media strategy and content marketing delivered exceptional results.',
+      id: 'p4',
+      name: 'Madhavaram Krishna Rao',
+      position: 'MLA - Kukatpally',
+      company: 'Political Party',
+      content: 'Their understanding of grassroots politics combined with digital expertise is unmatched. Our campaign reached every corner of the constituency.',
       rating: 5,
-      image: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=200&h=200&fit=crop&crop=face',
-      industry: 'Marketing',
+      image: '/krishnarao.jpg',
+      industry: 'Politics',
       date: 'December 2023',
-      platform: 'LinkedIn',
-      platformIcon: <FaLinkedin />
+      type: 'political'
     },
     {
-      id: '3',
-      name: 'Amit Patel',
-      position: 'Campaign Manager',
-      company: 'Political Strategy Group',
-      content: 'Their political campaign expertise is extraordinary. They helped us win by a significant margin. The digital strategy, branding, and ground campaign coordination were flawless.',
+      id: 'p5',
+      name: 'Shambipur Raju',
+      position: 'MLC - Telangana',
+      company: 'Political Party',
+      content: 'The social media strategy and personal branding done by Beyond Media transformed my public image. Highly recommended for political leaders.',
       rating: 5,
-      image: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=200&h=200&fit=crop&crop=face',
+      image: '/raju.jpg',
       industry: 'Politics',
       date: 'November 2023',
-      platform: 'Twitter',
-      platformIcon: <FaTwitter />
+      type: 'political'
     },
     {
-      id: '4',
-      name: 'Dr. Ananya Reddy',
-      position: 'Hospital Administrator',
-      company: 'City General Hospital',
-      content: 'The healthcare marketing solutions provided by DigitalPro revolutionized our patient acquisition strategy. We\'ve seen a 45% increase in patient inquiries and excellent brand recognition.',
+      id: 'p6',
+      name: 'Balka Suman',
+      position: 'MLA',
+      company: 'BRS',
+      content: 'Beyond Media\'s team is exceptional. Their political campaign analytics and voter outreach strategies helped us achieve remarkable results.',
       rating: 5,
-      image: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=200&h=200&fit=crop&crop=face',
-      industry: 'Healthcare',
+      image: '/suman.jpg',
+      industry: 'Politics',
       date: 'October 2023',
-      platform: 'Google',
-      platformIcon: <FaGoogle />
+      type: 'political'
     },
     {
-      id: '5',
-      name: 'Vikram Singh',
-      position: 'Director of Operations',
-      company: 'EduTech Innovations',
-      content: 'DigitalPro developed our entire e-learning platform from scratch. The user experience is exceptional, and student engagement has increased by 200%. Highly recommended!',
+      id: 'p7',
+      name: 'Nandigam Suresh',
+      position: 'Ex Minister - YCP',
+      company: 'YCP',
+      content: 'The digital campaign strategy and branding expertise of Beyond Media is outstanding. They helped us connect with voters across all demographics.',
+      rating: 5,
+      image: '/suresh.jpg',
+      industry: 'Politics',
+      date: 'September 2023',
+      type: 'political'
+    },
+    {
+      id: 'p8',
+      name: 'Ambati Rambabu',
+      position: 'Ex Minister - YCP',
+      company: 'YCP',
+      content: 'The team delivered exceptional results in our political campaign. Their strategic insights and execution were flawless from start to finish.',
+      rating: 5,
+      image: '/rambabu.jpg',
+      industry: 'Politics',
+      date: 'August 2023',
+      type: 'political'
+    },
+    {
+      id: 'p9',
+      name: 'SV Satish Reddy',
+      position: 'Ex MLC - YCP',
+      company: 'YCP',
+      content: 'Beyond Media transformed our political campaign with their innovative digital strategies and voter engagement techniques.',
+      rating: 5,
+      image: '/sathish.jpg',
+      industry: 'Politics',
+      date: 'July 2023',
+      type: 'political'
+    },
+    {
+      id: 'p10',
+      name: 'Jyothula Nehru',
+      position: 'TTD Board Member',
+      company: 'Political Party',
+      content: 'Their understanding of political dynamics and digital communication is unparalleled. We saw significant improvement in our public engagement.',
+      rating: 5,
+      image: '/nehru.jpg',
+      industry: 'Politics',
+      date: 'June 2023',
+      type: 'political'
+    },
+    {
+      id: 'p11',
+      name: 'Palamuru VishnuVardhan Reddy',
+      position: 'BJP Leader',
+      company: 'BJP',
+      content: 'The political branding and campaign management services provided were exceptional. Their team truly understands the political landscape.',
+      rating: 5,
+      image: '/vishnu.jpg',
+      industry: 'Politics',
+      date: 'May 2023',
+      type: 'political'
+    },
+
+    // ===== BUSINESS CLIENTS =====
+    {
+      id: 'b1',
+      name: 'Naresh Deepak Yalavarthy',
+      position: 'Managing Director',
+      company: 'Gothics',
+      content: 'Beyond Media completely transformed our digital presence. Their innovative marketing strategies helped us achieve unprecedented growth in our industry.',
+      rating: 5,
+      image: 'https://images.unsplash.com/photo-1568602471122-7832951cc4c5?w=200&h=200&fit=crop&crop=face',
+      industry: 'Business',
+      date: 'March 2024',
+      type: 'business'
+    },
+    {
+      id: 'b2',
+      name: 'Vijay',
+      position: 'Managing Director',
+      company: 'Flash Sylces',
+      content: 'The team at Beyond Media delivered exceptional results for our brand. Their creative approach and technical expertise are truly world-class.',
+      rating: 5,
+      image: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=200&h=200&fit=crop&crop=face',
+      industry: 'Business',
+      date: 'February 2024',
+      type: 'business'
+    },
+    {
+      id: 'b3',
+      name: 'Ravi Kumar',
+      position: 'Managing Director',
+      company: 'Tiara',
+      content: 'Working with Beyond Media has been a game-changer for our business. Their digital marketing strategies and branding solutions are outstanding.',
+      rating: 5,
+      image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&h=200&fit=crop&crop=face',
+      industry: 'Business',
+      date: 'January 2024',
+      type: 'business'
+    },
+    {
+      id: 'b4',
+      name: 'Subba Reddy',
+      position: 'Managing Director',
+      company: 'Kennedy High The School',
+      content: 'Beyond Media helped us establish a strong digital presence for our educational institution. Their innovative strategies significantly increased student enrollment.',
       rating: 5,
       image: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=200&h=200&fit=crop&crop=face',
       industry: 'Education',
-      date: 'September 2023',
-      platform: 'Facebook',
-      platformIcon: <FaFacebook />
+      date: 'December 2023',
+      type: 'business'
     },
     {
-      id: '6',
-      name: 'Meera Joshi',
-      position: 'Founder & CEO',
-      company: 'Wellness Retreats',
-      content: 'From branding to digital marketing, DigitalPro handled everything with professionalism and creativity. Our brand visibility has increased tenfold, and bookings are at an all-time high.',
+      id: 'b5',
+      name: 'Sasidhar',
+      position: 'Managing Director',
+      company: 'Sindu Parcel',
+      content: 'The digital solutions provided by Beyond Media streamlined our operations and improved our customer engagement significantly.',
       rating: 5,
-      image: 'https://images.unsplash.com/photo-1489424731084-a5d8b219a5bb?w=200&h=200&fit=crop&crop=face',
-      industry: 'Wellness',
+      image: 'https://images.unsplash.com/photo-1568602471122-7832951cc4c5?w=200&h=200&fit=crop&crop=face',
+      industry: 'Logistics',
+      date: 'November 2023',
+      type: 'business'
+    },
+    {
+      id: 'b6',
+      name: 'Bharath',
+      position: 'Managing Director',
+      company: 'Sanjaya Hospital',
+      content: 'Beyond Media\'s healthcare marketing solutions revolutionized our patient acquisition. Our brand visibility has increased significantly.',
+      rating: 5,
+      image: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=200&h=200&fit=crop&crop=face',
+      industry: 'Healthcare',
+      date: 'October 2023',
+      type: 'business'
+    },
+    {
+      id: 'b7',
+      name: 'Shiva Reddy',
+      position: 'Managing Director',
+      company: 'City Neuro Hospital',
+      content: 'The marketing strategies and branding solutions from Beyond Media helped us establish a strong presence in the healthcare sector.',
+      rating: 5,
+      image: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=200&h=200&fit=crop&crop=face',
+      industry: 'Healthcare',
+      date: 'September 2023',
+      type: 'business'
+    },
+    {
+      id: 'b8',
+      name: 'Ramachandra',
+      position: 'Managing Director',
+      company: 'Sri Sri Holistic',
+      content: 'Beyond Media understands the nuances of the healthcare industry. Their digital marketing strategies have significantly boosted our patient engagement.',
+      rating: 5,
+      image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&h=200&fit=crop&crop=face',
+      industry: 'Healthcare',
       date: 'August 2023',
-      platform: 'LinkedIn',
-      platformIcon: <FaLinkedin />
+      type: 'business'
     }
   ];
+
+  // Filter testimonials based on active tab
+  const filteredTestimonials = testimonials.filter(t => t.type === activeTab);
 
   const trustBadges: TrustBadge[] = [
     { id: '1', name: 'Google Reviews', icon: <FaGoogle />, rating: '4.9', count: '200+', color: 'from-purple-400 to-purple-600' },
@@ -134,17 +290,24 @@ const Testimonials: React.FC = () => {
 
   const nextTestimonial = () => {
     setDirection(1);
-    setCurrentIndex((prev) => (prev + 1) % testimonials.length);
+    setCurrentIndex((prev) => (prev + 1) % filteredTestimonials.length);
   };
 
   const prevTestimonial = () => {
     setDirection(-1);
-    setCurrentIndex((prev) => (prev - 1 + testimonials.length) % testimonials.length);
+    setCurrentIndex((prev) => (prev - 1 + filteredTestimonials.length) % filteredTestimonials.length);
   };
 
   const goToTestimonial = (index: number) => {
     setDirection(index > currentIndex ? 1 : -1);
     setCurrentIndex(index);
+  };
+
+  // Reset index when tab changes
+  const handleTabChange = (tab: 'political' | 'business') => {
+    setActiveTab(tab);
+    setCurrentIndex(0);
+    setDirection(0);
   };
 
   // Animation variants
@@ -242,7 +405,7 @@ const Testimonials: React.FC = () => {
         <SectionHeading
           badge="Testimonials"
           title="What Our Clients Say"
-          subtitle="Real stories from real clients who have experienced the DigitalPro difference."
+          subtitle="Real stories from real clients who have experienced the Beyond Media difference."
           badgeClassName="bg-purple-500/20 text-purple-200 border-purple-400/30 backdrop-blur-sm"
           titleClassName="text-white"
           subtitleClassName="text-purple-200"
@@ -274,11 +437,47 @@ const Testimonials: React.FC = () => {
           ))}
         </motion.div>
 
+        {/* Tab Navigation */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5, delay: 0.2 }}
+          className="flex items-center justify-center gap-4 mb-8 md:mb-12"
+        >
+          <button
+            onClick={() => handleTabChange('political')}
+            className={`flex items-center gap-2 px-6 py-3 rounded-lg text-sm font-medium transition-all duration-300 ${activeTab === 'political'
+              ? 'bg-gradient-to-r from-purple-500 to-purple-700 text-white shadow-2xl shadow-purple-500/30'
+              : 'bg-white/10 backdrop-blur-sm text-purple-200 hover:text-white hover:bg-white/20 border border-white/10 hover:border-purple-400/50'
+              }`}
+          >
+            <FaUserTie className="text-base" />
+            Political Clients
+            <span className="ml-1 text-xs bg-white/20 px-2 py-0.5 rounded-full">
+              {testimonials.filter(t => t.type === 'political').length}
+            </span>
+          </button>
+          <button
+            onClick={() => handleTabChange('business')}
+            className={`flex items-center gap-2 px-6 py-3 rounded-lg text-sm font-medium transition-all duration-300 ${activeTab === 'business'
+              ? 'bg-gradient-to-r from-purple-500 to-purple-700 text-white shadow-2xl shadow-purple-500/30'
+              : 'bg-white/10 backdrop-blur-sm text-purple-200 hover:text-white hover:bg-white/20 border border-white/10 hover:border-purple-400/50'
+              }`}
+          >
+            <FaBuilding className="text-base" />
+            Business Clients
+            <span className="ml-1 text-xs bg-white/20 px-2 py-0.5 rounded-full">
+              {testimonials.filter(t => t.type === 'business').length}
+            </span>
+          </button>
+        </motion.div>
+
         {/* Testimonial Carousel */}
         <div className="relative max-w-4xl mx-auto">
           <AnimatePresence mode="wait" custom={direction}>
             <motion.div
-              key={currentIndex}
+              key={activeTab + currentIndex}
               custom={direction}
               variants={slideVariants}
               initial="enter"
@@ -291,8 +490,8 @@ const Testimonials: React.FC = () => {
                 <div className="flex-shrink-0">
                   <div className="relative">
                     <img
-                      src={testimonials[currentIndex].image}
-                      alt={testimonials[currentIndex].name}
+                      src={filteredTestimonials[currentIndex]?.image}
+                      alt={filteredTestimonials[currentIndex]?.name}
                       className="w-20 h-20 md:w-24 md:h-24 rounded-full object-cover border-2 border-purple-400/30"
                       loading="lazy"
                     />
@@ -315,7 +514,7 @@ const Testimonials: React.FC = () => {
                   <div className="relative">
                     <FaQuoteLeft className="text-purple-400/20 text-2xl absolute -top-2 -left-2" />
                     <p className="text-purple-200 text-base md:text-lg leading-relaxed pl-6 mb-4">
-                      {testimonials[currentIndex].content}
+                      {filteredTestimonials[currentIndex]?.content}
                     </p>
                     <FaQuoteRight className="text-purple-400/20 text-2xl absolute -bottom-2 -right-2" />
                   </div>
@@ -324,29 +523,25 @@ const Testimonials: React.FC = () => {
                   <div className="flex flex-wrap items-center justify-between mt-4 pt-4 border-t border-white/10">
                     <div>
                       <h4 className="text-white font-poppins font-semibold text-lg">
-                        {testimonials[currentIndex].name}
+                        {filteredTestimonials[currentIndex]?.name}
                       </h4>
                       <p className="text-purple-200 text-sm">
-                        {testimonials[currentIndex].position} • {testimonials[currentIndex].company}
+                        {filteredTestimonials[currentIndex]?.position} • {filteredTestimonials[currentIndex]?.company}
                       </p>
                       <div className="flex items-center gap-2 mt-1">
                         <span className="text-xs text-purple-300">
-                          {testimonials[currentIndex].industry}
+                          {filteredTestimonials[currentIndex]?.industry}
                         </span>
                         <span className="text-xs text-purple-300/50">•</span>
                         <span className="text-xs text-purple-300">
-                          {testimonials[currentIndex].date}
+                          {filteredTestimonials[currentIndex]?.date}
                         </span>
                       </div>
                     </div>
-                    {testimonials[currentIndex].platformIcon && (
-                      <div className="flex items-center gap-2 text-purple-300">
-                        <span className="text-xs">Review on</span>
-                        <span className="text-purple-300 text-lg">
-                          {testimonials[currentIndex].platformIcon}
-                        </span>
-                      </div>
-                    )}
+                    <div className="flex items-center gap-2 text-purple-300">
+                      <span className="text-xs">{activeTab === 'political' ? '🤝' : '💼'}</span>
+                      <span className="text-xs">{activeTab === 'political' ? 'Political Client' : 'Business Client'}</span>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -365,7 +560,7 @@ const Testimonials: React.FC = () => {
 
             {/* Dots */}
             <div className="flex gap-2">
-              {testimonials.map((_, index) => (
+              {filteredTestimonials.map((_, index) => (
                 <button
                   key={index}
                   onClick={() => goToTestimonial(index)}
@@ -386,6 +581,13 @@ const Testimonials: React.FC = () => {
             >
               <FaArrowRight />
             </button>
+          </div>
+
+          {/* Tab Info */}
+          <div className="text-center mt-4">
+            <p className="text-purple-300 text-sm">
+              Showing {filteredTestimonials.length} {activeTab === 'political' ? 'Political' : 'Business'} client testimonials
+            </p>
           </div>
         </div>
       </Container>

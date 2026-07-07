@@ -1,8 +1,7 @@
 // src/components/sections/Hero.tsx
-import React, { useState, useEffect } from 'react';
-import { motion, type Variants } from 'framer-motion';
+import React, { useState, useEffect, useRef } from 'react';
+import { motion, type Variants, useInView } from 'framer-motion';
 import { 
-  FaPlay, 
   FaChartLine, 
   FaUsers, 
   FaTrophy,
@@ -19,6 +18,16 @@ import Container from '../ui/Container';
 
 const Hero: React.FC = () => {
   const [currentWordIndex, setCurrentWordIndex] = useState(0);
+  const [counts, setCounts] = useState({
+    projects: 0,
+    clients: 0,
+    awards: 0,
+    experience: 0
+  });
+  const [hasAnimated, setHasAnimated] = useState(false);
+
+  const sectionRef = useRef<HTMLDivElement>(null);
+  const isInView = useInView(sectionRef, { once: false, amount: 0.2 }); // Changed to false for re-trigger
 
   const rotatingWords = [
     'Digital Marketing',
@@ -39,6 +48,63 @@ const Hero: React.FC = () => {
 
     return () => clearInterval(interval);
   }, []);
+
+  // Animated counter effect - triggers on scroll
+  useEffect(() => {
+    if (!isInView) {
+      // Reset counts and animation flag when out of view
+      setCounts({
+        projects: 0,
+        clients: 0,
+        awards: 0,
+        experience: 0
+      });
+      setHasAnimated(false);
+      return;
+    }
+
+    if (hasAnimated) return; // Prevent re-animation if already done
+
+    const targets = {
+      projects: 500,
+      clients: 200,
+      awards: 50,
+      experience: 10
+    };
+
+    const duration = 2500; // 2.5 seconds
+    const startTime = Date.now();
+
+    const updateCounts = () => {
+      const elapsed = Date.now() - startTime;
+      const progress = Math.min(elapsed / duration, 1);
+
+      // Easing function for smooth animation
+      const easeOutQuart = 1 - Math.pow(1 - progress, 4);
+
+      setCounts({
+        projects: Math.floor(targets.projects * easeOutQuart),
+        clients: Math.floor(targets.clients * easeOutQuart),
+        awards: Math.floor(targets.awards * easeOutQuart),
+        experience: Math.floor(targets.experience * easeOutQuart)
+      });
+
+      if (progress < 1) {
+        requestAnimationFrame(updateCounts);
+      } else {
+        // Set final values
+        setCounts({
+          projects: targets.projects,
+          clients: targets.clients,
+          awards: targets.awards,
+          experience: targets.experience
+        });
+        setHasAnimated(true);
+      }
+    };
+
+    updateCounts();
+  }, [isInView, hasAnimated]);
 
   const containerVariants: Variants = {
     hidden: { opacity: 0 },
@@ -77,19 +143,62 @@ const Hero: React.FC = () => {
   return (
     <section 
       id="hero" 
+      ref={sectionRef}
       className="relative min-h-screen flex items-center overflow-hidden bg-purple-900"
       aria-label="Hero section"
     >
-      {/* Background Decoration */}
-      <div className="absolute top-0 right-0 w-64 h-64 bg-purple-400/10 rounded-full blur-3xl"></div>
-      <div className="absolute bottom-0 left-0 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl"></div>
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-purple-600/10 rounded-full blur-3xl"></div>
-      <div className="absolute top-20 left-20 w-72 h-72 bg-purple-500/10 rounded-full blur-3xl"></div>
-      <div className="absolute bottom-20 right-20 w-80 h-80 bg-purple-700/10 rounded-full blur-3xl"></div>
+      {/* Background Video */}
+      <div className="absolute inset-0 w-full h-full overflow-hidden">
+        <video
+          autoPlay
+          muted
+          loop
+          playsInline
+          className="absolute top-1/2 left-1/2 min-w-full min-h-full w-auto h-auto object-cover -translate-x-1/2 -translate-y-1/2"
+          poster="https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=1920"
+        >
+          <source
+            src="/videos/bgvideo.mp4"
+            type="video/mp4"
+          />
+          {/* Fallback image if video doesn't load */}
+          <img
+            src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=1920"
+            alt="Background"
+            className="absolute inset-0 w-full h-full object-cover"
+          />
+        </video>
 
-      {/* Glowing orb decorations */}
-      <div className="absolute top-10 right-10 w-32 h-32 bg-purple-400/20 rounded-full blur-2xl animate-pulse"></div>
-      <div className="absolute bottom-10 left-10 w-40 h-40 bg-purple-500/20 rounded-full blur-2xl animate-pulse" style={{ animationDelay: '2s' }}></div>
+        {/* Dark Overlay for better text readability */}
+        <div className="absolute inset-0 bg-gradient-to-br from-purple-900/90 via-purple-800/80 to-purple-900/90"></div>
+
+        {/* Animated overlay gradients for depth */}
+        <motion.div
+          animate={{
+            scale: [1, 1.2, 1],
+            opacity: [0.3, 0.5, 0.3],
+          }}
+          transition={{
+            duration: 8,
+            repeat: Infinity,
+            ease: "easeInOut"
+          }}
+          className="absolute top-1/4 left-1/4 w-96 h-96 bg-purple-500/20 rounded-full blur-3xl"
+        />
+        <motion.div
+          animate={{
+            scale: [1.2, 1, 1.2],
+            opacity: [0.2, 0.4, 0.2],
+          }}
+          transition={{
+            duration: 10,
+            repeat: Infinity,
+            ease: "easeInOut",
+            delay: 1
+          }}
+          className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-purple-400/15 rounded-full blur-3xl"
+        />
+      </div>
 
       {/* Floating Icons in Background */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
@@ -191,7 +300,7 @@ const Hero: React.FC = () => {
             drive engagement, and deliver measurable results across all platforms.
           </motion.p>
 
-          {/* Animated Buttons with Hover Effects */}
+          {/* Animated Buttons with Hover Effects - Removed Watch Demo */}
           <motion.div
             variants={itemVariants}
             className="flex flex-col sm:flex-row items-center justify-center gap-3 md:gap-4 mb-8 md:mb-12 px-4 sm:px-0"
@@ -214,40 +323,44 @@ const Hero: React.FC = () => {
                 Get Started <FaArrowRight className="ml-2 text-xs md:text-sm group-hover:translate-x-1 transition-transform" />
               </Button>
             </motion.div>
-
-            <motion.div
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-            >
-              <Button
-                variant="outline"
-                size="lg"
-                className="w-full sm:w-auto min-w-[160px] text-sm md:text-base border-purple-400/50 text-purple-200 hover:bg-purple-500/20 hover:border-purple-400 transition-all duration-300"
-              >
-                <motion.div
-                  animate={{ rotate: [0, 10, -10, 0] }}
-                  transition={{ duration: 1, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-                  className="mr-2"
-                >
-                  <FaPlay className="text-xs md:text-sm" />
-                </motion.div>
-                Watch Demo
-              </Button>
-            </motion.div>
           </motion.div>
 
-          {/* Animated Stats with Stagger and Hover */}
+          {/* Animated Stats with Counters - Animated on Scroll */}
           <motion.div
             variants={containerVariants}
             initial="hidden"
-            animate="visible"
+            animate={isInView ? "visible" : "hidden"}
             className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8 max-w-3xl mx-auto mb-12 md:mb-16"
           >
             {[
-              { icon: FaChartLine, value: '500+', label: 'Projects', delay: 0 },
-              { icon: FaUsers, value: '200+', label: 'Happy Clients', delay: 0.1 },
-              { icon: FaTrophy, value: '50+', label: 'Awards', delay: 0.2 },
-              { icon: FaUsers, value: '10+', label: 'Years Experience', delay: 0.3 }
+              {
+                icon: FaChartLine,
+                value: counts.projects,
+                label: 'Projects',
+                suffix: '+',
+                delay: 0
+              },
+              {
+                icon: FaUsers,
+                value: counts.clients,
+                label: 'Happy Clients',
+                suffix: '+',
+                delay: 0.1
+              },
+              {
+                icon: FaTrophy,
+                value: counts.awards,
+                label: 'Awards',
+                suffix: '+',
+                delay: 0.2
+              },
+              {
+                icon: FaUsers,
+                value: counts.experience,
+                label: 'Years Experience',
+                suffix: '+',
+                delay: 0.3
+              }
             ].map((stat, index) => (
               <motion.div
                 key={index}
@@ -275,41 +388,11 @@ const Hero: React.FC = () => {
                   transition={{ duration: 0.5, delay: 0.8 + index * 0.1 }}
                   className="text-xl md:text-2xl lg:text-3xl font-bold text-white"
                 >
-                  {stat.value}
+                  {stat.value}{stat.suffix}
                 </motion.div>
                 <div className="text-xs md:text-sm text-purple-300">{stat.label}</div>
               </motion.div>
             ))}
-          </motion.div>
-
-          {/* Animated Trust Indicators */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 1.2 }}
-            className="flex flex-wrap items-center justify-center gap-6 md:gap-10 text-purple-300 text-xs"
-          >
-            <motion.div
-              animate={{ opacity: [0.5, 1, 0.5] }}
-              transition={{ duration: 2, repeat: Infinity }}
-              className="flex items-center gap-1"
-            >
-              <span className="text-green-400">●</span> Trusted by 200+ companies
-            </motion.div>
-            <motion.div
-              animate={{ opacity: [0.5, 1, 0.5] }}
-              transition={{ duration: 2, repeat: Infinity, delay: 0.5 }}
-              className="flex items-center gap-1"
-            >
-              <span className="text-yellow-400">★</span> 4.9/5 average rating
-            </motion.div>
-            <motion.div
-              animate={{ opacity: [0.5, 1, 0.5] }}
-              transition={{ duration: 2, repeat: Infinity, delay: 1 }}
-              className="flex items-center gap-1"
-            >
-              <span className="text-purple-400">✓</span> 100% satisfaction rate
-            </motion.div>
           </motion.div>
         </motion.div>
       </Container>
