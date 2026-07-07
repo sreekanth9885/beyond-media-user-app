@@ -1,6 +1,6 @@
 import Hero from "../components/sections/Hero";
 import About from "../components/sections/About";
-import Services from "../components/sections/Services";
+// import Services from "../components/sections/Services";
 import PoliticalCampaign from "../components/sections/PoliticalCampaign";
 import DigitalMarketing from "../components/sections/DigitalMarketing";
 import ITServices from "../components/sections/ITServices";
