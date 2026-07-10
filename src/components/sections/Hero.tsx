@@ -253,7 +253,7 @@ const Hero: React.FC = () => {
               }}
               className="w-2 h-2 bg-purple-400 rounded-full"
             />
-            <span className="text-xs md:text-sm text-purple-200 font-medium tracking-wider uppercase">
+            <span className="text-xs md:text-sm text-white font-medium tracking-wider uppercase">
               Leading Digital Agency
             </span>
           </motion.div>

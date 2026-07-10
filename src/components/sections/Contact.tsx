@@ -15,9 +15,7 @@ import {
   FaLinkedin,
   FaInstagram,
   FaYoutube,
-  FaHeadset,
   FaShieldAlt,
-  FaStar,
 } from 'react-icons/fa';
 import Container from '../ui/Container';
 import SectionHeading from '../ui/SectionHeading';
@@ -353,7 +351,7 @@ const Contact: React.FC = () => {
             </motion.div>
 
             {/* Quick Stats */}
-            <motion.div
+            {/* <motion.div
               variants={itemVariants}
               className="grid grid-cols-2 gap-3"
             >
@@ -367,7 +365,7 @@ const Contact: React.FC = () => {
                 <div className="text-white font-bold text-sm">500+</div>
                 <div className="text-purple-200 text-xs">Projects Done</div>
               </div>
-            </motion.div>
+            </motion.div> */}
           </motion.div>
 
           {/* Contact Form - Right Side */}
@@ -618,7 +616,7 @@ const Contact: React.FC = () => {
         </motion.div>
 
         {/* Trust Badges */}
-        <motion.div
+        {/* <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -641,7 +639,7 @@ const Contact: React.FC = () => {
             <FaStar className="text-purple-400" />
             98% Client Satisfaction
           </span>
-        </motion.div>
+        </motion.div> */}
       </Container>
     </section>
   );

@@ -30,7 +30,7 @@ const SectionHeading: React.FC<SectionHeadingProps> = ({
           initial={{ opacity: 0, y: 10 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className={`inline-block px-4 py-1.5 rounded-full text-xs font-semibold uppercase tracking-wider bg-purple-500/20 text-purple-200 border border-purple-400/30 backdrop-blur-sm mb-4 ${badgeClassName}`}
+          className={`inline-block px-4 py-1.5 rounded-full text-xs font-semibold uppercase tracking-wider bg-purple-500/20 text-white border border-purple-400/30 backdrop-blur-sm mb-4 ${badgeClassName}`}
         >
           {badge}
         </motion.span>

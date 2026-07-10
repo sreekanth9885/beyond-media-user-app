@@ -8,13 +8,11 @@ import {
   FaApple,
   FaAndroid,
   FaReact,
-  FaArrowRight,
   FaCog,
   FaStore,
 } from 'react-icons/fa';
 import Container from '../ui/Container';
 import SectionHeading from '../ui/SectionHeading';
-import Button from '../ui/Button';
 
 interface ITService {
   id: string;
@@ -269,14 +267,14 @@ const ITServices: React.FC = () => {
                     )}
                   </div>
 
-                  <Button
+                  {/* <Button
                     variant="ghost"
                     size="sm"
                     className="w-full text-purple-300 hover:text-purple-200 group/btn"
                   >
-                    Learn More 
+                    Learn More
                     <FaArrowRight className="ml-2 text-xs group-hover/btn:translate-x-1 transition-transform duration-300" />
-                  </Button>
+                  </Button> */}
                 </div>
               </motion.div>
             ))}

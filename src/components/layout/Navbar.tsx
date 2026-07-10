@@ -255,7 +255,7 @@ const Navbar: React.FC<NavbarProps> = ({ className = '' }) => {
                     }`}></span>
                   </RouterLink>
 
-                  {/* Services Dropdown - Grouped by Category */}
+                  {/* Services Dropdown - Grouped by Category - Updated for better display */}
                   {link.hasDropdown && (
                     <AnimatePresence>
                       {showServicesDropdown && (
@@ -264,29 +264,31 @@ const Navbar: React.FC<NavbarProps> = ({ className = '' }) => {
                           initial="hidden"
                           animate="visible"
                           exit="exit"
-                          className="absolute top-full left-0 mt-2 w-80 bg-purple-900/95 backdrop-blur-glass rounded-xl shadow-2xl border border-white/10 p-3 max-h-[70vh] overflow-y-auto"
+                          className="absolute top-full left-1/2 -translate-x-1/2 mt-2 w-[750px] bg-purple-900/95 backdrop-blur-glass rounded-xl shadow-2xl border border-white/10 p-4"
                         >
-                          {Object.entries(groupedServices).map(([category, items]) => (
-                            <div key={category} className="mb-3 last:mb-0">
-                              <div className="text-xs font-semibold text-purple-300 uppercase tracking-wider mb-1.5 px-2">
-                                {category}
+                          <div className="grid grid-cols-2 gap-4">
+                            {Object.entries(groupedServices).map(([category, items]) => (
+                              <div key={category} className="mb-2 last:mb-0">
+                                <div className="text-[10px] font-semibold text-purple-300 uppercase tracking-wider mb-1.5 px-2">
+                                  {category}
+                                </div>
+                                <div className="grid grid-cols-1 gap-0.5">
+                                  {items.map((item) => (
+                                    <button
+                                      key={item.id}
+                                      onClick={() => handleServiceClick(item.path)}
+                                      className={`flex items-center w-full px-3 py-1.5 text-xs font-medium rounded-lg transition-all duration-300 text-left ${isServiceActive(item.path)
+                                        ? 'bg-purple-500/30 text-white'
+                                        : 'text-white hover:text-purple-200 hover:bg-white/10'
+                                        }`}
+                                    >
+                                      {item.name}
+                                    </button>
+                                  ))}
+                                </div>
                               </div>
-                              <div className="grid grid-cols-1 gap-0.5">
-                                {items.map((item) => (
-                                  <button
-                                    key={item.id}
-                                    onClick={() => handleServiceClick(item.path)}
-                                    className={`flex items-center w-full px-3 py-2 text-sm font-medium rounded-lg transition-all duration-300 text-left ${isServiceActive(item.path)
-                                      ? 'bg-purple-500/30 text-white'
-                                      : 'text-white hover:text-purple-200 hover:bg-white/10'
-                                      }`}
-                                  >
-                                    {item.name}
-                                  </button>
-                                ))}
-                              </div>
-                            </div>
-                          ))}
+                            ))}
+                          </div>
                         </motion.div>
                       )}
                     </AnimatePresence>

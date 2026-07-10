@@ -4,7 +4,6 @@ import { motion, AnimatePresence, type Variants } from 'framer-motion';
 import { 
   FaSearch, 
   FaTimes, 
-  FaArrowRight, 
   FaCode,
   FaPaintBrush,
   FaBullhorn,
@@ -13,14 +12,12 @@ import {
   FaVideo,
   FaGlobe,
   FaTag,
-  FaLink,
   FaEye,
   FaStar,
   FaComments
 } from 'react-icons/fa';
 import Container from '../ui/Container';
 import SectionHeading from '../ui/SectionHeading';
-import Button from '../ui/Button';
 
 interface PortfolioItem {
   id: string;
@@ -555,14 +552,14 @@ const Portfolio: React.FC = () => {
                     <p className="text-purple-200 text-sm">{selectedItem.result}</p>
                   </div>
 
-                  <Button
+                  {/* <Button
                     variant="primary"
                     size="lg"
                     className="w-full bg-gradient-to-r from-purple-500 to-purple-700 text-white hover:from-purple-600 hover:to-purple-800 shadow-purple-lg"
                   >
                     <FaLink className="mr-2" /> View Full Case Study
                     <FaArrowRight className="ml-2" />
-                  </Button>
+                  </Button> */}
                 </div>
               </div>
             </motion.div>

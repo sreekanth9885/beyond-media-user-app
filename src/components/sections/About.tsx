@@ -341,7 +341,8 @@ const About: React.FC = () => {
                     }}
                     className="p-3 bg-white/10 backdrop-blur-sm rounded-xl border border-white/10 hover:border-purple-400/50 transition-all duration-300 group shadow-lg hover:shadow-2xl hover:bg-white/20 text-center"
                   >
-                    <div className={`w-10 h-10 mx-auto rounded-lg bg-gradient-to-r ${industry.color} flex items-center justify-center text-white text-lg mb-2 group-hover:scale-110 transition-transform duration-300`}>
+                    <div className={`w-18 h-18 mx-auto rounded-lg
+                       flex items-center justify-center text-white text-4xl mb-2 group-hover:scale-110 transition-transform duration-300`}>
                       {industry.icon}
                     </div>
                     <h4 className="text-white font-semibold text-xs sm:text-sm mb-1">

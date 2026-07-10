@@ -8,9 +8,6 @@ import {
   FaArrowLeft, 
   FaArrowRight, 
   FaCheckCircle,
-  FaLinkedin,
-  FaFacebook,
-  FaGoogle,
   FaUserTie,
   FaBuilding,
 } from 'react-icons/fa';
@@ -30,14 +27,14 @@ interface Testimonial {
   type: 'political' | 'business';
 }
 
-interface TrustBadge {
-  id: string;
-  name: string;
-  icon: React.ReactNode;
-  rating: string;
-  count: string;
-  color: string;
-}
+// interface TrustBadge {
+//   id: string;
+//   name: string;
+//   icon: React.ReactNode;
+//   rating: string;
+//   count: string;
+//   color: string;
+// }
 
 const Testimonials: React.FC = () => {
   const [currentIndex, setCurrentIndex] = useState<number>(0);
@@ -281,12 +278,12 @@ const Testimonials: React.FC = () => {
   // Filter testimonials based on active tab
   const filteredTestimonials = testimonials.filter(t => t.type === activeTab);
 
-  const trustBadges: TrustBadge[] = [
-    { id: '1', name: 'Google Reviews', icon: <FaGoogle />, rating: '4.9', count: '200+', color: 'from-purple-400 to-purple-600' },
-    { id: '2', name: 'LinkedIn', icon: <FaLinkedin />, rating: '4.8', count: '150+', color: 'from-purple-500 to-purple-700' },
-    { id: '3', name: 'Facebook', icon: <FaFacebook />, rating: '4.9', count: '100+', color: 'from-purple-400 to-purple-600' },
-    { id: '4', name: 'Trustpilot', icon: <FaStar />, rating: '4.7', count: '80+', color: 'from-purple-500 to-purple-700' },
-  ];
+  // const trustBadges: TrustBadge[] = [
+  //   { id: '1', name: 'Google Reviews', icon: <FaGoogle />, rating: '4.9', count: '200+', color: 'from-purple-400 to-purple-600' },
+  //   { id: '2', name: 'LinkedIn', icon: <FaLinkedin />, rating: '4.8', count: '150+', color: 'from-purple-500 to-purple-700' },
+  //   { id: '3', name: 'Facebook', icon: <FaFacebook />, rating: '4.9', count: '100+', color: 'from-purple-400 to-purple-600' },
+  //   { id: '4', name: 'Trustpilot', icon: <FaStar />, rating: '4.7', count: '80+', color: 'from-purple-500 to-purple-700' },
+  // ];
 
   const nextTestimonial = () => {
     setDirection(1);
@@ -311,25 +308,25 @@ const Testimonials: React.FC = () => {
   };
 
   // Animation variants
-  const containerVariants: Variants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.1,
-        delayChildren: 0.2
-      }
-    }
-  };
+  // const containerVariants: Variants = {
+  //   hidden: { opacity: 0 },
+  //   visible: {
+  //     opacity: 1,
+  //     transition: {
+  //       staggerChildren: 0.1,
+  //       delayChildren: 0.2
+  //     }
+  //   }
+  // };
 
-  const itemVariants: Variants = {
-    hidden: { opacity: 0, y: 30 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: { duration: 0.5, ease: "easeOut" }
-    }
-  };
+  // const itemVariants: Variants = {
+  //   hidden: { opacity: 0, y: 30 },
+  //   visible: {
+  //     opacity: 1,
+  //     y: 0,
+  //     transition: { duration: 0.5, ease: "easeOut" }
+  //   }
+  // };
 
   const slideVariants: Variants = {
     enter: (direction: number) => ({
@@ -412,7 +409,7 @@ const Testimonials: React.FC = () => {
         />
 
         {/* Trust Badges */}
-        <motion.div
+        {/* <motion.div
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
@@ -435,7 +432,7 @@ const Testimonials: React.FC = () => {
               </div>
             </motion.div>
           ))}
-        </motion.div>
+        </motion.div> */}
 
         {/* Tab Navigation */}
         <motion.div

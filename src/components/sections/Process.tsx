@@ -222,22 +222,22 @@ const Process: React.FC = () => {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
-          className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 mb-12 md:mb-16"
+          className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-6 mb-12 md:mb-16"
         >
           {processStats.map((stat) => (
             <motion.div
               key={stat.id}
               variants={itemVariants}
               whileHover={{ y: -5, scale: 1.02 }}
-              className="text-center p-4 md:p-6 bg-white/10 backdrop-blur-sm rounded-xl border border-white/10 hover:border-purple-400/50 shadow-lg hover:shadow-2xl hover:shadow-purple-500/20 transition-all duration-300 hover:bg-white/20"
+              className="text-center p-3 md:p-6 bg-white/10 backdrop-blur-sm rounded-xl border border-white/10 hover:border-purple-400/50 shadow-lg hover:shadow-2xl hover:shadow-purple-500/20 transition-all duration-300 hover:bg-white/20"
             >
-              <div className="text-white text-2xl md:text-3xl mb-2">
+              <div className="text-white text-xl md:text-3xl mb-1 md:mb-2">
                 {stat.icon}
               </div>
-              <div className="text-white font-bold text-xl md:text-2xl lg:text-3xl">
+              <div className="text-white font-bold text-base md:text-2xl lg:text-3xl">
                 {stat.value}
               </div>
-              <div className="text-purple-300 text-sm md:text-base">
+              <div className="text-purple-300 text-xs md:text-base">
                 {stat.label}
               </div>
             </motion.div>
@@ -246,9 +246,8 @@ const Process: React.FC = () => {
 
         {/* Process Timeline */}
         <div className="relative">
-          {/* Timeline Line */}
-          <div className="absolute left-4 md:left-1/2 top-0 bottom-0 w-0.5 bg-gradient-to-b from-purple-400/30 via-purple-400/50 to-purple-400/30 transform -translate-x-1/2 hidden md:block"></div>
-          <div className="absolute left-4 top-0 bottom-0 w-0.5 bg-gradient-to-b from-purple-400/30 via-purple-400/50 to-purple-400/30 md:hidden"></div>
+          {/* Timeline Line - Hidden on mobile, visible on md and up */}
+          <div className="absolute left-1/2 top-0 bottom-0 w-0.5 bg-gradient-to-b from-purple-400/30 via-purple-400/50 to-purple-400/30 transform -translate-x-1/2 hidden md:block"></div>
 
           {/* Steps */}
           {processSteps.map((step, index) => (
@@ -262,59 +261,59 @@ const Process: React.FC = () => {
                 index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'
               }`}
             >
-              {/* Timeline Dot */}
+              {/* Timeline Dot - Mobile: positioned on left with proper spacing */}
               <motion.div
                 whileHover={{ scale: 1.2 }}
-                className={`absolute left-4 md:left-1/2 transform -translate-x-1/2 w-10 h-10 rounded-full bg-gradient-to-r ${step.color} flex items-center justify-center text-white font-bold text-sm z-10 shadow-2xl shadow-purple-500/30`}
+                className={`absolute left-0 md:left-1/2 transform -translate-x-1/2 w-8 h-8 md:w-10 md:h-10 rounded-full bg-gradient-to-r ${step.color} flex items-center justify-center text-white font-bold text-xs md:text-sm z-10 shadow-2xl shadow-purple-500/30`}
               >
                 {step.number}
               </motion.div>
 
-              {/* Content */}
-              <div className={`ml-12 md:ml-0 w-full md:w-5/12 ${
+              {/* Content - Mobile: full width with left padding for dot */}
+              <div className={`pl-10 md:pl-0 w-full md:w-5/12 ${
                 index % 2 === 0 ? 'md:pr-8 md:text-right' : 'md:pl-8'
               }`}>
                 <motion.div
                   whileHover="hover"
-                  className="bg-white/10 backdrop-blur-sm rounded-xl border border-white/10 hover:border-purple-400/50 p-4 md:p-6 shadow-lg hover:shadow-2xl hover:shadow-purple-500/20 transition-all duration-300 hover:bg-white/20"
+                  className="bg-white/10 backdrop-blur-sm rounded-xl border border-white/10 hover:border-purple-400/50 p-4 md:p-6 shadow-lg hover:shadow-2xl hover:shadow-purple-500/20 transition-all duration-300 hover:bg-white/20 overflow-hidden"
                 >
-                  <div className="flex items-center gap-3 mb-3">
-                    <div className={`text-purple-300 text-2xl md:text-3xl ${
-                      index % 2 === 0 ? 'md:order-2' : ''
+                  <div className={`flex items-center gap-3 mb-3 ${index % 2 === 0 ? 'md:flex-row-reverse' : 'flex-row'
                     }`}>
+                    <div className={`text-purple-300 text-xl md:text-3xl flex-shrink-0`}>
                       {step.icon}
                     </div>
-                    <h3 className={`text-white font-poppins font-semibold text-lg md:text-xl ${
-                      index % 2 === 0 ? 'md:order-1' : ''
+                    <h3 className={`text-white font-poppins font-semibold text-base md:text-xl flex-1 ${index % 2 === 0 ? 'md:text-right' : 'text-left'
                     }`}>
                       {step.title}
                     </h3>
                   </div>
 
-                  <p className="text-purple-200 text-sm md:text-base leading-relaxed mb-4">
+                  <p className={`text-purple-200 text-sm md:text-base leading-relaxed mb-4 ${index % 2 === 0 ? 'md:text-right' : 'text-left'
+                    }`}>
                     {step.description}
                   </p>
 
-                  <div className="space-y-1.5">
+                  <div className={`space-y-1.5 ${index % 2 === 0 ? 'md:text-right' : 'text-left'
+                    }`}>
                     {step.details.map((detail, idx) => (
                       <motion.div
                         key={idx}
                         initial={{ opacity: 0, x: -10 }}
                         whileInView={{ opacity: 1, x: 0 }}
                         transition={{ delay: idx * 0.05 }}
-                        className={`flex items-center gap-2 text-purple-200 text-sm ${
-                          index % 2 === 0 ? 'md:justify-end' : ''
+                        className={`flex items-center gap-2 text-purple-200 text-xs md:text-sm ${index % 2 === 0 ? 'md:justify-end' : 'justify-start'
                         }`}
                       >
-                        <FaCheckCircle className="text-purple-300 text-xs flex-shrink-0" />
-                        <span>{detail}</span>
+                        <FaCheckCircle className={`text-purple-300 text-xs flex-shrink-0 ${index % 2 === 0 ? 'md:order-2' : ''
+                          }`} />
+                        <span className={index % 2 === 0 ? 'md:order-1' : ''}>{detail}</span>
                       </motion.div>
                     ))}
                   </div>
                 </motion.div>
               </div>
 
-              {/* Empty spacer for alternating layout */}
+              {/* Empty spacer for alternating layout - hidden on mobile */}
               <div className="hidden md:block md:w-5/12"></div>
             </motion.div>
           ))}
@@ -358,22 +357,22 @@ const Process: React.FC = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5, delay: 0.5 }}
-          className="mt-8 md:mt-12 grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4"
+          className="mt-8 md:mt-12 grid grid-cols-2 md:grid-cols-4 gap-2 md:gap-4"
         >
-          <div className="flex items-center gap-2 text-purple-300 text-xs md:text-sm">
-            <FaShieldAlt className="text-purple-400" />
+          <div className="flex items-center gap-1.5 md:gap-2 text-purple-300 text-[10px] md:text-sm">
+            <FaShieldAlt className="text-purple-400 text-xs md:text-base flex-shrink-0" />
             <span>Quality Assured</span>
           </div>
-          <div className="flex items-center gap-2 text-purple-300 text-xs md:text-sm">
-            <FaClock className="text-purple-400" />
+          <div className="flex items-center gap-1.5 md:gap-2 text-purple-300 text-[10px] md:text-sm">
+            <FaClock className="text-purple-400 text-xs md:text-base flex-shrink-0" />
             <span>On-time Delivery</span>
           </div>
-          <div className="flex items-center gap-2 text-purple-300 text-xs md:text-sm">
-            <FaHandshake className="text-purple-400" />
+          <div className="flex items-center gap-1.5 md:gap-2 text-purple-300 text-[10px] md:text-sm">
+            <FaHandshake className="text-purple-400 text-xs md:text-base flex-shrink-0" />
             <span>100% Transparency</span>
           </div>
-          <div className="flex items-center gap-2 text-purple-300 text-xs md:text-sm">
-            <FaRegLightbulb className="text-purple-400" />
+          <div className="flex items-center gap-1.5 md:gap-2 text-purple-300 text-[10px] md:text-sm">
+            <FaRegLightbulb className="text-purple-400 text-xs md:text-base flex-shrink-0" />
             <span>Innovation Focus</span>
           </div>
         </motion.div>
