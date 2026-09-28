@@ -12,7 +12,7 @@ services:
     labels:
       - "traefik.enable=true"
 
-      - "traefik.http.routers.user.rule=Host(`beyondmedia.com`) || Host(`www.beyondmedia.com`)"
+      - "traefik.http.routers.user.rule=Host(`beyondimedia.com`) || Host(`www.beyondimedia.com`)"
 
       - "traefik.http.routers.user.entrypoints=websecure"
 
