@@ -1,0 +1,28 @@
+services:
+  user:
+    build:
+      context: .
+      args:
+        VITE_API_URL: https://api.dinnusmart.com/api
+
+    container_name: beyond-media-user
+
+    restart: unless-stopped
+
+    labels:
+      - "traefik.enable=true"
+
+      - "traefik.http.routers.user.rule=Host(`beyondmedia.com`) || Host(`www.beyondmedia.com`)"
+
+      - "traefik.http.routers.user.entrypoints=websecure"
+
+      - "traefik.http.routers.user.tls.certresolver=letsencrypt"
+
+      - "traefik.http.services.user.loadbalancer.server.port=80"
+
+    networks:
+      - traefik-net
+
+networks:
+  traefik-net:
+    external: true
