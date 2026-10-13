@@ -260,27 +260,28 @@ const Hero: React.FC = () => {
 
           {/* Main Heading with Gradient Highlight */}
           <motion.div variants={itemVariants} className="mb-4 md:mb-6">
-            <motion.h1 className="font-poppins text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold leading-tight">
+            <motion.h1 className="font-poppins font-bold leading-tight text-[clamp(1.5rem,6.5vw,4.5rem)]">
               <span className="text-white">Transform Your</span>
-              <br className="hidden sm:block" />
-              <span className="relative inline-block">
-                <motion.span
-                  animate={{ opacity: [0, 1] }}
-                  transition={{ duration: 0.5 }}
-                  className="inline-block bg-gradient-to-r from-purple-300 via-purple-400 to-blue-400 bg-clip-text text-transparent"
-                >
-                  {rotatingWords[currentWordIndex]}
-                </motion.span>
-                <motion.span
-                  animate={{ opacity: [1, 0] }}
-                  transition={{ duration: 0.5 }}
-                  className="absolute right-[-4px] top-0 w-[3px] h-full bg-gradient-to-b from-purple-400 to-blue-400"
-                />
+              <br />
+              <span className="inline-block whitespace-nowrap">
+                <span className="relative inline-block">
+                  <motion.span
+                    animate={{ opacity: [0, 1] }}
+                    transition={{ duration: 0.5 }}
+                    className="inline-block bg-gradient-to-r from-purple-300 via-purple-400 to-blue-400 bg-clip-text text-transparent"
+                  >
+                    {rotatingWords[currentWordIndex]}
+                  </motion.span>
+                  <motion.span
+                    animate={{ opacity: [1, 0] }}
+                    transition={{ duration: 0.5 }}
+                    className="absolute right-[-4px] top-0 w-[3px] h-full bg-gradient-to-b from-purple-400 to-blue-400"
+                  />
+                </span>
+                <span className="text-white"> Today</span>
               </span>
-              <span className="text-white"> Today</span>
             </motion.h1>
 
-            {/* Animated Underline */}
             <motion.div
               initial={{ width: 0 }}
               animate={{ width: "100%" }}
@@ -288,7 +289,6 @@ const Hero: React.FC = () => {
               className="h-1 bg-gradient-to-r from-purple-400 via-purple-300 to-blue-400 rounded-full mx-auto mt-2 max-w-xs"
             />
           </motion.div>
-
           {/* Animated Description */}
           <motion.p
             variants={itemVariants}
